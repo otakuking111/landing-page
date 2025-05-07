@@ -7,6 +7,10 @@
   <meta name="keywords" content="CPA, claim gift card, limited offer, digital reward, online bonus">
   <meta name="robots" content="index, follow">
   <title>🎉 Exclusive Reward Just for You</title>
+
+  <!-- Animate.css for entry animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
   <style>
     * {
       box-sizing: border-box;
@@ -31,6 +35,7 @@
       border-radius: 20px;
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
       max-width: 600px;
+      animation: fadeInDown 1s ease-in-out;
     }
 
     h1 {
@@ -62,6 +67,7 @@
       text-decoration: none;
       transition: 0.3s ease;
       box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
+      animation: bounceIn 1.5s ease;
     }
 
     .cta-button:hover {
@@ -76,17 +82,23 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎁 You've Been Chosen!</h1>
-    <p>You're just moments away from unlocking your <strong>exclusive gift card reward</strong>. This offer is valid only for a limited time!</p>
-    <div class="timer" id="countdown">00:04:59</div>
-    <a href="https://smrturl.co/de75e44" class="cta-button" target="_blank">Claim Your Reward Now</a>
+  <div class="container animate__animated animate__fadeInDown">
+    <h1 class="animate__animated animate__fadeIn">🎁 You've Been Chosen!</h1>
+    <p class="animate__animated animate__fadeInUp">You're just moments away from unlocking your <strong>exclusive gift card reward</strong>. This offer is valid only for a limited time!</p>
+    <div class="timer animate__animated animate__pulse" id="countdown">00:04:59</div>
+    <a href="https://smrturl.co/de75e44" class="cta-button animate__animated animate__bounceIn" target="_blank">Claim Your Reward Now</a>
   </div>
 
+  <!-- Sound to play at countdown end -->
+  <audio id="alertSound" preload="auto">
+    <source src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.wav" type="audio/wav">
+  </audio>
+
   <script>
-    // Fake countdown timer (starts from 5 minutes)
     let seconds = 299;
     const countdown = document.getElementById('countdown');
+    const sound = document.getElementById('alertSound');
+
     const formatTime = s => {
       const m = Math.floor(s / 60);
       const sec = s % 60;
@@ -95,7 +107,10 @@
 
     const timer = setInterval(() => {
       countdown.textContent = formatTime(seconds);
-      if (seconds <= 0) clearInterval(timer);
+      if (seconds <= 0) {
+        clearInterval(timer);
+        sound.play(); // Play sound when timer ends
+      }
       seconds--;
     }, 1000);
   </script>
