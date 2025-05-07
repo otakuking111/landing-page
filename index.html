@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Claim your exclusive online reward before it expires! Gift cards, bonuses, and premium offers available now." />
-  <meta name="keywords" content="claim reward, gift card, bonus offer, cpa landing page, free gift" />
+  <meta name="description" content="🎁 Unlock your exclusive digital reward today! Limited-time access to gift cards, bonuses & online deals." />
+  <meta name="keywords" content="CPA, claim gift card, limited offer, digital reward, online bonus">
   <meta name="robots" content="index, follow">
-  <title>Claim Your Gift Now</title>
+  <title>🎉 Exclusive Reward Just for You</title>
   <style>
     * {
       box-sizing: border-box;
@@ -14,77 +14,90 @@
 
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #f8f9fa;
-      color: #212529;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      text-align: center;
+      padding: 20px;
     }
 
-    .wrapper {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+    .container {
+      background: rgba(0, 0, 0, 0.7);
       padding: 40px 30px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-      max-width: 500px;
-      width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      max-width: 600px;
     }
 
     h1 {
-      font-size: 2em;
-      color: #ff4b2b;
-      margin-bottom: 15px;
+      font-size: 2.4em;
+      color: #ffd700;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 1.1em;
+      font-size: 1.2em;
       margin-bottom: 30px;
-      color: #555;
+      line-height: 1.6;
     }
 
-    .btn {
+    .timer {
+      font-size: 1.8em;
+      margin-bottom: 25px;
+      color: #ff4b2b;
+      font-weight: bold;
+    }
+
+    .cta-button {
       display: inline-block;
-      padding: 14px 30px;
-      font-size: 1.1em;
+      background: #ff4b2b;
       color: #fff;
-      background-color: #ff4b2b;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 16px 40px;
+      font-size: 1.2em;
+      border-radius: 40px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      transition: 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
     }
 
-    .btn:hover {
-      background-color: #e84322;
+    .cta-button:hover {
+      background: #e84322;
+      transform: scale(1.05);
     }
 
     @media (max-width: 500px) {
-      h1 {
-        font-size: 1.6em;
-      }
-
-      p {
-        font-size: 1em;
-      }
-
-      .btn {
-        padding: 12px 25px;
-        font-size: 1em;
-      }
+      h1 { font-size: 2em; }
+      .cta-button { padding: 14px 30px; font-size: 1em; }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <h1>🎁 Claim Your Gift Now!</h1>
-    <p>You've been selected to receive a limited-time digital reward. Click below to secure your bonus offer before it expires!</p>
-    <a href="https://smrturl.co/de75e44" target="_blank" class="btn">Get My Reward</a>
+  <div class="container">
+    <h1>🎁 You've Been Chosen!</h1>
+    <p>You're just moments away from unlocking your <strong>exclusive gift card reward</strong>. This offer is valid only for a limited time!</p>
+    <div class="timer" id="countdown">00:04:59</div>
+    <a href="https://smrturl.co/de75e44" class="cta-button" target="_blank">Claim Your Reward Now</a>
   </div>
+
+  <script>
+    // Fake countdown timer (starts from 5 minutes)
+    let seconds = 299;
+    const countdown = document.getElementById('countdown');
+    const formatTime = s => {
+      const m = Math.floor(s / 60);
+      const sec = s % 60;
+      return `${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+    };
+
+    const timer = setInterval(() => {
+      countdown.textContent = formatTime(seconds);
+      if (seconds <= 0) clearInterval(timer);
+      seconds--;
+    }, 1000);
+  </script>
 </body>
 </html>
