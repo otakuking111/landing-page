@@ -24,6 +24,7 @@
       height: 100vh;
       text-align: center;
       padding: 20px;
+      flex-direction: column;
     }
     .container {
       background: rgba(0, 0, 0, 0.7);
@@ -64,16 +65,57 @@
       text-decoration: none;
       transition: 0.3s ease;
       box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
-      animation: bounceIn 1.5s ease;
+      animation: bounceIn 1.5s ease infinite alternate;
     }
     .cta-button:hover {
       background: #e84322;
       transform: scale(1.05);
     }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #222;
+      color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      z-index: 9999;
+      display: none;
+      animation: zoomIn 0.5s ease;
+    }
+    .popup button {
+      background: #ff4b2b;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .trust-badges {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .trust-badges img {
+      height: 40px;
+      filter: brightness(1.2);
+    }
+    .visitor-count {
+      margin-top: 15px;
+      font-size: 0.95em;
+      color: #ccc;
+    }
     @media (max-width: 500px) {
       h1 { font-size: 2em; }
       h2 { font-size: 1.1em; }
       .cta-button { padding: 14px 30px; font-size: 1em; }
+      .trust-badges img { height: 30px; }
     }
   </style>
 </head>
@@ -84,6 +126,18 @@
     <p class="animate__animated animate__fadeInUp">You're just moments away from unlocking your <strong>exclusive gift card reward</strong>. This offer is valid only for a limited time!</p>
     <div class="timer animate__animated animate__pulse" id="countdown">00:04:59</div>
     <a href="https://smrturl.co/de75e44" class="cta-button animate__animated animate__bounceIn" target="_blank">Claim Your Reward Now</a>
+    <div class="trust-badges">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Trustpilot_Logo.png" alt="Trustpilot">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/McAfee_logo_2019.svg/2560px-McAfee_logo_2019.svg.png" alt="McAfee Secure">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Norton_Antivirus_logo.png" alt="Norton Secured">
+    </div>
+    <div class="visitor-count" id="visitorCount">👁️ Currently 37 users are viewing this offer</div>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <p>🎉 Offer Unlocked! Click the button below to claim your gift.</p>
+    <button onclick="window.location.href='https://smrturl.co/de75e44'">Claim Now</button>
   </div>
 
   <!-- Audio alert -->
@@ -95,6 +149,7 @@
     let seconds = 299;
     const countdown = document.getElementById('countdown');
     const sound = document.getElementById('alertSound');
+    const popup = document.getElementById('popup');
 
     const formatTime = s => {
       const m = Math.floor(s / 60);
@@ -107,7 +162,10 @@
       if (seconds <= 0) {
         clearInterval(timer);
         sound.play();
-        alert("🎉 Offer Unlocked! Claim your reward now.");
+        popup.style.display = 'block';
+        setTimeout(() => {
+          window.location.href = "https://smrturl.co/de75e44";
+        }, 10000);
       }
       seconds--;
     }, 1000);
