@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="🎁 Unlock your exclusive digital reward today! Limited-time access to gift cards, bonuses & online deals." />
-  <meta name="keywords" content="CPA, claim gift card, limited offer, digital reward, online bonus">
+  <meta name="description" content="🎁 Claim your free gift card now! Complete the offer to unlock your exclusive reward. Limited-time digital bonuses inside." />
+  <meta name="keywords" content="CPA, free gift card, digital reward, online offer, limited time, bonus">
   <meta name="robots" content="index, follow">
-  <title>🎉 Exclusive Reward Just for You</title>
-
-  <!-- Animate.css for animations -->
+  <title>🎁 Claim Your Free Gift Card Today | Limited-Time Bonus</title>
+  <link rel="preload" as="audio" href="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.wav">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
   <style>
-    * { box-sizing: border-box; }
-
+    * {
+      box-sizing: border-box;
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -26,7 +25,6 @@
       text-align: center;
       padding: 20px;
     }
-
     .container {
       background: rgba(0, 0, 0, 0.7);
       padding: 40px 30px;
@@ -35,26 +33,27 @@
       max-width: 600px;
       animation: fadeInDown 1s ease-in-out;
     }
-
     h1 {
       font-size: 2.4em;
       color: #ffd700;
       margin-bottom: 10px;
     }
-
-    .subtitle {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-      color: #ffcccb;
+    h2 {
+      font-size: 1.4em;
+      color: #ffffff;
+      margin-bottom: 25px;
     }
-
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
     .timer {
       font-size: 1.8em;
       margin-bottom: 25px;
       color: #ff4b2b;
       font-weight: bold;
     }
-
     .cta-button {
       display: inline-block;
       background: #ff4b2b;
@@ -67,30 +66,13 @@
       box-shadow: 0 0 20px rgba(255, 75, 43, 0.5);
       animation: bounceIn 1.5s ease;
     }
-
     .cta-button:hover {
       background: #e84322;
       transform: scale(1.05);
     }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #ff4b2b;
-      color: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(255, 0, 0, 0.4);
-      z-index: 999;
-      text-align: center;
-      animation: zoomIn 0.8s ease;
-    }
-
     @media (max-width: 500px) {
       h1 { font-size: 2em; }
+      h2 { font-size: 1.1em; }
       .cta-button { padding: 14px 30px; font-size: 1em; }
     }
   </style>
@@ -98,17 +80,13 @@
 <body>
   <div class="container animate__animated animate__fadeInDown">
     <h1 class="animate__animated animate__fadeIn">🎁 You've Been Chosen!</h1>
-    <p class="subtitle animate__animated animate__fadeInUp">Complete the following offer to claim your reward!</p>
+    <h2 class="animate__animated animate__fadeInUp">Complete the offer below and unlock your gift instantly!</h2>
+    <p class="animate__animated animate__fadeInUp">You're just moments away from unlocking your <strong>exclusive gift card reward</strong>. This offer is valid only for a limited time!</p>
     <div class="timer animate__animated animate__pulse" id="countdown">00:04:59</div>
     <a href="https://smrturl.co/de75e44" class="cta-button animate__animated animate__bounceIn" target="_blank">Claim Your Reward Now</a>
   </div>
 
-  <!-- Popup Warning -->
-  <div class="popup animate__animated animate__zoomIn" id="popupAlert">
-    ⚠️ Hurry! This offer is about to expire. Take action now!
-  </div>
-
-  <!-- Sound -->
+  <!-- Audio alert -->
   <audio id="alertSound" preload="auto">
     <source src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.wav" type="audio/wav">
   </audio>
@@ -117,7 +95,6 @@
     let seconds = 299;
     const countdown = document.getElementById('countdown');
     const sound = document.getElementById('alertSound');
-    const popup = document.getElementById('popupAlert');
 
     const formatTime = s => {
       const m = Math.floor(s / 60);
@@ -130,7 +107,7 @@
       if (seconds <= 0) {
         clearInterval(timer);
         sound.play();
-        popup.style.display = 'block';
+        alert("🎉 Offer Unlocked! Claim your reward now.");
       }
       seconds--;
     }, 1000);
