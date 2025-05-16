@@ -14,6 +14,7 @@
       background-color: #0d1117;
       font-family: 'Segoe UI', sans-serif;
       color: #ffffff;
+      scroll-behavior: smooth;
     }
 
     .header {
@@ -23,6 +24,9 @@
       background-color: #161b22;
       padding: 15px 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     .header img {
@@ -56,6 +60,8 @@
     .card img {
       width: 100%;
       height: auto;
+      display: block;
+      border-radius: 0 0 15px 15px;
     }
 
     .card-content {
@@ -117,6 +123,7 @@
       border: none;
       border-radius: 10px;
       text-decoration: none;
+      cursor: pointer;
       transition: background 0.3s;
       margin-top: 10px;
     }
@@ -125,6 +132,7 @@
       background: linear-gradient(to right, #0284c7, #2563eb);
     }
 
+    /* Carousel styles */
     .carousel-container {
       margin-top: 25px;
       position: relative;
@@ -135,6 +143,7 @@
       overflow-x: auto;
       gap: 10px;
       scroll-behavior: smooth;
+      padding-bottom: 10px;
     }
 
     .carousel::-webkit-scrollbar {
@@ -142,29 +151,35 @@
     }
 
     .carousel-item {
-      min-width: 100%;
-      max-width: 100%;
+      min-width: 300px;
+      max-width: 90vw;
       flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      background-color: #111;
     }
 
     .carousel img,
     .carousel video {
       width: 100%;
-      height: 740px;
+      height: 100%;
       object-fit: cover;
       border-radius: 12px;
       display: block;
     }
 
+    /* Swipe arrow indicator */
     .swipe-indicator {
       text-align: center;
       margin-top: 10px;
+      user-select: none;
     }
 
     .swipe-arrow {
-      font-size: 24px;
+      font-size: 30px;
       color: #3b82f6;
       animation: moveArrow 1.5s infinite;
     }
@@ -172,6 +187,23 @@
     @keyframes moveArrow {
       0%, 100% { transform: translateX(0); }
       50% { transform: translateX(8px); }
+    }
+
+    /* Label to show "Screenshots" on top-left of carousel */
+    .screenshots-label {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      background-color: rgba(59, 130, 246, 0.85);
+      color: white;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      user-select: none;
+      pointer-events: none;
+      box-shadow: 0 0 8px rgba(59,130,246,0.6);
+      z-index: 5;
     }
   </style>
   <script type="text/javascript">
@@ -183,7 +215,7 @@
   </script>
 </head>
 <body>
-  <div class="header">
+  <div class="header" id="top">
     <img src="https://i.postimg.cc/rw7nns6D/temp-Imagezes-Ott.avif" alt="GTA Icon" />
     <h1>GTA 5 Mobile</h1>
   </div>
@@ -209,33 +241,34 @@
           <li>🕹️ Supports Gamepads</li>
           <li>⚙️ Regular Updates and Support</li>
         </ul>
-        <a onclick="_cW()" class="download-btn" target="_blank">Download Game</a>
+        <button onclick="_cW()" class="download-btn" type="button">Download Game</button>
       </div>
     </div>
 
     <div class="carousel-container">
+      <div class="screenshots-label">Screenshots</div>
       <div class="carousel">
         <div class="carousel-item">
-          <img src="https://i.postimg.cc/tT0Jt02W/temp-Imagewr-Pwb-E.avif" alt="Screen 1">
+          <img src="https://i.postimg.cc/tT0Jt02W/temp-Imagewr-Pwb-E.avif" alt="Screen 1" />
         </div>
         <div class="carousel-item">
-          <img src="https://i.postimg.cc/DwHwnkVH/temp-Image-FTBtz9.avif" alt="Screen 2">
+          <img src="https://i.postimg.cc/DwHwnkVH/temp-Image-FTBtz9.avif" alt="Screen 2" />
         </div>
         <div class="carousel-item">
-          <img src="https://i.postimg.cc/mgHG3Pqp/temp-Image-Lzt-Ybd.avif" alt="Screen 3">
+          <img src="https://i.postimg.cc/mgHG3Pqp/temp-Image-Lzt-Ybd.avif" alt="Screen 3" />
         </div>
         <div class="carousel-item">
-          <img src="https://i.postimg.cc/9MXSk08h/temp-Image8ep66i.avif" alt="Screen 4">
+          <img src="https://i.postimg.cc/9MXSk08h/temp-Image8ep66i.avif" alt="Screen 4" />
         </div>
         <div class="carousel-item">
-          <img src="https://i.postimg.cc/NFSzL4gs/temp-Image-XYe-JQ6.avif" alt="Screen 5">
+          <img src="https://i.postimg.cc/NFSzL4gs/temp-Image-XYe-JQ6.avif" alt="Screen 5" />
         </div>
         <div class="carousel-item">
-          <img src="https://i.postimg.cc/RCD8PMwk/temp-Imagekmlzas.avif" alt="Screen 6">
+          <img src="https://i.postimg.cc/RCD8PMwk/temp-Imagekmlzas.avif" alt="Screen 6" />
         </div>
         <div class="carousel-item">
           <video controls muted playsinline>
-            <source src="https://cdn.streamable.com/video/mp4/4bryzf.mp4" type="video/mp4">
+            <source src="https://cdn.streamable.com/video/mp4/4bryzf.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -245,7 +278,7 @@
       </div>
     </div>
 
-    <a onclick="_cW()" class="download-btn" target="_blank">Download Now</a>
+    <button onclick="_cW()" class="download-btn" type="button">Download Now</button>
   </div>
 </body>
 </html>
