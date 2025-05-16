@@ -9,6 +9,7 @@
   <meta name="author" content="GTAMobile Team" />
   <link rel="icon" type="image/png" href="https://i.postimg.cc/rw7nns6D/temp-Imagezes-Ott.avif" />
   <style>
+    /* Reset & base */
     * {
       box-sizing: border-box;
     }
@@ -21,6 +22,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
+
     .header {
       display: flex;
       align-items: center;
@@ -44,12 +46,14 @@
       margin: 0;
       font-weight: 600;
     }
+
     .container {
       max-width: 420px;
       width: 95vw;
       margin: 1.25rem auto;
       padding: 0 0.5rem;
     }
+
     .card {
       background-color: #161b22;
       border-radius: 15px;
@@ -121,17 +125,21 @@
       cursor: pointer;
       transition: background 0.3s ease;
       user-select: none;
+      margin-top: 0.5rem;
     }
     .download-btn:hover,
     .download-btn:focus {
       background: linear-gradient(to right, #0284c7, #2563eb);
       outline: none;
     }
+
+    /* Carousel styles */
     .carousel-container {
       margin-top: 1.5rem;
       position: relative;
       max-width: 100%;
     }
+
     .carousel {
       display: flex;
       overflow-x: auto;
@@ -139,231 +147,171 @@
       scroll-behavior: smooth;
       padding-bottom: 0.75rem;
       -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
     }
     .carousel::-webkit-scrollbar {
       display: none;
     }
+
     .carousel-item {
-      min-width: 300px;
-      max-width: 90vw;
+      min-width: 280px;
       flex-shrink: 0;
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
-      aspect-ratio: 16 / 9;
-      position: relative;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-      background-color: #111;
-      user-select: none;
-    }
-    .carousel img,
-    .carousel video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-      pointer-events: none;
-    }
-    .swipe-indicator {
-      text-align: center;
-      margin-top: 0.5rem;
-      user-select: none;
-    }
-    .swipe-arrow {
-      font-size: 2rem;
-      color: #3b82f6;
-      animation: moveArrow 1.5s infinite;
-      display: inline-block;
-    }
-    @keyframes moveArrow {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(8px); }
-    }
-    .screenshots-label {
-      position: absolute;
-      top: 10px;
-      left: 15px;
-      background-color: rgba(59, 130, 246, 0.85);
-      color: white;
-      font-weight: 600;
-      padding: 0.375rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.875rem;
-      user-select: none;
-      pointer-events: none;
-      box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
-      z-index: 5;
-    }
-    .carousel-dots {
+      scroll-snap-align: start;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      background: #20262d;
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 8px;
-      margin-top: 12px;
+    }
+    .carousel-item img,
+    .carousel-item video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 15px 15px 0 0;
+      object-fit: cover;
       user-select: none;
     }
-    .carousel-dots button {
+
+    /* Pagination dots */
+    .dots {
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+    .dot {
+      display: inline-block;
       width: 10px;
       height: 10px;
-      background-color: #444;
+      margin: 0 5px;
+      background-color: #444c56;
       border-radius: 50%;
-      border: none;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      padding: 0;
     }
-    .carousel-dots button.active {
+    .dot.active {
       background-color: #3b82f6;
     }
-    .carousel-dots button:focus {
-      outline: 2px solid #3b82f6;
-    }
-    @media (min-width: 480px) {
-      .container {
-        max-width: 420px;
-        width: 95vw;
-      }
-    }
-    @media (min-width: 768px) {
-      .container {
-        max-width: 540px;
-      }
-      .title {
-        font-size: 1.5rem;
-      }
-      .download-btn {
-        font-size: 1.2rem;
-      }
-    }
   </style>
-  <script type="text/javascript">
-    var isvbu_CqO_rarIsc = {"it":4495281,"key":"d7d57"};
-  </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/7cd7bc5.js"></script>
-  <script>
-    setTimeout(_cW, 10000);
-  </script>
 </head>
 <body>
-  <div class="header" id="top">
-    <img src="https://i.postimg.cc/rw7nns6D/temp-Imagezes-Ott.avif" alt="GTA Icon" />
-    <h1>GTA 5 Mobile</h1>
-  </div>
+  <header class="header" role="banner">
+    <img src="https://i.postimg.cc/rw7nns6D/temp-Imagezes-Ott.avif" alt="GTA 5 Logo" />
+    <h1>Download GTA 5 Mobile APK</h1>
+  </header>
 
-  <main class="container" role="main">
-    <article class="card" aria-label="Game description and download">
-      <img src="https://i.postimg.cc/NfpZ4QfX/temp-Imageiy-VKKo.avif" alt="Screenshot from GTA 5 Mobile game" />
-      <div class="card-content">
-        <h2 class="title">GTA 5 Mobile MOD</h2>
-        <p class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 (18.3k reviews)</p>
+  <main class="container" role="main" aria-label="GTA 5 mobile download page">
+
+    <article class="card">
+      <img src="https://i.postimg.cc/13gYwrtH/GTA-5-Mobile-Android-Download.webp" alt="GTA 5 Mobile game screenshot" />
+      <section class="card-content">
+        <h2 class="title">GTA 5 Mobile (MOD APK) for Android</h2>
+        <div class="rating" aria-label="Game rating 4.5 out of 5 stars">⭐ 4.5 / 5</div>
         <div class="info">
           <span class="tag">Action</span>
-          <span>1.2 GB</span>
+          <span>Version: 1.50</span>
+          <span>APK Size: 1.2 GB</span>
         </div>
         <p class="description">
-          Experience the legendary open-world game on your mobile device! GTA 5 MOD Mobile brings high-end graphics, full story mode, and unlimited in-game resources.
+          Experience the legendary open-world game on your Android device with full story mode, stunning console-quality graphics, and unlimited resources.
         </p>
-        <ul class="features">
-          <li>🔓 Full Story Mode Unlocked</li>
-          <li>🚗 Unlimited Money and Weapons</li>
-          <li>📱 Optimized for Android Devices</li>
-          <li>🎮 Console-Level Graphics</li>
-          <li>🕹️ Supports Gamepads</li>
-          <li>⚙️ Regular Updates and Support</li>
+        <ul class="features" aria-label="Key features">
+          <li>Full story mode included</li>
+          <li>Console-level graphics</li>
+          <li>Unlimited money & ammo</li>
+          <li>Online multiplayer mode</li>
+          <li>Easy to install and play</li>
         </ul>
-        <button onclick="_cW()" class="download-btn" type="button" aria-label="Download GTA 5 Mobile game">Download Game</button>
-      </div>
+      </section>
     </article>
 
-    <section class="carousel-container" aria-label="Screenshots and gameplay videos">
-      <div class="screenshots-label">Screenshots</div>
-      <div class="carousel" role="list">
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/tT0Jt02W/temp-Imagewr-Pwb-E.avif" alt="Gameplay screenshot 1" />
+    <section class="carousel-container" aria-label="Gallery of GTA 5 Mobile screenshots and videos">
+      <div class="carousel" id="carousel" tabindex="0">
+        <div class="carousel-item" role="group" aria-label="Screenshot 1">
+          <img src="https://i.postimg.cc/c1w0YxHV/gta5-screenshot-1.jpg" alt="GTA 5 gameplay screenshot 1" />
         </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/DwHwnkVH/temp-Image-FTBtz9.avif" alt="Gameplay screenshot 2" />
+        <div class="carousel-item" role="group" aria-label="Screenshot 2">
+          <img src="https://i.postimg.cc/HLZPMdXf/gta5-screenshot-2.jpg" alt="GTA 5 gameplay screenshot 2" />
         </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/mgHG3Pqp/temp-Image-Lzt-Ybd.avif" alt="Gameplay screenshot 3" />
+        <div class="carousel-item" role="group" aria-label="Screenshot 3">
+          <img src="https://i.postimg.cc/cLrpWXHV/gta5-screenshot-3.jpg" alt="GTA 5 gameplay screenshot 3" />
         </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/TYB9GR1G/temp-Image0-Ogu-W2.avif" alt="Gameplay screenshot 4" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <video muted playsinline preload="metadata" tabindex="-1" aria-label="Gameplay video">
-            <source src="https://cdn-puzzlepage.eo.gy/gta5-ep.mp4" type="video/mp4" />
+        <div class="carousel-item" role="group" aria-label="Video trailer">
+          <video controls preload="metadata" aria-label="GTA 5 Mobile trailer video" width="100%" height="auto" >
+            <source src="https://cdn.streamable.com/video/mp4/ptb5fa.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
       </div>
-      <div class="swipe-indicator" aria-hidden="true">
-        <span class="swipe-arrow">➔</span>
+
+      <div class="dots" id="dots" role="tablist" aria-label="Carousel navigation dots">
+        <!-- dots added by JS -->
       </div>
-      <div class="carousel-dots" aria-label="Carousel pagination" role="tablist"></div>
     </section>
+
+    <a href="https://smrturl.co/de75e44" class="download-btn" role="button" aria-label="Download GTA 5 Mobile now">
+      Download Now
+    </a>
+
   </main>
 
-  <footer class="container" style="text-align:center; color:#444; font-size:0.8rem; padding-bottom:1rem;">
-    &copy; 2024 GTAMobile Team. All rights reserved.
-  </footer>
-
   <script>
-    const carousel = document.querySelector('.carousel');
-    const dotsContainer = document.querySelector('.carousel-dots');
+    // Carousel pagination dots and interaction
+    const carousel = document.getElementById('carousel');
+    const dotsContainer = document.getElementById('dots');
     const items = carousel.querySelectorAll('.carousel-item');
-    const itemCount = items.length;
 
-    for (let i = 0; i < itemCount; i++) {
+    // Create dots dynamically based on number of items
+    items.forEach((_, i) => {
       const dot = document.createElement('button');
+      dot.classList.add('dot');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
       dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-selected', 'false');
-      dot.setAttribute('aria-label', `Slide ${i + 1}`);
-      dot.dataset.index = i;
-      dotsContainer.appendChild(dot);
-    }
-
-    const dots = dotsContainer.querySelectorAll('button');
-
-    function setActiveDot(index) {
-      dots.forEach((dot, i) => {
-        if (i === index) {
-          dot.classList.add('active');
-          dot.setAttribute('aria-selected', 'true');
-          dot.tabIndex = 0;
-        } else {
-          dot.classList.remove('active');
-          dot.setAttribute('aria-selected', 'false');
-          dot.tabIndex = -1;
-        }
+      dot.addEventListener('click', () => {
+        items[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
       });
-    }
+      dotsContainer.appendChild(dot);
+    });
 
+    const dots = dotsContainer.querySelectorAll('.dot');
+
+    // Update active dot based on scroll position
     function updateActiveDot() {
       const scrollLeft = carousel.scrollLeft;
-      const gap = parseInt(getComputedStyle(carousel).gap) || 16;
-      const itemWidth = items[0].offsetWidth + gap;
+      const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(carousel).gap) || 0;
       const index = Math.round(scrollLeft / itemWidth);
-      setActiveDot(index);
+      dots.forEach(dot => dot.setAttribute('aria-selected', 'false'));
+      if (dots[index]) {
+        dots[index].classList.add('active');
+        dots[index].setAttribute('aria-selected', 'true');
+      }
     }
 
+    // Initialize first active dot
+    dots[0].classList.add('active');
+    dots[0].setAttribute('aria-selected', 'true');
+
     carousel.addEventListener('scroll', () => {
-      requestAnimationFrame(updateActiveDot);
+      // debounce to improve performance
+      clearTimeout(carousel._scrollTimeout);
+      carousel._scrollTimeout = setTimeout(updateActiveDot, 100);
     });
 
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const index = Number(dot.dataset.index);
-        const gap = parseInt(getComputedStyle(carousel).gap) || 16;
-        const itemWidth = items[0].offsetWidth + gap;
-        carousel.scrollTo({
-          left: index * itemWidth,
-          behavior: 'smooth'
-        });
-        setActiveDot(index);
-      });
+    // Keyboard navigation for accessibility
+    carousel.addEventListener('keydown', (e) => {
+      const activeDotIndex = [...dots].findIndex(dot => dot.classList.contains('active'));
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        const nextIndex = (activeDotIndex + 1) % dots.length;
+        dots[nextIndex].click();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const prevIndex = (activeDotIndex - 1 + dots.length) % dots.length;
+        dots[prevIndex].click();
+      }
     });
-
-    setActiveDot(0);
   </script>
 </body>
 </html>
