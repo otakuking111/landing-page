@@ -207,6 +207,34 @@
       z-index: 5;
     }
 
+    /* Pagination dots container */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+      user-select: none;
+    }
+
+    .carousel-dots button {
+      width: 10px;
+      height: 10px;
+      background-color: #444;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      padding: 0;
+    }
+
+    .carousel-dots button.active {
+      background-color: #3b82f6;
+    }
+
+    .carousel-dots button:focus {
+      outline: 2px solid #3b82f6;
+    }
+
     /* Responsive typography */
     @media (min-width: 480px) {
       .container {
@@ -277,29 +305,4 @@
         </div>
         <div class="carousel-item" role="listitem">
           <img src="https://i.postimg.cc/mgHG3Pqp/temp-Image-Lzt-Ybd.avif" alt="Gameplay screenshot 3" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/9MXSk08h/temp-Image8ep66i.avif" alt="Gameplay screenshot 4" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/NFSzL4gs/temp-Image-XYe-JQ6.avif" alt="Gameplay screenshot 5" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/RCD8PMwk/temp-Imagekmlzas.avif" alt="Gameplay screenshot 6" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <video controls muted playsinline preload="metadata" aria-label="Gameplay video">
-            <source src="https://cdn.streamable.com/video/mp4/4bryzf.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-      <div class="swipe-indicator" aria-hidden="true">
-        <span class="swipe-arrow">→</span>
-      </div>
-    </section>
-
-    <button onclick="_cW()" class="download-btn" type="button" aria-label="Download GTA 5 Mobile game">Download Now</button>
-  </main>
-</body>
-</html>
+       
