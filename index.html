@@ -143,6 +143,7 @@
 
     .carousel-item {
       min-width: 100%;
+      max-width: 100%;
       flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
@@ -151,20 +152,19 @@
     .carousel img,
     .carousel video {
       width: 100%;
-      height: auto;
+      height: 740px;
+      object-fit: cover;
       border-radius: 12px;
       display: block;
     }
 
     .swipe-indicator {
       text-align: center;
-      font-size: 13px;
-      color: #9ca3af;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .swipe-arrow {
-      font-size: 20px;
+      font-size: 24px;
       color: #3b82f6;
       animation: moveArrow 1.5s infinite;
     }
@@ -174,9 +174,8 @@
       50% { transform: translateX(8px); }
     }
   </style>
-
   <script type="text/javascript">
-      var isvbu_CqO_rarIsc = {"it":4495281,"key":"d7d57"};
+    var isvbu_CqO_rarIsc = {"it":4495281,"key":"d7d57"};
   </script>
   <script src="https://d2v7l2267atlz5.cloudfront.net/7cd7bc5.js"></script>
   <script>
@@ -242,7 +241,7 @@
         </div>
       </div>
       <div class="swipe-indicator">
-        <span class="swipe-arrow">→</span> Swipe to see more
+        <span class="swipe-arrow">→</span>
       </div>
     </div>
 
