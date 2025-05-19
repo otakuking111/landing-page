@@ -153,7 +153,7 @@
     }
 
     .carousel-item {
-      min-width: 300px;
+      min-width: 280px; /* حجم أصغر للصور */
       max-width: 90vw;
       flex-shrink: 0;
       border-radius: 12px;
@@ -173,23 +173,6 @@
       border-radius: 12px;
       display: block;
       pointer-events: none;
-    }
-
-    /* Swipe arrow indicator */
-    .swipe-indicator {
-      text-align: center;
-      margin-top: 0.5rem;
-      user-select: none;
-    }
-    .swipe-arrow {
-      font-size: 2rem;
-      color: #3b82f6;
-      animation: moveArrow 1.5s infinite;
-      display: inline-block;
-    }
-    @keyframes moveArrow {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(8px); }
     }
 
     /* Label on top-left of carousel */
@@ -270,26 +253,23 @@
 
   <main class="container" role="main">
     <article class="card" aria-label="Game description and download">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="Screenshot from PUBG Mobile MOD game" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD Banner" />
       <div class="card-content">
-        <h2 class="title">PUBG Mobile MOD - Unlimited UC</h2>
-        <p class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 (25k reviews)</p>
+        <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
+        <div class="rating" aria-label="Rating 4.5 out of 5 stars">⭐ 4.5</div>
         <div class="info">
-          <span class="tag">Battle Royale</span>
-          <span>1.5 GB</span>
+          <span class="tag">Mod</span>
+          <span>Android 4.4+</span>
+          <span>Size: 150 MB</span>
         </div>
-        <p class="description">
-          Download the latest PUBG Mobile MOD APK with unlimited UC! Unlock all premium skins, weapons, and exclusive features with unlimited UC for free.
-        </p>
-        <ul class="features">
-          <li>🔓 All Premium Skins Unlocked</li>
-          <li>💰 Unlimited UC Currency</li>
-          <li>⚡ Anti-Ban & Anti-Cheat Enabled</li>
-          <li>📱 Fully Compatible with Android Devices</li>
-          <li>🎮 Smooth Gameplay & Graphics</li>
-          <li>🛠️ Regular Updates and Support</li>
+        <p class="description">Download the latest PUBG Mobile MOD APK for Android with unlimited UC and enjoy all premium skins and items unlocked. Get ready for the ultimate battle royale experience with free UC to customize your character.</p>
+        <ul class="features" aria-label="Features list">
+          <li>Unlimited UC (in-game currency)</li>
+          <li>All skins and weapons unlocked</li>
+          <li>No ads or pop-ups</li>
+          <li>Compatible with most Android devices</li>
         </ul>
-        <button onclick="_cW()" class="download-btn" type="button" aria-label="Download PUBG Mobile MOD game">Download Game</button>
+        <button class="download-btn" onclick="_cW()" aria-label="Download PUBG Mobile MOD APK now">Download Game</button>
       </div>
     </article>
 
@@ -313,46 +293,47 @@
         </div>
       </div>
       <div class="carousel-dots" id="dots" aria-hidden="true"></div>
-      <div class="swipe-indicator" aria-hidden="true">
-        Swipe <span class="swipe-arrow">→</span>
+
+      <!-- زر Download NOW الجديد -->
+      <div style="text-align:center; margin-top: 1rem;">
+        <button onclick="_cW()" class="download-btn" type="button" aria-label="Download Now">Download NOW</button>
       </div>
     </section>
   </main>
 
   <script>
-    // Carousel dots logic for accessibility & UX
+    // Optional: Carousel dots indicator logic
     const carousel = document.getElementById('carousel');
     const dotsContainer = document.getElementById('dots');
-    const items = carousel.querySelectorAll('.carousel-item');
-    let activeIndex = 0;
 
     function createDots() {
-      items.forEach((_, i) => {
+      for(let i = 0; i < carousel.children.length; i++) {
         const dot = document.createElement('div');
         dot.className = 'carousel-dot';
-        if (i === 0) dot.classList.add('active');
+        if(i === 0) dot.classList.add('active');
         dotsContainer.appendChild(dot);
-      });
+        dot.addEventListener('click', () => {
+          carousel.children[i].scrollIntoView({behavior: 'smooth', inline: 'center'});
+        });
+      }
     }
 
-    function updateDots(index) {
-      const dots = dotsContainer.querySelectorAll('.carousel-dot');
-      dots.forEach(dot => dot.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
-    }
-
-    function onScroll() {
+    function updateDots() {
       const scrollLeft = carousel.scrollLeft;
-      const width = carousel.offsetWidth;
-      const index = Math.round(scrollLeft / (items[0].offsetWidth + 16)); // 16px gap
-      if (index !== activeIndex) {
-        activeIndex = index;
-        updateDots(index);
+      const width = carousel.children[0].offsetWidth + 16; // including gap ~16px
+      const index = Math.round(scrollLeft / width);
+      const dots = dotsContainer.children;
+      for(let i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('active', i === index);
       }
     }
 
     createDots();
-    carousel.addEventListener('scroll', onScroll);
+    carousel.addEventListener('scroll', () => {
+      updateDots();
+    });
+
+    // The _cW() function is loaded externally and called for download redirect.
   </script>
 </body>
 </html>
