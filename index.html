@@ -264,13 +264,13 @@
 </head>
 <body>
   <div class="header" id="top">
-    <img src="https://i.postimg.cc/rw7nns6D/temp-Imagezes-Ott.avif" alt="PUBG Icon" />
+    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" />
     <h1>PUBG Mobile MOD</h1>
   </div>
 
   <main class="container" role="main">
     <article class="card" aria-label="Game description and download">
-      <img src="https://i.postimg.cc/NfpZ4QfX/temp-Imageiy-VKKo.avif" alt="Screenshot from PUBG Mobile MOD game" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="Screenshot from PUBG Mobile MOD game" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD - Unlimited UC</h2>
         <p class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 (25k reviews)</p>
@@ -297,23 +297,20 @@
       <div class="screenshots-label">Screenshots</div>
       <div class="carousel" role="list" id="carousel">
         <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif
-          " alt="Gameplay screenshot 1" />
+          <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Gameplay screenshot 1" />
         </div>
         <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Gameplay screenshot 2" />
+          <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Gameplay screenshot 2" />
         </div>
         <div class="carousel-item" role="listitem">
           <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Gameplay screenshot 3" />
         </div>
         <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif
-          " alt="Gameplay screenshot 4" />
+          <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Gameplay screenshot 4" />
         </div>
         <div class="carousel-item" role="listitem">
           <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Gameplay screenshot 5" />
         </div>
-        
       </div>
       <div class="carousel-dots" id="dots" aria-hidden="true"></div>
       <div class="swipe-indicator" aria-hidden="true">
@@ -346,11 +343,11 @@
 
     function onScroll() {
       const scrollLeft = carousel.scrollLeft;
-      const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(carousel).gap || 0);
-      const index = Math.round(scrollLeft / itemWidth);
+      const width = carousel.offsetWidth;
+      const index = Math.round(scrollLeft / (items[0].offsetWidth + 16)); // 16px gap
       if (index !== activeIndex) {
         activeIndex = index;
-        updateDots(activeIndex);
+        updateDots(index);
       }
     }
 
