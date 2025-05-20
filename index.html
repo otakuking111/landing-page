@@ -145,7 +145,7 @@
       gap: 1rem;
       scroll-behavior: smooth;
       padding-bottom: 0.75rem;
-      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
     }
     .carousel::-webkit-scrollbar {
@@ -153,8 +153,8 @@
     }
 
     .carousel-item {
-      min-width: 280px; /* حجم أصغر للصور */
-      max-width: 90vw;
+      min-width: 140px;
+      max-width: 50vw;
       flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
@@ -165,14 +165,40 @@
       user-select: none;
       scroll-snap-align: center;
     }
-    .carousel img,
-    .carousel video {
+    .carousel img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 12px;
       display: block;
       pointer-events: none;
+      background-color: black;
+    }
+
+    /* Remove swipe indicator, add download now container */
+    .download-now-container {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .download-now-btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: linear-gradient(90deg, #3b82f6, #0ea5e9);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+    }
+    .download-now-btn:hover,
+    .download-now-btn:focus {
+      background: linear-gradient(90deg, #2563eb, #0284c7);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.9);
+      outline: none;
     }
 
     /* Label on top-left of carousel */
@@ -253,87 +279,75 @@
 
   <main class="container" role="main">
     <article class="card" aria-label="Game description and download">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD Banner" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD banner" />
       <div class="card-content">
-        <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
-        <div class="rating" aria-label="Rating 4.5 out of 5 stars">⭐ 4.5</div>
+        <h2 class="title">PUBG Mobile MOD - Unlimited UC</h2>
+        <p class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 (25k reviews)</p>
         <div class="info">
-          <span class="tag">Mod</span>
-          <span>Android 4.4+</span>
-          <span>Size: 150 MB</span>
+          <span class="tag">Battle Royale</span>
+          <span>1.5 GB</span>
         </div>
-        <p class="description">Download the latest PUBG Mobile MOD APK for Android with unlimited UC and enjoy all premium skins and items unlocked. Get ready for the ultimate battle royale experience with free UC to customize your character.</p>
-        <ul class="features" aria-label="Features list">
-          <li>Unlimited UC (in-game currency)</li>
-          <li>All skins and weapons unlocked</li>
-          <li>No ads or pop-ups</li>
-          <li>Compatible with most Android devices</li>
+        <p class="description">
+          Download the latest PUBG Mobile MOD APK with unlimited UC! Unlock all premium skins, weapons, and exclusive features with unlimited UC for free.
+        </p>
+        <ul class="features">
+          <li>🔓 All Premium Skins Unlocked</li>
+          <li>💰 Unlimited UC Currency</li>
+          <li>⚡ Anti-Ban & Anti-Cheat Enabled</li>
+          <li>🎮 Smooth Gameplay & Optimized Performance</li>
         </ul>
-        <button class="download-btn" onclick="_cW()" aria-label="Download PUBG Mobile MOD APK now">Download Game</button>
+        <a href="https://smrturl.co/de75e44" class="download-btn" aria-label="Download PUBG Mobile MOD APK now" role="button" target="_blank" rel="noopener noreferrer" tabindex="0">Download APK Now</a>
       </div>
     </article>
 
-    <section class="carousel-container" aria-label="Screenshots and gameplay videos">
-      <div class="screenshots-label">Screenshots</div>
-      <div class="carousel" role="list" id="carousel">
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Gameplay screenshot 1" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Gameplay screenshot 2" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Gameplay screenshot 3" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Gameplay screenshot 4" />
-        </div>
-        <div class="carousel-item" role="listitem">
-          <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Gameplay screenshot 5" />
-        </div>
+    <!-- Carousel screenshots -->
+    <section class="carousel-container" aria-label="Game screenshots">
+      <span class="screenshots-label">Screenshots</span>
+      <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel" aria-live="polite" aria-atomic="true">
+        <div class="carousel-item"><img src="https://i.postimg.cc/j2xMx3xv/temp-Image-Ysz-SL.webp" alt="Gameplay Screenshot 1" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/zB6tbNpY/temp-Imagep5-Km2e.webp" alt="Gameplay Screenshot 2" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/RZ5PZcVh/temp-Imagew-BQ1.webp" alt="Gameplay Screenshot 3" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/xjHLqfWR/temp-Imagee-A1.webp" alt="Gameplay Screenshot 4" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/L62LpRhZ/temp-Imageh-RV.webp" alt="Gameplay Screenshot 5" /></div>
       </div>
-      <div class="carousel-dots" id="dots" aria-hidden="true"></div>
-
-      <!-- زر Download NOW الجديد -->
-      <div style="text-align:center; margin-top: 1rem;">
-        <button onclick="_cW()" class="download-btn" type="button" aria-label="Download Now">Download NOW</button>
-      </div>
+      <div class="carousel-dots" aria-hidden="true"></div>
     </section>
+
+    <!-- Download Now Button below carousel -->
+    <div class="download-now-container">
+      <a href="https://smrturl.co/de75e44" class="download-now-btn" role="button" aria-label="Download PUBG Mobile MOD APK now" target="_blank" rel="noopener noreferrer">DOWNLOAD NOW</a>
+    </div>
   </main>
 
   <script>
-    // Optional: Carousel dots indicator logic
+    // Carousel dots functionality
     const carousel = document.getElementById('carousel');
-    const dotsContainer = document.getElementById('dots');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    const items = carousel.querySelectorAll('.carousel-item');
 
     function createDots() {
-      for(let i = 0; i < carousel.children.length; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'carousel-dot';
-        if(i === 0) dot.classList.add('active');
+      for (let i = 0; i < items.length; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('carousel-dot');
+        if (i === 0) dot.classList.add('active');
         dotsContainer.appendChild(dot);
-        dot.addEventListener('click', () => {
-          carousel.children[i].scrollIntoView({behavior: 'smooth', inline: 'center'});
-        });
       }
     }
 
     function updateDots() {
       const scrollLeft = carousel.scrollLeft;
-      const width = carousel.children[0].offsetWidth + 16; // including gap ~16px
-      const index = Math.round(scrollLeft / width);
-      const dots = dotsContainer.children;
-      for(let i = 0; i < dots.length; i++) {
-        dots[i].classList.toggle('active', i === index);
-      }
+      const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(carousel).gap) || 16;
+      const index = Math.round(scrollLeft / itemWidth);
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      dots.forEach(dot => dot.classList.remove('active'));
+      if (dots[index]) dots[index].classList.add('active');
     }
 
     createDots();
-    carousel.addEventListener('scroll', () => {
-      updateDots();
-    });
 
-    // The _cW() function is loaded externally and called for download redirect.
+    carousel.addEventListener('scroll', () => {
+      window.requestAnimationFrame(updateDots);
+    });
   </script>
 </body>
 </html>
