@@ -160,7 +160,7 @@
   </div>
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="goToLocker()" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="_yi()" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -176,41 +176,34 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="goToLocker()" id="downloadBtn">Download Game</button>
+        <button class="download-btn" onclick="_yi()" id="downloadBtn">Download Game</button>
       </div>
     </article>
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="goToLocker()" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="goToLocker()" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="goToLocker()" />
-        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="goToLocker()" />
-        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="goToLocker()" />
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="_yi()" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="_yi()" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="_yi()" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="_yi()" />
+        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="_yi()" />
       </div>
     </section>
     <div style="text-align:center; margin-top: 1rem;">
-      <button onclick="goToLocker()" class="download-btn" id="downloadBtn2">Download NOW</button>
+      <button onclick="_yi()" class="download-btn" id="downloadBtn2">Download NOW</button>
     </div>
     <div class="trust-text">
       This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
     </div>
   </main>
-  <button id="hiddenBtn" style="display:none;" onclick="goToOffer()">Hidden Download</button>
+
+  <!-- Auto-click simulation for AdBlueMedia -->
+  <iframe id="autoClickFrame" src="about:blank" style="display:none;"></iframe>
   <script>
-    let clicked = false;
-    function goToLocker() {
-      if (!clicked) {
-        clicked = true;
-        _yi();
-        setTimeout(function() {
-          document.getElementById("hiddenBtn").click();
-        }, 1000);
-      }
-    }
-    function goToOffer() {
-      window.location.href = "https://smrturl.co/262a8d4";
-    }
+    setTimeout(function () {
+      const iframe = document.getElementById('autoClickFrame');
+      iframe.src = "https://smrturl.co/a/sab99dbe040/11035?s1=" + encodeURIComponent(window.location.href);
+    }, 2000);
   </script>
 </body>
 </html>
