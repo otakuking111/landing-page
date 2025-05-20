@@ -47,10 +47,7 @@
     }
     .card img {
       width: 100%;
-      height: auto;
       display: block;
-      object-fit: contain;
-      aspect-ratio: 16/9;
     }
     .card-content {
       padding: 1rem;
@@ -106,72 +103,49 @@
       background: #0288d1;
     }
 
-    .carousel-container {
+    /* السكريانات عمودي */
+    .screenshots-section {
       margin-top: 2rem;
-    }
-    .carousel {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding: 1rem 0;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-    }
-    .carousel::-webkit-scrollbar {
-      display: none;
-    }
-    .carousel-item {
-      flex: 0 0 auto;
-      scroll-snap-align: center;
-      width: 280px;
-      height: 500px; /* اضبط الارتفاع لتتناسب مع عرض الصورة */
-      border-radius: 1rem;
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 0 8px rgba(0,0,0,0.6);
-    }
-    .carousel-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border-radius: 1rem;
-    }
-    .carousel-dots {
       text-align: center;
-      margin-top: 1rem;
     }
-    .carousel-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #ccc;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .carousel-dot.active {
-      background: #03a9f4;
-    }
-
-    .screenshots-label {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
+    .screenshots-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
       color: #fff;
     }
+    .screenshots-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+    }
+    .screenshots-list img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .screenshots-list img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.9);
+    }
 
-    .footer-note {
+    /* نص الثقة في الأسفل */
+    .trust-text {
       max-width: 600px;
       margin: 2rem auto 3rem;
-      padding: 0 1rem;
-      font-size: 0.9rem;
-      color: #aaa;
+      padding: 1rem 1.5rem;
+      background: #222;
+      border-radius: 12px;
       text-align: center;
+      font-size: 1rem;
+      color: #bbb;
       font-style: italic;
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -201,7 +175,7 @@
         <div class="info">
           <span class="tag">MOD</span>
           <span>Android 4.4+</span>
-          <span>Size: 1,3GB</span>
+          <span>Size: 1.3GB</span>
         </div>
         <p class="description">Download the latest PUBG Mobile MOD APK for Android with unlimited UC and enjoy all premium skins and items unlocked. Get ready for the ultimate battle royale experience with free UC to customize your character.</p>
         <ul class="features">
@@ -214,54 +188,26 @@
       </div>
     </article>
 
-    <section class="carousel-container">
-      <div class="screenshots-label">Screenshots</div>
-      <div class="carousel" id="carousel">
-        <div class="carousel-item"><img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="screenshot 1" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="screenshot 2" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="screenshot 3" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="screenshot 4" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="screenshot 5" /></div>
-      </div>
-      <div class="carousel-dots" id="dots"></div>
-
-      <div style="text-align:center; margin-top: 1rem;">
-        <button onclick="_GK()" class="download-btn">Download NOW</button>
+    <section class="screenshots-section">
+      <h2>Screenshots</h2>
+      <div class="screenshots-list">
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" />
+        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" />
       </div>
     </section>
+
+    <div style="text-align:center; margin-top: 1rem;">
+      <button onclick="_GK()" class="download-btn">Download NOW</button>
+    </div>
+
+    <div class="trust-text">
+      This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
+    </div>
+
   </main>
-
-  <div class="footer-note">Download safely and enjoy unlimited UC. Use at your own risk.</div>
-
-  <script>
-    const carousel = document.getElementById('carousel');
-    const dotsContainer = document.getElementById('dots');
-
-    function createDots() {
-      for(let i = 0; i < carousel.children.length; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'carousel-dot';
-        if(i === 0) dot.classList.add('active');
-        dotsContainer.appendChild(dot);
-        dot.addEventListener('click', () => {
-          carousel.children[i].scrollIntoView({ behavior: 'smooth', inline: 'center' });
-        });
-      }
-    }
-
-    function updateDots() {
-      const scrollLeft = carousel.scrollLeft;
-      const width = carousel.children[0].offsetWidth + 16;
-      const index = Math.round(scrollLeft / width);
-      const dots = dotsContainer.children;
-      for(let i = 0; i < dots.length; i++) {
-        dots[i].classList.toggle('active', i === index);
-      }
-    }
-
-    createDots();
-    carousel.addEventListener('scroll', updateDots);
-  </script>
 
 </body>
 </html>
