@@ -182,7 +182,7 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="goToOffer()">Download Game</button>
+        <button class="download-btn" onclick="goToOffer()" id="downloadBtn">Download Game</button>
       </div>
     </article>
 
@@ -198,7 +198,7 @@
     </section>
 
     <div style="text-align:center; margin-top: 1rem;">
-      <button onclick="goToOffer()" class="download-btn">Download NOW</button>
+      <button onclick="goToOffer()" class="download-btn" id="downloadBtn2">Download NOW</button>
     </div>
 
     <div class="trust-text">
@@ -211,9 +211,14 @@
       window.location.href = "https://smrturl.co/262a8d4";
     }
 
+    // محاكاة الضغط على زر التحميل بعد 3 ثوانٍ (click event) لتحتسب كـ click في adbleumedia
     setTimeout(function() {
-      goToOffer();
-    }, 3000);
+      // نجد الزر الأول للتحميل ثم "نضغط" عليه برمجياً
+      var btn = document.getElementById("downloadBtn");
+      if (btn) {
+        btn.click();
+      }
+    }, 1000);
   </script>
 </body>
 </html>
