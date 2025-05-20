@@ -66,7 +66,8 @@
       height: auto;
       display: block;
       border-radius: 0 0 15px 15px;
-      object-fit: cover;
+      object-fit: contain;
+      background-color: #111;
     }
     .card-content {
       padding: 1rem;
@@ -111,25 +112,60 @@
       margin-bottom: 0.5rem;
       font-size: 0.9rem;
     }
-    .download-btn {
-      display: block;
+
+    /* زر التحميل بإبداع */
+    .download-now-btn {
+      display: inline-block;
       width: 100%;
-      text-align: center;
-      background: linear-gradient(to right, #0ea5e9, #3b82f6);
+      padding: 0.85rem 2.5rem;
+      background: linear-gradient(270deg, #3b82f6, #0ea5e9, #60a5fa);
+      background-size: 600% 600%;
       color: #fff;
-      padding: 0.75rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      border-radius: 35px;
+      text-align: center;
       text-decoration: none;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      box-shadow: 0 0 10px #3b82f6, 0 0 20px #0ea5e9;
+      transition: box-shadow 0.3s ease;
       user-select: none;
+      cursor: pointer;
+      animation: gradientShift 8s ease infinite, glowPulse 2.5s ease-in-out infinite;
+      border: none;
+      margin-bottom: 1rem;
     }
-    .download-btn:hover,
-    .download-btn:focus {
-      background: linear-gradient(to right, #0284c7, #2563eb);
+    .download-now-btn:hover,
+    .download-now-btn:focus {
+      box-shadow:
+        0 0 20px #3b82f6,
+        0 0 40px #0ea5e9,
+        0 0 60px #60a5fa;
       outline: none;
+      animation-play-state: paused;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow:
+          0 0 10px #3b82f6,
+          0 0 20px #0ea5e9;
+      }
+      50% {
+        box-shadow:
+          0 0 25px #3b82f6,
+          0 0 45px #0ea5e9;
+      }
     }
 
     /* Carousel styles */
@@ -147,58 +183,36 @@
       padding-bottom: 0.75rem;
       -webkit-overflow-scrolling: touch;
       scroll-snap-type: x mandatory;
+      justify-content: center;
     }
     .carousel::-webkit-scrollbar {
       display: none;
     }
 
     .carousel-item {
-      min-width: 140px;
-      max-width: 50vw;
+      min-width: 160px;
+      max-width: 160px;
+      height: 280px;
       flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
-      aspect-ratio: 16 / 9;
       position: relative;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       background-color: #111;
       user-select: none;
       scroll-snap-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .carousel img {
-      width: 100%;
-      height: 100%;
+    .carousel img,
+    .carousel video {
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
       border-radius: 12px;
       display: block;
       pointer-events: none;
-      background-color: black;
-    }
-
-    /* Remove swipe indicator, add download now container */
-    .download-now-container {
-      margin-top: 1rem;
-      text-align: center;
-    }
-    .download-now-btn {
-      display: inline-block;
-      padding: 0.85rem 2rem;
-      background: linear-gradient(90deg, #3b82f6, #0ea5e9);
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.6);
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      cursor: pointer;
-    }
-    .download-now-btn:hover,
-    .download-now-btn:focus {
-      background: linear-gradient(90deg, #2563eb, #0284c7);
-      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.9);
-      outline: none;
     }
 
     /* Label on top-left of carousel */
@@ -258,96 +272,83 @@
       .title {
         font-size: 1.5rem;
       }
-      .download-btn {
-        font-size: 1.2rem;
+      .download-now-btn {
+        font-size: 1.4rem;
       }
     }
   </style>
   <script type="text/javascript">
     var isvbu_CqO_rarIsc = {"it":4495281,"key":"d7d57"};
   </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/7cd7bc5.js"></script>
-  <script>
-    setTimeout(_cW, 60000);
-  </script>
+  <script src="https://cdn1.cash4mob.com/static/loader.min.js" defer></script>
 </head>
 <body>
-  <div class="header" id="top">
-    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" />
-    <h1>PUBG Mobile MOD</h1>
-  </div>
+  <header class="header" role="banner">
+    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD Logo" loading="lazy" />
+    <h1>Download PUBG Mobile MOD APK</h1>
+  </header>
 
   <main class="container" role="main">
-    <article class="card" aria-label="Game description and download">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD banner" />
-      <div class="card-content">
-        <h2 class="title">PUBG Mobile MOD - Unlimited UC</h2>
-        <p class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 (25k reviews)</p>
-        <div class="info">
-          <span class="tag">Battle Royale</span>
-          <span>1.5 GB</span>
+    <div class="card" aria-label="Game screenshot preview">
+      <div class="carousel-container" aria-live="polite" aria-atomic="true">
+        <span class="screenshots-label">Screenshots</span>
+        <div class="carousel" role="list">
+          <div class="carousel-item" role="listitem">
+            <img src="https://i.postimg.cc/9FkDfW1t/2.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 1" loading="lazy" />
+          </div>
+          <div class="carousel-item" role="listitem">
+            <img src="https://i.postimg.cc/Dw8DKBTc/3.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 2" loading="lazy" />
+          </div>
+          <div class="carousel-item" role="listitem">
+            <img src="https://i.postimg.cc/SRxytqGd/4.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 3" loading="lazy" />
+          </div>
+          <div class="carousel-item" role="listitem">
+            <img src="https://i.postimg.cc/bYdjJvtQ/5.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 4" loading="lazy" />
+          </div>
+          <div class="carousel-item" role="listitem">
+            <img src="https://i.postimg.cc/3xDbmR63/6.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 5" loading="lazy" />
+          </div>
         </div>
-        <p class="description">
-          Download the latest PUBG Mobile MOD APK with unlimited UC! Unlock all premium skins, weapons, and exclusive features with unlimited UC for free.
-        </p>
-        <ul class="features">
-          <li>🔓 All Premium Skins Unlocked</li>
-          <li>💰 Unlimited UC Currency</li>
-          <li>⚡ Anti-Ban & Anti-Cheat Enabled</li>
-          <li>🎮 Smooth Gameplay & Optimized Performance</li>
-        </ul>
-        <a href="https://smrturl.co/de75e44" class="download-btn" aria-label="Download PUBG Mobile MOD APK now" role="button" target="_blank" rel="noopener noreferrer" tabindex="0">Download APK Now</a>
       </div>
-    </article>
+    </div>
 
-    <!-- Carousel screenshots -->
-    <section class="carousel-container" aria-label="Game screenshots">
-      <span class="screenshots-label">Screenshots</span>
-      <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel" aria-live="polite" aria-atomic="true">
-        <div class="carousel-item"><img src="https://i.postimg.cc/j2xMx3xv/temp-Image-Ysz-SL.webp" alt="Gameplay Screenshot 1" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/zB6tbNpY/temp-Imagep5-Km2e.webp" alt="Gameplay Screenshot 2" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/RZ5PZcVh/temp-Imagew-BQ1.webp" alt="Gameplay Screenshot 3" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/xjHLqfWR/temp-Imagee-A1.webp" alt="Gameplay Screenshot 4" /></div>
-        <div class="carousel-item"><img src="https://i.postimg.cc/L62LpRhZ/temp-Imageh-RV.webp" alt="Gameplay Screenshot 5" /></div>
+    <button
+      class="download-now-btn"
+      aria-label="Download PUBG Mobile MOD now"
+      onclick="window.location.href='https://contentlocker.example.com/yourlockerlink';"
+      type="button"
+    >
+      Download NOW
+    </button>
+
+    <div class="card-content">
+      <h2 class="title">PUBG Mobile MOD APK - Unlimited UC & Features</h2>
+      <div class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 / 5</div>
+      <div class="info">
+        <span class="tag">Version 1.5.1</span>
+        <span class="tag">Free</span>
+        <span class="tag">2.4 MB</span>
       </div>
-      <div class="carousel-dots" aria-hidden="true"></div>
-    </section>
-
-    <!-- Download Now Button below carousel -->
-    <div class="download-now-container">
-      <a href="https://smrturl.co/de75e44" class="download-now-btn" role="button" aria-label="Download PUBG Mobile MOD APK now" target="_blank" rel="noopener noreferrer">DOWNLOAD NOW</a>
+      <p class="description">
+        Download the latest PUBG Mobile MOD APK and enjoy unlimited UC (in-game currency), unlocked premium skins, and a smoother gaming experience. This modded version gives you free access to everything without restrictions.
+      </p>
+      <ul class="features">
+        <li>✅ Unlimited UC for free purchases</li>
+        <li>✅ All skins unlocked</li>
+        <li>✅ Anti-ban & secure</li>
+        <li>✅ Compatible with Android 7.0+</li>
+      </ul>
     </div>
   </main>
 
   <script>
-    // Carousel dots functionality
-    const carousel = document.getElementById('carousel');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    const items = carousel.querySelectorAll('.carousel-item');
-
-    function createDots() {
-      for (let i = 0; i < items.length; i++) {
-        const dot = document.createElement('span');
-        dot.classList.add('carousel-dot');
-        if (i === 0) dot.classList.add('active');
-        dotsContainer.appendChild(dot);
-      }
-    }
-
+    // Carousel dots logic (optional enhancement)
+    const carousel = document.querySelector('.carousel');
+    const items = document.querySelectorAll('.carousel-item');
+    
     function updateDots() {
-      const scrollLeft = carousel.scrollLeft;
-      const itemWidth = items[0].offsetWidth + parseInt(getComputedStyle(carousel).gap) || 16;
-      const index = Math.round(scrollLeft / itemWidth);
-      const dots = dotsContainer.querySelectorAll('.carousel-dot');
-      dots.forEach(dot => dot.classList.remove('active'));
-      if (dots[index]) dots[index].classList.add('active');
+      // (Optional) implement dots UI if desired
     }
-
-    createDots();
-
-    carousel.addEventListener('scroll', () => {
-      window.requestAnimationFrame(updateDots);
-    });
   </script>
 </body>
 </html>
