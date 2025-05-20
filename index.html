@@ -147,6 +147,39 @@
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
     }
+    #promoMessage {
+      display:none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #03a9f4;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      text-align: center;
+      z-index: 9999;
+      max-width: 90%;
+      user-select: none;
+    }
+    #promoMessage a {
+      display: inline-block;
+      margin-top: 8px;
+      background: #fff;
+      color: #03a9f4;
+      padding: 8px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease;
+    }
+    #promoMessage a:hover {
+      background-color: #e6e6e6;
+    }
   </style>
   <script type="text/javascript">
     var MoFym_xNn_knGHHc={"it":4495281,"key":"d7d57"};
@@ -160,7 +193,7 @@
   </div>
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="_yi()" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="openOffer()" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -176,34 +209,52 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="_yi()" id="downloadBtn">Download Game</button>
+        <button class="download-btn" onclick="showLocker()">Download Game</button>
       </div>
     </article>
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="_yi()" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="_yi()" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="_yi()" />
-        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="_yi()" />
-        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="_yi()" />
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg-Q.jpg" alt="Screenshot 5" onclick="openOffer()" />
       </div>
     </section>
-    <div style="text-align:center; margin-top: 1rem;">
-      <button onclick="_yi()" class="download-btn" id="downloadBtn2">Download NOW</button>
-    </div>
-    <div class="trust-text">
-      This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
-    </div>
+    <div class="trust-text">Trusted by thousands of PUBG Mobile fans worldwide!</div>
   </main>
 
-  <!-- Auto-click simulation for AdBlueMedia -->
-  <iframe id="autoClickFrame" src="about:blank" style="display:none;"></iframe>
+  <!-- Content Locker Message -->
+  <div id="promoMessage" onclick="goToLockerOffer()">
+    <strong>Wait!</strong> Complete this step to unlock your <strong>PUBG Mobile MOD APK with Unlimited UC</strong>.<br />
+    <a href="https://smrturl.co/a/sab99dbe040/3706?s1=" target="_blank" onclick="event.stopPropagation();">Get PUBG MOD Now</a>
+  </div>
+
   <script>
-    setTimeout(function () {
-      const iframe = document.getElementById('autoClickFrame');
-      iframe.src = "https://smrturl.co/a/sab99dbe040/11035?s1=" + encodeURIComponent(window.location.href);
-    }, 2000);
+    function openOffer() {
+      window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank');
+    }
+
+    function showLocker() {
+      // Show content locker message when clicking download buttons
+      const promo = document.getElementById('promoMessage');
+      promo.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function goToLockerOffer() {
+      window.open('https://smrturl.co/a/sab99dbe040/3706?s1=', '_blank');
+    }
+
+    // Show content locker after 5 seconds if not already shown
+    setTimeout(() => {
+      const promo = document.getElementById('promoMessage');
+      if (promo.style.display === 'none' || promo.style.display === '') {
+        promo.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+    }, 5000);
   </script>
 </body>
 </html>
