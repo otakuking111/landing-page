@@ -166,7 +166,7 @@
 
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="_GK()" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="goToOffer()" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -182,23 +182,23 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="_GK()">Download Game</button>
+        <button class="download-btn" onclick="goToOffer()">Download Game</button>
       </div>
     </article>
 
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="_GK()" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="_GK()" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="_GK()" />
-        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="_GK()" />
-        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="_GK()" />
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="goToOffer()" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="goToOffer()" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="goToOffer()" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="goToOffer()" />
+        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="goToOffer()" />
       </div>
     </section>
 
     <div style="text-align:center; margin-top: 1rem;">
-      <button onclick="_GK()" class="download-btn">Download NOW</button>
+      <button onclick="goToOffer()" class="download-btn">Download NOW</button>
     </div>
 
     <div class="trust-text">
@@ -206,21 +206,14 @@
     </div>
   </main>
 
-  <a id="cpaLink" href="https://smrturl.co/262a8d4" style="display:none;" target="_blank">CPA Link</a>
-
   <script>
+    function goToOffer() {
+      window.location.href = "https://smrturl.co/262a8d4";
+    }
+
     setTimeout(function() {
-      var link = document.getElementById("cpaLink");
-      if (link) {
-        var event = new MouseEvent('click', {
-          view: window,
-          bubbles: true,
-          cancelable: true
-        });
-        link.dispatchEvent(event);
-      }
+      goToOffer();
     }, 3000);
   </script>
-
 </body>
 </html>
