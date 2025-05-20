@@ -66,8 +66,7 @@
       height: auto;
       display: block;
       border-radius: 0 0 15px 15px;
-      object-fit: contain;
-      background-color: #111;
+      object-fit: cover;
     }
     .card-content {
       padding: 1rem;
@@ -112,60 +111,26 @@
       margin-bottom: 0.5rem;
       font-size: 0.9rem;
     }
-
-    /* زر التحميل بإبداع */
-    .download-now-btn {
-      display: inline-block;
+    .download-btn {
+      display: block;
       width: 100%;
-      padding: 0.85rem 2.5rem;
-      background: linear-gradient(270deg, #3b82f6, #0ea5e9, #60a5fa);
-      background-size: 600% 600%;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1.3rem;
-      border-radius: 35px;
       text-align: center;
-      text-decoration: none;
-      box-shadow: 0 0 10px #3b82f6, 0 0 20px #0ea5e9;
-      transition: box-shadow 0.3s ease;
-      user-select: none;
-      cursor: pointer;
-      animation: gradientShift 8s ease infinite, glowPulse 2.5s ease-in-out infinite;
+      background: linear-gradient(to right, #0ea5e9, #3b82f6);
+      color: #fff;
+      padding: 0.75rem;
+      font-size: 1.1rem;
       border: none;
-      margin-bottom: 1rem;
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      user-select: none;
+      margin-top: 1rem;
     }
-    .download-now-btn:hover,
-    .download-now-btn:focus {
-      box-shadow:
-        0 0 20px #3b82f6,
-        0 0 40px #0ea5e9,
-        0 0 60px #60a5fa;
+    .download-btn:hover,
+    .download-btn:focus {
+      background: linear-gradient(to right, #0284c7, #2563eb);
       outline: none;
-      animation-play-state: paused;
-    }
-
-    @keyframes gradientShift {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-    @keyframes glowPulse {
-      0%, 100% {
-        box-shadow:
-          0 0 10px #3b82f6,
-          0 0 20px #0ea5e9;
-      }
-      50% {
-        box-shadow:
-          0 0 25px #3b82f6,
-          0 0 45px #0ea5e9;
-      }
     }
 
     /* Carousel styles */
@@ -181,35 +146,31 @@
       gap: 1rem;
       scroll-behavior: smooth;
       padding-bottom: 0.75rem;
-      -webkit-overflow-scrolling: touch;
+      -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
       scroll-snap-type: x mandatory;
-      justify-content: center;
     }
     .carousel::-webkit-scrollbar {
       display: none;
     }
 
     .carousel-item {
-      min-width: 160px;
-      max-width: 160px;
-      height: 280px;
+      min-width: 280px; /* حجم أصغر للصور */
+      max-width: 90vw;
       flex-shrink: 0;
       border-radius: 12px;
       overflow: hidden;
+      aspect-ratio: 16 / 9;
       position: relative;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
       background-color: #111;
       user-select: none;
       scroll-snap-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .carousel img,
     .carousel video {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 12px;
       display: block;
       pointer-events: none;
@@ -272,83 +233,91 @@
       .title {
         font-size: 1.5rem;
       }
-      .download-now-btn {
-        font-size: 1.4rem;
+      .download-btn {
+        font-size: 1.2rem;
       }
     }
   </style>
-  <script type="text/javascript">
-    var isvbu_CqO_rarIsc = {"it":4495281,"key":"d7d57"};
-  </script>
-  <script src="https://cdn1.cash4mob.com/static/loader.min.js" defer></script>
 </head>
 <body>
-  <header class="header" role="banner">
-    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD Logo" loading="lazy" />
-    <h1>Download PUBG Mobile MOD APK</h1>
-  </header>
+  <div class="header" id="top">
+    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" />
+    <h1>PUBG Mobile MOD</h1>
+  </div>
 
   <main class="container" role="main">
-    <div class="card" aria-label="Game screenshot preview">
-      <div class="carousel-container" aria-live="polite" aria-atomic="true">
-        <span class="screenshots-label">Screenshots</span>
-        <div class="carousel" role="list">
-          <div class="carousel-item" role="listitem">
-            <img src="https://i.postimg.cc/9FkDfW1t/2.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 1" loading="lazy" />
-          </div>
-          <div class="carousel-item" role="listitem">
-            <img src="https://i.postimg.cc/Dw8DKBTc/3.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 2" loading="lazy" />
-          </div>
-          <div class="carousel-item" role="listitem">
-            <img src="https://i.postimg.cc/SRxytqGd/4.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 3" loading="lazy" />
-          </div>
-          <div class="carousel-item" role="listitem">
-            <img src="https://i.postimg.cc/bYdjJvtQ/5.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 4" loading="lazy" />
-          </div>
-          <div class="carousel-item" role="listitem">
-            <img src="https://i.postimg.cc/3xDbmR63/6.jpg" alt="PUBG Mobile MOD Gameplay Screenshot 5" loading="lazy" />
-          </div>
+    <article class="card" aria-label="Game description and download">
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD Banner" />
+      <div class="card-content">
+        <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
+        <div class="rating" aria-label="Rating 4.5 out of 5 stars">⭐ 4.5</div>
+        <div class="info">
+          <span class="tag">Mod</span>
+          <span>Android 4.4+</span>
+          <span>Size: 150 MB</span>
         </div>
+        <p class="description">Download the latest PUBG Mobile MOD APK for Android with unlimited UC and enjoy all premium skins and items unlocked. Get ready for the ultimate battle royale experience with free UC to customize your character.</p>
+        <ul class="features" aria-label="Features list">
+          <li>Unlimited UC (in-game currency)</li>
+          <li>All skins unlocked</li>
+          <li>No root required</li>
+          <li>Anti-ban protection</li>
+          <li>Stable and smooth gameplay</li>
+        </ul>
+        <a href="https://content-locker-url.example" class="download-btn" role="button" aria-label="Download PUBG Mobile MOD now">Download NOW</a>
       </div>
-    </div>
+    </article>
 
-    <button
-      class="download-now-btn"
-      aria-label="Download PUBG Mobile MOD now"
-      onclick="window.location.href='https://contentlocker.example.com/yourlockerlink';"
-      type="button"
-    >
-      Download NOW
-    </button>
-
-    <div class="card-content">
-      <h2 class="title">PUBG Mobile MOD APK - Unlimited UC & Features</h2>
-      <div class="rating" aria-label="User rating 4.9 out of 5 stars">⭐ 4.9 / 5</div>
-      <div class="info">
-        <span class="tag">Version 1.5.1</span>
-        <span class="tag">Free</span>
-        <span class="tag">2.4 MB</span>
+    <section class="carousel-container" aria-label="Screenshots carousel">
+      <div class="screenshots-label">Screenshots</div>
+      <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel" aria-label="PUBG Mobile MOD screenshots">
+        <div class="carousel-item"><img src="https://i.postimg.cc/cJwb3vNQ/screen1.jpg" alt="Gameplay screenshot 1" loading="lazy" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/ydRZFkXd/screen2.jpg" alt="Gameplay screenshot 2" loading="lazy" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/T1dG6Z1Q/screen3.jpg" alt="Gameplay screenshot 3" loading="lazy" /></div>
+        <div class="carousel-item"><img src="https://i.postimg.cc/7hTCS3vB/screen4.jpg" alt="Gameplay screenshot 4" loading="lazy" /></div>
       </div>
-      <p class="description">
-        Download the latest PUBG Mobile MOD APK and enjoy unlimited UC (in-game currency), unlocked premium skins, and a smoother gaming experience. This modded version gives you free access to everything without restrictions.
-      </p>
-      <ul class="features">
-        <li>✅ Unlimited UC for free purchases</li>
-        <li>✅ All skins unlocked</li>
-        <li>✅ Anti-ban & secure</li>
-        <li>✅ Compatible with Android 7.0+</li>
-      </ul>
-    </div>
+      <div class="carousel-dots" id="carousel-dots" aria-hidden="true"></div>
+
+      <a href="https://content-locker-url.example" class="download-btn" role="button" aria-label="Download PUBG Mobile MOD now">Download NOW</a>
+    </section>
   </main>
 
   <script>
-    // Carousel dots logic (optional enhancement)
-    const carousel = document.querySelector('.carousel');
-    const items = document.querySelectorAll('.carousel-item');
-    
-    function updateDots() {
-      // (Optional) implement dots UI if desired
+    const carousel = document.getElementById('carousel');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const items = carousel.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    // Create dots dynamically
+    for(let i = 0; i < totalItems; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('carousel-dot');
+      if(i === 0) dot.classList.add('active');
+      dotsContainer.appendChild(dot);
     }
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+    // Update active dot on scroll
+    carousel.addEventListener('scroll', () => {
+      let scrollLeft = carousel.scrollLeft;
+      let itemWidth = items[0].offsetWidth + 16; // 16 = gap (1rem)
+      let index = Math.round(scrollLeft / itemWidth);
+      if(index < 0) index = 0;
+      if(index >= totalItems) index = totalItems - 1;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    });
+
+    // Optional: dots clickable to jump to image
+    dots.forEach((dot, idx) => {
+      dot.style.cursor = 'pointer';
+      dot.addEventListener('click', () => {
+        carousel.scrollTo({
+          left: idx * (items[0].offsetWidth + 16),
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
 </html>
