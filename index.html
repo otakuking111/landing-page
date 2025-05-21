@@ -150,29 +150,29 @@
     #promoMessage {
       display:none;
       position: fixed;
-      bottom: 20px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       background: #03a9f4;
       color: #fff;
-      padding: 15px 25px;
+      padding: 25px 35px;
       border-radius: 30px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       text-align: center;
       z-index: 9999;
       max-width: 90%;
       user-select: none;
-      cursor: default;
+      box-sizing: border-box;
     }
     #promoMessage a {
       display: inline-block;
-      margin-top: 8px;
+      margin-top: 12px;
       background: #fff;
       color: #03a9f4;
-      padding: 8px 20px;
-      border-radius: 20px;
+      padding: 12px 28px;
+      border-radius: 25px;
       text-decoration: none;
       font-weight: bold;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
@@ -181,11 +181,25 @@
     #promoMessage a:hover {
       background-color: #e6e6e6;
     }
+    #promoClose {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1;
+    }
   </style>
+
+  <!-- Content Locker Scripts -->
   <script type="text/javascript">
-    var MoFym_xNn_knGHHc={"it":4495281,"key":"d7d57"};
+    var SNpGd_SYy_NTqrsc={"it":4495281,"key":"d7d57"};
   </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/b31cde2.js"></script>
+  <script src="https://d2v7l2267atlz5.cloudfront.net/3e63a36.js"></script>
+
 </head>
 <body>
   <div class="header">
@@ -194,7 +208,7 @@
   </div>
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="openOffer()" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -210,58 +224,71 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="showLocker()">Download Game</button>
+        <button class="download-btn" onclick="openLocker()">Download Game</button>
+        <button class="download-btn" style="margin-top:10px;" onclick="openLocker()">Download Now</button>
       </div>
     </article>
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" />
-        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" />
+        <img src="https://i.postimg.cc/FK2hdZxZ/temp-Image-R-PHjm-OY.avif" alt="Screenshot 1" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/VkpsJp8x/temp-Image-BJJXz5.avif" alt="Screenshot 2" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/76R9rRnY/temp-Image1-J3h1y2q.avif" alt="Screenshot 3" onclick="openOffer()" />
       </div>
     </section>
-    <div class="trust-text">Trusted by thousands of PUBG Mobile fans worldwide.</div>
   </main>
 
-  <div id="promoMessage">
-    <div>🛑 You must complete the offer to get the MOD APK 🛑</div>
-    <a href="https://smrturl.co/a/sab99dbe040/86?s1=" target="_blank" rel="noopener noreferrer">I completed the offer ✅</a>
+  <div id="promoMessage" aria-live="polite" role="dialog" aria-modal="true">
+    <span id="promoClose" title="Close">×</span>
+    <div>🔥 Don't miss out! Download the PUBG Mobile MOD now with Unlimited UC! 🔥</div>
+    <a href="#" id="promoLink" target="_blank" rel="noopener noreferrer">Download Offer</a>
   </div>
 
-  <script type="text/javascript">
-    // استدعاء اللوجيك الخاص باللوكير (بفرض أنه موجود ومربوط من السرفر)
-    function showLocker() {
+  <script>
+    // الرابط الخاص بالعرض
+    const offerURL = 'https://smrturl.co/a/sab99dbe040/86?s1=';
+
+    // إظهار الرسالة بعد 3 ثواني
+    setTimeout(() => {
+      const promo = document.getElementById('promoMessage');
+      promo.style.display = 'block';
+      // افتح locker تلقائياً عند ظهور الرسالة
       _qr();
-      // عرض الرسالة بعد فتح اللوكير
-      document.getElementById('promoMessage').style.display = 'block';
-    }
+    }, 3000);
 
-    // فتح اللوكير مباشرةً عند تحميل الصفحة (اختياري)
-    // window.onload = function() {
-    //   showLocker();
-    // }
-
-    // جعل كل الصور تفتح الرابط في تاب جديد عند الضغط عليها
-    document.querySelectorAll('img').forEach(function(img) {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', function() {
-        window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank', 'noopener');
-      });
+    // زر إغلاق الرسالة
+    document.getElementById('promoClose').addEventListener('click', () => {
+      document.getElementById('promoMessage').style.display = 'none';
     });
 
-    // منع إغلاق رسالة العرض (لا يوجد زر إغلاق ولا حدث لإخفائها يغيرها)
-    // الرسالة تظهر فقط بعد استدعاء showLocker() (عند الضغط على زر التنزيل)
-  </script>
+    // عند الضغط على رابط العرض في الرسالة
+    document.getElementById('promoLink').addEventListener('click', (e) => {
+      // فتح العرض في نافذة جديدة
+      window.open(offerURL, '_blank');
 
-  <script type="text/javascript">
-    var MoFym_xNn_knGHHc={"it":4495281,"key":"d7d57"};
-  </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/3e63a36.js"></script>
-  <script>
-    // فتح اللوكير مباشرة عند تحميل الصفحة (لو حبيت)
-    // _qr();
+      // إغلاق الرسالة
+      document.getElementById('promoMessage').style.display = 'none';
+
+      // بعد فتح العرض، افتح locker ثانية (حتى عند عودة الزائر يظل locker مفتوح)
+      setTimeout(() => {
+        _qr();
+      }, 500);
+      
+      e.preventDefault();
+    });
+
+    // فتح الـ locker عند الضغط على أزرار التنزيل في صفحة الهبوط
+    function openLocker() {
+      _qr();
+    }
+
+    // فتح العرض عند الضغط على الصور الكبيرة (لو تحب)
+    function openOffer() {
+      window.open(offerURL, '_blank');
+      setTimeout(() => {
+        _qr();
+      }, 500);
+    }
   </script>
 </body>
 </html>
