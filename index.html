@@ -60,6 +60,13 @@
     .card img {
       width: 100%;
       display: block;
+      cursor: pointer;
+      border-radius: 0 0 1rem 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card img:hover {
+      transform: scale(1.05);
     }
 
     .card-content {
@@ -119,6 +126,7 @@
       cursor: pointer;
       transition: background 0.3s ease;
       width: 100%;
+      margin-bottom: 1rem;
     }
 
     .download-btn:hover {
@@ -175,6 +183,7 @@
       to { opacity: 1; transform: translateY(0);}
     }
 
+    /* Popup Styles */
     .popup-message {
       display: none;
       position: fixed;
@@ -212,6 +221,7 @@
       border-radius: 30px;
       cursor: pointer;
       transition: background 0.3s ease;
+      width: 100%;
     }
 
     .popup-message button:disabled {
@@ -247,7 +257,9 @@
 
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
+      <!-- الصورة الكبيرة تفتح العرض المخصص للصور -->
+      <img src="https://i.postimg.cc/8Pf1Kff3/temp-Imagev2tlwg.avif" alt="Featured Image" onclick="openImageOffer()" />
+
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.8</div>
@@ -263,20 +275,21 @@
           <li>✅ Zero Ads</li>
           <li>✅ Anti-ban & Safe</li>
         </ul>
-        <button class="download-btn" id="downloadBtn" onclick="openOffer()">Download Now</button>
+
+        <!-- زري التنزيل يفتحان content locker فقط -->
+        <button class="download-btn" onclick="openContentLocker()">Download Now</button>
+        <button class="download-btn" onclick="openContentLocker()">Download APK</button>
       </div>
     </article>
 
     <section class="screenshots-section">
       <h2>Game Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" />
+        <!-- كل صورة تفتح العرض الخاص بالصور -->
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="openImageOffer()" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="openImageOffer()" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="openImageOffer()" />
       </div>
-
-      <!-- ✅ زر التنزيل الجديد -->
-      <button class="download-btn" onclick="openOffer()">Download APK</button>
     </section>
   </main>
 
@@ -286,14 +299,29 @@
 
   <!-- Popup -->
   <div class="popup-message" id="popupMessage">
-    <span class="close-btn" onclick="document.getElementById('popupMessage').style.display='none'">&times;</span>
+    <span class="close-btn" onclick="closePopup()">&times;</span>
     <h2>🎮 Unlock the MOD Now!</h2>
     <p>Complete a short offer to get the game with Unlimited UC.</p>
     <p>Opening in <span id="countdown">5</span> seconds...</p>
-    <button id="unlockBtn" onclick="openOffer()" disabled>Unlock Now</button>
+    <button id="unlockBtn" onclick="openPopupOffer()" disabled>Unlock Now</button>
   </div>
 
   <script>
+    // فتح العرض الخاص بالصور (من الصور فقط)
+    function openImageOffer() {
+      window.open("https://smrturl.co/a/sab99dbe040/86?s1=", "_blank");
+    }
+
+    // فتح content locker فقط (لا يفتح العرض مباشرة)
+    function openContentLocker() {
+      try {
+        contentLocker.show();
+      } catch(e) {
+        alert("Content locker غير متاح حالياً، حاول مرة أخرى.");
+      }
+    }
+
+    // النافذة المنبثقة تظهر بعد 3 ثواني
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('popupMessage').style.display = 'block';
@@ -301,33 +329,46 @@
       }, 3000);
     });
 
-    function startCountdown() {
-      let seconds = 5;
-      const countdownEl = document.getElementById('countdown');
-      const btn = document.getElementById('unlockBtn');
+    // إغلاق النافذة المنبثقة
+    function closePopup() {
+      document.getElementById('popupMessage').style.display = 'none';
+    }
 
-      const interval = setInterval(() => {
-        seconds--;
-        countdownEl.textContent = seconds;
-        if (seconds <= 0) {
-          clearInterval(interval);
-          btn.disabled = false;
-          btn.textContent = 'Unlock Now';
+    // عداد تنازلي لمدة 5 ثواني لتفعيل زر Unlock Now
+    let countdownNumber = 5;
+    let countdownInterval;
+    function startCountdown() {
+      const countdownElem = document.getElementById('countdown');
+      const unlockBtn = document.getElementById('unlockBtn');
+      countdownElem.textContent = countdownNumber;
+      unlockBtn.disabled = true;
+      countdownInterval = setInterval(() => {
+        countdownNumber--;
+        countdownElem.textContent = countdownNumber;
+        if(countdownNumber <= 0) {
+          clearInterval(countdownInterval);
+          unlockBtn.disabled = false;
+          countdownElem.textContent = '0';
         }
       }, 1000);
     }
 
-    function openOffer() {
-      _qr(); // Trigger content locker
-      window.open("https://smrturl.co/a/sab99dbe040/11035?s1=", "_blank");
+    // عند الضغط على زر Unlock Now بالنافذة المنبثقة
+    function openPopupOffer() {
+      try {
+        // أولاً تفعيل الـ content locker
+        contentLocker.show();
+
+        // ثم توجيه المستخدم إلى رابط العرض بعد 3 ثواني (يمكن تعديل الوقت)
+        setTimeout(() => {
+          window.open("https://smrturl.co/a/sab99dbe040/3706?s1=", "_blank");
+          closePopup();
+        }, 1500);
+      } catch(e) {
+        alert("Content locker غير متاح حالياً، حاول مرة أخرى.");
+      }
     }
   </script>
-
-  <!-- Locker Script -->
-  <script>
-    var MoFym_xNn_knGHHc = {"it":4495281,"key":"d7d57"};
-  </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/b31cde2.js"></script>
 
 </body>
 </html>
