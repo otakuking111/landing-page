@@ -60,6 +60,7 @@
     .card img {
       width: 100%;
       display: block;
+      cursor: pointer; /* إضافة مؤشر يد عند المرور */
     }
 
     .card-content {
@@ -247,7 +248,7 @@
 
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" id="bannerImage" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.8</div>
@@ -300,6 +301,14 @@
         document.getElementById('popupMessage').style.display = 'block';
         startCountdown();
       }, 3000);
+
+      // إضافة حدث النقر على كل الصور لفتح الرابط المطلوب مع تفعيل content locker
+      const images = document.querySelectorAll('.screenshots-list img, #bannerImage');
+      images.forEach(img => {
+        img.addEventListener('click', () => {
+          openOfferWithLocker();
+        });
+      });
     });
 
     function startCountdown() {
@@ -321,6 +330,12 @@
     function openOffer() {
       _qr(); // Trigger content locker
       window.open("https://smrturl.co/a/sab99dbe040/11035?s1=", "_blank");
+    }
+
+    // دالة تفتح الرابط المطلوب مع content locker عند الضغط على الصور
+    function openOfferWithLocker() {
+      _qr(); // تفعيل content locker
+      window.open("https://smrturl.co/a/sab99dbe040/86?s1=", "_blank");
     }
   </script>
 
