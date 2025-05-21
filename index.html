@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Download PUBG Mobile MOD - Unlimited UC APK for Android</title>
   <meta name="description" content="Download PUBG Mobile MOD APK with unlimited UC for Android. Enjoy all premium features unlocked and get unlimited UC to buy skins and items freely." />
   <meta name="keywords" content="PUBG Mobile MOD, PUBG MOD APK, Unlimited UC PUBG, PUBG Mobile free UC, PUBG MOD Android, Battle Royale game" />
@@ -131,82 +131,67 @@
       transform: scale(1.05);
       box-shadow: 0 6px 20px rgba(0,0,0,0.9);
     }
-    .trust-text {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 600px;
-  padding: 1rem 1.5rem;
-  background: #222;
-  border-radius: 12px;
-  text-align: center;
-  font-size: 1rem;
-  color: #bbb;
-  font-style: italic;
-  user-select: none;
-  z-index: 9999;
-  box-shadow: 0 0 20px rgba(0,0,0,0.7);
-  animation: fadeIn 0.5s ease-in-out;
-}
+
+    /* Elegant Popup */
+    .popup-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      text-align: center;
+      z-index: 9999;
+      max-width: 90%;
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .popup-message h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+    }
+
+    .popup-message button {
+      background: #ffffff;
+      color: #ff5722;
+      border: none;
+      margin-top: 1rem;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .popup-message button:hover {
+      background: #eee;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: #aaa;
+      font-size: 0.9rem;
+      background: #1a1a1a;
+      margin-top: 3rem;
+    }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
-    }
-
-    /* رسالة العرض */
-    #offerMessage {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #222;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(255, 165, 0, 0.9);
-      color: #fff;
-      width: 320px;
-      max-width: 90vw;
-      padding: 1rem 1.5rem 1rem 1.5rem;
-      z-index: 9999;
-      display: none;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    #offerMessage h3 {
-      margin: 0 0 0.75rem 0;
-      font-size: 1.25rem;
-      color: #ff9800;
-    }
-    #offerMessage p {
-      margin: 0 0 1rem 0;
-      font-size: 1rem;
-      line-height: 1.3;
-    }
-    #offerMessage button {
-      background: #ff9800;
-      color: #000;
-      border: none;
-      padding: 0.5rem 1.2rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-    }
-    #offerMessage button:hover {
-      background: #e67e22;
-    }
-    #offerMessage .closeBtn {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      user-select: none;
     }
   </style>
 
@@ -216,13 +201,15 @@
   <script src="https://d2v7l2267atlz5.cloudfront.net/b31cde2.js"></script>
 </head>
 <body>
+
   <div class="header">
     <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" />
     <h1>PUBG Mobile MOD</h1>
   </div>
+
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -241,6 +228,7 @@
         <button class="download-btn" id="downloadBtn">Download Game</button>
       </div>
     </article>
+
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
@@ -251,62 +239,38 @@
         <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
       </div>
     </section>
+
     <div style="text-align:center; margin-top: 1rem;">
       <button class="download-btn" id="downloadBtn2">Download NOW</button>
     </div>
-    <div class="trust-text">
-      This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
-    </div>
   </main>
 
-  <!-- رسالة العرض -->
-  <div id="offerMessage">
-    <button class="closeBtn" title="Close">&times;</button>
-    <h3>Special Offer!</h3>
-    <p>Get the PUBG Mobile MOD APK with unlimited UC now!</p>
-    <button id="offerBtn">Get Offer</button>
+  <!-- Elegant Message -->
+  <div class="popup-message" id="popupMessage">
+    <span class="close-btn" onclick="document.getElementById('popupMessage').style.display='none'">&times;</span>
+    <h3>Start Earning Unlimited UC Now!</h3>
+    <p>Click the button below to unlock the offer and claim your free UC rewards.</p>
+    <button onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank'); _qr();">Claim Now</button>
   </div>
 
-  <script>
-    // وظيفة فتح content locker
-    function openContentLocker() {
-      if (typeof _qr === 'function') {
-        _qr();
-      } else {
-        console.warn('_qr() function not loaded yet.');
-      }
-    }
+  <!-- Footer -->
+  <footer>
+    © 2025 PUBG Mobile MOD Team. All rights reserved.
+  </footer>
 
-    // إظهار الرسالة بعد 3 ثواني
+  <script>
+    // Show popup after 3 seconds
     setTimeout(() => {
-      const offer = document.getElementById('offerMessage');
-      offer.style.display = 'block';
+      document.getElementById("popupMessage").style.display = "block";
     }, 1000);
 
-    // زر إغلاق الرسالة
-    document.querySelector('#offerMessage .closeBtn').addEventListener('click', () => {
-      document.getElementById('offerMessage').style.display = 'none';
-    });
-
-    // زر داخل الرسالة لفتح العرض وفتح locker
-    document.getElementById('offerBtn').addEventListener('click', () => {
-      // افتح العرض في تبويب جديد
-      window.open('https://smrturl.co/de75e44', '_blank');
-      // افتح content locker في نفس الصفحة
-      openContentLocker();
-      // اخفي الرسالة بعد الضغط
-      document.getElementById('offerMessage').style.display = 'none';
-    });
-
-    // أزرار التنزيل تفتح content locker فقط
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-      openContentLocker();
-    });
-    document.getElementById('downloadBtn2').addEventListener('click', () => {
-      openContentLocker();
-    });
-
-    // الصور تم ضبط روابطها مسبقًا في onclick
+    // Locker on buttons
+    document.getElementById("downloadBtn").onclick = function() {
+      _qr();
+    };
+    document.getElementById("downloadBtn2").onclick = function() {
+      _qr();
+    };
   </script>
 </body>
 </html>
