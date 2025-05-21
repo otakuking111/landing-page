@@ -164,6 +164,7 @@
       z-index: 9999;
       max-width: 90%;
       user-select: none;
+      cursor: default;
     }
     #promoMessage a {
       display: inline-block;
@@ -193,7 +194,7 @@
   </div>
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="openOffer()" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -215,46 +216,52 @@
     <section class="screenshots-section">
       <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="openOffer()" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="openOffer()" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="openOffer()" />
-        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="openOffer()" />
-        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg-Q.jpg" alt="Screenshot 5" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" />
       </div>
     </section>
-    <div class="trust-text">Trusted by thousands of PUBG Mobile fans worldwide!</div>
+    <div class="trust-text">Trusted by thousands of PUBG Mobile fans worldwide.</div>
   </main>
 
-  <!-- Content Locker Message -->
-  <div id="promoMessage" onclick="goToLockerOffer()">
-    <strong>Wait!</strong> Complete this step to unlock your <strong>PUBG Mobile MOD APK with Unlimited UC</strong>.<br />
-    <a href="https://smrturl.co/a/sab99dbe040/3706?s1=" target="_blank" onclick="event.stopPropagation();">Get PUBG MOD Now</a>
+  <div id="promoMessage">
+    <div>🛑 You must complete the offer to get the MOD APK 🛑</div>
+    <a href="https://smrturl.co/a/sab99dbe040/86?s1=" target="_blank" rel="noopener noreferrer">I completed the offer ✅</a>
   </div>
 
-  <script>
-    function openOffer() {
-      window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank');
-    }
-
+  <script type="text/javascript">
+    // استدعاء اللوجيك الخاص باللوكير (بفرض أنه موجود ومربوط من السرفر)
     function showLocker() {
-      // Show content locker message when clicking download buttons
-      const promo = document.getElementById('promoMessage');
-      promo.style.display = 'block';
-      document.body.style.overflow = 'hidden';
+      _qr();
+      // عرض الرسالة بعد فتح اللوكير
+      document.getElementById('promoMessage').style.display = 'block';
     }
 
-    function goToLockerOffer() {
-      window.open('https://smrturl.co/a/sab99dbe040/3706?s1=', '_blank');
-    }
+    // فتح اللوكير مباشرةً عند تحميل الصفحة (اختياري)
+    // window.onload = function() {
+    //   showLocker();
+    // }
 
-    // Show content locker after 5 seconds if not already shown
-    setTimeout(() => {
-      const promo = document.getElementById('promoMessage');
-      if (promo.style.display === 'none' || promo.style.display === '') {
-        promo.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-      }
-    }, 5000);
+    // جعل كل الصور تفتح الرابط في تاب جديد عند الضغط عليها
+    document.querySelectorAll('img').forEach(function(img) {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', function() {
+        window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank', 'noopener');
+      });
+    });
+
+    // منع إغلاق رسالة العرض (لا يوجد زر إغلاق ولا حدث لإخفائها يغيرها)
+    // الرسالة تظهر فقط بعد استدعاء showLocker() (عند الضغط على زر التنزيل)
+  </script>
+
+  <script type="text/javascript">
+    var MoFym_xNn_knGHHc={"it":4495281,"key":"d7d57"};
+  </script>
+  <script src="https://d2v7l2267atlz5.cloudfront.net/3e63a36.js"></script>
+  <script>
+    // فتح اللوكير مباشرة عند تحميل الصفحة (لو حبيت)
+    // _qr();
   </script>
 </body>
 </html>
