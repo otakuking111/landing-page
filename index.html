@@ -60,7 +60,6 @@
     .card img {
       width: 100%;
       display: block;
-      cursor: pointer; /* إضافة مؤشر يد عند المرور */
     }
 
     .card-content {
@@ -248,7 +247,7 @@
 
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" id="bannerImage" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.8</div>
@@ -264,21 +263,23 @@
           <li>✅ Zero Ads</li>
           <li>✅ Anti-ban & Safe</li>
         </ul>
-        <button class="download-btn" id="downloadBtn" onclick="openOffer()">Download Now</button>
+        <!-- Download buttons open content locker only -->
+        <button class="download-btn" id="downloadBtn" onclick="openContentLockerOnly()">Download Now</button>
       </div>
     </article>
 
     <section class="screenshots-section">
       <h2>Game Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" />
-        <img src="https://i.postimg.cc/8Pf1Kff3/temp-Imagev2tlwg.avif" alt="Screenshot 4" />
+        <!-- Images open the given direct link without content locker -->
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="openDirectLink()" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="openDirectLink()" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="openDirectLink()" />
+        <img src="https://i.postimg.cc/8Pf1Kff3/temp-Imagev2tlwg.avif" alt="Screenshot 4" onclick="openDirectLink()" />
+        <img src="https://i.postimg.cc/s2GDMn5T/temp-Image-EXE9dz.avif" alt="Screenshot 5" onclick="openDirectLink()" />
       </div>
 
-      <!-- ✅ زر التنزيل الجديد -->
-      <button class="download-btn" onclick="openOffer()">Download APK</button>
+      <button class="download-btn" onclick="openContentLockerOnly()">Download APK</button>
     </section>
   </main>
 
@@ -292,23 +293,31 @@
     <h2>🎮 Unlock the MOD Now!</h2>
     <p>Complete a short offer to get the game with Unlimited UC.</p>
     <p>Opening in <span id="countdown">5</span> seconds...</p>
-    <button id="unlockBtn" onclick="openOffer()" disabled>Unlock Now</button>
+    <button id="unlockBtn" onclick="openOfferPopup()" disabled>Unlock Now</button>
   </div>
 
   <script>
+    // Open direct link on image click (no content locker)
+    function openDirectLink() {
+      window.open("https://smrturl.co/a/sab99dbe040/86?s1=", "_blank");
+    }
+
+    // Open content locker only (no opening link)
+    function openContentLockerOnly() {
+      _qr(); // Trigger content locker only
+    }
+
+    // Open content locker + offer link in popup unlock button
+    function openOfferPopup() {
+      _qr(); // Content locker
+      window.open("https://smrturl.co/a/sab99dbe040/11035?s1=", "_blank");
+    }
+
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('popupMessage').style.display = 'block';
         startCountdown();
       }, 3000);
-
-      // إضافة حدث النقر على كل الصور لفتح الرابط المطلوب مع تفعيل content locker
-      const images = document.querySelectorAll('.screenshots-list img, #bannerImage');
-      images.forEach(img => {
-        img.addEventListener('click', () => {
-          openOfferWithLocker();
-        });
-      });
     });
 
     function startCountdown() {
@@ -327,16 +336,6 @@
       }, 1000);
     }
 
-    function openOffer() {
-      _qr(); // Trigger content locker
-      window.open("https://smrturl.co/a/sab99dbe040/11035?s1=", "_blank");
-    }
-
-    // دالة تفتح الرابط المطلوب مع content locker عند الضغط على الصور
-    function openOfferWithLocker() {
-      _qr(); // تفعيل content locker
-      window.open("https://smrturl.co/a/sab99dbe040/86?s1=", "_blank");
-    }
   </script>
 
   <!-- Locker Script -->
