@@ -8,7 +8,7 @@
   <meta name="keywords" content="PUBG Mobile MOD, PUBG APK MOD, Unlimited UC PUBG, Free UC, PUBG MOD 2025, PUBG Android Hack, Battle Royale MOD" />
   <meta name="author" content="PUBG MOD Team 2025" />
   <link rel="icon" href="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" />
-  
+
   <!-- Content Locker Head Script -->
   <script type="text/javascript">
     var SNpGd_SYy_NTqrsc = {"it":4495281,"key":"d7d57"};
@@ -20,7 +20,18 @@
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #121212;
-      color: #fff;
+      color: #e0e0e0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    a {
+      color: #03a9f4;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
 
     .header {
@@ -29,145 +40,195 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .header img {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      object-fit: cover;
     }
 
     .header h1 {
       margin: 0;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #03a9f4;
+      letter-spacing: 1px;
+      user-select: none;
     }
 
     .container {
-      max-width: 600px;
-      margin: 2rem auto;
+      max-width: 640px;
+      margin: 2rem auto 3rem;
       padding: 0 1rem;
     }
 
     .card {
       background: #1f1f1f;
-      border-radius: 1rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      border-radius: 16px;
+      box-shadow: 0 0 18px rgba(3, 169, 244, 0.6);
       overflow: hidden;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: fadeIn 0.7s ease-in-out;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(3, 169, 244, 0.9);
     }
 
-    .card img {
+    picture, .card img {
       width: 100%;
       display: block;
+      border-bottom: 2px solid #03a9f4;
+      border-radius: 16px 16px 0 0;
+      object-fit: cover;
+      max-height: 280px;
     }
 
     .card-content {
-      padding: 1rem;
+      padding: 1.2rem 1.5rem 2rem;
     }
 
-    .title {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
+    h2.title {
+      font-size: 1.6rem;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+      color: #03a9f4;
+      text-shadow: 0 0 10px #03a9f4aa;
+      user-select: none;
     }
 
     .rating {
       color: gold;
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      user-select: none;
     }
 
     .info {
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: #bbb;
+      margin-bottom: 1rem;
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
+      user-select: none;
     }
 
     .tag {
       background: #ff9800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
       color: #000;
+      font-weight: 700;
+      user-select: none;
     }
 
     .description {
       font-size: 1rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       line-height: 1.5;
+      color: #ddd;
+    }
+
+    .description strong {
+      color: #03a9f4;
     }
 
     .features {
       list-style: none;
       padding: 0;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      color: #ccc;
     }
 
     .features li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.55rem;
+      font-size: 1rem;
+      user-select: none;
     }
 
     .download-btn {
-      background: #03a9f4;
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
       color: #fff;
       border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 30px;
+      padding: 0.85rem 1.8rem;
+      font-size: 1.1rem;
+      border-radius: 40px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
+      font-weight: 700;
+      box-shadow: 0 6px 12px rgba(3, 169, 244, 0.5);
+      user-select: none;
     }
 
     .download-btn:hover {
-      background: #0288d1;
+      background: linear-gradient(135deg, #0288d1, #03a9f4);
+      box-shadow: 0 8px 18px rgba(3, 169, 244, 0.8);
     }
 
     .screenshots-section {
-      margin-top: 2rem;
+      margin-top: 3rem;
       text-align: center;
     }
 
     .screenshots-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #fff;
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+      color: #03a9f4;
+      user-select: none;
+      text-shadow: 0 0 8px #03a9f4aa;
     }
 
     .screenshots-list {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
-      max-width: 400px;
-      margin: 0 auto 2rem;
+      gap: 1.6rem;
+      max-width: 420px;
+      margin: 0 auto 2.5rem;
     }
 
-    .screenshots-list img {
+    .screenshots-list picture, .screenshots-list img {
       width: 100%;
-      max-height: 300px;
+      max-height: 320px;
       object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-      transition: transform 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(3, 169, 244, 0.8);
+      transition: transform 0.35s ease;
       cursor: pointer;
+      user-select: none;
     }
 
+    .screenshots-list picture:hover img,
     .screenshots-list img:hover {
-      transform: scale(1.05);
+      transform: scale(1.07);
+      box-shadow: 0 8px 22px rgba(3, 169, 244, 1);
     }
 
     .footer {
       text-align: center;
-      font-size: 0.85rem;
-      color: #999;
+      font-size: 0.9rem;
+      color: #888;
       margin: 3rem 0 1rem;
+      user-select: none;
     }
 
     .footer a {
-      color: #999;
+      color: #03a9f4;
       text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
 
     @keyframes fadeIn {
@@ -175,181 +236,155 @@
       to { opacity: 1; transform: translateY(0);}
     }
 
+    /* Popup Styles */
     .popup-message {
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: linear-gradient(135deg, #ffe259, #ffa751);
-      padding: 25px 20px;
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-      z-index: 9999;
-      max-width: 90%;
-      width: 320px;
-      text-align: center;
-      color: #222;
-      animation: popup-fade 0.5s ease-in-out;
-    }
-
-    .popup-message h2 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-    }
-
-    .popup-message p {
-      font-size: 1rem;
-      margin-bottom: 15px;
-    }
-
-    .popup-message button {
-      background: #ff5722;
+      background: linear-gradient(135deg, #03a9f4, #0288d1);
+      padding: 28px 24px;
+      border-radius: 22px;
       color: white;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.15rem;
+      box-shadow: 0 10px 30px rgba(3, 169, 244, 0.9);
+      z-index: 99999;
+      user-select: none;
+      max-width: 90vw;
+      width: 420px;
     }
 
-    .popup-message button:disabled {
-      background: #ccc;
-      cursor: not-allowed;
+    .popup-message .countdown {
+      font-size: 1.5rem;
+      margin-top: 12px;
+      letter-spacing: 0.3em;
     }
 
-    .popup-message button:hover:enabled {
-      background: #e64a19;
-    }
-
-    .popup-message .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      font-size: 20px;
-      cursor: pointer;
-      color: #333;
-    }
-
-    @keyframes popup-fade {
-      from { opacity: 0; transform: scale(0.9) translate(-50%, -50%); }
-      to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+    @media (max-width: 480px) {
+      .container {
+        margin: 1rem auto 2rem;
+      }
+      .card-content {
+        padding: 1rem 1rem 1.8rem;
+      }
+      .screenshots-list {
+        max-width: 100%;
+      }
+      .popup-message {
+        width: 95vw;
+      }
     }
   </style>
 </head>
 <body>
+  <header class="header" role="banner">
+    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG MOD Logo" />
+    <h1>🔥 PUBG Mobile MOD APK 2025</h1>
+  </header>
 
-  <div class="header">
-    <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" />
-    <h1>PUBG Mobile MOD</h1>
-  </div>
-
-  <main class="container">
-    <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" />
-      <div class="card-content">
-        <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
-        <div class="rating">⭐ 4.8</div>
-        <div class="info">
-          <span class="tag">MOD</span>
-          <span>Android 4.4+</span>
-          <span>Size: 1.3GB</span>
+  <main class="container" role="main" aria-label="PUBG Mobile MOD APK download section">
+    <article class="card" role="article" aria-labelledby="main-title">
+      <picture>
+        <source srcset="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" type="image/avif" />
+        <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.jpg" alt="PUBG Mobile MOD APK Unlimited UC 2025" loading="lazy" />
+      </picture>
+      <section class="card-content">
+        <h2 id="main-title" class="title" tabindex="0">🚀 Download PUBG Mobile MOD APK - Unlimited UC 2025 Edition</h2>
+        <div class="rating" aria-label="Rating: 5 out of 5 stars">★★★★★</div>
+        <div class="info" aria-live="polite">
+          <span class="tag">Unlimited UC</span>
+          <span class="tag">Free Download</span>
+          <span class="tag">Safe & Updated</span>
         </div>
-        <p class="description">Get the ultimate battle royale experience! Download the MOD APK version of PUBG Mobile now and unlock unlimited UC, premium skins, exclusive items, and more—100% free!</p>
-        <ul class="features">
-          <li>✅ Unlimited UC</li>
-          <li>✅ Premium Skins & Outfits</li>
-          <li>✅ Zero Ads</li>
-          <li>✅ Anti-ban & Safe</li>
+        <p class="description" tabindex="0">
+          Join over <strong>5 million gamers</strong> who have unlocked the ultimate PUBG Mobile experience with our <em>latest 2025 MOD APK</em>. Get unlimited UC, all premium skins, weapons, and features instantly. Fully tested and safe for your Android device!
+        </p>
+
+        <ul class="features" aria-label="Key features of PUBG Mobile MOD APK">
+          <li>✅ Unlimited UC for free shopping in-game</li>
+          <li>✅ Latest 2025 version, regularly updated</li>
+          <li>✅ All skins, outfits, and weapons unlocked</li>
+          <li>✅ No root required, easy install</li>
+          <li>✅ Anti-ban system for safe gaming</li>
         </ul>
-        <!-- Download buttons open content locker only -->
-        <button class="download-btn" id="downloadBtn" onclick="openContentLockerOnly()">Download Now</button>
-      </div>
+
+        <button class="download-btn" role="link" aria-describedby="desc-download" onclick="window.open('https://smrturl.co/de75e44', '_blank')">⬇️ Download Now</button>
+        <p id="desc-download" class="description" style="margin-top: 0.8rem; font-size: 0.9rem; color: #88cfff;">Click the button above to start your download instantly.</p>
+      </section>
     </article>
 
-    <section class="screenshots-section">
-      <h2>Game Screenshots</h2>
+    <section class="screenshots-section" aria-labelledby="screenshots-title">
+      <h2 id="screenshots-title">📸 Screenshots</h2>
       <div class="screenshots-list">
-        <!-- Images open the given direct link without content locker -->
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="openDirectLink()" />
-        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="openDirectLink()" />
-        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="openDirectLink()" />
-        <img src="https://i.postimg.cc/8Pf1Kff3/temp-Imagev2tlwg.avif" alt="Screenshot 4" onclick="openDirectLink()" />
-        <img src="https://i.postimg.cc/s2GDMn5T/temp-Image-EXE9dz.avif" alt="Screenshot 5" onclick="openDirectLink()" />
+        <picture>
+          <source srcset="https://i.postimg.cc/tJpxhJMt/ss-1.avif" type="image/avif" />
+          <img src="https://i.postimg.cc/tJpxhJMt/ss-1.jpg" alt="PUBG MOD APK Screenshot 1 - Battle Royale" loading="lazy" />
+        </picture>
+        <picture>
+          <source srcset="https://i.postimg.cc/3xBtBTFb/ss-2.avif" type="image/avif" />
+          <img src="https://i.postimg.cc/3xBtBTFb/ss-2.jpg" alt="PUBG MOD APK Screenshot 2 - Unlimited UC" loading="lazy" />
+        </picture>
+        <picture>
+          <source srcset="https://i.postimg.cc/RZYBR6nm/ss-3.avif" type="image/avif" />
+          <img src="https://i.postimg.cc/RZYBR6nm/ss-3.jpg" alt="PUBG MOD APK Screenshot 3 - Skins and Features" loading="lazy" />
+        </picture>
       </div>
-
-      <button class="download-btn" onclick="openContentLockerOnly()">Download APK</button>
+      <button class="download-btn" role="link" aria-describedby="desc-download-bottom" onclick="window.open('https://smrturl.co/de75e44', '_blank')">⬇️ Download Now</button>
+      <p id="desc-download-bottom" class="description" style="margin-top: 0.8rem; font-size: 0.9rem; color: #88cfff;">Safe, fast, and secure download with one click.</p>
     </section>
   </main>
 
-  <div class="footer">
-    &copy; 2025 <strong>PUBG Mobile MOD Team</strong>. All rights reserved.
-  </div>
+  <footer class="footer" role="contentinfo">
+    <p>© 2025 PUBG Mobile MOD APK. All rights reserved.</p>
+    <p>Visit us on <a href="https://www.tiktok.com/@scity4u" target="_blank" rel="noopener noreferrer">TikTok</a> and <a href="https://www.reddit.com/r/pubgmobile/" target="_blank" rel="noopener noreferrer">Reddit</a>.</p>
+  </footer>
 
-  <!-- Popup -->
-  <div class="popup-message" id="popupMessage">
-    <span class="close-btn" onclick="document.getElementById('popupMessage').style.display='none'">&times;</span>
-    <h2>🎮 Unlock the MOD Now!</h2>
-    <p>Complete a short offer to get the game with Unlimited UC.</p>
-    <p>Opening in <span id="countdown">5</span> seconds...</p>
-    <button id="unlockBtn" onclick="openOfferPopup()" disabled>Unlock Now</button>
+  <!-- Popup Message -->
+  <div id="popupMessage" class="popup-message" role="alert" aria-live="assertive" aria-atomic="true" aria-relevant="additions removals">
+    ⚠️ Don't miss out! Download now in <span class="countdown" id="countdown">05</span>s
   </div>
 
   <script>
-    // Open direct link on image click (no content locker)
-    function openDirectLink() {
-      window.open("https://smrturl.co/a/sab99dbe040/86?s1=", "_blank");
-    }
-
-    // Open content locker only (no opening link)
-    function openContentLockerOnly() {
-      _qr(); // Trigger content locker only
-    }
-
-    // Open content locker + offer link in popup unlock button
-    function openOfferPopup() {
-      _qr(); // Content locker
-      window.open("https://smrturl.co/a/sab99dbe040/11035?s1=", "_blank");
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('popupMessage').style.display = 'block';
-        startCountdown();
-      }, 3000);
-
-      // Open offer on load and count as click
-      const a = document.createElement('a');
-      a.href = "https://smrturl.co/a/sab99dbe040/86?s1=";
-      a.target = "_blank";
-      a.rel = "noopener";
-      document.body.appendChild(a);
-      a.click();
-    });
-
+    // Popup countdown logic - show after 5 seconds, only if user scrolled down a bit
     function startCountdown() {
-      let seconds = 5;
+      let countdown = 5;
       const countdownEl = document.getElementById('countdown');
-      const btn = document.getElementById('unlockBtn');
-
+      const popup = document.getElementById('popupMessage');
       const interval = setInterval(() => {
-        seconds--;
-        countdownEl.textContent = seconds;
-        if (seconds <= 0) {
+        countdown--;
+        countdownEl.textContent = countdown < 10 ? '0' + countdown : countdown;
+        if (countdown <= 0) {
           clearInterval(interval);
-          btn.disabled = false;
-          btn.textContent = 'Unlock Now';
+          popup.style.display = 'none';
         }
       }, 1000);
     }
+
+    function showPopup() {
+      const popup = document.getElementById('popupMessage');
+      if (window.scrollY > 200) {
+        popup.style.display = 'block';
+        startCountdown();
+      }
+    }
+
+    window.addEventListener('scroll', () => {
+      // Show popup once when scrolling past 200px
+      if (!window.popupShown && window.scrollY > 200) {
+        window.popupShown = true;
+        showPopup();
+      }
+    });
   </script>
 
-  <!-- Locker Script -->
-  <script>
-    var MoFym_xNn_knGHHc = {"it":4495281,"key":"d7d57"};
+  <!-- Content Locker Script -->
+  <script type="text/javascript">
+    var SNpGd_SYy_NTqrsc = {"it":4495281,"key":"d7d57"};
   </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/b31cde2.js"></script>
+  <script src="https://d2v7l2267atlz5.cloudfront.net/3e63a36.js"></script>
 
 </body>
 </html>
