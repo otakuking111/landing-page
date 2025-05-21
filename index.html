@@ -214,7 +214,7 @@
   </div>
   <main class="container">
     <article class="card">
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="openOffer()" />
+      <img src="https://picsum.photos/id/1011/600/300" alt="PUBG Banner" onclick="openOffer()" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -237,9 +237,9 @@
     <section class="screenshots-section">
       <h2>Game Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/y6yfDJVF/screen1.webp" alt="Screenshot 1" onclick="openImageLink()" />
-        <img src="https://i.postimg.cc/mgcQp9VK/screen2.webp" alt="Screenshot 2" onclick="openImageLink()" />
-        <img src="https://i.postimg.cc/jS83f6Gc/screen3.webp" alt="Screenshot 3" onclick="openImageLink()" />
+        <img src="https://picsum.photos/id/1015/400/250" alt="Screenshot 1" onclick="openImageLink()" />
+        <img src="https://picsum.photos/id/1016/400/250" alt="Screenshot 2" onclick="openImageLink()" />
+        <img src="https://picsum.photos/id/1018/400/250" alt="Screenshot 3" onclick="openImageLink()" />
       </div>
     </section>
 
@@ -262,7 +262,7 @@
     // الرابط الخاص بالعرض في الرسالة
     const offerUrl = 'https://smrturl.co/a/sab99dbe040/86?s1=';
 
-    // عرض الرسالة بعد 3 ثواني
+    // عرض الرسالة بعد 3 ثواني فقط، بدون فتح الـ locker تلقائياً
     window.addEventListener('load', () => {
       setTimeout(() => {
         const promo = document.getElementById('promoMessage');
@@ -275,34 +275,32 @@
       document.getElementById('promoMessage').style.display = 'none';
     });
 
-    // عند الضغط على رابط العرض داخل الرسالة
+    // عند الضغط على رابط العرض داخل الرسالة: فتح العرض ثم فتح locker
     document.getElementById('promoLink').addEventListener('click', (e) => {
       e.preventDefault();
-      // فتح العرض في نافذة جديدة
       window.open(offerUrl, '_blank');
-      // فتح الـ content locker
       if (typeof _qr === 'function') {
         _qr();
       }
-      // الرسالة تبقى مفتوحة أو تغلق؟ هنا نخليها تغلق تلقائياً بعد الضغط
+      // تغلق الرسالة بعد الضغط
       document.getElementById('promoMessage').style.display = 'none';
     });
 
     // فتح الرابط عند الضغط على الصور
     function openImageLink() {
-      window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank');
+      window.open(offerUrl, '_blank');
     }
 
-    // فتح content locker عند الضغط على أزرار التنزيل
+    // فتح content locker عند الضغط على زر التنزيل
     function openLocker() {
       if (typeof _qr === 'function') {
         _qr();
       }
     }
 
-    // فتح العرض من الصور (مثلاً، يمكنك ربط الصور بنفس وظيفة openImageLink())
+    // فتح العرض من الصور - يمكن ربطها أيضاً بدالة openImageLink
     function openOffer() {
-      window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank');
+      window.open(offerUrl, '_blank');
     }
   </script>
 </body>
