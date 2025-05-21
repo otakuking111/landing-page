@@ -132,17 +132,24 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.9);
     }
     .trust-text {
-      max-width: 600px;
-      margin: 2rem auto 3rem;
-      padding: 1rem 1.5rem;
-      background: #222;
-      border-radius: 12px;
-      text-align: center;
-      font-size: 1rem;
-      color: #bbb;
-      font-style: italic;
-      user-select: none;
-    }
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  padding: 1rem 1.5rem;
+  background: #222;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1rem;
+  color: #bbb;
+  font-style: italic;
+  user-select: none;
+  z-index: 9999;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
@@ -274,7 +281,7 @@
     setTimeout(() => {
       const offer = document.getElementById('offerMessage');
       offer.style.display = 'block';
-    }, 3000);
+    }, 1000);
 
     // زر إغلاق الرسالة
     document.querySelector('#offerMessage .closeBtn').addEventListener('click', () => {
