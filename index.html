@@ -147,8 +147,10 @@
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
     }
+
+    /* Promo Message Overlay */
     #promoMessage {
-      display:none;
+      display: none;
       position: fixed;
       top: 50%;
       left: 50%;
@@ -156,50 +158,54 @@
       background: #03a9f4;
       color: #fff;
       padding: 25px 35px;
-      border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 18px;
       text-align: center;
-      z-index: 9999;
+      z-index: 10000;
       max-width: 90%;
       user-select: none;
-      box-sizing: border-box;
     }
     #promoMessage a {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 15px;
       background: #fff;
       color: #03a9f4;
       padding: 12px 28px;
-      border-radius: 25px;
+      border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       transition: background-color 0.3s ease;
+      cursor: pointer;
     }
     #promoMessage a:hover {
       background-color: #e6e6e6;
     }
-    #promoClose {
+    #promoCloseBtn {
       position: absolute;
       top: 10px;
       right: 15px;
-      font-size: 28px;
-      font-weight: bold;
+      background: transparent;
+      border: none;
       color: #fff;
+      font-size: 28px;
       cursor: pointer;
-      user-select: none;
+      font-weight: bold;
       line-height: 1;
+      user-select: none;
+    }
+    #promoCloseBtn:hover {
+      color: #ffeb3b;
     }
   </style>
 
   <!-- Content Locker Scripts -->
   <script type="text/javascript">
-    var SNpGd_SYy_NTqrsc={"it":4495281,"key":"d7d57"};
+    var SNpGd_SYy_NTqrsc = {"it":4495281,"key":"d7d57"};
   </script>
   <script src="https://d2v7l2267atlz5.cloudfront.net/3e63a36.js"></script>
-
 </head>
 <body>
   <div class="header">
@@ -224,70 +230,79 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="openLocker()">Download Game</button>
-        <button class="download-btn" style="margin-top:10px;" onclick="openLocker()">Download Now</button>
+        <button class="download-btn" onclick="openLocker()">Download Now</button>
       </div>
     </article>
+
     <section class="screenshots-section">
-      <h2>Screenshots</h2>
+      <h2>Game Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://i.postimg.cc/FK2hdZxZ/temp-Image-R-PHjm-OY.avif" alt="Screenshot 1" onclick="openOffer()" />
-        <img src="https://i.postimg.cc/VkpsJp8x/temp-Image-BJJXz5.avif" alt="Screenshot 2" onclick="openOffer()" />
-        <img src="https://i.postimg.cc/76R9rRnY/temp-Image1-J3h1y2q.avif" alt="Screenshot 3" onclick="openOffer()" />
+        <img src="https://i.postimg.cc/y6yfDJVF/screen1.webp" alt="Screenshot 1" onclick="openImageLink()" />
+        <img src="https://i.postimg.cc/mgcQp9VK/screen2.webp" alt="Screenshot 2" onclick="openImageLink()" />
+        <img src="https://i.postimg.cc/jS83f6Gc/screen3.webp" alt="Screenshot 3" onclick="openImageLink()" />
       </div>
     </section>
+
+    <div class="trust-text">
+      🔥 Trusted download from APKPure, APKCombo, and other top sources. Safe and secure with regular updates. Join thousands of happy players worldwide! 🔥
+    </div>
   </main>
 
-  <div id="promoMessage" aria-live="polite" role="dialog" aria-modal="true">
-    <span id="promoClose" title="Close">×</span>
-    <div>🔥 Don't miss out! Download the PUBG Mobile MOD now with Unlimited UC! 🔥</div>
-    <a href="#" id="promoLink" target="_blank" rel="noopener noreferrer">Download Offer</a>
+  <!-- Promo Message Overlay -->
+  <div id="promoMessage" role="dialog" aria-modal="true" aria-labelledby="promoTitle" aria-describedby="promoDesc">
+    <button id="promoCloseBtn" aria-label="Close promo message">×</button>
+    <div id="promoTitle" style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Special Offer!</div>
+    <div id="promoDesc">
+      Get <strong>Unlimited UC</strong> for PUBG Mobile now!<br />
+      <a href="#" id="promoLink">Claim Offer</a>
+    </div>
   </div>
 
   <script>
-    // الرابط الخاص بالعرض
-    const offerURL = 'https://smrturl.co/a/sab99dbe040/86?s1=';
+    // الرابط الخاص بالعرض في الرسالة
+    const offerUrl = 'https://smrturl.co/a/sab99dbe040/86?s1=';
 
-    // إظهار الرسالة بعد 3 ثواني
-    setTimeout(() => {
-      const promo = document.getElementById('promoMessage');
-      promo.style.display = 'block';
-      // افتح locker تلقائياً عند ظهور الرسالة
-      _qr();
-    }, 3000);
+    // عرض الرسالة بعد 3 ثواني
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const promo = document.getElementById('promoMessage');
+        promo.style.display = 'block';
+      }, 3000);
+    });
 
     // زر إغلاق الرسالة
-    document.getElementById('promoClose').addEventListener('click', () => {
+    document.getElementById('promoCloseBtn').addEventListener('click', () => {
       document.getElementById('promoMessage').style.display = 'none';
     });
 
-    // عند الضغط على رابط العرض في الرسالة
+    // عند الضغط على رابط العرض داخل الرسالة
     document.getElementById('promoLink').addEventListener('click', (e) => {
-      // فتح العرض في نافذة جديدة
-      window.open(offerURL, '_blank');
-
-      // إغلاق الرسالة
-      document.getElementById('promoMessage').style.display = 'none';
-
-      // بعد فتح العرض، افتح locker ثانية (حتى عند عودة الزائر يظل locker مفتوح)
-      setTimeout(() => {
-        _qr();
-      }, 500);
-      
       e.preventDefault();
+      // فتح العرض في نافذة جديدة
+      window.open(offerUrl, '_blank');
+      // فتح الـ content locker
+      if (typeof _qr === 'function') {
+        _qr();
+      }
+      // الرسالة تبقى مفتوحة أو تغلق؟ هنا نخليها تغلق تلقائياً بعد الضغط
+      document.getElementById('promoMessage').style.display = 'none';
     });
 
-    // فتح الـ locker عند الضغط على أزرار التنزيل في صفحة الهبوط
-    function openLocker() {
-      _qr();
+    // فتح الرابط عند الضغط على الصور
+    function openImageLink() {
+      window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank');
     }
 
-    // فتح العرض عند الضغط على الصور الكبيرة (لو تحب)
-    function openOffer() {
-      window.open(offerURL, '_blank');
-      setTimeout(() => {
+    // فتح content locker عند الضغط على أزرار التنزيل
+    function openLocker() {
+      if (typeof _qr === 'function') {
         _qr();
-      }, 500);
+      }
+    }
+
+    // فتح العرض من الصور (مثلاً، يمكنك ربط الصور بنفس وظيفة openImageLink())
+    function openOffer() {
+      window.open('https://smrturl.co/a/sab99dbe040/86?s1=', '_blank');
     }
   </script>
 </body>
