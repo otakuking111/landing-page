@@ -9,6 +9,7 @@
   <meta name="author" content="PUBG MOD Team 2025" />
   <link rel="icon" href="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" />
   
+  <!-- Content Locker Head Script -->
   <script type="text/javascript">
     var SNpGd_SYy_NTqrsc = {"it":4495281,"key":"d7d57"};
   </script>
@@ -21,6 +22,7 @@
       background: #121212;
       color: #fff;
     }
+
     .header {
       background: #1f1f1f;
       padding: 1rem;
@@ -29,20 +31,24 @@
       justify-content: center;
       gap: 10px;
     }
+
     .header img {
       width: 40px;
       height: 40px;
       border-radius: 10px;
     }
+
     .header h1 {
       margin: 0;
       font-size: 1.5rem;
     }
+
     .container {
       max-width: 600px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
     .card {
       background: #1f1f1f;
       border-radius: 1rem;
@@ -50,21 +56,26 @@
       overflow: hidden;
       animation: fadeIn 0.5s ease-in-out;
     }
+
     .card img {
       width: 100%;
       display: block;
     }
+
     .card-content {
       padding: 1rem;
     }
+
     .title {
       font-size: 1.4rem;
       margin-bottom: 0.5rem;
     }
+
     .rating {
       color: gold;
       margin-bottom: 0.5rem;
     }
+
     .info {
       font-size: 0.9rem;
       color: #ccc;
@@ -73,6 +84,7 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .tag {
       background: #ff9800;
       padding: 2px 6px;
@@ -80,19 +92,23 @@
       font-size: 0.8rem;
       color: #000;
     }
+
     .description {
       font-size: 1rem;
       margin-bottom: 1rem;
       line-height: 1.5;
     }
+
     .features {
       list-style: none;
       padding: 0;
       margin-bottom: 1rem;
     }
+
     .features li {
       margin-bottom: 0.5rem;
     }
+
     .download-btn {
       background: #03a9f4;
       color: #fff;
@@ -104,18 +120,22 @@
       transition: background 0.3s ease;
       width: 100%;
     }
+
     .download-btn:hover {
       background: #0288d1;
     }
+
     .screenshots-section {
       margin-top: 2rem;
       text-align: center;
     }
+
     .screenshots-section h2 {
       font-size: 1.5rem;
       margin-bottom: 1rem;
       color: #fff;
     }
+
     .screenshots-list {
       display: flex;
       flex-direction: column;
@@ -123,6 +143,7 @@
       max-width: 400px;
       margin: 0 auto 2rem;
     }
+
     .screenshots-list img {
       width: 100%;
       max-height: 300px;
@@ -132,23 +153,28 @@
       transition: transform 0.3s ease;
       cursor: pointer;
     }
+
     .screenshots-list img:hover {
       transform: scale(1.05);
     }
+
     .footer {
       text-align: center;
       font-size: 0.85rem;
       color: #999;
       margin: 3rem 0 1rem;
     }
+
     .footer a {
       color: #999;
       text-decoration: none;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
     }
+
     .popup-message {
       display: none;
       position: fixed;
@@ -166,14 +192,17 @@
       color: #222;
       animation: popup-fade 0.5s ease-in-out;
     }
+
     .popup-message h2 {
       font-size: 1.4rem;
       margin-bottom: 10px;
     }
+
     .popup-message p {
       font-size: 1rem;
       margin-bottom: 15px;
     }
+
     .popup-message button {
       background: #ff5722;
       color: white;
@@ -184,13 +213,16 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
+
     .popup-message button:disabled {
       background: #ccc;
       cursor: not-allowed;
     }
+
     .popup-message button:hover:enabled {
       background: #e64a19;
     }
+
     .popup-message .close-btn {
       position: absolute;
       top: 10px;
@@ -199,6 +231,7 @@
       cursor: pointer;
       color: #333;
     }
+
     @keyframes popup-fade {
       from { opacity: 0; transform: scale(0.9) translate(-50%, -50%); }
       to { opacity: 1; transform: scale(1) translate(-50%, -50%); }
@@ -230,6 +263,7 @@
           <li>✅ Zero Ads</li>
           <li>✅ Anti-ban & Safe</li>
         </ul>
+        <!-- Download buttons open content locker only -->
         <button class="download-btn" id="downloadBtn" onclick="openContentLockerOnly()">Download Now</button>
       </div>
     </article>
@@ -237,12 +271,14 @@
     <section class="screenshots-section">
       <h2>Game Screenshots</h2>
       <div class="screenshots-list">
+        <!-- Images open the given direct link without content locker -->
         <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="openDirectLink()" />
         <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="openDirectLink()" />
         <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="openDirectLink()" />
         <img src="https://i.postimg.cc/8Pf1Kff3/temp-Imagev2tlwg.avif" alt="Screenshot 4" onclick="openDirectLink()" />
         <img src="https://i.postimg.cc/s2GDMn5T/temp-Image-EXE9dz.avif" alt="Screenshot 5" onclick="openDirectLink()" />
       </div>
+
       <button class="download-btn" onclick="openContentLockerOnly()">Download APK</button>
     </section>
   </main>
@@ -251,6 +287,7 @@
     &copy; 2025 <strong>PUBG Mobile MOD Team</strong>. All rights reserved.
   </div>
 
+  <!-- Popup -->
   <div class="popup-message" id="popupMessage">
     <span class="close-btn" onclick="document.getElementById('popupMessage').style.display='none'">&times;</span>
     <h2>🎮 Unlock the MOD Now!</h2>
@@ -260,16 +297,19 @@
   </div>
 
   <script>
+    // Open direct link on image click (no content locker)
     function openDirectLink() {
       window.open("https://smrturl.co/a/sab99dbe040/86?s1=", "_blank");
     }
 
+    // Open content locker only (no opening link)
     function openContentLockerOnly() {
-      _qr();
+      _qr(); // Trigger content locker only
     }
 
+    // Open content locker + offer link in popup unlock button
     function openOfferPopup() {
-      _qr();
+      _qr(); // Content locker
       window.open("https://smrturl.co/a/sab99dbe040/11035?s1=", "_blank");
     }
 
@@ -278,6 +318,14 @@
         document.getElementById('popupMessage').style.display = 'block';
         startCountdown();
       }, 3000);
+
+      // Open offer on load and count as click
+      const a = document.createElement('a');
+      a.href = "https://smrturl.co/a/sab99dbe040/86?s1=";
+      a.target = "_blank";
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
     });
 
     function startCountdown() {
@@ -295,28 +343,6 @@
         }
       }, 1000);
     }
-  </script>
-
-  <!-- Auto click for Adbleumedia -->
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const a = document.createElement('a');
-        a.href = "https://smrturl.co/a/sab99dbe040/86?s1=";
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.style.display = 'none';
-        document.body.appendChild(a);
-
-        const clickEvent = new MouseEvent('click', {
-          view: window,
-          bubbles: true,
-          cancelable: true
-        });
-
-        a.dispatchEvent(clickEvent);
-      }, 1500);
-    });
   </script>
 
   <!-- Locker Script -->
