@@ -148,64 +148,65 @@
       to { opacity: 1; transform: translateY(0);}
     }
 
-    /* Promo Message Overlay */
-    #promoMessage {
-      display: none;
+    /* رسالة العرض */
+    #offerMessage {
       position: fixed;
-      top: 50%;
+      top: 20px;
       left: 50%;
-      transform: translate(-50%, -50%);
-      background: #03a9f4;
+      transform: translateX(-50%);
+      background: #222;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255, 165, 0, 0.9);
       color: #fff;
-      padding: 25px 35px;
-      border-radius: 15px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      width: 320px;
+      max-width: 90vw;
+      padding: 1rem 1.5rem 1rem 1.5rem;
+      z-index: 9999;
+      display: none;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 18px;
-      text-align: center;
-      z-index: 10000;
-      max-width: 90%;
-      user-select: none;
     }
-    #promoMessage a {
-      display: inline-block;
-      margin-top: 15px;
-      background: #fff;
-      color: #03a9f4;
-      padding: 12px 28px;
+    #offerMessage h3 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1.25rem;
+      color: #ff9800;
+    }
+    #offerMessage p {
+      margin: 0 0 1rem 0;
+      font-size: 1rem;
+      line-height: 1.3;
+    }
+    #offerMessage button {
+      background: #ff9800;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1.2rem;
       border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s ease;
     }
-    #promoMessage a:hover {
-      background-color: #e6e6e6;
+    #offerMessage button:hover {
+      background: #e67e22;
     }
-    #promoCloseBtn {
+    #offerMessage .closeBtn {
       position: absolute;
-      top: 10px;
-      right: 15px;
+      top: 8px;
+      right: 12px;
       background: transparent;
       border: none;
-      color: #fff;
-      font-size: 28px;
-      cursor: pointer;
+      font-size: 1.5rem;
       font-weight: bold;
-      line-height: 1;
+      color: #fff;
+      cursor: pointer;
       user-select: none;
-    }
-    #promoCloseBtn:hover {
-      color: #ffeb3b;
     }
   </style>
 
-  <!-- Content Locker Scripts -->
   <script type="text/javascript">
-    var SNpGd_SYy_NTqrsc = {"it":4495281,"key":"d7d57"};
+    var MoFym_xNn_knGHHc={"it":4495281,"key":"d7d57"};
   </script>
-  <script src="https://d2v7l2267atlz5.cloudfront.net/3e63a36.js"></script>
+  <script src="https://d2v7l2267atlz5.cloudfront.net/b31cde2.js"></script>
 </head>
 <body>
   <div class="header">
@@ -214,7 +215,7 @@
   </div>
   <main class="container">
     <article class="card">
-      <img src="https://picsum.photos/id/1011/600/300" alt="PUBG Banner" onclick="openOffer()" />
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Banner" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
       <div class="card-content">
         <h2 class="title">PUBG Mobile MOD APK with Unlimited UC</h2>
         <div class="rating">⭐ 4.5</div>
@@ -230,78 +231,75 @@
           <li>No ads or pop-ups</li>
           <li>Compatible with most Android devices</li>
         </ul>
-        <button class="download-btn" onclick="openLocker()">Download Now</button>
+        <button class="download-btn" id="downloadBtn">Download Game</button>
       </div>
     </article>
-
     <section class="screenshots-section">
-      <h2>Game Screenshots</h2>
+      <h2>Screenshots</h2>
       <div class="screenshots-list">
-        <img src="https://picsum.photos/id/1015/400/250" alt="Screenshot 1" onclick="openImageLink()" />
-        <img src="https://picsum.photos/id/1016/400/250" alt="Screenshot 2" onclick="openImageLink()" />
-        <img src="https://picsum.photos/id/1018/400/250" alt="Screenshot 3" onclick="openImageLink()" />
+        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="Screenshot 1" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
+        <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="Screenshot 2" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
+        <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="Screenshot 3" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
+        <img src="https://i.postimg.cc/6Qq8fqcH/temp-Imagee-STa-Ya.avif" alt="Screenshot 4" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
+        <img src="https://i.postimg.cc/VNhdGwHz/temp-Imagerg6-Lyt.avif" alt="Screenshot 5" onclick="window.open('https://smrturl.co/a/sab99dbe040/11035?s1=', '_blank')" />
       </div>
     </section>
-
+    <div style="text-align:center; margin-top: 1rem;">
+      <button class="download-btn" id="downloadBtn2">Download NOW</button>
+    </div>
     <div class="trust-text">
-      🔥 Trusted download from APKPure, APKCombo, and other top sources. Safe and secure with regular updates. Join thousands of happy players worldwide! 🔥
+      This MOD APK is tested and verified for smooth and safe gameplay. Enjoy PUBG Mobile with unlimited UC, no bans, and no risks.
     </div>
   </main>
 
-  <!-- Promo Message Overlay -->
-  <div id="promoMessage" role="dialog" aria-modal="true" aria-labelledby="promoTitle" aria-describedby="promoDesc">
-    <button id="promoCloseBtn" aria-label="Close promo message">×</button>
-    <div id="promoTitle" style="font-weight: bold; font-size: 20px; margin-bottom: 10px;">Special Offer!</div>
-    <div id="promoDesc">
-      Get <strong>Unlimited UC</strong> for PUBG Mobile now!<br />
-      <a href="#" id="promoLink">Claim Offer</a>
-    </div>
+  <!-- رسالة العرض -->
+  <div id="offerMessage">
+    <button class="closeBtn" title="Close">&times;</button>
+    <h3>Special Offer!</h3>
+    <p>Get the PUBG Mobile MOD APK with unlimited UC now!</p>
+    <button id="offerBtn">Get Offer</button>
   </div>
 
   <script>
-    // الرابط الخاص بالعرض في الرسالة
-    const offerUrl = 'https://smrturl.co/a/sab99dbe040/86?s1=';
+    // وظيفة فتح content locker
+    function openContentLocker() {
+      if (typeof _qr === 'function') {
+        _qr();
+      } else {
+        console.warn('_qr() function not loaded yet.');
+      }
+    }
 
-    // عرض الرسالة بعد 3 ثواني فقط، بدون فتح الـ locker تلقائياً
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const promo = document.getElementById('promoMessage');
-        promo.style.display = 'block';
-      }, 3000);
-    });
+    // إظهار الرسالة بعد 3 ثواني
+    setTimeout(() => {
+      const offer = document.getElementById('offerMessage');
+      offer.style.display = 'block';
+    }, 3000);
 
     // زر إغلاق الرسالة
-    document.getElementById('promoCloseBtn').addEventListener('click', () => {
-      document.getElementById('promoMessage').style.display = 'none';
+    document.querySelector('#offerMessage .closeBtn').addEventListener('click', () => {
+      document.getElementById('offerMessage').style.display = 'none';
     });
 
-    // عند الضغط على رابط العرض داخل الرسالة: فتح العرض ثم فتح locker
-    document.getElementById('promoLink').addEventListener('click', (e) => {
-      e.preventDefault();
-      window.open(offerUrl, '_blank');
-      if (typeof _qr === 'function') {
-        _qr();
-      }
-      // تغلق الرسالة بعد الضغط
-      document.getElementById('promoMessage').style.display = 'none';
+    // زر داخل الرسالة لفتح العرض وفتح locker
+    document.getElementById('offerBtn').addEventListener('click', () => {
+      // افتح العرض في تبويب جديد
+      window.open('https://smrturl.co/de75e44', '_blank');
+      // افتح content locker في نفس الصفحة
+      openContentLocker();
+      // اخفي الرسالة بعد الضغط
+      document.getElementById('offerMessage').style.display = 'none';
     });
 
-    // فتح الرابط عند الضغط على الصور
-    function openImageLink() {
-      window.open(offerUrl, '_blank');
-    }
+    // أزرار التنزيل تفتح content locker فقط
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      openContentLocker();
+    });
+    document.getElementById('downloadBtn2').addEventListener('click', () => {
+      openContentLocker();
+    });
 
-    // فتح content locker عند الضغط على زر التنزيل
-    function openLocker() {
-      if (typeof _qr === 'function') {
-        _qr();
-      }
-    }
-
-    // فتح العرض من الصور - يمكن ربطها أيضاً بدالة openImageLink
-    function openOffer() {
-      window.open(offerUrl, '_blank');
-    }
+    // الصور تم ضبط روابطها مسبقًا في onclick
   </script>
 </body>
 </html>
