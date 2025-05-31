@@ -17,6 +17,11 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: #121212;
       color: #ffffff;
+      direction: ltr;
+    }
+
+    body.rtl {
+      direction: rtl;
     }
 
     header {
@@ -131,7 +136,6 @@
       color: #888;
       cursor: pointer;
       user-select: none;
-      transition: color 0.3s ease;
     }
 
     .fav-icon.active {
@@ -154,13 +158,25 @@
       border-top: 1px solid #222;
     }
 
+    /* زر اختيار اللغة */
+    .language-switcher {
+      background: #2a2a2a;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
     @media screen and (max-width: 600px) {
       header {
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .fav-btn {
+      .fav-btn, .language-switcher {
         margin-top: 10px;
         width: 100%;
         text-align: center;
@@ -182,18 +198,25 @@
   <header>
     <div class="logo-container">
       <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
-      <h1>SEK STORE</h1>
+      <h1 id="storeTitle">SEK STORE</h1>
     </div>
-    <button class="fav-btn" onclick="showFavorites()">المفضلة</button>
+    <div>
+      <button class="fav-btn" id="favBtn" onclick="showFavorites()">❤️ المفضلة</button>
+      <select class="language-switcher" id="languageSelect" onchange="changeLanguage(this.value)">
+        <option value="ar">العربية</option>
+        <option value="en" selected>English</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
   </header>
 
   <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة..." onkeyup="searchApps()">
+    <input type="text" id="searchInput" placeholder="Search apps or games..." onkeyup="searchApps()">
   </div>
 
-  <div class="section-title">التطبيقات المميزة</div>
+  <div class="section-title" id="featuredTitle">🔥 Featured Apps</div>
 
-  <div id="noResults" class="no-results">اللعبة غير موجودة</div>
+  <div id="noResults" class="no-results">No games found</div>
 
   <section id="appsContainer" class="apps-container">
 
@@ -202,29 +225,12 @@
       <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
       <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG MOD">
       <div class="app-info">
-        <div class="app-title">PUBG Mobile MOD APK</div>
-        <div class="app-desc">Unlimited UC, skins unlocked, anti-ban.</div>
+        <div class="app-title" data-en="PUBG Mobile MOD APK" data-ar="ببجي موبايل مود APK" data-fr="PUBG Mobile MOD APK">PUBG Mobile MOD APK</div>
+        <div class="app-desc" data-en="Unlimited UC, skins unlocked, anti-ban." data-ar="UC غير محدود، جلود مفتوحة، مضاد للحظر." data-fr="UC illimité, skins débloqués, anti-ban.">Unlimited UC, skins unlocked, anti-ban.</div>
       </div>
     </div>
 
-    <!-- أضف المزيد من التطبيقات هنا -->
-    <div class="app-card" data-title="gta5" onclick="location.href='gta5.html'">
-      <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
-      <img src="https://i.postimg.cc/9MD4bQXf/gta5.jpg" alt="GTA 5 MOD">
-      <div class="app-info">
-        <div class="app-title">GTA 5 Mobile MOD APK</div>
-        <div class="app-desc">Unlimited money, unlocked cars and weapons.</div>
-      </div>
-    </div>
-
-    <div class="app-card" data-title="freefire" onclick="location.href='freefire.html'">
-      <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
-      <img src="https://i.postimg.cc/sD4WhsXN/freefire.jpg" alt="Free Fire MOD">
-      <div class="app-info">
-        <div class="app-title">Free Fire MOD APK</div>
-        <div class="app-desc">Unlimited diamonds and exclusive skins.</div>
-      </div>
-    </div>
+    <!-- أضف المزيد من التطبيقات هنا مع نفس الصيغة -->
 
   </section>
 
@@ -233,68 +239,69 @@
   </footer>
 
   <script>
-    const FAVORITES_KEY = "sekstore_favorites";
-
-    window.onload = function() {
-      loadFavorites();
+    // نصوص حسب اللغة
+    const texts = {
+      en: {
+        storeTitle: "SEK STORE",
+        favBtn: "❤️ Favorites",
+        searchPlaceholder: "Search apps or games...",
+        featuredTitle: "🔥 Featured Apps",
+        noResults: "No games found",
+      },
+      ar: {
+        storeTitle: "متجر SEK",
+        favBtn: "❤️ المفضلة",
+        searchPlaceholder: "ابحث عن تطبيق أو لعبة...",
+        featuredTitle: "🔥 التطبيقات المميزة",
+        noResults: "🚫 اللعبة غير موجودة",
+      },
+      fr: {
+        storeTitle: "Boutique SEK",
+        favBtn: "❤️ Favoris",
+        searchPlaceholder: "Recherchez des applications ou des jeux...",
+        featuredTitle: "🔥 Applications en vedette",
+        noResults: "Aucun jeu trouvé",
+      }
     };
 
-    function loadFavorites() {
-      const favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
-      document.querySelectorAll(".app-card").forEach(app => {
-        const appTitle = app.dataset.title;
-        const icon = app.querySelector(".fav-icon");
-        if (favorites.includes(appTitle)) {
-          icon.classList.add("active");
-          icon.textContent = "❤️";
-          app.dataset.favorite = "true";
-        } else {
-          icon.classList.remove("active");
-          icon.textContent = "♡";
-          app.dataset.favorite = "false";
-        }
-      });
-    }
-
-    function toggleFavorite(e) {
-      e.stopPropagation();
-      const icon = e.currentTarget;
-      const app = icon.closest(".app-card");
-      const appTitle = app.dataset.title;
-
-      icon.classList.toggle("active");
-      const isActive = icon.classList.contains("active");
-      icon.textContent = isActive ? "❤️" : "♡";
-      app.dataset.favorite = isActive ? "true" : "false";
-
-      let favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
-      if (isActive) {
-        if (!favorites.includes(appTitle)) {
-          favorites.push(appTitle);
-        }
+    // تغيير اللغة وتحديث النصوص
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+      if (lang === "ar") {
+        document.body.classList.add("rtl");
       } else {
-        favorites = favorites.filter(title => title !== appTitle);
+        document.body.classList.remove("rtl");
       }
-      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
-    }
 
-    function showFavorites() {
-      const apps = document.querySelectorAll(".app-card");
-      apps.forEach(app => {
-        app.style.display = app.dataset.favorite === "true" ? "block" : "none";
+      document.getElementById("storeTitle").textContent = texts[lang].storeTitle;
+      document.getElementById("favBtn").textContent = texts[lang].favBtn;
+      document.getElementById("searchInput").placeholder = texts[lang].searchPlaceholder;
+      document.getElementById("featuredTitle").textContent = texts[lang].featuredTitle;
+      document.getElementById("noResults").textContent = texts[lang].noResults;
+
+      // تحديث عناوين ووصف التطبيقات حسب اللغة
+      document.querySelectorAll(".app-title").forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+      document.querySelectorAll(".app-desc").forEach(el => {
+        el.textContent = el.dataset[lang];
       });
 
-      document.getElementById("noResults").style.display =
-        [...apps].some(app => app.style.display === "block") ? "none" : "block";
+      // إعادة البحث لتحديث النتائج حسب النص الجديد
+      searchApps();
     }
 
+    // البحث
     function searchApps() {
       const input = document.getElementById("searchInput").value.toLowerCase();
       const apps = document.querySelectorAll(".app-card");
       let found = false;
 
       apps.forEach(app => {
-        const title = app.dataset.title.toLowerCase();
+        // نستخدم العنوان المناسب حسب اللغة
+        const lang = document.documentElement.lang || 'en';
+        const titleEl = app.querySelector(".app-title");
+        const title = titleEl ? titleEl.textContent.toLowerCase() : "";
         if (title.includes(input)) {
           app.style.display = "block";
           found = true;
@@ -305,6 +312,33 @@
 
       document.getElementById("noResults").style.display = found ? "none" : "block";
     }
+
+    // تبديل المفضلة
+    function toggleFavorite(e) {
+      e.stopPropagation();
+      const icon = e.currentTarget;
+      icon.classList.toggle("active");
+      icon.textContent = icon.classList.contains("active") ? "❤️" : "♡";
+      const app = icon.closest(".app-card");
+      app.dataset.favorite = icon.classList.contains("active");
+    }
+
+    // إظهار المفضلة فقط
+    function showFavorites() {
+      const apps = document.querySelectorAll(".app-card");
+      apps.forEach(app => {
+        app.style.display = app.dataset.favorite === "true" ? "block" : "none";
+      });
+
+      document.getElementById("noResults").style.display =
+        [...apps].some(app => app.style.display === "block") ? "none" : "block";
+    }
+
+    // تهيئة اللغة الافتراضية
+    window.onload = () => {
+      const defaultLang = document.getElementById("languageSelect").value;
+      changeLanguage(defaultLang);
+    };
   </script>
 
 </body>
