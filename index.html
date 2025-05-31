@@ -294,204 +294,238 @@
     <div class="products-grid" id="productsGrid">
 
       <!-- Product example -->
-      <div class="product-card" data-category="action" data-title="pubg mobile mod" tabindex="0">
-        <span class="fav-icon" onclick="toggleFavorite(event)" role="button" aria-label="Add to favorites">♡</span>
-        <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD" />
+      <div class="product-card" data-category="action" data-title="N.O.V.A. Legacy" data-desc="Sci-Fi FPS shooter" data-id="1">
+        <img src="https://i.postimg.cc/HLhXMYXZ/1-nova.webp" alt="N.O.V.A. Legacy" />
         <div class="product-info">
-          <div class="product-title" data-en="PUBG Mobile MOD APK" data-ar="ببجي موبايل مود APK" data-fr="PUBG Mobile MOD APK">PUBG Mobile MOD APK</div>
-          <p class="product-desc" data-en="Unlimited UC, skins unlocked, anti-ban." data-ar="UC غير محدود، جلود مفتوحة، مضاد للحظر." data-fr="UC illimité, skins débloqués, anti-ban.">Unlimited UC, skins unlocked, anti-ban.</p>
+          <h3 class="product-title">N.O.V.A. Legacy</h3>
+          <p class="product-desc">Sci-Fi FPS shooter</p>
         </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
       </div>
 
-      <!-- أضف المزيد من المنتجات هنا بنفس الصيغة -->
+      <div class="product-card" data-category="strategy" data-title="Clash of Clans" data-desc="Build your village" data-id="2">
+        <img src="https://i.postimg.cc/d3K67RR9/2-clash.webp" alt="Clash of Clans" />
+        <div class="product-info">
+          <h3 class="product-title">Clash of Clans</h3>
+          <p class="product-desc">Build your village</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+
+      <div class="product-card" data-category="rpg" data-title="Eternium" data-desc="Magic RPG adventure" data-id="3">
+        <img src="https://i.postimg.cc/VNbfXy9Q/3-eternium.webp" alt="Eternium" />
+        <div class="product-info">
+          <h3 class="product-title">Eternium</h3>
+          <p class="product-desc">Magic RPG adventure</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+
+      <div class="product-card" data-category="action" data-title="PUBG Mobile" data-desc="Battle Royale shooter" data-id="4">
+        <img src="https://i.postimg.cc/FHVw0xRv/4-pubg.webp" alt="PUBG Mobile" />
+        <div class="product-info">
+          <h3 class="product-title">PUBG Mobile</h3>
+          <p class="product-desc">Battle Royale shooter</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
 
     </div>
 
-    <p class="no-results" id="noResults" style="display:none;">No games found</p>
+    <p class="no-results" id="noResults" style="display:none;">No products found.</p>
 
   </main>
 
   <script>
-    const texts = {
-      en: {
-        storeTitle: "SEK STORE",
-        btnFav: "❤️ Favorites",
-        searchPlaceholder: "Search apps or games...",
-        sectionFeatured: "🔥 Featured Apps",
-        filters: {
-          all: "All",
-          action: "Action",
-          strategy: "Strategy",
-          rpg: "RPG"
-        },
-        noResults: "No games found"
-      },
-      ar: {
-        storeTitle: "متجر SEK",
-        btnFav: "❤️ المفضلة",
-        searchPlaceholder: "ابحث عن تطبيق أو لعبة...",
-        sectionFeatured: "🔥 التطبيقات المميزة",
-        filters: {
-          all: "الكل",
-          action: "أكشن",
-          strategy: "استراتيجية",
-          rpg: "RPG"
-        },
-        noResults: "🚫 اللعبة غير موجودة"
-      },
-      fr: {
-        storeTitle: "Boutique SEK",
-        btnFav: "❤️ Favoris",
-        searchPlaceholder: "Recherchez des applications ou des jeux...",
-        sectionFeatured: "🔥 Applications en vedette",
-        filters: {
-          all: "Tous",
-          action: "Action",
-          strategy: "Stratégie",
-          rpg: "RPG"
-        },
-        noResults: "Aucun jeu trouvé"
-      }
-    };
-
-    const langSelect = document.getElementById('languageSelect');
-    const storeTitle = document.getElementById('storeTitle');
-    const btnFav = document.getElementById('btnFav');
+    // Data and state
+    const productsGrid = document.getElementById('productsGrid');
     const searchInput = document.getElementById('searchInput');
-    const sectionFeatured = document.getElementById('sectionFeatured');
-    const filtersDiv = document.getElementById('filters');
+    const btnFav = document.getElementById('btnFav');
+    const languageSelect = document.getElementById('languageSelect');
     const noResults = document.getElementById('noResults');
+    const filters = document.getElementById('filters');
+    let showFavoritesOnly = false;
 
-    // لتبديل اللغة وتحديث النصوص
+    // Load favorites from localStorage
+    function getFavorites() {
+      const fav = localStorage.getItem('favorites');
+      return fav ? JSON.parse(fav) : [];
+    }
+
+    function saveFavorites(favArray) {
+      localStorage.setItem('favorites', JSON.stringify(favArray));
+    }
+
+    // Toggle favorite for product by id
+    function toggleFavorite(productId) {
+      const favs = getFavorites();
+      const index = favs.indexOf(productId);
+      if(index === -1) {
+        favs.push(productId);
+      } else {
+        favs.splice(index, 1);
+      }
+      saveFavorites(favs);
+      updateFavIcons();
+    }
+
+    // Update favorite icons UI based on localStorage
+    function updateFavIcons() {
+      const favs = getFavorites();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const id = card.dataset.id;
+        const icon = card.querySelector('.fav-icon');
+        if(favs.includes(id)) {
+          icon.classList.add('active');
+          icon.textContent = '❤️';
+          icon.title = 'Remove from favorites';
+        } else {
+          icon.classList.remove('active');
+          icon.textContent = '♡';
+          icon.title = 'Add to favorites';
+        }
+      });
+    }
+
+    // Filter products by category
+    function filterCategory(event) {
+      event.preventDefault();
+      // Remove active from all buttons
+      filters.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      searchProducts(); // Re-run search+filter
+    }
+
+    // Filter and search products, also handle favorites filter
+    function searchProducts() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const activeCategoryBtn = filters.querySelector('button.active');
+      const categoryFilter = activeCategoryBtn ? activeCategoryBtn.dataset.filter : 'all';
+      const favs = getFavorites();
+
+      let visibleCount = 0;
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+        const desc = card.dataset.desc.toLowerCase();
+        const category = card.dataset.category;
+        const id = card.dataset.id;
+
+        // Check search term match (title or desc)
+        const matchesSearch = !searchTerm || title.includes(searchTerm) || desc.includes(searchTerm);
+
+        // Check category filter
+        const matchesCategory = categoryFilter === 'all' || categoryFilter === category;
+
+        // Check favorites filter
+        const matchesFav = !showFavoritesOnly || favs.includes(id);
+
+        if(matchesSearch && matchesCategory && matchesFav) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Toggle favorites filter
+    function toggleShowFavorites() {
+      showFavoritesOnly = !showFavoritesOnly;
+      btnFav.textContent = showFavoritesOnly ? '💔 Show All' : '❤️ Favorites';
+      searchProducts();
+    }
+
+    // Change language
     function changeLanguage(lang) {
       document.documentElement.lang = lang;
-      if(lang === 'ar'){
+
+      // Handle RTL languages
+      if(lang === 'ar') {
         document.body.classList.add('rtl');
       } else {
         document.body.classList.remove('rtl');
       }
 
-      storeTitle.textContent = texts[lang].storeTitle;
-      btnFav.textContent = texts[lang].btnFav;
-      searchInput.placeholder = texts[lang].searchPlaceholder;
-      sectionFeatured.textContent = texts[lang].sectionFeatured;
-
-      // تحديث أزرار الفلاتر
-      filtersDiv.querySelectorAll('button').forEach(btn => {
-        const filterKey = btn.dataset.filter;
-        btn.textContent = texts[lang].filters[filterKey] || btn.textContent;
-      });
-
-      noResults.textContent = texts[lang].noResults;
-
-      // تحديث عناوين ووصف المنتجات
-      document.querySelectorAll('.product-title').forEach(el => {
-        el.textContent = el.dataset[lang];
-      });
-      document.querySelectorAll('.product-desc').forEach(el => {
-        el.textContent = el.dataset[lang];
-      });
-
-      searchProducts();
-    }
-
-    // بحث
-    function searchProducts() {
-      const val = searchInput.value.toLowerCase();
-      const products = document.querySelectorAll('.product-card');
-      let found = false;
-
-      products.forEach(product => {
-        const titleEl = product.querySelector('.product-title');
-        const title = titleEl.textContent.toLowerCase();
-        const category = product.dataset.category;
-        const activeFilter = document.querySelector('.filters button.active').dataset.filter;
-
-        const matchesSearch = title.includes(val);
-        const matchesFilter = (activeFilter === 'all') || (category === activeFilter);
-
-        if(matchesSearch && matchesFilter){
-          product.style.display = '';
-          found = true;
-        } else {
-          product.style.display = 'none';
+      // Change static texts
+      const texts = {
+        en: {
+          storeTitle: 'SEK STORE',
+          searchPlaceholder: 'Search apps or games...',
+          btnFavShow: '❤️ Favorites',
+          btnFavHide: '💔 Show All',
+          sectionFeatured: '🔥 Featured Apps',
+          filterAll: 'All',
+          filterAction: 'Action',
+          filterStrategy: 'Strategy',
+          filterRPG: 'RPG',
+          noResults: 'No products found.'
+        },
+        ar: {
+          storeTitle: 'متجر SEK',
+          searchPlaceholder: 'ابحث عن التطبيقات أو الألعاب...',
+          btnFavShow: '❤️ المفضلة',
+          btnFavHide: '💔 عرض الكل',
+          sectionFeatured: '🔥 التطبيقات المميزة',
+          filterAll: 'الكل',
+          filterAction: 'أكشن',
+          filterStrategy: 'استراتيجية',
+          filterRPG: 'تقمصي',
+          noResults: 'لم يتم العثور على منتجات.'
+        },
+        fr: {
+          storeTitle: 'SEK STORE',
+          searchPlaceholder: 'Rechercher des applications ou jeux...',
+          btnFavShow: '❤️ Favoris',
+          btnFavHide: '💔 Tout afficher',
+          sectionFeatured: '🔥 Applications en vedette',
+          filterAll: 'Tous',
+          filterAction: 'Action',
+          filterStrategy: 'Stratégie',
+          filterRPG: 'RPG',
+          noResults: 'Aucun produit trouvé.'
         }
-      });
+      };
 
-      noResults.style.display = found ? 'none' : 'block';
-    }
+      const t = texts[lang] || texts.en;
 
-    // فلترة حسب التصنيف
-    function filterCategory(e){
-      const btns = filtersDiv.querySelectorAll('button');
-      btns.forEach(btn => btn.classList.remove('active'));
-      e.target.classList.add('active');
-      searchProducts();
-    }
+      document.getElementById('storeTitle').textContent = t.storeTitle;
+      searchInput.placeholder = t.searchPlaceholder;
+      btnFav.textContent = showFavoritesOnly ? t.btnFavHide : t.btnFavShow;
+      document.getElementById('sectionFeatured').textContent = t.sectionFeatured;
 
-    // المفضلة مع حفظ محلي
-    function toggleFavorite(e){
-      e.stopPropagation();
-      const icon = e.currentTarget;
-      const product = icon.closest('.product-card');
-      const productId = product.dataset.title || product.querySelector('.product-title').textContent;
-
-      let favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-      if(favs.includes(productId)){
-        favs = favs.filter(id => id !== productId);
-        icon.classList.remove('active');
-        icon.textContent = '♡';
-      } else {
-        favs.push(productId);
-        icon.classList.add('active');
-        icon.textContent = '❤️';
+      const filterButtons = filters.querySelectorAll('button');
+      if(filterButtons.length === 4) {
+        filterButtons[0].textContent = t.filterAll;
+        filterButtons[1].textContent = t.filterAction;
+        filterButtons[2].textContent = t.filterStrategy;
+        filterButtons[3].textContent = t.filterRPG;
       }
-      localStorage.setItem('favorites', JSON.stringify(favs));
+
+      noResults.textContent = t.noResults;
     }
 
-    // تحميل المفضلة من localStorage
-    function loadFavorites(){
-      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-      document.querySelectorAll('.product-card').forEach(card => {
-        const productId = card.dataset.title || card.querySelector('.product-title').textContent;
-        const icon = card.querySelector('.fav-icon');
-        if(favs.includes(productId)){
-          icon.classList.add('active');
-          icon.textContent = '❤️';
-        } else {
-          icon.classList.remove('active');
-          icon.textContent = '♡';
-        }
-      });
-    }
-
-    // إظهار فقط المفضلة أو الكل
-    let showFavsOnly = false;
-    function toggleShowFavorites(){
-      showFavsOnly = !showFavsOnly;
-      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
-      document.querySelectorAll('.product-card').forEach(card => {
-        const productId = card.dataset.title || card.querySelector('.product-title').textContent;
-        if(showFavsOnly){
-          if(favs.includes(productId)){
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
+    // Event delegation for favorite icon clicks
+    productsGrid.addEventListener('click', e => {
+      if(e.target.classList.contains('fav-icon')) {
+        const productCard = e.target.closest('.product-card');
+        if(productCard) {
+          toggleFavorite(productCard.dataset.id);
+          if(showFavoritesOnly) {
+            searchProducts();
           }
-        } else {
-          card.style.display = '';
         }
-      });
-      btnFav.textContent = showFavsOnly ? '📋 Show All' : texts[langSelect.value].btnFav;
-      noResults.style.display = showFavsOnly && favs.length === 0 ? 'block' : 'none';
-    }
+      }
+    });
 
-    // بدء تحميل المفضلة عند التحميل
-    window.onload = () => {
-      changeLanguage('en');
-      loadFavorites();
-    };
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      updateFavIcons();
+      changeLanguage(languageSelect.value);
+      searchProducts();
+    });
   </script>
 
 </body>
