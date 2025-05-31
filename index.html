@@ -1,343 +1,496 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SEK STORE - Premium MODs</title>
-  <meta name="description" content="Explore & download premium MOD APKs for free. Latest versions, unlimited features." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEK STORE - Premium MOD APKs</title>
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
 
   <style>
+    /* Reset */
     * {
       box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #121212;
-      color: #ffffff;
-      direction: ltr;
+      background: #121212;
+      color: #eee;
+      min-height: 100vh;
+      line-height: 1.4;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body.rtl {
       direction: rtl;
     }
 
-    header {
-      background: #1e1e1e;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 50px;
     }
 
-    .logo-container {
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #1f1f1f;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    nav .logo {
       display: flex;
       align-items: center;
       gap: 15px;
-    }
-
-    header img {
-      height: 45px;
-      border-radius: 12px;
-    }
-
-    header h1 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      margin: 0;
-    }
-
-    .fav-btn {
-      background: #2a2a2a;
-      padding: 10px 16px;
-      border: none;
-      color: white;
-      border-radius: 20px;
       cursor: pointer;
-      margin-top: 10px;
     }
 
+    nav .logo img {
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    nav .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f4a261;
+      user-select: none;
+    }
+
+    /* Search Bar */
     .search-bar {
-      margin: 1.5rem auto 1rem;
-      max-width: 600px;
-      padding: 0 1rem;
+      flex: 1;
+      margin: 0 20px;
+      position: relative;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 12px 20px;
-      font-size: 1rem;
-      border: none;
+      padding: 10px 45px 10px 20px;
       border-radius: 30px;
-      background: #2a2a2a;
-      color: #fff;
+      border: none;
+      background: #2c2c2c;
+      color: #eee;
+      font-size: 1rem;
       outline: none;
+      transition: background-color 0.3s ease;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: 1.3rem;
-      margin: 1.5rem 0 1rem;
-      color: #ddd;
+    .search-bar input::placeholder {
+      color: #aaa;
     }
 
-    .apps-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1.5rem;
-      padding: 0 1.5rem 3rem;
+    .search-bar svg {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: #aaa;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
     }
 
-    .app-card {
-      background: #1f1f1f;
-      border-radius: 18px;
-      overflow: hidden;
-      transition: transform 0.3s ease;
+    body.rtl .search-bar svg {
+      right: auto;
+      left: 15px;
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn-fav, .language-select {
+      background: #333;
+      border: none;
+      color: #eee;
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-fav:hover, .language-select:hover {
+      background: #f4a261;
+      color: #121212;
+    }
+
+    /* Section Titles */
+    h2.section-title {
+      margin: 40px 0 20px;
+      font-size: 1.6rem;
+      border-left: 6px solid #f4a261;
+      padding-left: 12px;
+      user-select: none;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .filters button {
+      background: #2c2c2c;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      color: #ddd;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+
+    .filters button.active, .filters button:hover {
+      background: #f4a261;
+      color: #121212;
+    }
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 25px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: #1e1e1e;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
       position: relative;
     }
 
-    .app-card:hover {
-      transform: translateY(-5px);
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(244,162,97,0.8);
     }
 
-    .app-card img {
+    .product-card img {
       width: 100%;
-      height: 160px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       border-bottom: 1px solid #333;
     }
 
-    .app-info {
-      padding: 1rem;
+    .product-info {
+      padding: 16px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .app-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .app-desc {
-      font-size: 0.9rem;
-      color: #aaa;
-      line-height: 1.4;
-    }
-
-    .fav-icon {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
-      color: #888;
-      cursor: pointer;
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #f4a261;
       user-select: none;
     }
 
-    .fav-icon.active {
-      color: red;
+    .product-desc {
+      font-size: 0.9rem;
+      color: #bbb;
+      flex-grow: 1;
+      user-select: none;
     }
 
+    /* Favorite icon */
+    .fav-icon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 24px;
+      color: #ddd;
+      transition: color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+      text-shadow: 0 0 6px rgba(0,0,0,0.7);
+    }
+
+    .fav-icon.active {
+      color: #f44336;
+      text-shadow: 0 0 8px #f44336;
+    }
+
+    /* No results */
     .no-results {
       text-align: center;
-      margin-top: 2rem;
-      color: #999;
-      font-size: 1rem;
-      display: none;
+      font-size: 1.2rem;
+      color: #aaa;
+      margin: 30px 0;
+      user-select: none;
     }
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      font-size: 0.85rem;
-      color: #666;
-      border-top: 1px solid #222;
-    }
-
-    /* زر اختيار اللغة */
-    .language-switcher {
-      background: #2a2a2a;
-      color: white;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 16px;
-      cursor: pointer;
-      margin-top: 10px;
-      font-weight: 600;
-    }
-
-    @media screen and (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .search-bar {
+        margin: 15px 0;
+        flex: 1 1 100%;
       }
-
-      .fav-btn, .language-switcher {
-        margin-top: 10px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .logo-container {
-        justify-content: center;
-        width: 100%;
-      }
-
-      .apps-container {
-        padding: 0 1rem 3rem;
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-container">
+  <nav>
+    <div class="logo" onclick="window.location.reload()">
       <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
       <h1 id="storeTitle">SEK STORE</h1>
     </div>
-    <div>
-      <button class="fav-btn" id="favBtn" onclick="showFavorites()">❤️ المفضلة</button>
-      <select class="language-switcher" id="languageSelect" onchange="changeLanguage(this.value)">
-        <option value="ar">العربية</option>
+
+    <div class="search-bar">
+      <input type="search" id="searchInput" placeholder="Search apps or games..." aria-label="Search apps or games" oninput="searchProducts()" />
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.2 5.49 12.71 3 9.5 3S3.8 5.49 3.8 8.39c0 2.9 2.49 5.39 5.7 5.39a5.97 5.97 0 004.1-1.7l.27.28v.79l4.25 4.25 1.5-1.5L15.5 14zm-6 0c-1.93 0-3.5-1.57-3.5-3.5S7.57 7 9.5 7 13 8.57 13 10.5 11.43 14 9.5 14z"/></svg>
+    </div>
+
+    <div class="actions">
+      <button class="btn-fav" id="btnFav" onclick="toggleShowFavorites()">❤️ Favorites</button>
+      <select class="language-select" id="languageSelect" aria-label="Select language" onchange="changeLanguage(this.value)">
         <option value="en" selected>English</option>
+        <option value="ar">العربية</option>
         <option value="fr">Français</option>
       </select>
     </div>
-  </header>
+  </nav>
 
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search apps or games..." onkeyup="searchApps()">
-  </div>
+  <main class="container">
 
-  <div class="section-title" id="featuredTitle">🔥 Featured Apps</div>
+    <h2 class="section-title" id="sectionFeatured">🔥 Featured Apps</h2>
 
-  <div id="noResults" class="no-results">No games found</div>
-
-  <section id="appsContainer" class="apps-container">
-
-    <!-- مثال لتطبيق -->
-    <div class="app-card" data-title="pubg" onclick="location.href='pubg.html'">
-      <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
-      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG MOD">
-      <div class="app-info">
-        <div class="app-title" data-en="PUBG Mobile MOD APK" data-ar="ببجي موبايل مود APK" data-fr="PUBG Mobile MOD APK">PUBG Mobile MOD APK</div>
-        <div class="app-desc" data-en="Unlimited UC, skins unlocked, anti-ban." data-ar="UC غير محدود، جلود مفتوحة، مضاد للحظر." data-fr="UC illimité, skins débloqués, anti-ban.">Unlimited UC, skins unlocked, anti-ban.</div>
-      </div>
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all" onclick="filterCategory(event)">All</button>
+      <button data-filter="action" onclick="filterCategory(event)">Action</button>
+      <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
+      <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
     </div>
 
-    <!-- أضف المزيد من التطبيقات هنا مع نفس الصيغة -->
+    <div class="products-grid" id="productsGrid">
 
-  </section>
+      <!-- Product example -->
+      <div class="product-card" data-category="action" data-title="pubg mobile mod" tabindex="0">
+        <span class="fav-icon" onclick="toggleFavorite(event)" role="button" aria-label="Add to favorites">♡</span>
+        <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG Mobile MOD" />
+        <div class="product-info">
+          <div class="product-title" data-en="PUBG Mobile MOD APK" data-ar="ببجي موبايل مود APK" data-fr="PUBG Mobile MOD APK">PUBG Mobile MOD APK</div>
+          <p class="product-desc" data-en="Unlimited UC, skins unlocked, anti-ban." data-ar="UC غير محدود، جلود مفتوحة، مضاد للحظر." data-fr="UC illimité, skins débloqués, anti-ban.">Unlimited UC, skins unlocked, anti-ban.</p>
+        </div>
+      </div>
 
-  <footer>
-    &copy; 2025 SEK STORE. All rights reserved.
-  </footer>
+      <!-- أضف المزيد من المنتجات هنا بنفس الصيغة -->
+
+    </div>
+
+    <p class="no-results" id="noResults" style="display:none;">No games found</p>
+
+  </main>
 
   <script>
-    // نصوص حسب اللغة
     const texts = {
       en: {
         storeTitle: "SEK STORE",
-        favBtn: "❤️ Favorites",
+        btnFav: "❤️ Favorites",
         searchPlaceholder: "Search apps or games...",
-        featuredTitle: "🔥 Featured Apps",
-        noResults: "No games found",
+        sectionFeatured: "🔥 Featured Apps",
+        filters: {
+          all: "All",
+          action: "Action",
+          strategy: "Strategy",
+          rpg: "RPG"
+        },
+        noResults: "No games found"
       },
       ar: {
         storeTitle: "متجر SEK",
-        favBtn: "❤️ المفضلة",
+        btnFav: "❤️ المفضلة",
         searchPlaceholder: "ابحث عن تطبيق أو لعبة...",
-        featuredTitle: "🔥 التطبيقات المميزة",
-        noResults: "🚫 اللعبة غير موجودة",
+        sectionFeatured: "🔥 التطبيقات المميزة",
+        filters: {
+          all: "الكل",
+          action: "أكشن",
+          strategy: "استراتيجية",
+          rpg: "RPG"
+        },
+        noResults: "🚫 اللعبة غير موجودة"
       },
       fr: {
         storeTitle: "Boutique SEK",
-        favBtn: "❤️ Favoris",
+        btnFav: "❤️ Favoris",
         searchPlaceholder: "Recherchez des applications ou des jeux...",
-        featuredTitle: "🔥 Applications en vedette",
-        noResults: "Aucun jeu trouvé",
+        sectionFeatured: "🔥 Applications en vedette",
+        filters: {
+          all: "Tous",
+          action: "Action",
+          strategy: "Stratégie",
+          rpg: "RPG"
+        },
+        noResults: "Aucun jeu trouvé"
       }
     };
 
-    // تغيير اللغة وتحديث النصوص
+    const langSelect = document.getElementById('languageSelect');
+    const storeTitle = document.getElementById('storeTitle');
+    const btnFav = document.getElementById('btnFav');
+    const searchInput = document.getElementById('searchInput');
+    const sectionFeatured = document.getElementById('sectionFeatured');
+    const filtersDiv = document.getElementById('filters');
+    const noResults = document.getElementById('noResults');
+
+    // لتبديل اللغة وتحديث النصوص
     function changeLanguage(lang) {
       document.documentElement.lang = lang;
-      if (lang === "ar") {
-        document.body.classList.add("rtl");
+      if(lang === 'ar'){
+        document.body.classList.add('rtl');
       } else {
-        document.body.classList.remove("rtl");
+        document.body.classList.remove('rtl');
       }
 
-      document.getElementById("storeTitle").textContent = texts[lang].storeTitle;
-      document.getElementById("favBtn").textContent = texts[lang].favBtn;
-      document.getElementById("searchInput").placeholder = texts[lang].searchPlaceholder;
-      document.getElementById("featuredTitle").textContent = texts[lang].featuredTitle;
-      document.getElementById("noResults").textContent = texts[lang].noResults;
+      storeTitle.textContent = texts[lang].storeTitle;
+      btnFav.textContent = texts[lang].btnFav;
+      searchInput.placeholder = texts[lang].searchPlaceholder;
+      sectionFeatured.textContent = texts[lang].sectionFeatured;
 
-      // تحديث عناوين ووصف التطبيقات حسب اللغة
-      document.querySelectorAll(".app-title").forEach(el => {
-        el.textContent = el.dataset[lang];
-      });
-      document.querySelectorAll(".app-desc").forEach(el => {
-        el.textContent = el.dataset[lang];
+      // تحديث أزرار الفلاتر
+      filtersDiv.querySelectorAll('button').forEach(btn => {
+        const filterKey = btn.dataset.filter;
+        btn.textContent = texts[lang].filters[filterKey] || btn.textContent;
       });
 
-      // إعادة البحث لتحديث النتائج حسب النص الجديد
-      searchApps();
+      noResults.textContent = texts[lang].noResults;
+
+      // تحديث عناوين ووصف المنتجات
+      document.querySelectorAll('.product-title').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+      document.querySelectorAll('.product-desc').forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+
+      searchProducts();
     }
 
-    // البحث
-    function searchApps() {
-      const input = document.getElementById("searchInput").value.toLowerCase();
-      const apps = document.querySelectorAll(".app-card");
+    // بحث
+    function searchProducts() {
+      const val = searchInput.value.toLowerCase();
+      const products = document.querySelectorAll('.product-card');
       let found = false;
 
-      apps.forEach(app => {
-        // نستخدم العنوان المناسب حسب اللغة
-        const lang = document.documentElement.lang || 'en';
-        const titleEl = app.querySelector(".app-title");
-        const title = titleEl ? titleEl.textContent.toLowerCase() : "";
-        if (title.includes(input)) {
-          app.style.display = "block";
+      products.forEach(product => {
+        const titleEl = product.querySelector('.product-title');
+        const title = titleEl.textContent.toLowerCase();
+        const category = product.dataset.category;
+        const activeFilter = document.querySelector('.filters button.active').dataset.filter;
+
+        const matchesSearch = title.includes(val);
+        const matchesFilter = (activeFilter === 'all') || (category === activeFilter);
+
+        if(matchesSearch && matchesFilter){
+          product.style.display = '';
           found = true;
         } else {
-          app.style.display = "none";
+          product.style.display = 'none';
         }
       });
 
-      document.getElementById("noResults").style.display = found ? "none" : "block";
+      noResults.style.display = found ? 'none' : 'block';
     }
 
-    // تبديل المفضلة
-    function toggleFavorite(e) {
+    // فلترة حسب التصنيف
+    function filterCategory(e){
+      const btns = filtersDiv.querySelectorAll('button');
+      btns.forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
+      searchProducts();
+    }
+
+    // المفضلة مع حفظ محلي
+    function toggleFavorite(e){
       e.stopPropagation();
       const icon = e.currentTarget;
-      icon.classList.toggle("active");
-      icon.textContent = icon.classList.contains("active") ? "❤️" : "♡";
-      const app = icon.closest(".app-card");
-      app.dataset.favorite = icon.classList.contains("active");
+      const product = icon.closest('.product-card');
+      const productId = product.dataset.title || product.querySelector('.product-title').textContent;
+
+      let favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+
+      if(favs.includes(productId)){
+        favs = favs.filter(id => id !== productId);
+        icon.classList.remove('active');
+        icon.textContent = '♡';
+      } else {
+        favs.push(productId);
+        icon.classList.add('active');
+        icon.textContent = '❤️';
+      }
+      localStorage.setItem('favorites', JSON.stringify(favs));
     }
 
-    // إظهار المفضلة فقط
-    function showFavorites() {
-      const apps = document.querySelectorAll(".app-card");
-      apps.forEach(app => {
-        app.style.display = app.dataset.favorite === "true" ? "block" : "none";
+    // تحميل المفضلة من localStorage
+    function loadFavorites(){
+      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+      document.querySelectorAll('.product-card').forEach(card => {
+        const productId = card.dataset.title || card.querySelector('.product-title').textContent;
+        const icon = card.querySelector('.fav-icon');
+        if(favs.includes(productId)){
+          icon.classList.add('active');
+          icon.textContent = '❤️';
+        } else {
+          icon.classList.remove('active');
+          icon.textContent = '♡';
+        }
       });
-
-      document.getElementById("noResults").style.display =
-        [...apps].some(app => app.style.display === "block") ? "none" : "block";
     }
 
-    // تهيئة اللغة الافتراضية
+    // إظهار فقط المفضلة أو الكل
+    let showFavsOnly = false;
+    function toggleShowFavorites(){
+      showFavsOnly = !showFavsOnly;
+      const favs = JSON.parse(localStorage.getItem('favorites') || '[]');
+      document.querySelectorAll('.product-card').forEach(card => {
+        const productId = card.dataset.title || card.querySelector('.product-title').textContent;
+        if(showFavsOnly){
+          if(favs.includes(productId)){
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        } else {
+          card.style.display = '';
+        }
+      });
+      btnFav.textContent = showFavsOnly ? '📋 Show All' : texts[langSelect.value].btnFav;
+      noResults.style.display = showFavsOnly && favs.length === 0 ? 'block' : 'none';
+    }
+
+    // بدء تحميل المفضلة عند التحميل
     window.onload = () => {
-      const defaultLang = document.getElementById("languageSelect").value;
-      changeLanguage(defaultLang);
+      changeLanguage('en');
+      loadFavorites();
     };
   </script>
 
