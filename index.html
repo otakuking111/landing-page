@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>بوت دردشة متطور + قراءة نص من صورة (OCR)</title>
+<title>بوت دردشة ذكي متعدد اللغات + قراءة نص من صورة</title>
 <style>
-  body { font-family: Arial, sans-serif; max-width: 600px; margin: 2em auto; padding: 1em; background: #f0f0f5; }
-  #chatbox { border: 1px solid #ccc; background: white; padding: 1em; height: 350px; overflow-y: auto; white-space: pre-wrap; }
+  body { font-family: Arial, sans-serif; max-width: 700px; margin: 2em auto; background: #fafafa; padding: 1em; }
+  #chatbox { border: 1px solid #ddd; background: #fff; padding: 1em; height: 400px; overflow-y: auto; white-space: pre-wrap; }
   .message { margin: 1em 0; }
-  .user { color: blue; }
-  .bot { color: green; }
-  textarea { width: 100%; height: 80px; margin-top: 1em; }
-  button { padding: 10px 20px; margin-top: 0.5em; }
+  .user { color: #1a73e8; }
+  .bot { color: #34a853; }
+  textarea { width: 100%; height: 90px; margin-top: 1em; resize: none; }
+  button { padding: 10px 25px; margin-top: 0.7em; background: #1a73e8; color: white; border: none; border-radius: 4px; cursor: pointer; }
   #imageInput { margin-top: 1em; }
 </style>
 </head>
 <body>
 
-<h2>بوت دردشة متطور + قراءة نص من صورة (OCR) بدون API</h2>
+<h2>بوت دردشة ذكي متعدد اللغات + قراءة نص من صورة (OCR)</h2>
 
 <div id="chatbox"></div>
 
@@ -30,79 +30,73 @@
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
 
 <script>
+// المتغيرات
 const chatbox = document.getElementById('chatbox');
 const input = document.getElementById('input');
 const imageInput = document.getElementById('imageInput');
 
-// تخزين النص المستخرج من الصور
+// تخزين آخر نص مستخرج من الصور
 let lastExtractedText = "";
 
-// قاعدة ردود بوت ذكيّة مع كلمات مفتاحية مرنة
-const responses = [
-  { keywords: ["مرحبا", "أهلا", "السلام"], reply: "مرحباً بك! كيف يمكنني مساعدتك اليوم؟" },
-  { keywords: ["كيف حالك", "كيف أنت", "الحال"], reply: "أنا بخير، شكراً لسؤالك! كيف يمكنني خدمتك؟" },
-  { keywords: ["ما اسمك", "من أنت", "من تكون"], reply: "أنا بوت دردشة متطور أعمل بدون API وأستطيع قراءة نصوص من الصور." },
-  { keywords: ["وداعا", "مع السلامة", "إلى اللقاء"], reply: "مع السلامة! أتمنى لك يوماً رائعاً." },
-  { keywords: ["شكراً", "شكرا", "متشكر"], reply: "على الرحب والسعة! أي شيء تحتاجه أنا هنا." },
-  { keywords: ["كيف تعمل", "كيف تشتغل", "كيف تشتغل؟"], reply: "أنا أستخدم قاعدة كلمات مفتاحية للرد، وأقرأ نصوص من الصور باستخدام تقنية OCR." },
-  { keywords: ["ماذا تفعل", "ما عملك", "وظيفتك"], reply: "أساعدك بالدردشة، وأستطيع قراءة نص من الصور التي ترفعها!" },
-  { keywords: ["النص المستخرج", "النص الذي استخرجته", "ما هو النص"], reply: () => {
-    return lastExtractedText 
-      ? `النص الأخير الذي استخرجته من الصورة هو:\n${lastExtractedText}` 
-      : "لم يتم رفع أي صورة بعد لاستخراج النص.";
-  }},
+// عبارة صانع البوت بكل اللغات (نستخدمها للرد على سؤال "من صنعك؟")
+const creatorName = "Salmane ELKADDANI";
+
+// قاعدة بيانات متعددة اللغات من الأسئلة والأجوبة مع دعم تعابير منتظمة
+const knowledgeBase = [
+  // تحيات عامة بأي لغة
+  { patterns: [/hello/i, /hi/i, /hey/i, /مرحبا/i, /أهلا/i, /سلام/i], reply: "مرحباً! كيف يمكنني مساعدتك اليوم؟" },
+  { patterns: [/how are you/i, /كيف حالك/i, /كيف أنت/i, /how do you do/i], reply: "أنا بخير، شكراً لسؤالك! كيف يمكنني خدمتك؟" },
+
+  // سؤال عن اسم البوت أو صانعه بكل اللغات
+  { patterns: [
+      /who (created|made|developed|is your creator|is your owner)/i,
+      /من (صنعك|مالك|مطوّرك|مطورك|مالكك|أنشأك)/i,
+      /qui t'a créé/i,
+      /wer hat dich gemacht/i,
+      /chi ti ha creato/i,
+      /quién te creó/i,
+      /quem te criou/i,
+      /кто тебя создал/i,
+      /誰があなたを作った/i
+    ], 
+    reply: `My creator is ${creatorName}. / صانعي هو ${creatorName}. / Mon créateur est ${creatorName}. / Mein Entwickler ist ${creatorName}. / Il mio creatore è ${creatorName}. / Mi creador es ${creatorName}. / Meu criador é ${creatorName}. / Мой создатель - ${creatorName}. / 私の作成者は${creatorName}です。`
+  },
+
+  // وداع وعبارات شكر متعددة اللغات
+  { patterns: [/bye/i, /goodbye/i, /مع السلامة/i, /وداعا/i], reply: "مع السلامة! أتمنى لك يوماً رائعاً." },
+  { patterns: [/thank you/i, /thanks/i, /شكراً/i, /متشكر/i], reply: "على الرحب والسعة! أي شيء تحتاجه أنا هنا." },
+
+  // أسئلة عن كيفية عمل البوت
+  { patterns: [/how do you work/i, /how do you operate/i, /كيف تعمل/i, /كيف تشتغل/i], reply: "أنا أستخدم قواعد ذكية لتحليل كلامك، وأستطيع قراءة نصوص من الصور." },
+
+  // أسئلة عامة عن وظيفة البوت
+  { patterns: [/what do you do/i, /what is your function/i, /ماذا تفعل/i], reply: "أنا هنا لمساعدتك بالدردشة وقراءة نصوص من الصور التي ترفعها." },
+
+  // سؤال عن النص المستخرج من الصور بأي لغة
+  { patterns: [/extracted text/i, /النص المستخرج/i, /النص الذي استخرجته/i, /what text/i], 
+    reply: () => lastExtractedText ? `النص الأخير من الصورة:\n${lastExtractedText}` : "لم يتم رفع أي صورة لاستخراج النص." },
 ];
 
-// دالة إيجاد الرد المناسب، تدعم الدوال للردود المتقدمة
-function findReply(text) {
-  const lowerText = text.toLowerCase();
-
-  // تحقق أولاً هل المستخدم يريد النص من الصور؟
-  for (const item of responses) {
-    for (const kw of item.keywords) {
-      if (lowerText.includes(kw.toLowerCase())) {
-        if (typeof item.reply === "function") {
-          return item.reply();
-        } else {
-          return item.reply;
-        }
+// دالة بحث ذكية بالأنماط مع دعم دوال الردود
+function findBestReply(text) {
+  for (const item of knowledgeBase) {
+    for (const pattern of item.patterns) {
+      if (pattern.test(text)) {
+        return typeof item.reply === 'function' ? item.reply() : item.reply;
       }
     }
   }
-
-  // بحث عن أفضل تطابق بناءً على عدد الكلمات المفتاحية
-  let bestMatch = null;
-  let maxMatches = 0;
-
-  for (const item of responses) {
-    let matches = 0;
-    for (const kw of item.keywords) {
-      if (lowerText.includes(kw.toLowerCase())) {
-        matches++;
-      }
-    }
-    if (matches > maxMatches) {
-      maxMatches = matches;
-      bestMatch = item.reply;
-    }
-  }
-
-  if (maxMatches === 0) {
-    const defaultReplies = [
-      "عذراً، لم أفهم سؤالك جيداً. هل يمكنك إعادة الصياغة؟",
-      "هل يمكنك التوضيح أكثر؟",
-      "أنا أحاول مساعدتك، لكن لم أفهم تماماً.",
-      "هل يمكنك أن تسأل بطريقة أخرى؟"
-    ];
-    return defaultReplies[Math.floor(Math.random() * defaultReplies.length)];
-  }
-
-  if (typeof bestMatch === "function") {
-    return bestMatch();
-  }
-  return bestMatch;
+  // ردود عامة إذا ما فهمنا
+  const fallback = [
+    "عذراً، لم أفهم سؤالك جيداً. هل يمكنك إعادة الصياغة؟",
+    "هل يمكنك التوضيح أكثر؟",
+    "أنا أحاول مساعدتك، لكن لم أفهم تماماً.",
+    "هل يمكنك أن تسأل بطريقة أخرى؟"
+  ];
+  return fallback[Math.floor(Math.random() * fallback.length)];
 }
 
+// إظهار الرسائل في صندوق الدردشة
 function appendMessage(role, text) {
   const div = document.createElement('div');
   div.classList.add('message', role);
@@ -111,19 +105,20 @@ function appendMessage(role, text) {
   chatbox.scrollTop = chatbox.scrollHeight;
 }
 
+// إرسال رسالة المستخدم ومعالجة الرد
 function sendMessage() {
-  const userMessage = input.value.trim();
-  if (!userMessage) return;
-  appendMessage('user', userMessage);
+  const userText = input.value.trim();
+  if (!userText) return;
+  appendMessage('user', userText);
   input.value = '';
 
   setTimeout(() => {
-    const botReply = findReply(userMessage);
-    appendMessage('bot', botReply);
-  }, 700);
+    const reply = findBestReply(userText);
+    appendMessage('bot', reply);
+  }, 600);
 }
 
-// معالجة رفع الصور واستخراج النص منها
+// رفع صورة وقراءة النص منها (OCR)
 imageInput.addEventListener('change', () => {
   const file = imageInput.files[0];
   if (!file) return;
@@ -131,31 +126,28 @@ imageInput.addEventListener('change', () => {
   appendMessage('user', `[صورة مرفوعة: ${file.name}]`);
   appendMessage('bot', 'جارٍ استخراج النص من الصورة...');
 
-  Tesseract.recognize(
-    file,
-    'ara',
-    { logger: m => console.log(m) }
-  ).then(({ data: { text } }) => {
-    removeLastBotMessage();
-
-    if (text.trim()) {
-      lastExtractedText = text.trim();
-      appendMessage('bot', "تم استخراج النص من الصورة بنجاح:\n" + lastExtractedText);
-    } else {
-      appendMessage('bot', "لم أتمكن من استخراج نص من الصورة.");
-    }
-  }).catch(err => {
-    removeLastBotMessage();
-    appendMessage('bot', "حدث خطأ أثناء استخراج النص: " + err.message);
-  });
+  Tesseract.recognize(file, 'ara+eng', { logger: m => console.log(m) })
+    .then(({ data: { text } }) => {
+      removeLastBotMessage();
+      if (text.trim()) {
+        lastExtractedText = text.trim();
+        appendMessage('bot', "تم استخراج النص بنجاح:\n" + lastExtractedText);
+      } else {
+        appendMessage('bot', "لم أتمكن من استخراج نص من الصورة.");
+      }
+    }).catch(err => {
+      removeLastBotMessage();
+      appendMessage('bot', "حدث خطأ أثناء استخراج النص: " + err.message);
+    });
 
   imageInput.value = "";
 });
 
+// إزالة آخر رسالة بوت (لرسالة "جار استخراج النص" المؤقتة)
 function removeLastBotMessage() {
-  const messages = chatbox.querySelectorAll('.bot');
-  if (messages.length > 0) {
-    chatbox.removeChild(messages[messages.length - 1]);
+  const bots = chatbox.querySelectorAll('.bot');
+  if (bots.length > 0) {
+    chatbox.removeChild(bots[bots.length - 1]);
   }
 }
 </script>
