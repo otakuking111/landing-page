@@ -1,155 +1,358 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>بوت دردشة ذكي متعدد اللغات + قراءة نص من صورة</title>
+<title>SekAI - Advanced AI Chatbot & OCR</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-  body { font-family: Arial, sans-serif; max-width: 700px; margin: 2em auto; background: #fafafa; padding: 1em; }
-  #chatbox { border: 1px solid #ddd; background: #fff; padding: 1em; height: 400px; overflow-y: auto; white-space: pre-wrap; }
-  .message { margin: 1em 0; }
-  .user { color: #1a73e8; }
-  .bot { color: #34a853; }
-  textarea { width: 100%; height: 90px; margin-top: 1em; resize: none; }
-  button { padding: 10px 25px; margin-top: 0.7em; background: #1a73e8; color: white; border: none; border-radius: 4px; cursor: pointer; }
-  #imageInput { margin-top: 1em; }
+  /* Reset */
+  * {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a1f44, #083e74);
+    color: #e9edf5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Container */
+  .container {
+    background: #142a54;
+    width: 100%;
+    max-width: 720px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow:
+      0 8px 20px rgba(0, 0, 0, 0.35),
+      inset 0 0 30px rgba(0, 121, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* Header */
+  header {
+    background: linear-gradient(90deg, #00ffb8, #0088ff);
+    color: #0d1b33;
+    font-weight: 700;
+    font-size: 2.4rem;
+    text-align: center;
+    padding: 1.8rem 0;
+    letter-spacing: 2px;
+    box-shadow: 0 3px 10px #00ffb8aa;
+  }
+
+  /* Chatbox */
+  #chatbox {
+    flex: 1;
+    background: #0d204a;
+    padding: 1.8rem 2rem;
+    overflow-y: auto;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color: #00ffb8 transparent;
+  }
+
+  /* Custom scrollbar for Webkit */
+  #chatbox::-webkit-scrollbar {
+    width: 8px;
+  }
+  #chatbox::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #chatbox::-webkit-scrollbar-thumb {
+    background: #00ffb8;
+    border-radius: 10px;
+  }
+
+  /* Messages */
+  .message {
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeSlideIn 0.4s forwards;
+    white-space: pre-wrap;
+    max-width: 85%;
+    border-radius: 15px;
+    padding: 0.85rem 1.2rem;
+    box-shadow: 0 3px 10px rgb(0 255 184 / 0.3);
+  }
+
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* User message style */
+  .user {
+    background: linear-gradient(135deg, #00ffa0, #00cc88);
+    align-self: flex-end;
+    color: #0d1b33;
+    font-weight: 600;
+  }
+
+  /* Bot message style */
+  .bot {
+    background: linear-gradient(135deg, #0055ff, #0088ff);
+    color: #e9edf5;
+    align-self: flex-start;
+    font-weight: 500;
+  }
+
+  /* Input area */
+  #inputArea {
+    background: #083e74;
+    padding: 1.2rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border-top: 1px solid #0066ff44;
+  }
+
+  /* Text input */
+  #input {
+    flex: 1;
+    padding: 0.85rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    transition: box-shadow 0.3s ease;
+  }
+
+  #input:focus {
+    outline: none;
+    box-shadow: 0 0 15px #00ffb8;
+  }
+
+  /* Send button */
+  button#sendBtn {
+    background: #00ffb8;
+    border: none;
+    border-radius: 15px;
+    padding: 0.9rem 1.6rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #0d1b33;
+    box-shadow: 0 5px 15px #00ffb8aa;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button#sendBtn:hover {
+    background: #00d48a;
+  }
+
+  /* Send icon */
+  button#sendBtn svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+    fill: #0d1b33;
+  }
+
+  /* Image upload input styling */
+  #imageInput {
+    background: #0055ff;
+    padding: 0.65rem 1.1rem;
+    border-radius: 15px;
+    border: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #e9edf5;
+    cursor: pointer;
+    box-shadow: 0 4px 10px #0055ffaa;
+    transition: background 0.3s ease;
+  }
+
+  #imageInput:hover {
+    background: #003ea6;
+  }
+
+  #imageInput::-webkit-file-upload-button {
+    cursor: pointer;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .container {
+      height: 90vh;
+      width: 95vw;
+      border-radius: 14px;
+    }
+    header {
+      font-size: 1.8rem;
+      padding: 1.2rem 0;
+    }
+    #chatbox {
+      padding: 1rem 1.2rem;
+      font-size: 1rem;
+    }
+    #inputArea {
+      padding: 1rem 1.2rem;
+      gap: 0.6rem;
+    }
+    #imageInput, button#sendBtn {
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+    }
+  }
 </style>
+
 </head>
 <body>
 
-<h2>بوت دردشة ذكي متعدد اللغات + قراءة نص من صورة (OCR)</h2>
+<div class="container" role="main" aria-label="SekAI chatbot container">
+  <header>SekAI - Advanced AI Chatbot & OCR</header>
 
-<div id="chatbox"></div>
+  <div id="chatbox" role="log" aria-live="polite" aria-relevant="additions"></div>
 
-<textarea id="input" placeholder="اكتب رسالتك هنا..."></textarea><br />
-<button onclick="sendMessage()">أرسل</button><br />
-
-<label for="imageInput">ارفع صورة لاستخراج النص منها:</label><br />
-<input type="file" id="imageInput" accept="image/*" />
+  <form id="inputArea" aria-label="Message input form" onsubmit="event.preventDefault(); sendMessage();">
+    <input id="input" type="text" aria-label="Message input" placeholder="Type your message here..." autocomplete="off" required />
+    <button id="sendBtn" type="submit" aria-label="Send message">
+      Send
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+    </button>
+    <input type="file" id="imageInput" accept="image/*" aria-label="Upload image to extract text" title="Upload image to extract text" />
+  </form>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
-
 <script>
-// المتغيرات
-const chatbox = document.getElementById('chatbox');
-const input = document.getElementById('input');
-const imageInput = document.getElementById('imageInput');
+  const chatbox = document.getElementById('chatbox');
+  const input = document.getElementById('input');
+  const imageInput = document.getElementById('imageInput');
 
-// تخزين آخر نص مستخرج من الصور
-let lastExtractedText = "";
+  let lastExtractedText = "";
 
-// عبارة صانع البوت بكل اللغات (نستخدمها للرد على سؤال "من صنعك؟")
-const creatorName = "Salmane ELKADDANI";
+  const creatorName = "Salmane ELKADDANI";
 
-// قاعدة بيانات متعددة اللغات من الأسئلة والأجوبة مع دعم تعابير منتظمة
-const knowledgeBase = [
-  // تحيات عامة بأي لغة
-  { patterns: [/hello/i, /hi/i, /hey/i, /مرحبا/i, /أهلا/i, /سلام/i], reply: "مرحباً! كيف يمكنني مساعدتك اليوم؟" },
-  { patterns: [/how are you/i, /كيف حالك/i, /كيف أنت/i, /how do you do/i], reply: "أنا بخير، شكراً لسؤالك! كيف يمكنني خدمتك؟" },
+  const knowledgeBase = [
+    { patterns: [/hello/i, /hi/i, /hey/i, /howdy/i, /good morning/i, /good afternoon/i], reply: "Hello! How can I assist you today?" },
+    { patterns: [/how are you/i, /how do you do/i], reply: "I'm doing great, thanks for asking! How about you?" },
 
-  // سؤال عن اسم البوت أو صانعه بكل اللغات
-  { patterns: [
-      /who (created|made|developed|is your creator|is your owner)/i,
-      /من (صنعك|مالك|مطوّرك|مطورك|مالكك|أنشأك)/i,
-      /qui t'a créé/i,
-      /wer hat dich gemacht/i,
-      /chi ti ha creato/i,
-      /quién te creó/i,
-      /quem te criou/i,
-      /кто тебя создал/i,
-      /誰があなたを作った/i
-    ], 
-    reply: `My creator is ${creatorName}. / صانعي هو ${creatorName}. / Mon créateur est ${creatorName}. / Mein Entwickler ist ${creatorName}. / Il mio creatore è ${creatorName}. / Mi creador es ${creatorName}. / Meu criador é ${creatorName}. / Мой создатель - ${creatorName}. / 私の作成者は${creatorName}です。`
-  },
+    { patterns: [
+        /who (created|made|developed|is your creator|is your owner)/i,
+        /who (is your maker|owns you)/i,
+        /من (صنعك|مالك|مطوّرك|مطورك|مالكك|أنشأك)/i,
+        /qui t'a créé/i,
+        /wer hat dich gemacht/i,
+        /chi ti ha creato/i,
+        /quién te creó/i,
+        /quem te criou/i,
+        /кто тебя создал/i,
+        /誰があなたを作った/i
+      ],
+      reply: `My creator is ${creatorName}. / My developer is ${creatorName}. / صانعي هو ${creatorName}. / Mon créateur est ${creatorName}. / Mein Entwickler ist ${creatorName}. / Il mio creatore è ${creatorName}. / Mi creador es ${creatorName}. / Meu criador é ${creatorName}. / Мой создатель - ${creatorName}. / 私の作成者は${creatorName}です。`
+    },
 
-  // وداع وعبارات شكر متعددة اللغات
-  { patterns: [/bye/i, /goodbye/i, /مع السلامة/i, /وداعا/i], reply: "مع السلامة! أتمنى لك يوماً رائعاً." },
-  { patterns: [/thank you/i, /thanks/i, /شكراً/i, /متشكر/i], reply: "على الرحب والسعة! أي شيء تحتاجه أنا هنا." },
+    { patterns: [/bye/i, /goodbye/i, /see you/i, /farewell/i], reply: "Goodbye! Have a wonderful day!" },
+    { patterns: [/thank you/i, /thanks/i], reply: "You're welcome! Feel free to ask me anything." },
 
-  // أسئلة عن كيفية عمل البوت
-  { patterns: [/how do you work/i, /how do you operate/i, /كيف تعمل/i, /كيف تشتغل/i], reply: "أنا أستخدم قواعد ذكية لتحليل كلامك، وأستطيع قراءة نصوص من الصور." },
+    { patterns: [/how do you work/i, /how do you operate/i], reply: "I analyze your messages with smart rules and can extract text from images you upload." },
+    { patterns: [/what do you do/i, /what is your function/i], reply: "I'm here to chat with you and extract text from your uploaded images." },
 
-  // أسئلة عامة عن وظيفة البوت
-  { patterns: [/what do you do/i, /what is your function/i, /ماذا تفعل/i], reply: "أنا هنا لمساعدتك بالدردشة وقراءة نصوص من الصور التي ترفعها." },
+    { patterns: [/extracted text/i, /text from image/i, /last extracted/i],
+      reply: () => lastExtractedText ? `Here is the last extracted text from the image:\n${lastExtractedText}` : "No image text has been extracted yet." },
+  ];
 
-  // سؤال عن النص المستخرج من الصور بأي لغة
-  { patterns: [/extracted text/i, /النص المستخرج/i, /النص الذي استخرجته/i, /what text/i], 
-    reply: () => lastExtractedText ? `النص الأخير من الصورة:\n${lastExtractedText}` : "لم يتم رفع أي صورة لاستخراج النص." },
-];
-
-// دالة بحث ذكية بالأنماط مع دعم دوال الردود
-function findBestReply(text) {
-  for (const item of knowledgeBase) {
-    for (const pattern of item.patterns) {
-      if (pattern.test(text)) {
-        return typeof item.reply === 'function' ? item.reply() : item.reply;
+  function findBestReply(text) {
+    for (const item of knowledgeBase) {
+      for (const pattern of item.patterns) {
+        if (pattern.test(text)) {
+          return typeof item.reply === 'function' ? item.reply() : item.reply;
+        }
       }
     }
+    const fallback = [
+      "Sorry, I didn't quite understand that. Could you please rephrase?",
+      "I'm here to help, but I need a bit more information.",
+      "Could you clarify your question?",
+      "I didn't catch that. Can you ask differently?"
+    ];
+    return fallback[Math.floor(Math.random() * fallback.length)];
   }
-  // ردود عامة إذا ما فهمنا
-  const fallback = [
-    "عذراً، لم أفهم سؤالك جيداً. هل يمكنك إعادة الصياغة؟",
-    "هل يمكنك التوضيح أكثر؟",
-    "أنا أحاول مساعدتك، لكن لم أفهم تماماً.",
-    "هل يمكنك أن تسأل بطريقة أخرى؟"
-  ];
-  return fallback[Math.floor(Math.random() * fallback.length)];
-}
 
-// إظهار الرسائل في صندوق الدردشة
-function appendMessage(role, text) {
-  const div = document.createElement('div');
-  div.classList.add('message', role);
-  div.textContent = (role === 'user' ? "أنت: " : "البوت: ") + text;
-  chatbox.appendChild(div);
-  chatbox.scrollTop = chatbox.scrollHeight;
-}
+  function appendMessage(role, text) {
+    const div = document.createElement('div');
+    div.classList.add('message', role);
+    div.textContent = (role === 'user' ? "You: " : "SekAI: ") + text;
+    chatbox.appendChild(div);
+    chatbox.scrollTop = chatbox.scrollHeight;
+    // Trigger animation
+    div.style.animation = 'none';
+    div.offsetHeight; // trigger reflow
+    div.style.animation = null;
+  }
 
-// إرسال رسالة المستخدم ومعالجة الرد
-function sendMessage() {
-  const userText = input.value.trim();
-  if (!userText) return;
-  appendMessage('user', userText);
-  input.value = '';
+  function sendMessage() {
+    const userText = input.value.trim();
+    if (!userText) return;
+    appendMessage('user', userText);
+    input.value = '';
 
-  setTimeout(() => {
-    const reply = findBestReply(userText);
-    appendMessage('bot', reply);
-  }, 600);
-}
+    setTimeout(() => {
+      const reply = findBestReply(userText);
+      appendMessage('bot', reply);
+    }, 700);
+  }
 
-// رفع صورة وقراءة النص منها (OCR)
-imageInput.addEventListener('change', () => {
-  const file = imageInput.files[0];
-  if (!file) return;
+  imageInput.addEventListener('change', () => {
+    const file = imageInput.files[0];
+    if (!file) return;
 
-  appendMessage('user', `[صورة مرفوعة: ${file.name}]`);
-  appendMessage('bot', 'جارٍ استخراج النص من الصورة...');
+    appendMessage('user', `[Image uploaded: ${file.name}]`);
+    appendMessage('bot', 'Extracting text from image, please wait...');
 
-  Tesseract.recognize(file, 'ara+eng', { logger: m => console.log(m) })
-    .then(({ data: { text } }) => {
+    Tesseract.recognize(file, 'eng+ara', {
+      logger: m => {
+        // Optional: console.log(m);
+      }
+    }).then(({ data: { text } }) => {
       removeLastBotMessage();
       if (text.trim()) {
         lastExtractedText = text.trim();
-        appendMessage('bot', "تم استخراج النص بنجاح:\n" + lastExtractedText);
+        appendMessage('bot', "Text successfully extracted:\n" + lastExtractedText);
       } else {
-        appendMessage('bot', "لم أتمكن من استخراج نص من الصورة.");
+        appendMessage('bot', "Couldn't extract any text from the image.");
       }
     }).catch(err => {
       removeLastBotMessage();
-      appendMessage('bot', "حدث خطأ أثناء استخراج النص: " + err.message);
+      appendMessage('bot', "Error occurred while extracting text: " + err.message);
     });
 
-  imageInput.value = "";
-});
+    imageInput.value = "";
+  });
 
-// إزالة آخر رسالة بوت (لرسالة "جار استخراج النص" المؤقتة)
-function removeLastBotMessage() {
-  const bots = chatbox.querySelectorAll('.bot');
-  if (bots.length > 0) {
-    chatbox.removeChild(bots[bots.length - 1]);
+  function removeLastBotMessage() {
+    const bots = chatbox.querySelectorAll('.bot');
+    if (bots.length > 0) {
+      chatbox.removeChild(bots[bots.length - 1]);
+    }
   }
-}
+
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
 </script>
 
 </body>
