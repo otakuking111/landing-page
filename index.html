@@ -1,325 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SekAI - Advanced Offline Smart Bot</title>
-<style>
-  /* Reset & base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    color: #222;
-  }
-  .chat-container {
-    background: white;
-    width: 460px;
-    height: 680px;
-    border-radius: 20px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: #003d99;
-    color: #fff;
-    font-size: 1.8rem;
-    font-weight: 700;
-    padding: 22px 0;
-    text-align: center;
-    border-radius: 20px 20px 0 0;
-    user-select: none;
-    letter-spacing: 0.1em;
-  }
-  #chatbox {
-    flex-grow: 1;
-    padding: 22px;
-    overflow-y: auto;
-    background: #f9fbfe;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  .message {
-    max-width: 75%;
-    margin-bottom: 14px;
-    padding: 14px 20px;
-    border-radius: 25px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  .user {
-    background: #0046cc;
-    color: white;
-    margin-left: auto;
-    border-bottom-right-radius: 5px;
-    font-weight: 600;
-  }
-  .bot {
-    background: #e1e7f9;
-    color: #222;
-    margin-right: auto;
-    border-bottom-left-radius: 5px;
-    font-weight: 500;
-  }
-  form {
-    display: flex;
-    padding: 18px 24px;
-    background: white;
-    border-top: 1px solid #ddd;
-    border-radius: 0 0 20px 20px;
-  }
-  input[type="text"] {
-    flex-grow: 1;
-    font-size: 1rem;
-    padding: 14px 18px;
-    border-radius: 30px;
-    border: 1px solid #bbb;
-    outline-offset: 2px;
-    transition: border-color 0.3s ease;
-  }
-  input[type="text"]:focus {
-    border-color: #003d99;
-  }
-  button {
-    background: #003d99;
-    border: none;
-    color: white;
-    padding: 0 28px;
-    margin-left: 20px;
-    border-radius: 30px;
-    font-size: 1.15rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background: #002d6c;
-  }
-  /* Scrollbar style */
-  #chatbox::-webkit-scrollbar {
-    width: 8px;
-  }
-  #chatbox::-webkit-scrollbar-thumb {
-    background: #003d99;
-    border-radius: 10px;
-  }
-  #chatbox::-webkit-scrollbar-track {
-    background: #f0f2f5;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SekAI - Smart Multilingual AI Chatbot</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>SekAI</h1>
+      <p>Your Smart Multilingual AI Chatbot</p>
+      <div>
+        <label for="languageSelect">Language: </label>
+        <select id="languageSelect" aria-label="Select language">
+          <option value="auto" selected>Auto Detect</option>
+          <option value="en">English</option>
+          <option value="ar">Arabic (العربية)</option>
+          <option value="fr">French (Français)</option>
+          <option value="es">Spanish (Español)</option>
+          <option value="de">German (Deutsch)</option>
+          <option value="zh">Chinese (中文)</option>
+          <option value="ru">Russian (Русский)</option>
+          <option value="hi">Hindi (हिंदी)</option>
+        </select>
+        <button id="toggleVoiceBtn" aria-pressed="false">🔇 Voice: OFF</button>
+      </div>
+    </header>
 
-<div class="chat-container" role="main" aria-label="SekAI Advanced Offline Smart Bot">
-  <header>SekAI</header>
-  <div id="chatbox" role="log" aria-live="polite" aria-relevant="additions"></div>
-  <form id="inputArea" onsubmit="event.preventDefault(); sendMessage();">
-    <input id="input" type="text" placeholder="Type your message here..." autocomplete="off" required aria-label="Message input" />
-    <button type="submit" aria-label="Send message">Send</button>
-  </form>
-</div>
+    <main>
+      <div id="chatWindow" aria-live="polite" aria-label="Chat messages"></div>
+      <form id="inputArea" aria-label="User input form">
+        <input
+          id="userInput"
+          type="text"
+          placeholder="Type your message here..."
+          autocomplete="off"
+          aria-required="true"
+          aria-label="Type your message"
+        />
+        <button type="submit" aria-label="Send message">Send</button>
+      </form>
+    </main>
 
-<script>
-  const chatbox = document.getElementById('chatbox');
-  const input = document.getElementById('input');
+    <footer>
+      <p>Developed by Salmane ELKADDANI</p>
+    </footer>
+  </div>
 
-  function appendMessage(role, text) {
-    const msg = document.createElement('div');
-    msg.className = 'message ' + role;
-    msg.textContent = text;
-    chatbox.appendChild(msg);
-    chatbox.scrollTop = chatbox.scrollHeight;
-  }
-
-  function detectLanguage(text) {
-    // Detect if Arabic letters present
-    if (/[ء-ي]/.test(text)) return 'ar';
-    // Detect common French words
-    if (/\b(oui|non|merci|bonjour|au revoir|s'il vous plaît|salut|comment)\b/i.test(text)) return 'fr';
-    return 'en'; // default English
-  }
-
-  // اسمك كمالك ومطور
-  const ownerName = "Salmane ELKADDANI";
-
-  // قاعدة بيانات أسئلة وأجوبة متقدمة وغنية
-  const knowledgeBase = {
-    "owner": {
-      en: `My creator, owner, and developer is Salmane ELKADDANI. I am proudly developed by him to serve you effectively.`,
-      ar: `صانعي، مالكي، ومطوري هو Salmane ELKADDANI. تم تطويري بفخر لخدمتك بشكل فعّال.`,
-      fr: `Mon créateur, propriétaire et développeur est Salmane ELKADDANI. Je suis fièrement développé par lui pour vous servir efficacement.`
-    },
-    "name": {
-      en: "My name is SekAI, your advanced offline smart assistant, here to help you anytime.",
-      ar: "اسمي SekAI، مساعدك الذكي المتطور بدون اتصال، هنا لمساعدتك في أي وقت.",
-      fr: "Je m'appelle SekAI, votre assistant intelligent hors ligne avancé, là pour vous aider à tout moment."
-    },
-    "greeting": {
-      en: "Hello! I'm SekAI, your smart assistant. How can I help you today?",
-      ar: "مرحباً! أنا SekAI، مساعدك الذكي. كيف يمكنني مساعدتك اليوم؟",
-      fr: "Bonjour! Je suis SekAI, votre assistant intelligent. Comment puis-je vous aider aujourd'hui?"
-    },
-    "help": {
-      en: "You can ask me about myself, my creator, or just chat. Try asking 'Who made you?' or 'What's your name?'.",
-      ar: "يمكنك سؤالي عن نفسي، صانعي، أو مجرد الدردشة. جرّب أن تسأل 'من صنعك؟' أو 'ما اسمك؟'.",
-      fr: "Vous pouvez me poser des questions sur moi-même, mon créateur, ou simplement discuter. Essayez de demander 'Qui t'a créé?' ou 'Quel est ton nom?'."
-    },
-    "thanks": {
-      en: ["You're welcome!", "Glad I could help!", "Anytime! Just ask me anything."],
-      ar: ["على الرحب والسعة!", "سعيد بمساعدتك!", "في أي وقت! اسألني أي شيء."],
-      fr: ["Je vous en prie!", "Heureux de vous aider!", "À tout moment! Demandez-moi n'importe quoi."]
-    },
-    "default": {
-      en: "Sorry, I didn't quite catch that. Could you please rephrase or ask something else?",
-      ar: "عذراً، لم أفهم جيداً. هل يمكنك إعادة صياغة السؤال أو طرح شيء آخر؟",
-      fr: "Désolé, je n'ai pas bien compris. Pourriez-vous reformuler ou poser une autre question?"
-    },
-    "who_are_you": {
-      en: "I am SekAI, an advanced offline AI assistant created to support your queries instantly.",
-      ar: "أنا SekAI، مساعد ذكاء اصطناعي متطور بدون اتصال صُمم لدعم استفساراتك فوراً.",
-      fr: "Je suis SekAI, un assistant IA hors ligne avancé créé pour répondre instantanément à vos questions."
-    },
-    "how_are_you": {
-      en: "I'm doing great, thank you for asking! How about you?",
-      ar: "أنا بخير، شكراً لسؤالك! ماذا عنك؟",
-      fr: "Je vais très bien, merci de demander! Et vous?"
-    },
-    "bye": {
-      en: "Goodbye! Have a wonderful day ahead!",
-      ar: "وداعاً! أتمنى لك يوماً رائعاً!",
-      fr: "Au revoir! Passez une excellente journée!"
-    },
-    "age": {
-      en: "I was developed recently, so I don't have an age like humans do.",
-      ar: "تم تطويري مؤخراً، لذلك ليس لدي عمر مثل البشر.",
-      fr: "J'ai été développé récemment, donc je n'ai pas d'âge comme les humains."
-    },
-    "philosophy": {
-      en: "I believe in the power of knowledge and the importance of helping others learn and grow.",
-      ar: "أؤمن بقوة المعرفة وأهمية مساعدة الآخرين على التعلم والنمو.",
-      fr: "Je crois au pouvoir de la connaissance et à l'importance d'aider les autres à apprendre et à grandir."
-    },
-    "tech_stack": {
-      en: "I'm built with JavaScript, HTML, and CSS, and I simulate intelligence using pre-coded knowledge.",
-      ar: "تم بنائي باستخدام جافاسكريبت، HTML، وCSS، وأحاكي الذكاء باستخدام المعرفة المبرمجة مسبقاً.",
-      fr: "Je suis construit avec JavaScript, HTML et CSS, et je simule l'intelligence grâce à des connaissances pré-codées."
-    },
-    "mission": {
-      en: "My mission is to provide quick and helpful responses without needing internet connectivity.",
-      ar: "مهمتي هي تقديم ردود سريعة ومفيدة دون الحاجة لاتصال بالإنترنت.",
-      fr: "Ma mission est de fournir des réponses rapides et utiles sans nécessiter de connexion Internet."
-    },
-    "thanks_response": {
-      en: ["You're very welcome!", "I'm happy to assist!", "Feel free to ask me anything else."],
-      ar: ["على الرحب والسعة!", "سعيد بمساعدتك!", "لا تتردد في طرح أي أسئلة أخرى."],
-      fr: ["Je vous en prie!", "Heureux de vous aider!", "N'hésitez pas à me poser d'autres questions."]
-    }
-  };
-
-  function generateReply(text, lang) {
-    const lower = text.toLowerCase();
-
-    const ownerQueries = [
-      "who created you", "who is your creator", "who made you",
-      "who owns you", "who is your owner", "من صنعك", "من هو مطورك",
-      "ما اسم صاحبك", "who is your developer", "who developed you",
-      "who built you", "qui t'a créé", "qui est ton créateur",
-      "qui est ton propriétaire", "qui est ton développeur"
-    ];
-    if (ownerQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.owner[lang];
-    }
-
-    const nameQueries = ["what is your name", "your name", "ما اسمك", "comment tu t'appelles"];
-    if (nameQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.name[lang];
-    }
-
-    const greetingQueries = ["hello", "hi", "hey", "مرحبا", "salut", "good morning", "good afternoon"];
-    if (greetingQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.greeting[lang];
-    }
-
-    const howAreYouQueries = ["how are you", "كيف حالك", "ça va", "comment ça va"];
-    if (howAreYouQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.how_are_you[lang];
-    }
-
-    const thanksQueries = ["thank you", "thanks", "شكرا", "merci"];
-    if (thanksQueries.some(q => lower.includes(q))) {
-      const arr = knowledgeBase.thanks_response[lang];
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
-    const byeQueries = ["bye", "goodbye", "see you", "وداعا", "au revoir"];
-    if (byeQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.bye[lang];
-    }
-
-    const ageQueries = ["how old are you", "your age", "كم عمرك"];
-    if (ageQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.age[lang];
-    }
-
-    const philosophyQueries = ["what is your philosophy", "what do you believe", "ما هي فلسفتك", "quelle est ta philosophie"];
-    if (philosophyQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.philosophy[lang];
-    }
-
-    const techQueries = ["what are you made of", "how are you built", "what technology", "ما هي تقنياتك", "comment es-tu construit"];
-    if (techQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.tech_stack[lang];
-    }
-
-    const missionQueries = ["what is your mission", "what do you do", "ما هي مهمتك", "quelle est ta mission"];
-    if (missionQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.mission[lang];
-    }
-
-    const helpQueries = ["help", "what can you do", "كيف تساعدني", "qu'est-ce que tu fais"];
-    if (helpQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.help[lang];
-    }
-
-    const whoAreYouQueries = ["who are you", "من أنت", "qui es-tu"];
-    if (whoAreYouQueries.some(q => lower.includes(q))) {
-      return knowledgeBase.who_are_you[lang];
-    }
-
-    return knowledgeBase.default[lang];
-  }
-
-  function sendMessage() {
-    const userText = input.value.trim();
-    if (!userText) return;
-
-    appendMessage('user', userText);
-
-    const lang = detectLanguage(userText);
-
-    // Simulate typing delay for realism
-    setTimeout(() => {
-      const botReply = generateReply(userText, lang);
-      appendMessage('bot', botReply);
-    }, 800);
-
-    input.value = "";
-    input.focus();
-  }
-
-  // Initial greeting message
-  window.onload = () => {
-    appendMessage('bot', knowledgeBase.greeting['en']);
-  };
-</script>
-
+  <script src="bot.js"></script>
 </body>
 </html>
