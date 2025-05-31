@@ -130,6 +130,8 @@
       font-size: 20px;
       color: #888;
       cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
     }
 
     .fav-icon.active {
@@ -182,16 +184,16 @@
       <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
       <h1>SEK STORE</h1>
     </div>
-    <button class="fav-btn" onclick="showFavorites()">❤️ المفضلة</button>
+    <button class="fav-btn" onclick="showFavorites()">المفضلة</button>
   </header>
 
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة..." onkeyup="searchApps()">
   </div>
 
-  <div class="section-title">🔥 التطبيقات المميزة</div>
+  <div class="section-title">التطبيقات المميزة</div>
 
-  <div id="noResults" class="no-results">🚫 اللعبة غير موجودة</div>
+  <div id="noResults" class="no-results">اللعبة غير موجودة</div>
 
   <section id="appsContainer" class="apps-container">
 
@@ -206,6 +208,23 @@
     </div>
 
     <!-- أضف المزيد من التطبيقات هنا -->
+    <div class="app-card" data-title="gta5" onclick="location.href='gta5.html'">
+      <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
+      <img src="https://i.postimg.cc/9MD4bQXf/gta5.jpg" alt="GTA 5 MOD">
+      <div class="app-info">
+        <div class="app-title">GTA 5 Mobile MOD APK</div>
+        <div class="app-desc">Unlimited money, unlocked cars and weapons.</div>
+      </div>
+    </div>
+
+    <div class="app-card" data-title="freefire" onclick="location.href='freefire.html'">
+      <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
+      <img src="https://i.postimg.cc/sD4WhsXN/freefire.jpg" alt="Free Fire MOD">
+      <div class="app-info">
+        <div class="app-title">Free Fire MOD APK</div>
+        <div class="app-desc">Unlimited diamonds and exclusive skins.</div>
+      </div>
+    </div>
 
   </section>
 
@@ -214,6 +233,61 @@
   </footer>
 
   <script>
+    const FAVORITES_KEY = "sekstore_favorites";
+
+    window.onload = function() {
+      loadFavorites();
+    };
+
+    function loadFavorites() {
+      const favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+      document.querySelectorAll(".app-card").forEach(app => {
+        const appTitle = app.dataset.title;
+        const icon = app.querySelector(".fav-icon");
+        if (favorites.includes(appTitle)) {
+          icon.classList.add("active");
+          icon.textContent = "❤️";
+          app.dataset.favorite = "true";
+        } else {
+          icon.classList.remove("active");
+          icon.textContent = "♡";
+          app.dataset.favorite = "false";
+        }
+      });
+    }
+
+    function toggleFavorite(e) {
+      e.stopPropagation();
+      const icon = e.currentTarget;
+      const app = icon.closest(".app-card");
+      const appTitle = app.dataset.title;
+
+      icon.classList.toggle("active");
+      const isActive = icon.classList.contains("active");
+      icon.textContent = isActive ? "❤️" : "♡";
+      app.dataset.favorite = isActive ? "true" : "false";
+
+      let favorites = JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+      if (isActive) {
+        if (!favorites.includes(appTitle)) {
+          favorites.push(appTitle);
+        }
+      } else {
+        favorites = favorites.filter(title => title !== appTitle);
+      }
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
+    }
+
+    function showFavorites() {
+      const apps = document.querySelectorAll(".app-card");
+      apps.forEach(app => {
+        app.style.display = app.dataset.favorite === "true" ? "block" : "none";
+      });
+
+      document.getElementById("noResults").style.display =
+        [...apps].some(app => app.style.display === "block") ? "none" : "block";
+    }
+
     function searchApps() {
       const input = document.getElementById("searchInput").value.toLowerCase();
       const apps = document.querySelectorAll(".app-card");
@@ -230,25 +304,6 @@
       });
 
       document.getElementById("noResults").style.display = found ? "none" : "block";
-    }
-
-    function toggleFavorite(e) {
-      e.stopPropagation();
-      const icon = e.currentTarget;
-      icon.classList.toggle("active");
-      icon.textContent = icon.classList.contains("active") ? "❤️" : "♡";
-      const app = icon.closest(".app-card");
-      app.dataset.favorite = icon.classList.contains("active");
-    }
-
-    function showFavorites() {
-      const apps = document.querySelectorAll(".app-card");
-      apps.forEach(app => {
-        app.style.display = app.dataset.favorite === "true" ? "block" : "none";
-      });
-
-      document.getElementById("noResults").style.display =
-        [...apps].some(app => app.style.display === "block") ? "none" : "block";
     }
   </script>
 
