@@ -8,6 +8,10 @@
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -21,6 +25,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
     }
 
     .logo-container {
@@ -35,7 +40,7 @@
     }
 
     header h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 600;
       margin: 0;
     }
@@ -47,13 +52,13 @@
       color: white;
       border-radius: 20px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
     .search-bar {
-      margin: 2rem auto 1rem;
+      margin: 1.5rem auto 1rem;
       max-width: 600px;
-      display: flex;
-      justify-content: center;
+      padding: 0 1rem;
     }
 
     .search-bar input {
@@ -76,9 +81,9 @@
 
     .apps-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.8rem;
-      padding: 0 2rem 3rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1.5rem 3rem;
     }
 
     .app-card {
@@ -92,7 +97,7 @@
     }
 
     .app-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
     }
 
     .app-card img {
@@ -146,6 +151,28 @@
       color: #666;
       border-top: 1px solid #222;
     }
+
+    @media screen and (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .fav-btn {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .logo-container {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .apps-container {
+        padding: 0 1rem 3rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -162,13 +189,13 @@
     <input type="text" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة..." onkeyup="searchApps()">
   </div>
 
-  <div class="section-title">🚀 التطبيقات المميزة</div>
+  <div class="section-title">🔥 التطبيقات المميزة</div>
 
   <div id="noResults" class="no-results">🚫 اللعبة غير موجودة</div>
 
   <section id="appsContainer" class="apps-container">
 
-    <!-- PUBG Example -->
+    <!-- مثال لتطبيق -->
     <div class="app-card" data-title="pubg" onclick="location.href='pubg.html'">
       <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
       <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG MOD">
@@ -178,7 +205,7 @@
       </div>
     </div>
 
-    <!-- Add more cards by duplicating the above div -->
+    <!-- أضف المزيد من التطبيقات هنا -->
 
   </section>
 
@@ -220,7 +247,8 @@
         app.style.display = app.dataset.favorite === "true" ? "block" : "none";
       });
 
-      document.getElementById("noResults").style.display = [...apps].some(app => app.style.display === "block") ? "none" : "block";
+      document.getElementById("noResults").style.display =
+        [...apps].some(app => app.style.display === "block") ? "none" : "block";
     }
   </script>
 
