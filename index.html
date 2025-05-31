@@ -5,225 +5,167 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SekAI - Multilingual Smart Chatbot</title>
 <style>
-  /* --- Reset and base --- */
-  * {
-    box-sizing: border-box;
-  }
   body {
-    margin: 0; padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #4b6cb7, #182848);
-    color: #eee;
+    background: #f0f2f5;
+    margin: 0; padding: 0;
     display: flex;
     flex-direction: column;
     height: 100vh;
   }
   header {
-    background: rgba(30, 50, 80, 0.9);
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-  }
-  header h1 {
+    background: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    font-size: 1.6rem;
-    color: #60a5fa;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.05em;
     user-select: none;
   }
-  #controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  select, button {
-    background: #2c3e50;
-    border: none;
-    color: #eee;
-    padding: 8px 14px;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    user-select: none;
-    transition: background 0.3s ease;
-  }
-  select:focus, button:focus {
-    outline: 2px solid #60a5fa;
-  }
-  button:hover {
-    background: #4a6aa1;
-  }
-  main {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 30px;
-    background: rgba(30, 40, 60, 0.7);
-    overflow: hidden;
-  }
-  #chatWindow {
-    flex-grow: 1;
+  #chat {
+    flex: 1;
     overflow-y: auto;
-    padding-right: 10px;
-    border-radius: 8px;
-    background: #243b55;
-    box-shadow: inset 0 0 20px #1a2a43;
+    padding: 1rem;
+    background: white;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
   }
   .message {
-    max-width: 70%;
-    margin: 10px 0;
-    padding: 12px 18px;
+    max-width: 75%;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
     border-radius: 18px;
     line-height: 1.4;
     font-size: 1rem;
-  }
-  .message.bot {
-    background: #2e86de;
-    align-self: flex-start;
-    border-bottom-left-radius: 0;
+    word-wrap: break-word;
   }
   .message.user {
-    background: #1abc9c;
+    background: #4a90e2;
+    color: white;
     align-self: flex-end;
-    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 4px;
   }
-  form#inputArea {
+  .message.bot {
+    background: #e5e5ea;
+    color: #333;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  form {
     display: flex;
-    gap: 12px;
-    margin-top: 15px;
+    border-top: 1px solid #ccc;
+    background: white;
+    padding: 0.5rem;
   }
-  input#userInput {
-    flex-grow: 1;
-    padding: 12px 16px;
+  input[type="text"] {
+    flex: 1;
     font-size: 1rem;
-    border-radius: 24px;
-    border: none;
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
     outline: none;
+    transition: border-color 0.3s;
   }
-  button#sendBtn {
-    padding: 0 20px;
-    border-radius: 24px;
-    background: #60a5fa;
-    color: #182848;
-    font-weight: 700;
+  input[type="text"]:focus {
+    border-color: #4a90e2;
+  }
+  button {
+    background: #4a90e2;
     border: none;
+    color: white;
+    padding: 0 1rem;
+    margin-left: 0.5rem;
+    border-radius: 20px;
     cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s;
+  }
+  button:hover {
+    background: #357ABD;
+  }
+  #language-select {
+    margin-left: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  #footer {
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+    padding: 0.5rem;
+    background: #fafafa;
+    border-top: 1px solid #ccc;
     user-select: none;
-    transition: background 0.3s ease;
-  }
-  button#sendBtn:hover:not(:disabled) {
-    background: #3b82f6;
-  }
-  button#sendBtn:disabled {
-    background: #a5b4fc;
-    cursor: not-allowed;
-  }
-  /* Scrollbar */
-  #chatWindow::-webkit-scrollbar {
-    width: 8px;
-  }
-  #chatWindow::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 4px;
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    header h1 {
-      font-size: 1.3rem;
-    }
-    .message {
-      max-width: 90%;
-      font-size: 0.9rem;
-    }
   }
 </style>
 </head>
 <body>
-<header>
-  <h1>SekAI 🤖</h1>
-  <div id="controls">
-    <select id="languageSelect" aria-label="Select chat language">
-      <option value="auto" selected>Auto Detect</option>
-      <option value="en">English</option>
-      <option value="ar">Arabic (العربية)</option>
-      <option value="fr">French (Français)</option>
-      <option value="es">Spanish (Español)</option>
-      <option value="de">German (Deutsch)</option>
-      <option value="zh">Chinese (中文)</option>
-      <option value="ru">Russian (Русский)</option>
-      <option value="hi">Hindi (हिन्दी)</option>
-    </select>
-    <button id="toggleVoiceBtn" aria-pressed="false" aria-label="Toggle voice synthesis">🔇 Voice OFF</button>
-    <button id="startVoiceInput" aria-label="Start voice input">🎤 Talk</button>
-  </div>
-</header>
-<main>
-  <div id="chatWindow" role="log" aria-live="polite" aria-relevant="additions"></div>
-  <form id="inputArea" aria-label="Chat input form">
-    <input
-      type="text"
-      id="userInput"
-      placeholder="Type your message here..."
-      autocomplete="off"
-      aria-required="true"
-      aria-label="Chat input"
-      spellcheck="false"
-    />
-    <button type="submit" id="sendBtn" disabled>Send</button>
-  </form>
-</main>
+
+<header>SekAI Chatbot</header>
+
+<div id="chat"></div>
+
+<form id="inputArea" autocomplete="off">
+  <input type="text" id="userInput" placeholder="Type your message here..." />
+  <select id="language-select" title="Select language or auto detect">
+    <option value="auto" selected>Auto Detect</option>
+    <option value="en">English</option>
+    <option value="ar">Arabic - العربية</option>
+    <option value="fr">French - Français</option>
+    <option value="es">Spanish - Español</option>
+    <option value="de">German - Deutsch</option>
+    <option value="ru">Russian - Русский</option>
+    <option value="hi">Hindi - हिन्दी</option>
+    <option value="zh">Chinese - 中文</option>
+  </select>
+  <button type="submit">Send</button>
+</form>
+
+<div id="footer">© 2025 Salmane ELKADDANI - Developed by Salmane ELKADDANI</div>
 
 <script>
-  // Variables
-  const chatWindow = document.getElementById('chatWindow');
+(() => {
+  const chatWindow = document.getElementById('chat');
   const inputArea = document.getElementById('inputArea');
   const userInput = document.getElementById('userInput');
-  const sendBtn = document.getElementById('sendBtn');
-  const languageSelect = document.getElementById('languageSelect');
-  const toggleVoiceBtn = document.getElementById('toggleVoiceBtn');
-  const startVoiceInputBtn = document.getElementById('startVoiceInput');
+  const languageSelect = document.getElementById('language-select');
 
-  let voiceEnabled = false;
+  const voiceEnabled = true;
 
-  // Enable send button when input not empty
-  userInput.addEventListener('input', () => {
-    sendBtn.disabled = userInput.value.trim() === '';
-  });
-
-  // Knowledge base with multilingual answers
+  // قاعدة المعرفة: ردود متعددة اللغات ومحتوى غني
   const knowledgeBase = {
     greeting: {
-      en: "Hello! I'm SekAI, your smart multilingual chatbot. How can I assist you today?",
-      ar: "مرحباً! أنا SekAI، بوت الدردشة الذكي متعدد اللغات. كيف يمكنني مساعدتك اليوم؟",
-      fr: "Bonjour! Je suis SekAI, votre chatbot multilingue intelligent. Comment puis-je vous aider aujourd'hui?",
-      es: "¡Hola! Soy SekAI, tu chatbot multilingüe inteligente. ¿Cómo puedo ayudarte hoy?",
-      de: "Hallo! Ich bin SekAI, dein smarter mehrsprachiger Chatbot. Wie kann ich dir heute helfen?",
-      zh: "你好！我是SekAI，你的多语言智能聊天机器人。今天我能帮你什么？",
-      ru: "Привет! Я SekAI, твой умный многоязычный чатбот. Чем могу помочь?",
-      hi: "नमस्ते! मैं SekAI हूँ, आपका स्मार्ट बहुभाषी चैटबॉट। आज मैं आपकी कैसे मदद कर सकता हूँ?"
+      en: "Hello! Ask me anything.",
+      ar: "مرحباً! اسألني أي شيء.",
+      fr: "Bonjour! Posez-moi une question.",
+      es: "¡Hola! Pregúntame lo que quieras.",
+      de: "Hallo! Frag mich etwas.",
+      ru: "Привет! Спроси меня о чем угодно.",
+      hi: "नमस्ते! मुझसे कुछ भी पूछें।",
+      zh: "你好！问我任何问题。"
     },
     who_is_salmane: {
-      en: "Salmane ELKADDANI is the visionary developer and owner of SekAI chatbot, dedicated to creating smart and user-friendly AI solutions.",
-      ar: "سلمان القَدّاني هو المطور والرئيس التنفيذي لبوت SekAI، مكرّس لإنشاء حلول ذكاء اصطناعي ذكية وسهلة الاستخدام.",
-      fr: "Salmane ELKADDANI est le développeur visionnaire et propriétaire du chatbot SekAI, dédié à la création de solutions d'IA intelligentes et conviviales.",
-      es: "Salmane ELKADDANI es el desarrollador visionario y propietario del chatbot SekAI, dedicado a crear soluciones de IA inteligentes y fáciles de usar.",
-      de: "Salmane ELKADDANI ist der visionäre Entwickler und Eigentümer des SekAI-Chatbots, der sich der Entwicklung intelligenter und benutzerfreundlicher KI-Lösungen widmet.",
-      zh: "Salmane ELKADDANI 是 SekAI 机器人背后的开发者和创始人，致力于打造智能且易用的 AI 解决方案。",
-      ru: "Salmane ELKADDANI — визионер и разработчик чатбота SekAI, посвятивший себя созданию умных и удобных AI решений.",
-      hi: "Salmane ELKADDANI SekAI चैटबोट के दृष्टिवान डेवलपर और मालिक हैं, जो बुद्धिमान और उपयोगकर्ता-अनुकूल AI समाधान बनाने के लिए समर्पित हैं।"
+      en: "Salmane ELKADDANI is the owner and developer of SekAI chatbot, an expert developer and AI enthusiast.",
+      ar: "سلمان القداني هو مالك ومطور بوت SekAI، مطور خبير وهاوي للذكاء الاصطناعي.",
+      fr: "Salmane ELKADDANI est le propriétaire et développeur du chatbot SekAI, développeur expert et passionné d'IA.",
+      es: "Salmane ELKADDANI es el propietario y desarrollador del chatbot SekAI, un desarrollador experto y entusiasta de la IA.",
+      de: "Salmane ELKADDANI ist der Besitzer und Entwickler des SekAI-Chatbots, ein erfahrener Entwickler und KI-Enthusiast.",
+      ru: "Салман Элькаддани — владелец и разработчик чатбота SekAI, опытный разработчик и энтузиаст ИИ.",
+      hi: "Salmane ELKADDANI SekAI चैटबॉट के मालिक और डेवलपर हैं, एक अनुभवी डेवलपर और एआई उत्साही।",
+      zh: "Salmane ELKADDANI 是 SekAI 聊天机器人的拥有者和开发者，资深开发者和 AI 爱好者。"
     },
     how_to_use: {
-      en: "You can ask me questions in your language, and I will reply accordingly. Try asking about Salmane ELKADDANI or general greetings.",
-      ar: "يمكنك سؤالي بأي لغة وسأجيبك حسب اللغة. جرب أن تسأل عن سلمان القَدّاني أو تحيات عامة.",
-      fr: "Vous pouvez me poser des questions dans votre langue, et je répondrai en conséquence. Essayez de demander à propos de Salmane ELKADDANI ou des salutations générales.",
-      es: "Puedes hacerme preguntas en tu idioma y responderé en consecuencia. Prueba a preguntar sobre Salmane ELKADDANI o saludos generales.",
-      de: "Du kannst mir Fragen in deiner Sprache stellen, und ich antworte entsprechend. Versuche, nach Salmane ELKADDANI oder allgemeinen Grüßen zu fragen.",
-      zh: "你可以用你的语言问我问题，我会相应回答。试试问关于Salmane ELKADDANI或一般问候。",
-      ru: "Вы можете задавать мне вопросы на своем языке, и я отвечу соответственно. Попробуйте спросить о Salmane ELKADDANI или общих приветствиях.",
-      hi: "आप मुझसे अपनी भाषा में सवाल पूछ सकते हैं, और मैं उसी के अनुसार जवाब दूंगा। Salmane ELKADDANI या सामान्य अभिवादन के बारे में पूछें।"
+      en: "Simply type your question and press Send. You can select your preferred language or use Auto Detect.",
+      ar: "فقط اكتب سؤالك واضغط إرسال. يمكنك اختيار لغتك المفضلة أو استخدام الكشف التلقائي.",
+      fr: "Tapez simplement votre question et appuyez sur Envoyer. Vous pouvez sélectionner votre langue préférée ou utiliser la détection automatique.",
+      es: "Simplemente escribe tu pregunta y presiona Enviar. Puedes seleccionar tu idioma preferido o usar la detección automática.",
+      de: "Geben Sie einfach Ihre Frage ein und drücken Sie auf Senden. Sie können Ihre bevorzugte Sprache auswählen oder die automatische Erkennung verwenden.",
+      ru: "Просто введите свой вопрос и нажмите Отправить. Вы можете выбрать предпочитаемый язык или использовать автоматическое определение.",
+      hi: "बस अपना सवाल टाइप करें और भेजें दबाएं। आप अपनी पसंदीदा भाषा चुन सकते हैं या ऑटो डिटेक्ट का उपयोग कर सकते हैं।",
+      zh: "只需输入您的问题并按发送。您可以选择首选语言或使用自动检测。"
     },
     programming_languages: {
       en: "I can talk about programming languages like JavaScript, Python, C++, and more. Ask me anything related!",
@@ -231,9 +173,9 @@
       fr: "Je peux parler des langages de programmation comme JavaScript, Python, C++, et plus. Demandez-moi n'importe quoi!",
       es: "Puedo hablar sobre lenguajes de programación como JavaScript, Python, C++ y más. ¡Pregúntame cualquier cosa relacionada!",
       de: "Ich kann über Programmiersprachen wie JavaScript, Python, C++ und mehr sprechen. Frag mich alles dazu!",
-      zh: "我可以谈论JavaScript、Python、C++等编程语言。随时问我相关的问题！",
       ru: "Я могу говорить о языках программирования, таких как JavaScript, Python, C++ и других. Спрашивайте что угодно!",
-      hi: "मैं JavaScript, Python, C++, और अधिक जैसी प्रोग्रामिंग भाषाओं के बारे में बात कर सकता हूँ। मुझसे कुछ भी पूछें!"
+      hi: "मैं JavaScript, Python, C++, और अधिक जैसी प्रोग्रामिंग भाषाओं के बारे में बात कर सकता हूँ। मुझसे कुछ भी पूछें!",
+      zh: "我可以谈论JavaScript、Python、C++等编程语言。随时问我相关的问题！"
     },
     fun_fact: {
       en: "Did you know? SekAI means 'world' or 'universe' in Japanese, symbolizing the global reach of our chatbot.",
@@ -247,12 +189,12 @@
     }
   };
 
-  // Function: Detect language from text (basic, checks keywords)
+  // دالة للكشف عن اللغة (بشكل بسيط جداً)
   function detectLanguage(text) {
     const lowered = text.toLowerCase();
     if (/[ء-ي]/.test(lowered)) return 'ar';
     if (/[а-яё]/.test(lowered)) return 'ru';
-    if (/[àâçéèêëîïôûùüÿñæœ]/.test(lowered)) return 'fr'; // simplistic French chars
+    if (/[àâçéèêëîïôûùüÿñæœ]/.test(lowered)) return 'fr';
     if (/[áéíóúñ]/.test(lowered)) return 'es';
     if (/[äöüß]/.test(lowered)) return 'de';
     if (/[你好]/.test(lowered)) return 'zh';
@@ -260,123 +202,130 @@
     return 'en';
   }
 
-  // Function: Find reply from knowledge base
+  // دالة للرد بناءً على المدخلات وقاعدة المعرفة
   function getReply(input, lang) {
     input = input.toLowerCase().trim();
 
-    // Greetings
+    // تحية
     if (/^(hi|hello|hey|مرحبا|bonjour|hola|hallo|नमस्ते|здравствуйте|你好)/i.test(input)) {
       return knowledgeBase.greeting[lang] || knowledgeBase.greeting.en;
     }
 
-    // Who is Salmane
+    // من هو سلمان
     if (/who.*salmane|من هو سلمان|qui est salmane|quién es salmane|wer ist salmane|салман|सालमाने/i.test(input)) {
       return knowledgeBase.who_is_salmane[lang] || knowledgeBase.who_is_salmane.en;
     }
 
-    // How to use
-    if (/how (are you|do you work)|كيف تعمل|comment ça marche|cómo funciona|wie funktioniert/i.test(input)) {
+    // كيف تستخدم
+    if (/how (are you|do you work|to use|does this work)|كيف تعمل|comment ça marche|cómo funciona|wie funktioniert/i.test(input)) {
       return knowledgeBase.how_to_use[lang] || knowledgeBase.how_to_use.en;
     }
 
-    // Programming languages
+    // لغات البرمجة
     if (/programming languages?|لغات البرمجة|langages de programmation|lenguajes de programación|programmiersprachen/i.test(input)) {
       return knowledgeBase.programming_languages[lang] || knowledgeBase.programming_languages.en;
     }
 
-    // Fun fact
+    // معلومة ممتعة
     if (/fun fact|معلومة ممتعة|fait amusant|dato curioso|spaßige Tatsache/i.test(input)) {
       return knowledgeBase.fun_fact[lang] || knowledgeBase.fun_fact.en;
     }
 
-    // How are you?
+    // كيف حالك؟
     if (/how are you|كيف حالك|comment ça va|cómo estás|wie geht's|你好吗|как дела|कैसे हो/i.test(input)) {
       const answers = {
-        en: ["I'm good, thank you! How about you?", "Doing great! How can I help?"],
-        ar: ["أنا بخير، شكراً! ماذا عنك؟", "أنا جيد، كيف يمكنني المساعدة؟"],
-        fr: ["Je vais bien, merci! Et toi?", "Ça va bien! Comment puis-je aider?"],
-        es: ["Estoy bien, ¡gracias! ¿Y tú?", "¡Muy bien! ¿En qué puedo ayudar?"],
-        de: ["Mir geht's gut, danke! Und dir?", "Alles bestens! Wie kann ich helfen?"],
-        zh: ["我很好，谢谢！你呢？", "很好！我能帮什么忙？"],
-        ru: ["Я в порядке, спасибо! А ты?", "Отлично! Чем могу помочь?"],
-        hi: ["मैं ठीक हूँ, धन्यवाद! और आप?", "बहुत अच्छा! मैं कैसे मदद कर सकता हूँ?"]
+        en: ["I'm good, thank you! How about you?", "Doing great, thanks!"],
+        ar: ["أنا بخير، شكراً لك! ماذا عنك؟", "أنا بحالة جيدة، شكراً!"],
+        fr: ["Je vais bien, merci! Et vous?", "Ça va bien, merci!"],
+        es: ["Estoy bien, ¡gracias! ¿Y tú?", "¡Muy bien, gracias!"],
+        de: ["Mir geht's gut, danke! Und dir?", "Alles bestens, danke!"],
+        ru: ["У меня всё хорошо, спасибо! А у тебя?", "Всё отлично, спасибо!"],
+        hi: ["मैं ठीक हूँ, धन्यवाद! और आप?", "बहुत अच्छा, धन्यवाद!"],
+        zh: ["我很好，谢谢！你呢？", "很好，谢谢！"]
       };
-      const ans = answers[lang] || answers.en;
-      return ans[Math.floor(Math.random() * ans.length)];
+      const ansList = answers[lang] || answers.en;
+      return ansList[Math.floor(Math.random() * ansList.length)];
     }
 
-    // Default fallback
+    // إذا لم يكن معروفاً
     return {
-      en: "Sorry, I didn't understand that. Can you please rephrase?",
-      ar: "عذراً، لم أفهم ذلك. هل يمكنك إعادة الصياغة؟",
-      fr: "Désolé, je n'ai pas compris. Pouvez-vous reformuler?",
-      es: "Lo siento, no entendí eso. ¿Puedes reformular?",
-      de: "Entschuldigung, das habe ich nicht verstanden. Können Sie das bitte anders formulieren?",
-      zh: "抱歉，我不明白您的意思。您能换一种说法吗？",
-      ru: "Извините, я не понял. Можете переформулировать?",
-      hi: "क्षमा करें, मैं समझ नहीं पाया। क्या आप कृपया पुनः कह सकते हैं?"
-    }[lang] || "Sorry, I didn't understand that. Can you please rephrase?";
+      en: "Sorry, I don't have an answer for that. Try asking something else or use simpler words.",
+      ar: "عذراً، لا أملك جوابًا لهذا. جرب سؤال شيء آخر أو بكلمات أبسط.",
+      fr: "Désolé, je n'ai pas de réponse pour cela. Essayez de poser une autre question ou utilisez des mots plus simples.",
+      es: "Lo siento, no tengo una respuesta para eso. Intenta preguntar otra cosa o usa palabras más simples.",
+      de: "Entschuldigung, ich habe darauf keine Antwort. Versuchen Sie, etwas anderes zu fragen oder einfachere Wörter zu verwenden.",
+      ru: "Извините, у меня нет ответа на это. Попробуйте задать другой вопрос или использовать более простые слова.",
+      hi: "माफ़ कीजिए, मेरे पास इसका जवाब नहीं है। कुछ और पूछें या सरल शब्दों का प्रयोग करें।",
+      zh: "抱歉，我没有答案。试试问别的问题或使用更简单的词语。"
+    }[lang] || "Sorry, I don't have an answer for that.";
   }
 
-  // Function: Add message to chat
-  function addMessage(text, sender = 'bot') {
-    const msgDiv = document.createElement('div');
-    msgDiv.className = 'message ' + sender;
-    msgDiv.textContent = text;
-    chatWindow.appendChild(msgDiv);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-  }
-
-  // Voice synthesis function
+  // دالة للنطق بالصوت
   function speak(text, lang) {
-    if (!voiceEnabled) return;
-    if (!('speechSynthesis' in window)) return;
-
-    window.speechSynthesis.cancel();
+    if (!voiceEnabled || !('speechSynthesis' in window)) return;
+    const synth = window.speechSynthesis;
+    if (synth.speaking) synth.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
-    // Map languages to voice lang tags (simplified)
-    const langMap = {
-      ar: 'ar-SA',
+    utterance.lang = langMapToSpeechSynthesis(lang);
+
+    synth.speak(utterance);
+  }
+
+  // خريطة تحويل رمز اللغة إلى رمز يدعمه speechSynthesis
+  function langMapToSpeechSynthesis(lang) {
+    const map = {
       en: 'en-US',
+      ar: 'ar-SA',
       fr: 'fr-FR',
       es: 'es-ES',
       de: 'de-DE',
-      zh: 'zh-CN',
       ru: 'ru-RU',
-      hi: 'hi-IN'
+      hi: 'hi-IN',
+      zh: 'zh-CN'
     };
-    utterance.lang = langMap[lang] || 'en-US';
-
-    // Optional: choose a voice matching lang
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find(v => v.lang.startsWith(utterance.lang.split('-')[0]));
-    if (voice) utterance.voice = voice;
-
-    window.speechSynthesis.speak(utterance);
+    return map[lang] || 'en-US';
   }
 
-  // Event: Submit message
+  // عرض رسالة في واجهة الدردشة
+  function appendMessage(text, sender = 'bot') {
+    const msg = document.createElement('div');
+    msg.classList.add('message', sender);
+    msg.textContent = text;
+    chatWindow.appendChild(msg);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
   inputArea.addEventListener('submit', e => {
     e.preventDefault();
-    const text = userInput.value.trim();
+    let text = userInput.value.trim();
     if (!text) return;
 
-    addMessage(text, 'user');
+    appendMessage(text, 'user');
 
-    // Detect language or use selected
+    // تحديد اللغة
     let lang = languageSelect.value === 'auto' ? detectLanguage(text) : languageSelect.value;
 
-    const reply = getReply(text, lang);
-    addMessage(reply, 'bot');
+    let reply = getReply(text, lang);
+    if (typeof reply === 'object') reply = reply[lang] || reply.en || "Sorry, I don't understand.";
+
+    appendMessage(reply, 'bot');
     speak(reply, lang);
 
     userInput.value = '';
   });
 
-  // Initialize voices (some browsers require this)
+  // رسالة ترحيبية عند تحميل الصفحة
+  window.onload = () => {
+    appendMessage(knowledgeBase.greeting.en, 'bot');
+  };
+
+  // تهيئة الأصوات
   if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = () => {};
   }
+})();
+</script>
 
-})();Hallo! Du kannst mir gern Fragen auf Deutsch oder einer anderen Sprache stellen. Wie kann ich dir heute helfen? 😊
+</body>
+</html>
