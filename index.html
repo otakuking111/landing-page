@@ -3,84 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>APK Store - Premium MODs</title>
-  <meta name="description" content="Download premium hacked games & apps for free. No cost, no limits!" />
-  <link rel="icon" href="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" />
+  <title>SEK STORE - Premium MODs</title>
+  <meta name="description" content="Explore & download premium MOD APKs for free. Latest versions, unlimited features." />
+  <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
 
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0e0e0e;
-      color: #fff;
+      background-color: #121212;
+      color: #ffffff;
     }
 
     header {
-      background: #1c1c1c;
+      background: #1e1e1e;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 1.4rem;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
     header img {
-      height: 40px;
+      height: 45px;
       border-radius: 12px;
     }
 
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .fav-btn {
+      background: #2a2a2a;
+      padding: 10px 16px;
+      border: none;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
     .search-bar {
-      margin: 1rem auto;
-      max-width: 500px;
+      margin: 2rem auto 1rem;
+      max-width: 600px;
       display: flex;
+      justify-content: center;
     }
 
     .search-bar input {
-      flex: 1;
-      padding: 10px 15px;
+      width: 100%;
+      padding: 12px 20px;
       font-size: 1rem;
       border: none;
       border-radius: 30px;
-      outline: none;
-      background: #1e1e1e;
+      background: #2a2a2a;
       color: #fff;
+      outline: none;
     }
 
-    .store-title {
+    .section-title {
       text-align: center;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      color: #ccc;
+      font-size: 1.3rem;
+      margin: 1.5rem 0 1rem;
+      color: #ddd;
     }
 
     .apps-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      padding: 0 2rem 3rem;
     }
 
     .app-card {
       background: #1f1f1f;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.4);
-      cursor: pointer;
       transition: transform 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     .app-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
     }
 
     .app-card img {
       width: 100%;
-      height: 150px;
+      height: 160px;
       object-fit: cover;
+      border-bottom: 1px solid #333;
     }
 
     .app-info {
@@ -88,9 +107,9 @@
     }
 
     .app-title {
-      font-size: 1.1rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
     .app-desc {
@@ -99,44 +118,111 @@
       line-height: 1.4;
     }
 
+    .fav-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .fav-icon.active {
+      color: red;
+    }
+
+    .no-results {
+      text-align: center;
+      margin-top: 2rem;
+      color: #999;
+      font-size: 1rem;
+      display: none;
+    }
+
     footer {
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #777;
-      margin-top: 2rem;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: #666;
+      border-top: 1px solid #222;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="Logo" />
-      <h1>MOD APK Store</h1>
+    <div class="logo-container">
+      <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
+      <h1>SEK STORE</h1>
     </div>
+    <button class="fav-btn" onclick="showFavorites()">❤️ المفضلة</button>
   </header>
 
   <div class="search-bar">
-    <input type="text" placeholder="Search MOD apps or games...">
+    <input type="text" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة..." onkeyup="searchApps()">
   </div>
 
-  <h2 class="store-title">🔥 Featured Apps</h2>
+  <div class="section-title">🚀 التطبيقات المميزة</div>
 
-  <section class="apps-container">
-    <div class="app-card" onclick="location.href='pubg.html'">
+  <div id="noResults" class="no-results">🚫 اللعبة غير موجودة</div>
+
+  <section id="appsContainer" class="apps-container">
+
+    <!-- PUBG Example -->
+    <div class="app-card" data-title="pubg" onclick="location.href='pubg.html'">
+      <span class="fav-icon" onclick="toggleFavorite(event)">♡</span>
       <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG MOD">
       <div class="app-info">
         <div class="app-title">PUBG Mobile MOD APK</div>
-        <div class="app-desc">Unlimited UC, all skins unlocked, anti-ban. Latest 2025 version!</div>
+        <div class="app-desc">Unlimited UC, skins unlocked, anti-ban.</div>
       </div>
     </div>
+
+    <!-- Add more cards by duplicating the above div -->
+
   </section>
 
   <footer>
-    &copy; 2025 MOD APK Store. All rights reserved.
+    &copy; 2025 SEK STORE. All rights reserved.
   </footer>
+
+  <script>
+    function searchApps() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const apps = document.querySelectorAll(".app-card");
+      let found = false;
+
+      apps.forEach(app => {
+        const title = app.dataset.title.toLowerCase();
+        if (title.includes(input)) {
+          app.style.display = "block";
+          found = true;
+        } else {
+          app.style.display = "none";
+        }
+      });
+
+      document.getElementById("noResults").style.display = found ? "none" : "block";
+    }
+
+    function toggleFavorite(e) {
+      e.stopPropagation();
+      const icon = e.currentTarget;
+      icon.classList.toggle("active");
+      icon.textContent = icon.classList.contains("active") ? "❤️" : "♡";
+      const app = icon.closest(".app-card");
+      app.dataset.favorite = icon.classList.contains("active");
+    }
+
+    function showFavorites() {
+      const apps = document.querySelectorAll(".app-card");
+      apps.forEach(app => {
+        app.style.display = app.dataset.favorite === "true" ? "block" : "none";
+      });
+
+      document.getElementById("noResults").style.display = [...apps].some(app => app.style.display === "block") ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
-
