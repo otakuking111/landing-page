@@ -1,331 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>SekAI - Multilingual Smart Chatbot</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5;
-    margin: 0; padding: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  header {
-    background: #4a90e2;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    user-select: none;
-  }
-  #chat {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1rem;
-    background: white;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-  }
-  .message {
-    max-width: 75%;
-    margin-bottom: 1rem;
-    padding: 0.75rem 1rem;
-    border-radius: 18px;
-    line-height: 1.4;
-    font-size: 1rem;
-    word-wrap: break-word;
-  }
-  .message.user {
-    background: #4a90e2;
-    color: white;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px;
-  }
-  .message.bot {
-    background: #e5e5ea;
-    color: #333;
-    align-self: flex-start;
-    border-bottom-left-radius: 4px;
-  }
-  form {
-    display: flex;
-    border-top: 1px solid #ccc;
-    background: white;
-    padding: 0.5rem;
-  }
-  input[type="text"] {
-    flex: 1;
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    outline: none;
-    transition: border-color 0.3s;
-  }
-  input[type="text"]:focus {
-    border-color: #4a90e2;
-  }
-  button {
-    background: #4a90e2;
-    border: none;
-    color: white;
-    padding: 0 1rem;
-    margin-left: 0.5rem;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: 700;
-    transition: background-color 0.3s;
-  }
-  button:hover {
-    background: #357ABD;
-  }
-  #language-select {
-    margin-left: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.9rem;
-  }
-  #footer {
-    font-size: 0.85rem;
-    color: #555;
-    text-align: center;
-    padding: 0.5rem;
-    background: #fafafa;
-    border-top: 1px solid #ccc;
-    user-select: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APK Store - Premium MODs</title>
+  <meta name="description" content="Download premium hacked games & apps for free. No cost, no limits!" />
+  <link rel="icon" href="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e0e0e;
+      color: #fff;
+    }
+
+    header {
+      background: #1c1c1c;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    header img {
+      height: 40px;
+      border-radius: 12px;
+    }
+
+    .search-bar {
+      margin: 1rem auto;
+      max-width: 500px;
+      display: flex;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 30px;
+      outline: none;
+      background: #1e1e1e;
+      color: #fff;
+    }
+
+    .store-title {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #ccc;
+    }
+
+    .apps-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .app-card {
+      background: #1f1f1f;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .app-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .app-info {
+      padding: 1rem;
+    }
+
+    .app-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .app-desc {
+      font-size: 0.9rem;
+      color: #aaa;
+      line-height: 1.4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
 
-<header>SekAI Chatbot</header>
+  <header>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="Logo" />
+      <h1>MOD APK Store</h1>
+    </div>
+  </header>
 
-<div id="chat"></div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search MOD apps or games...">
+  </div>
 
-<form id="inputArea" autocomplete="off">
-  <input type="text" id="userInput" placeholder="Type your message here..." />
-  <select id="language-select" title="Select language or auto detect">
-    <option value="auto" selected>Auto Detect</option>
-    <option value="en">English</option>
-    <option value="ar">Arabic - العربية</option>
-    <option value="fr">French - Français</option>
-    <option value="es">Spanish - Español</option>
-    <option value="de">German - Deutsch</option>
-    <option value="ru">Russian - Русский</option>
-    <option value="hi">Hindi - हिन्दी</option>
-    <option value="zh">Chinese - 中文</option>
-  </select>
-  <button type="submit">Send</button>
-</form>
+  <h2 class="store-title">🔥 Featured Apps</h2>
 
-<div id="footer">© 2025 Salmane ELKADDANI - Developed by Salmane ELKADDANI</div>
+  <section class="apps-container">
+    <div class="app-card" onclick="location.href='pubg.html'">
+      <img src="https://i.postimg.cc/qqTBSvcH/temp-Imagek6-Mv-K6.avif" alt="PUBG MOD">
+      <div class="app-info">
+        <div class="app-title">PUBG Mobile MOD APK</div>
+        <div class="app-desc">Unlimited UC, all skins unlocked, anti-ban. Latest 2025 version!</div>
+      </div>
+    </div>
+  </section>
 
-<script>
-(() => {
-  const chatWindow = document.getElementById('chat');
-  const inputArea = document.getElementById('inputArea');
-  const userInput = document.getElementById('userInput');
-  const languageSelect = document.getElementById('language-select');
-
-  const voiceEnabled = true;
-
-  // قاعدة المعرفة: ردود متعددة اللغات ومحتوى غني
-  const knowledgeBase = {
-    greeting: {
-      en: "Hello! Ask me anything.",
-      ar: "مرحباً! اسألني أي شيء.",
-      fr: "Bonjour! Posez-moi une question.",
-      es: "¡Hola! Pregúntame lo que quieras.",
-      de: "Hallo! Frag mich etwas.",
-      ru: "Привет! Спроси меня о чем угодно.",
-      hi: "नमस्ते! मुझसे कुछ भी पूछें।",
-      zh: "你好！问我任何问题。"
-    },
-    who_is_salmane: {
-      en: "Salmane ELKADDANI is the owner and developer of SekAI chatbot, an expert developer and AI enthusiast.",
-      ar: "سلمان القداني هو مالك ومطور بوت SekAI، مطور خبير وهاوي للذكاء الاصطناعي.",
-      fr: "Salmane ELKADDANI est le propriétaire et développeur du chatbot SekAI, développeur expert et passionné d'IA.",
-      es: "Salmane ELKADDANI es el propietario y desarrollador del chatbot SekAI, un desarrollador experto y entusiasta de la IA.",
-      de: "Salmane ELKADDANI ist der Besitzer und Entwickler des SekAI-Chatbots, ein erfahrener Entwickler und KI-Enthusiast.",
-      ru: "Салман Элькаддани — владелец и разработчик чатбота SekAI, опытный разработчик и энтузиаст ИИ.",
-      hi: "Salmane ELKADDANI SekAI चैटबॉट के मालिक और डेवलपर हैं, एक अनुभवी डेवलपर और एआई उत्साही।",
-      zh: "Salmane ELKADDANI 是 SekAI 聊天机器人的拥有者和开发者，资深开发者和 AI 爱好者。"
-    },
-    how_to_use: {
-      en: "Simply type your question and press Send. You can select your preferred language or use Auto Detect.",
-      ar: "فقط اكتب سؤالك واضغط إرسال. يمكنك اختيار لغتك المفضلة أو استخدام الكشف التلقائي.",
-      fr: "Tapez simplement votre question et appuyez sur Envoyer. Vous pouvez sélectionner votre langue préférée ou utiliser la détection automatique.",
-      es: "Simplemente escribe tu pregunta y presiona Enviar. Puedes seleccionar tu idioma preferido o usar la detección automática.",
-      de: "Geben Sie einfach Ihre Frage ein und drücken Sie auf Senden. Sie können Ihre bevorzugte Sprache auswählen oder die automatische Erkennung verwenden.",
-      ru: "Просто введите свой вопрос и нажмите Отправить. Вы можете выбрать предпочитаемый язык или использовать автоматическое определение.",
-      hi: "बस अपना सवाल टाइप करें और भेजें दबाएं। आप अपनी पसंदीदा भाषा चुन सकते हैं या ऑटो डिटेक्ट का उपयोग कर सकते हैं।",
-      zh: "只需输入您的问题并按发送。您可以选择首选语言或使用自动检测。"
-    },
-    programming_languages: {
-      en: "I can talk about programming languages like JavaScript, Python, C++, and more. Ask me anything related!",
-      ar: "يمكنني التحدث عن لغات البرمجة مثل جافاسكريبت، بايثون، سي بلس بلس، وأكثر. اسألني أي شيء متعلق!",
-      fr: "Je peux parler des langages de programmation comme JavaScript, Python, C++, et plus. Demandez-moi n'importe quoi!",
-      es: "Puedo hablar sobre lenguajes de programación como JavaScript, Python, C++ y más. ¡Pregúntame cualquier cosa relacionada!",
-      de: "Ich kann über Programmiersprachen wie JavaScript, Python, C++ und mehr sprechen. Frag mich alles dazu!",
-      ru: "Я могу говорить о языках программирования, таких как JavaScript, Python, C++ и других. Спрашивайте что угодно!",
-      hi: "मैं JavaScript, Python, C++, और अधिक जैसी प्रोग्रामिंग भाषाओं के बारे में बात कर सकता हूँ। मुझसे कुछ भी पूछें!",
-      zh: "我可以谈论JavaScript、Python、C++等编程语言。随时问我相关的问题！"
-    },
-    fun_fact: {
-      en: "Did you know? SekAI means 'world' or 'universe' in Japanese, symbolizing the global reach of our chatbot.",
-      ar: "هل تعلم؟ SekAI تعني 'العالم' أو 'الكون' باليابانية، مما يرمز إلى الانتشار العالمي لبوتنا.",
-      fr: "Le saviez-vous? SekAI signifie 'monde' ou 'univers' en japonais, symbolisant la portée mondiale de notre chatbot.",
-      es: "¿Sabías? SekAI significa 'mundo' o 'universo' en japonés, simbolizando el alcance global de nuestro chatbot.",
-      de: "Wusstest du? SekAI bedeutet auf Japanisch 'Welt' oder 'Universum' und symbolisiert die globale Reichweite unseres Chatbots.",
-      zh: "你知道吗？SekAI 在日语中意为“世界”或“宇宙”，象征着我们聊天机器人的全球影响力。",
-      ru: "Знаете ли вы? SekAI означает 'мир' или 'вселенная' на японском, символизируя глобальный охват нашего чатбота.",
-      hi: "क्या आप जानते हैं? SekAI जापानी में 'दुनिया' या 'ब्रह्मांड' का मतलब है, जो हमारे चैटबॉट की वैश्विक पहुंच को दर्शाता है।"
-    }
-  };
-
-  // دالة للكشف عن اللغة (بشكل بسيط جداً)
-  function detectLanguage(text) {
-    const lowered = text.toLowerCase();
-    if (/[ء-ي]/.test(lowered)) return 'ar';
-    if (/[а-яё]/.test(lowered)) return 'ru';
-    if (/[àâçéèêëîïôûùüÿñæœ]/.test(lowered)) return 'fr';
-    if (/[áéíóúñ]/.test(lowered)) return 'es';
-    if (/[äöüß]/.test(lowered)) return 'de';
-    if (/[你好]/.test(lowered)) return 'zh';
-    if (/[ह-९]/.test(lowered)) return 'hi';
-    return 'en';
-  }
-
-  // دالة للرد بناءً على المدخلات وقاعدة المعرفة
-  function getReply(input, lang) {
-    input = input.toLowerCase().trim();
-
-    // تحية
-    if (/^(hi|hello|hey|مرحبا|bonjour|hola|hallo|नमस्ते|здравствуйте|你好)/i.test(input)) {
-      return knowledgeBase.greeting[lang] || knowledgeBase.greeting.en;
-    }
-
-    // من هو سلمان
-    if (/who.*salmane|من هو سلمان|qui est salmane|quién es salmane|wer ist salmane|салман|सालमाने/i.test(input)) {
-      return knowledgeBase.who_is_salmane[lang] || knowledgeBase.who_is_salmane.en;
-    }
-
-    // كيف تستخدم
-    if (/how (are you|do you work|to use|does this work)|كيف تعمل|comment ça marche|cómo funciona|wie funktioniert/i.test(input)) {
-      return knowledgeBase.how_to_use[lang] || knowledgeBase.how_to_use.en;
-    }
-
-    // لغات البرمجة
-    if (/programming languages?|لغات البرمجة|langages de programmation|lenguajes de programación|programmiersprachen/i.test(input)) {
-      return knowledgeBase.programming_languages[lang] || knowledgeBase.programming_languages.en;
-    }
-
-    // معلومة ممتعة
-    if (/fun fact|معلومة ممتعة|fait amusant|dato curioso|spaßige Tatsache/i.test(input)) {
-      return knowledgeBase.fun_fact[lang] || knowledgeBase.fun_fact.en;
-    }
-
-    // كيف حالك؟
-    if (/how are you|كيف حالك|comment ça va|cómo estás|wie geht's|你好吗|как дела|कैसे हो/i.test(input)) {
-      const answers = {
-        en: ["I'm good, thank you! How about you?", "Doing great, thanks!"],
-        ar: ["أنا بخير، شكراً لك! ماذا عنك؟", "أنا بحالة جيدة، شكراً!"],
-        fr: ["Je vais bien, merci! Et vous?", "Ça va bien, merci!"],
-        es: ["Estoy bien, ¡gracias! ¿Y tú?", "¡Muy bien, gracias!"],
-        de: ["Mir geht's gut, danke! Und dir?", "Alles bestens, danke!"],
-        ru: ["У меня всё хорошо, спасибо! А у тебя?", "Всё отлично, спасибо!"],
-        hi: ["मैं ठीक हूँ, धन्यवाद! और आप?", "बहुत अच्छा, धन्यवाद!"],
-        zh: ["我很好，谢谢！你呢？", "很好，谢谢！"]
-      };
-      const ansList = answers[lang] || answers.en;
-      return ansList[Math.floor(Math.random() * ansList.length)];
-    }
-
-    // إذا لم يكن معروفاً
-    return {
-      en: "Sorry, I don't have an answer for that. Try asking something else or use simpler words.",
-      ar: "عذراً، لا أملك جوابًا لهذا. جرب سؤال شيء آخر أو بكلمات أبسط.",
-      fr: "Désolé, je n'ai pas de réponse pour cela. Essayez de poser une autre question ou utilisez des mots plus simples.",
-      es: "Lo siento, no tengo una respuesta para eso. Intenta preguntar otra cosa o usa palabras más simples.",
-      de: "Entschuldigung, ich habe darauf keine Antwort. Versuchen Sie, etwas anderes zu fragen oder einfachere Wörter zu verwenden.",
-      ru: "Извините, у меня нет ответа на это. Попробуйте задать другой вопрос или использовать более простые слова.",
-      hi: "माफ़ कीजिए, मेरे पास इसका जवाब नहीं है। कुछ और पूछें या सरल शब्दों का प्रयोग करें।",
-      zh: "抱歉，我没有答案。试试问别的问题或使用更简单的词语。"
-    }[lang] || "Sorry, I don't have an answer for that.";
-  }
-
-  // دالة للنطق بالصوت
-  function speak(text, lang) {
-    if (!voiceEnabled || !('speechSynthesis' in window)) return;
-    const synth = window.speechSynthesis;
-    if (synth.speaking) synth.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = langMapToSpeechSynthesis(lang);
-
-    synth.speak(utterance);
-  }
-
-  // خريطة تحويل رمز اللغة إلى رمز يدعمه speechSynthesis
-  function langMapToSpeechSynthesis(lang) {
-    const map = {
-      en: 'en-US',
-      ar: 'ar-SA',
-      fr: 'fr-FR',
-      es: 'es-ES',
-      de: 'de-DE',
-      ru: 'ru-RU',
-      hi: 'hi-IN',
-      zh: 'zh-CN'
-    };
-    return map[lang] || 'en-US';
-  }
-
-  // عرض رسالة في واجهة الدردشة
-  function appendMessage(text, sender = 'bot') {
-    const msg = document.createElement('div');
-    msg.classList.add('message', sender);
-    msg.textContent = text;
-    chatWindow.appendChild(msg);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
-  }
-
-  inputArea.addEventListener('submit', e => {
-    e.preventDefault();
-    let text = userInput.value.trim();
-    if (!text) return;
-
-    appendMessage(text, 'user');
-
-    // تحديد اللغة
-    let lang = languageSelect.value === 'auto' ? detectLanguage(text) : languageSelect.value;
-
-    let reply = getReply(text, lang);
-    if (typeof reply === 'object') reply = reply[lang] || reply.en || "Sorry, I don't understand.";
-
-    appendMessage(reply, 'bot');
-    speak(reply, lang);
-
-    userInput.value = '';
-  });
-
-  // رسالة ترحيبية عند تحميل الصفحة
-  window.onload = () => {
-    appendMessage(knowledgeBase.greeting.en, 'bot');
-  };
-
-  // تهيئة الأصوات
-  if ('speechSynthesis' in window) {
-    window.speechSynthesis.onvoiceschanged = () => {};
-  }
-})();
-</script>
+  <footer>
+    &copy; 2025 MOD APK Store. All rights reserved.
+  </footer>
 
 </body>
 </html>
+
