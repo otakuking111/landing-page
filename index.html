@@ -309,7 +309,7 @@
 
       <!-- Product example -->
    <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
-<div class="product-card" style="cursor:pointer;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
+<div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
   <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModal()" />
   <div class="product-info">
     <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
@@ -351,7 +351,7 @@
   .product-card {
     width: 100%;
     max-width: 300px;
-    margin: auto;
+    /* أزلت margin: auto وأضفت margin-left: 0 داخل style في div */
   }
 
   .product-image {
@@ -432,6 +432,7 @@
     background-color: #444;
   }
 </style>
+
 
 
 
