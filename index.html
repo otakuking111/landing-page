@@ -1,184 +1,540 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>متجر الألعاب - PUBG MOD</title>
+  <title>SEK STORE - Premium MOD APKs</title>
+  <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
+
   <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-      color: #333;
+      background: #121212;
+      color: #eee;
+      min-height: 100vh;
+      line-height: 1.4;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    header {
-      background-color: #232323;
-      color: #fff;
+
+    body.rtl {
+      direction: rtl;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 50px;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #1f1f1f;
       padding: 15px 20px;
-      text-align: center;
-      font-size: 1.8em;
-      font-weight: bold;
-    }
-    .store-container {
-      max-width: 900px;
-      margin: 20px auto;
-      background: white;
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    }
-    .game-item {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+    }
+
+    nav .logo img {
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    nav .logo h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f4a261;
+      user-select: none;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      flex: 1;
+      margin: 0 20px;
+      position: relative;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 45px 10px 20px;
+      border-radius: 30px;
+      border: none;
+      background: #2c2c2c;
+      color: #eee;
+      font-size: 1rem;
+      outline: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-bar input::placeholder {
+      color: #aaa;
+    }
+
+    .search-bar svg {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      fill: #aaa;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+
+    body.rtl .search-bar svg {
+      right: auto;
+      left: 15px;
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn-fav, .language-select {
+      background: #333;
+      border: none;
+      color: #eee;
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-fav:hover, .language-select:hover {
+      background: #f4a261;
+      color: #121212;
+    }
+
+    /* Section Titles */
+    h2.section-title {
+      margin: 40px 0 20px;
+      font-size: 1.6rem;
+      border-left: 6px solid #f4a261;
+      padding-left: 12px;
+      user-select: none;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
       flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
     }
-    .game-img {
-      flex: 1 1 250px;
-      max-width: 250px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    .game-details {
-      flex: 2 1 400px;
-    }
-    .game-details h2 {
-      margin-top: 0;
-      font-size: 1.7em;
-      color: #1a73e8;
-    }
-    .game-details p.description {
-      font-size: 1.1em;
-      margin: 10px 0;
-      line-height: 1.5;
-    }
-    .game-details p.category {
-      font-size: 0.95em;
-      color: #555;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-    .btn-download {
-      background-color: #1a73e8;
-      color: white;
-      padding: 12px 24px;
+
+    .filters button {
+      background: #2c2c2c;
       border: none;
-      border-radius: 6px;
-      font-size: 1.1em;
+      padding: 8px 18px;
+      border-radius: 20px;
+      color: #ddd;
       cursor: pointer;
+      font-weight: 600;
       transition: background-color 0.3s ease;
       user-select: none;
-      text-align: center;
-      display: inline-block;
-      text-decoration: none;
     }
-    .btn-download:hover {
-      background-color: #155ab6;
+
+    .filters button.active, .filters button:hover {
+      background: #f4a261;
+      color: #121212;
     }
-    /* Content Locker styles */
-    .locker-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.75);
+
+    /* Products Grid */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 25px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: #1e1e1e;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
       display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
     }
-    .locker-overlay.active {
-      visibility: visible;
-      opacity: 1;
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(244,162,97,0.8);
     }
-    .locker-box {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 320px;
-      text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid #333;
     }
-    .locker-box h3 {
-      margin-top: 0;
-      font-size: 1.4em;
-      margin-bottom: 15px;
+
+    .product-info {
+      padding: 16px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .locker-box p {
-      font-size: 1em;
-      margin-bottom: 20px;
+
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #f4a261;
+      user-select: none;
     }
-    .locker-box button {
-      background-color: #1a73e8;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 6px;
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: #bbb;
+      flex-grow: 1;
+      user-select: none;
+    }
+
+    /* Favorite icon */
+    .fav-icon {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 24px;
+      color: #ddd;
+      transition: color 0.3s ease;
       cursor: pointer;
       user-select: none;
-      transition: background-color 0.3s ease;
+      text-shadow: 0 0 6px rgba(0,0,0,0.7);
     }
-    .locker-box button:hover {
-      background-color: #155ab6;
+
+    .fav-icon.active {
+      color: #f44336;
+      text-shadow: 0 0 8px #f44336;
+    }
+
+    /* No results */
+    .no-results {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #aaa;
+      margin: 30px 0;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .search-bar {
+        margin: 15px 0;
+        flex: 1 1 100%;
+      }
+      nav {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>متجر الألعاب</header>
-
-<div class="store-container">
-  <!-- لعبة PUBG Mobile MOD APK -->
-  <div class="game-item">
-    <img 
-      src="https://i.imgur.com/JyvMW6L.png" 
-      alt="PUBG Mobile MOD APK - Unlimited UC 2025" 
-      class="game-img" 
-      loading="lazy"
-    />
-    <div class="game-details">
-      <h2>PUBG Mobile MOD APK - Unlimited UC 2025</h2>
-      <p class="description">
-        استمتع بأفضل نسخة معدلة من لعبة PUBG Mobile مع ميزات غير محدودة، بما في ذلك UC (العملة داخل اللعبة) بلا حدود، للحصول على تجربة لعب لا مثيل لها. العب الآن وتمتع بميزات الـ MOD الحصرية التي تمنحك الأفضلية على أصدقائك.
-      </p>
-      <p class="category">التصنيف: Action / Battle Royale / PUBG MOD</p>
-      <button class="btn-download" id="downloadBtn">تحميل اللعبة</button>
+  <nav>
+    <div class="logo" onclick="window.location.reload()">
+      <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
+      <h1 id="storeTitle">SEK STORE</h1>
     </div>
-  </div>
-</div>
 
-<!-- Content Locker -->
-<div class="locker-overlay" id="lockerOverlay">
-  <div class="locker-box">
-    <h3>يرجى إكمال التحقق</h3>
-    <p>للوصول إلى رابط التحميل، يرجى إكمال الخطوة التالية.</p>
-    <button id="unlockBtn">أكمل الآن</button>
-  </div>
-</div>
+    <div class="search-bar">
+      <input type="search" id="searchInput" placeholder="Search apps or games..." aria-label="Search apps or games" oninput="searchProducts()" />
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.2 5.49 12.71 3 9.5 3S3.8 5.49 3.8 8.39c0 2.9 2.49 5.39 5.7 5.39a5.97 5.97 0 004.1-1.7l.27.28v.79l4.25 4.25 1.5-1.5L15.5 14zm-6 0c-1.93 0-3.5-1.57-3.5-3.5S7.57 7 9.5 7 13 8.57 13 10.5 11.43 14 9.5 14z"/></svg>
+    </div>
 
-<script>
-  // روابط التحميل (CPA offer link)
-  const downloadLink = "https://smrturl.co/de75e44";
+    <div class="actions">
+      <button class="btn-fav" id="btnFav" onclick="toggleShowFavorites()">❤️ Favorites</button>
+      <select class="language-select" id="languageSelect" aria-label="Select language" onchange="changeLanguage(this.value)">
+        <option value="en" selected>English</option>
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </nav>
 
-  const downloadBtn = document.getElementById("downloadBtn");
-  const lockerOverlay = document.getElementById("lockerOverlay");
-  const unlockBtn = document.getElementById("unlockBtn");
+  <main class="container">
 
-  // عند الضغط على زر التحميل يظهر الـ content locker
-  downloadBtn.addEventListener("click", () => {
-    lockerOverlay.classList.add("active");
-  });
+    <h2 class="section-title" id="sectionFeatured">🔥 Featured Apps</h2>
 
-  // عند الضغط على زر إكمال التحقق
-  unlockBtn.addEventListener("click", () => {
-    lockerOverlay.classList.remove("active");
-    // تحويل المستخدم إلى رابط التحميل بعد التحقق
-    window.location.href = downloadLink;
-  });
-</script>
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all" onclick="filterCategory(event)">All</button>
+      <button data-filter="action" onclick="filterCategory(event)">Action</button>
+      <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
+      <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Product example -->
+      <div class="product-card" data-category="action" data-title="N.O.V.A. Legacy" data-desc="Sci-Fi FPS shooter" data-id="1">
+        <img src="https://i.postimg.cc/HLhXMYXZ/1-nova.webp" alt="N.O.V.A. Legacy" />
+        <div class="product-info">
+          <h3 class="product-title">N.O.V.A. Legacy</h3>
+          <p class="product-desc">Sci-Fi FPS shooter</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+
+      <div class="product-card" data-category="strategy" data-title="Clash of Clans" data-desc="Build your village" data-id="2">
+        <img src="https://i.postimg.cc/d3K67RR9/2-clash.webp" alt="Clash of Clans" />
+        <div class="product-info">
+          <h3 class="product-title">Clash of Clans</h3>
+          <p class="product-desc">Build your village</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+      <div class="product-card" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
+        <img src="https://i.postimg.cc/FHVw0xRv/4-pubg.webp" alt="PUBG Mobile MOD APK - Unlimited UC 2025" />
+        <div class="product-info">
+          <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
+          <p class="product-desc">MOD APK with unlimited UC</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+      
+      <div class="product-card" data-category="rpg" data-title="Eternium" data-desc="Magic RPG adventure" data-id="3">
+        <img src="https://i.postimg.cc/VNbfXy9Q/3-eternium.webp" alt="Eternium" />
+        <div class="product-info">
+          <h3 class="product-title">Eternium</h3>
+          <p class="product-desc">Magic RPG adventure</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+
+      <div class="product-card" data-category="action" data-title="PUBG Mobile" data-desc="Battle Royale shooter" data-id="4">
+        <img src="https://i.postimg.cc/FHVw0xRv/4-pubg.webp" alt="PUBG Mobile" />
+        <div class="product-info">
+          <h3 class="product-title">PUBG Mobile</h3>
+          <p class="product-desc">Battle Royale shooter</p>
+        </div>
+        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+      </div>
+
+    </div>
+
+    <p class="no-results" id="noResults" style="display:none;">No products found.</p>
+
+  </main>
+
+  <script>
+    // Data and state
+    const productsGrid = document.getElementById('productsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const btnFav = document.getElementById('btnFav');
+    const languageSelect = document.getElementById('languageSelect');
+    const noResults = document.getElementById('noResults');
+    const filters = document.getElementById('filters');
+    let showFavoritesOnly = false;
+
+    // Load favorites from localStorage
+    function getFavorites() {
+      const fav = localStorage.getItem('favorites');
+      return fav ? JSON.parse(fav) : [];
+    }
+
+    function saveFavorites(favArray) {
+      localStorage.setItem('favorites', JSON.stringify(favArray));
+    }
+
+    // Toggle favorite for product by id
+    function toggleFavorite(productId) {
+      const favs = getFavorites();
+      const index = favs.indexOf(productId);
+      if(index === -1) {
+        favs.push(productId);
+      } else {
+        favs.splice(index, 1);
+      }
+      saveFavorites(favs);
+      updateFavIcons();
+    }
+
+    // Update favorite icons UI based on localStorage
+    function updateFavIcons() {
+      const favs = getFavorites();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const id = card.dataset.id;
+        const icon = card.querySelector('.fav-icon');
+        if(favs.includes(id)) {
+          icon.classList.add('active');
+          icon.textContent = '❤️';
+          icon.title = 'Remove from favorites';
+        } else {
+          icon.classList.remove('active');
+          icon.textContent = '♡';
+          icon.title = 'Add to favorites';
+        }
+      });
+    }
+
+    // Filter products by category
+    function filterCategory(event) {
+      event.preventDefault();
+      // Remove active from all buttons
+      filters.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      searchProducts(); // Re-run search+filter
+    }
+
+    // Filter and search products, also handle favorites filter
+    function searchProducts() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const activeCategoryBtn = filters.querySelector('button.active');
+      const categoryFilter = activeCategoryBtn ? activeCategoryBtn.dataset.filter : 'all';
+      const favs = getFavorites();
+
+      let visibleCount = 0;
+
+      document.querySelectorAll('.product-card').forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+        const desc = card.dataset.desc.toLowerCase();
+        const category = card.dataset.category;
+        const id = card.dataset.id;
+
+        // Check search term match (title or desc)
+        const matchesSearch = !searchTerm || title.includes(searchTerm) || desc.includes(searchTerm);
+
+        // Check category filter
+        const matchesCategory = categoryFilter === 'all' || categoryFilter === category;
+
+        // Check favorites filter
+        const matchesFav = !showFavoritesOnly || favs.includes(id);
+
+        if(matchesSearch && matchesCategory && matchesFav) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Toggle favorites filter
+    function toggleShowFavorites() {
+      showFavoritesOnly = !showFavoritesOnly;
+      btnFav.textContent = showFavoritesOnly ? '💔 Show All' : '❤️ Favorites';
+      searchProducts();
+    }
+
+    // Change language
+    function changeLanguage(lang) {
+      document.documentElement.lang = lang;
+
+      // Handle RTL languages
+      if(lang === 'ar') {
+        document.body.classList.add('rtl');
+      } else {
+        document.body.classList.remove('rtl');
+      }
+
+      // Change static texts
+      const texts = {
+        en: {
+          storeTitle: 'SEK STORE',
+          searchPlaceholder: 'Search apps or games...',
+          btnFavShow: '❤️ Favorites',
+          btnFavHide: '💔 Show All',
+          sectionFeatured: '🔥 Featured Apps',
+          filterAll: 'All',
+          filterAction: 'Action',
+          filterStrategy: 'Strategy',
+          filterRPG: 'RPG',
+          noResults: 'No products found.'
+        },
+        ar: {
+          storeTitle: 'متجر SEK',
+          searchPlaceholder: 'ابحث عن التطبيقات أو الألعاب...',
+          btnFavShow: '❤️ المفضلة',
+          btnFavHide: '💔 عرض الكل',
+          sectionFeatured: '🔥 التطبيقات المميزة',
+          filterAll: 'الكل',
+          filterAction: 'أكشن',
+          filterStrategy: 'استراتيجية',
+          filterRPG: 'تقمصي',
+          noResults: 'لم يتم العثور على منتجات.'
+        },
+        fr: {
+          storeTitle: 'SEK STORE',
+          searchPlaceholder: 'Rechercher des applications ou jeux...',
+          btnFavShow: '❤️ Favoris',
+          btnFavHide: '💔 Tout afficher',
+          sectionFeatured: '🔥 Applications en vedette',
+          filterAll: 'Tous',
+          filterAction: 'Action',
+          filterStrategy: 'Stratégie',
+          filterRPG: 'RPG',
+          noResults: 'Aucun produit trouvé.'
+        }
+      };
+
+      const t = texts[lang] || texts.en;
+
+      document.getElementById('storeTitle').textContent = t.storeTitle;
+      searchInput.placeholder = t.searchPlaceholder;
+      btnFav.textContent = showFavoritesOnly ? t.btnFavHide : t.btnFavShow;
+      document.getElementById('sectionFeatured').textContent = t.sectionFeatured;
+
+      const filterButtons = filters.querySelectorAll('button');
+      if(filterButtons.length === 4) {
+        filterButtons[0].textContent = t.filterAll;
+        filterButtons[1].textContent = t.filterAction;
+        filterButtons[2].textContent = t.filterStrategy;
+        filterButtons[3].textContent = t.filterRPG;
+      }
+
+      noResults.textContent = t.noResults;
+    }
+
+    // Event delegation for favorite icon clicks
+    productsGrid.addEventListener('click', e => {
+      if(e.target.classList.contains('fav-icon')) {
+        const productCard = e.target.closest('.product-card');
+        if(productCard) {
+          toggleFavorite(productCard.dataset.id);
+          if(showFavoritesOnly) {
+            searchProducts();
+          }
+        }
+      }
+    });
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      updateFavIcons();
+      changeLanguage(languageSelect.value);
+      searchProducts();
+    });
+  </script>
 
 </body>
 </html>
