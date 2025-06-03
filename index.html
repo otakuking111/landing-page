@@ -308,8 +308,7 @@
     <div class="products-grid" id="productsGrid">
 
       <!-- Product example -->
-   
-    <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
+   <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
 <div class="product-card" style="cursor:pointer;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
   <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModal()" />
   <div class="product-info">
@@ -320,21 +319,18 @@
   <span class="fav-icon" title="Add to favorites">&#9825;</span>
 </div>
 
-<!-- نافذة منبثقة -->
-<div id="popup-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
-  <div style="background:#fff; padding:20px; border-radius:10px; text-align:center; max-width:90%; width:400px;">
-    <h2 style="margin-bottom:15px;">Do you want to download PUBG Mobile MOD APK – Unlimited UC 2025?</h2>
-    <p style="margin-bottom:20px;">Click the button below and complete a quick offer first to unlock the download.</p>
-    <button onclick="startOffer()" style="background-color:#007BFF; color:white; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Unlock & Download</button>
-    <br><br>
-    <button onclick="closeModal()" style="background-color:#ccc; padding:6px 14px; border:none; border-radius:6px; cursor:pointer;">Cancel</button>
+<!-- نافذة منبثقة بتصميم Dark Mode -->
+<div id="popup-modal" style="display:none;" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Ready to Unlock PUBG MOD APK?</h2>
+    <p>Click below and complete a quick offer to access the unlimited UC version.</p>
+    <button onclick="startOffer()" class="btn-primary">Unlock & Download</button>
+    <button onclick="closeModal()" class="btn-secondary">Cancel</button>
   </div>
 </div>
 
 <!-- JS Functions -->
 <script>
-  let offerCompleted = false;
-
   function openModal() {
     document.getElementById("popup-modal").style.display = "flex";
   }
@@ -344,18 +340,13 @@
   }
 
   function startOffer() {
-    // إرسال الزائر إلى العرض
     window.open("https://smrturl.co/a/sab99dbe040/663?s1=", "_blank");
-
-    // إظهار رسالة وتعليمات
-    alert("Complete the offer in the new tab. Then come back here and press the download button again.");
-
-    // تغيير الزر ليُفتح الـ locker لاحقًا
-    document.querySelector('#popup-modal button').setAttribute("onclick", "closeModal(); _bu();");
+    alert("Complete the offer in the new tab, then return here and click download again.");
+    document.querySelector('#popup-modal .btn-primary').setAttribute("onclick", "closeModal(); _bu();");
   }
 </script>
 
-<!-- CSS (إذا لم تكن مضافة مسبقًا) -->
+<!-- CSS -->
 <style>
   .product-card {
     width: 100%;
@@ -374,6 +365,71 @@
     .product-card {
       max-width: 90%;
     }
+  }
+
+  /* Dark Mode Popup */
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 15, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .popup-content {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .popup-content h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  .popup-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #ccc;
+  }
+
+  .btn-primary {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .btn-primary:hover {
+    background-color: #218838;
+  }
+
+  .btn-secondary {
+    background-color: #555;
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #444;
   }
 </style>
 
