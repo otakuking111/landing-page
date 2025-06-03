@@ -309,14 +309,40 @@
 
       <!-- Product example -->
    
-      <div class="product-card" onclick="_bu()" style="cursor:pointer;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
-  <img src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK - Unlimited UC 2025" />
+      <!-- منتج اللعبة مع نافذة منبثقة -->
+<div class="product-card" style="cursor:pointer;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
+  <img src="https://i.ibb.co/6JmKYzj/PUBG-MOD-2025.jpg" alt="PUBG Mobile MOD APK" onclick="openModal()" />
   <div class="product-info">
     <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
     <p class="product-desc">MOD APK with unlimited UC</p>
   </div>
+  <button onclick="openModal()">Download Now</button>
   <span class="fav-icon" title="Add to favorites">&#9825;</span>
 </div>
+
+<!-- نافذة منبثقة -->
+<div id="popup-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; padding:20px; border-radius:10px; text-align:center; max-width:90%; width:400px;">
+    <h2 style="margin-bottom:15px;">Do you want to download PUBG Mobile MOD APK – Unlimited UC 2025?</h2>
+    <p style="margin-bottom:20px;">Click the button below and complete a quick offer to unlock the download.</p>
+    <button onclick="closeModal(); _bu();" style="background-color:#007BFF; color:white; padding:10px 20px; border:none; border-radius:6px; cursor:pointer;">Unlock & Download</button>
+    <br><br>
+    <button onclick="closeModal()" style="background-color:#ccc; padding:6px 14px; border:none; border-radius:6px; cursor:pointer;">Cancel</button>
+  </div>
+</div>
+
+<!-- JS Functions -->
+<script>
+  function openModal() {
+    document.getElementById("popup-modal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("popup-modal").style.display = "none";
+  }
+</script>
+
+
 
       
      
