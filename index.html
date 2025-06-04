@@ -417,22 +417,20 @@
     padding: 10px;
     scroll-snap-type: x mandatory;
   }
-
   .product-card {
-    flex: 0 0 auto;       /* يمنع التمدد الكامل */
-    scroll-snap-align: start;
-  }
-
-  /* ✅ باقي الكود القديم بدون تغيير */
-  .product-card {
-    width: 100%;
-    max-width: 300px;
-    /* أزلت margin: auto وأضفت margin-left: 0 داخل style في div */
-  }
-
-  .product-card {
-  width: 300px;
+  flex: 0 0 auto; /* يمنع التمدد الكامل */
+  scroll-snap-align: start;
+  width: 100%;
   max-width: 300px;
+  margin-left: 0;
+}
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
 
     /* أزلت margin: auto وأضفت margin-left: 0 داخل style في div */
   }
