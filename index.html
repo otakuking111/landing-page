@@ -456,40 +456,78 @@
 
 
 <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
-<div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="sports" data-title="BASEBALL 9 MOD APK" data-desc="Fast-paced baseball action with MOD features" data-id="6">
-  <img class="product-image" src="https://img.utdstc.com/icon/7e9/b0c/7e9b0c4a6769f08221695e4842cb0f3569501b45e725f582138465a78c3f6bda:200" alt="BASEBALL 9 MOD APK" onclick="openModalBaseball()" />
-  <div class="product-info">
-    <h3 class="product-title">BASEBALL 9 MOD APK</h3>
-    <p class="product-desc">Download the exciting BASEBALL 9 MOD APK for fast, realistic baseball gameplay with enhanced features. Available now on SEK STORE!</p>
+<!-- حاوية كل الألعاب -->
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+  
+  <!-- اللعبة الأولى: PUBG MOD -->
+  <div class="product-card" style="cursor:pointer;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
+    <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModalPUBG()" />
+    <div class="product-info">
+      <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
+      <p class="product-desc">Download the latest PUBG Mobile MOD APK 2025 with unlimited UC. Enjoy premium unlocked features on SEK STORE – your trusted source for MOD APKs</p>
+    </div>
+    <button onclick="openModalPUBG()">Download Now</button>
+    <span class="fav-icon" title="Add to favorites">&#9825;</span>
   </div>
-  <button onclick="openModalBaseball()">Download Now</button>
-  <span class="fav-icon" title="Add to favorites">&#9825;</span>
+
+  <!-- اللعبة الثانية: BASEBALL 9 -->
+  <div class="product-card" style="cursor:pointer;" data-category="sports" data-title="BASEBALL 9 MOD APK" data-desc="MOD APK Unlimited Coins & Gems" data-id="6">
+    <img class="product-image" src="https://img.utdstc.com/icon/7e9/b0c/7e9b0c4a6769f08221695e4842cb0f3569501b45e725f582138465a78c3f6bda:200" alt="BASEBALL 9" onclick="openModalBaseball()" />
+    <div class="product-info">
+      <h3 class="product-title">BASEBALL 9 MOD APK</h3>
+      <p class="product-desc">Download BASEBALL 9 MOD APK now and enjoy unlimited coins, diamonds, and premium players. Fast gameplay, realistic physics, and offline mode included!</p>
+    </div>
+    <button onclick="openModalBaseball()">Download Now</button>
+    <span class="fav-icon" title="Add to favorites">&#9825;</span>
+  </div>
+
 </div>
 
-<!-- نافذة منبثقة للعبة BASEBALL 9 -->
+<!-- نافذة PUBG -->
+<div id="popup-modal-pubg" style="display:none;" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Ready to Unlock PUBG MOD APK?</h2>
+    <p>Click below and complete a quick offer to access the unlimited UC version.</p>
+    <button onclick="startOfferPUBG()" class="btn-primary">Unlock & Download</button>
+    <button onclick="closeModalPUBG()" class="btn-secondary">Cancel</button>
+  </div>
+</div>
+
+<!-- نافذة BASEBALL -->
 <div id="popup-modal-baseball" style="display:none;" class="popup-overlay">
   <div class="popup-content">
-    <h2>Ready to Unlock BASEBALL 9 MOD?</h2>
-    <p>Click below and complete a quick offer to download the enhanced version of BASEBALL 9.</p>
+    <h2>Ready to Unlock BASEBALL 9?</h2>
+    <p>Click below and complete a quick offer to access the modded version with unlimited coins & gems.</p>
     <button onclick="startOfferBaseball()" class="btn-primary">Unlock & Download</button>
     <button onclick="closeModalBaseball()" class="btn-secondary">Cancel</button>
   </div>
 </div>
 
-<!-- JS Functions للعبة BASEBALL 9 -->
+<!-- JS -->
 <script>
+  // PUBG
+  function openModalPUBG() {
+    document.getElementById("popup-modal-pubg").style.display = "flex";
+  }
+  function closeModalPUBG() {
+    document.getElementById("popup-modal-pubg").style.display = "none";
+  }
+  function startOfferPUBG() {
+    window.open("https://smrturl.co/a/sab99dbe040/663?s1=", "_blank");
+    alert("Complete the offer in the new tab, then return here and click download again.");
+    document.querySelector('#popup-modal-pubg .btn-primary').setAttribute("onclick", "closeModalPUBG(); _bu();");
+  }
+
+  // BASEBALL
   function openModalBaseball() {
     document.getElementById("popup-modal-baseball").style.display = "flex";
   }
-
   function closeModalBaseball() {
     document.getElementById("popup-modal-baseball").style.display = "none";
   }
-
   function startOfferBaseball() {
-    _uj(); // فتح content locker مباشرة
-    alert("Complete the offer in the new tab, then return here and click download again.");
-    document.querySelector('#popup-modal-baseball .btn-primary').setAttribute("onclick", "closeModalBaseball(); _uj();");
+    closeModalBaseball();
+    _uj(); // فتح content locker الجديد
   }
 </script>
 
@@ -499,7 +537,103 @@
 </script>
 <script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
 
-<!-- نفس CSS السابق (لا حاجة لتكراره إذا كان موجود مسبقاً) -->
+<!-- CSS عام -->
+<style>
+  .product-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .product-card button {
+    background-color: #bb7338;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .product-card button:hover {
+    background-color: #a95f28;
+  }
+
+  .popup-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 15, 15, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .popup-content {
+    background: #1e1e1e;
+    color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .popup-content h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  .popup-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #ccc;
+  }
+
+  .btn-primary {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .btn-primary:hover {
+    background-color: #218838;
+  }
+
+  .btn-secondary {
+    background-color: #555;
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+
+  .btn-secondary:hover {
+    background-color: #444;
+  }
+
+  @media (max-width: 600px) {
+    .product-card {
+      max-width: 90%;
+    }
+  }
+</style>
 
 
 
