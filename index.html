@@ -7,6 +7,14 @@
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
 
   <style>
+.product-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+
     /* Reset */
     * {
       box-sizing: border-box;
@@ -51,7 +59,6 @@
       align-items: center;
       gap: 15px;
       cursor: pointer;
-      user-select: none;
     }
 
     nav .logo img {
@@ -63,6 +70,7 @@
       font-size: 1.5rem;
       font-weight: 700;
       color: #bb7338;
+      user-select: none;
     }
 
     /* Search Bar */
@@ -259,13 +267,14 @@
 
   <script type="text/javascript">
     var kuVbl_IPN_HKFCZc = {"it":4495281,"key":"d7d57"};
-  </script>
-  <script src="https://dfmpe7igjx4jo.cloudfront.net/d3534ef.js"></script>
+</script>
+<script src="https://dfmpe7igjx4jo.cloudfront.net/d3534ef.js"></script>
 
-  <script type="text/javascript">
-    var jYuGr_VYI_KZdSHc = {"it":4508313,"key":"51931"};
-  </script>
-  <script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
+<script type="text/javascript">
+  var jYuGr_VYI_KZdSHc={"it":4508313,"key":"51931"};
+</script>
+<script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
+
 
 </head>
 <body>
@@ -301,144 +310,6 @@
       <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
       <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
     </div>
-
-    <div class="products-grid" id="productsGrid">
-      <!-- Example product cards -->
-      <div class="product-card" data-category="action">
-        <img src="https://via.placeholder.com/400x225?text=Action+Game+1" alt="Action Game 1" />
-        <div class="product-info">
-          <h3 class="product-title">Action Game 1 MOD</h3>
-          <p class="product-desc">Unlimited coins and gems in this exciting action game.</p>
-        </div>
-        <div class="fav-icon" onclick="toggleFavorite(this)">♡</div>
-      </div>
-      <div class="product-card" data-category="strategy">
-        <img src="https://via.placeholder.com/400x225?text=Strategy+Game+1" alt="Strategy Game 1" />
-        <div class="product-info">
-          <h3 class="product-title">Strategy Game 1 MOD</h3>
-          <p class="product-desc">Unlock all levels and premium features.</p>
-        </div>
-        <div class="fav-icon" onclick="toggleFavorite(this)">♡</div>
-      </div>
-      <div class="product-card" data-category="rpg">
-        <img src="https://via.placeholder.com/400x225?text=RPG+Game+1" alt="RPG Game 1" />
-        <div class="product-info">
-          <h3 class="product-title">RPG Game 1 MOD</h3>
-          <p class="product-desc">Experience the full story with unlimited upgrades.</p>
-        </div>
-        <div class="fav-icon" onclick="toggleFavorite(this)">♡</div>
-      </div>
-    </div>
-
-    <div class="no-results" id="noResults" style="display:none;">No products found.</div>
-
-  </main>
-
-  <script>
-    // Store favorites in localStorage
-    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-    function toggleFavorite(icon) {
-      const card = icon.closest('.product-card');
-      const title = card.querySelector('.product-title').textContent;
-      const index = favorites.indexOf(title);
-      if(index === -1) {
-        favorites.push(title);
-        icon.classList.add('active');
-        icon.textContent = '❤️';
-      } else {
-        favorites.splice(index, 1);
-        icon.classList.remove('active');
-        icon.textContent = '♡';
-      }
-      localStorage.setItem('favorites', JSON.stringify(favorites));
-    }
-
-    function toggleShowFavorites() {
-      const products = document.querySelectorAll('.product-card');
-      const btn = document.getElementById('btnFav');
-      const showingFavs = btn.classList.toggle('active');
-
-      if(showingFavs) {
-        btn.textContent = 'Show All';
-        products.forEach(card => {
-          const title = card.querySelector('.product-title').textContent;
-          if(!favorites.includes(title)) {
-            card.style.display = 'none';
-          } else {
-            card.style.display = '';
-          }
-        });
-      } else {
-        btn.textContent = '❤️ Favorites';
-        products.forEach(card => {
-          card.style.display = '';
-        });
-      }
-    }
-
-    function filterCategory(e) {
-      const filter = e.target.getAttribute('data-filter');
-      const buttons = document.querySelectorAll('.filters button');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      e.target.classList.add('active');
-
-      const products = document.querySelectorAll('.product-card');
-      let anyVisible = false;
-      products.forEach(card => {
-        if(filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = '';
-          anyVisible = true;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      document.getElementById('noResults').style.display = anyVisible ? 'none' : '';
-    }
-
-    function searchProducts() {
-      const query = document.getElementById('searchInput').value.toLowerCase();
-      const products = document.querySelectorAll('.product-card');
-      let anyVisible = false;
-
-      products.forEach(card => {
-        const title = card.querySelector('.product-title').textContent.toLowerCase();
-        const desc = card.querySelector('.product-desc').textContent.toLowerCase();
-        if(title.includes(query) || desc.includes(query)) {
-          card.style.display = '';
-          anyVisible = true;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      document.getElementById('noResults').style.display = anyVisible ? 'none' : '';
-    }
-
-    function changeLanguage(lang) {
-      const body = document.body;
-      if(lang === 'ar') {
-        body.classList.add('rtl');
-      } else {
-        body.classList.remove('rtl');
-      }
-      // Add more language change logic here if needed
-    }
-
-    // Initialize favorites icons on load
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.product-card').forEach(card => {
-        const title = card.querySelector('.product-title').textContent;
-        const favIcon = card.querySelector('.fav-icon');
-        if(favorites.includes(title)) {
-          favIcon.classList.add('active');
-          favIcon.textContent = '❤️';
-        }
-      });
-    });
-  
-
 
     <div class="products-grid" id="productsGrid">
 
