@@ -316,44 +316,64 @@
       <!-- Product example -->
    <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
    <!-- CSS جديد لجعل المنتجات في صف أفقي --><style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
   .products-grid {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    flex-wrap: nowrap;      /* لا نسمح بالتفاف العناصر */
+    overflow-x: auto;       /* تمرير أفقي */
     gap: 20px;
     padding: 10px;
     scroll-snap-type: x mandatory;
-    justify-content: flex-start;
-    width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
+    justify-content: flex-start; /* تبدأ من جهة اليسار */
   }
 
   .product-card {
-    flex: 0 0 auto;
+    flex: 0 0 auto;         /* يمنع التمدد الكامل */
     scroll-snap-align: start;
     width: 100%;
-    max-width: 300px;
+    max-width: 150px;
     margin-left: 0;
   }
 
+  /* تقليل العرض في الشاشات الصغيرة */
   @media (max-width: 600px) {
     .product-card {
-      max-width: 200px;
+      max-width: 200px; /* قلل الحجم لتناسب شاشة الهاتف */
     }
   }
+  .product-title {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.product-desc {
+  font-size: 12px;
+  color: #aaa;
+  height: 50px; /* لتحديد ارتفاع ثابت للنص */
+  overflow: hidden;
+}
+@media (max-width: 600px) {
+  .product-card {
+    max-width: 160px;
+  }
+
+  .product-title {
+    font-size: 13px;
+  }
+
+  .product-desc {
+    font-size: 11px;
+    height: 45px;
+  }
+
+  .product-card button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
 
   .product-image {
     width: 100%;
-    height: auto;
+    height: 120px;
     object-fit: cover;
     border-radius: 10px;
   }
@@ -364,6 +384,7 @@
     }
   }
 
+  /* Dark Mode Popup */
   .popup-overlay {
     position: fixed;
     top: 0;
@@ -472,6 +493,7 @@
     <h2>Ready to Unlock PUBG MOD APK?</h2>
     <p>Click below and complete a quick offer to access the unlimited UC version.</p>
 
+    <!-- إضافة الصور الأفقية هنا -->
     <div class="products-grid" style="margin-bottom:20px;">
       <div class="product-card" style="max-width: 150px;">
         <img class="product-image" src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Image 1" />
@@ -494,6 +516,7 @@
   <div class="popup-content">
     <h2>Ready to Unlock BASEBALL 9 MOD?</h2>
     <p>Click below and complete a quick offer to download the enhanced version of BASEBALL 9.</p>
+    <!-- إضافة الصور الأفقية هنا -->
     <div class="products-grid" style="margin-bottom:20px;">
       <div class="product-card" style="max-width: 150px;">
         <img class="product-image" src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="PUBG Image 1" />
@@ -511,6 +534,7 @@
   </div>
 </div>
 
+<!-- JS Functions -->
 <script>
   function openModal() {
     document.getElementById("popup-modal").style.display = "flex";
@@ -535,17 +559,19 @@
   }
 
   function startOfferBaseball() {
-    _uj();
+    _uj(); // فتح content locker مباشرة
     window.open("https://smrturl.co/a/sab99dbe040/12065?s1=", "_blank");
     alert("Complete the offer in the new tab, then return here and click download again.");
     document.querySelector('#popup-modal-baseball .btn-primary').setAttribute("onclick", "closeModalBaseball(); _uj();");
   }
 </script>
 
+<!-- Content Locker الخاص بـ BASEBALL 9 -->
 <script type="text/javascript">
   var jYuGr_VYI_KZdSHc = {"it": 4508313, "key": "51931"};
 </script>
 <script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
+
 
 <!-- نفس CSS السابق (لا حاجة لتكراره إذا كان موجود مسبقاً) -->
 
