@@ -314,6 +314,44 @@
     <div class="products-grid" id="productsGrid">
 
       <!-- Product example -->
+   <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
+<div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
+  <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModal()" />
+  <div class="product-info">
+    <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
+    <p class="product-desc">Download the latest PUBG Mobile MOD APK 2025 with unlimited UC. Enjoy premium unlocked features on SEK STORE – your trusted source for MOD APKs</p>
+  </div>
+  <button onclick="openModal()">Download Now</button>
+  <span class="fav-icon" title="Add to favorites">&#9825;</span>
+</div>
+
+<!-- نافذة منبثقة بتصميم Dark Mode -->
+<div id="popup-modal" style="display:none;" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Ready to Unlock PUBG MOD APK?</h2>
+    <p>Click below and complete a quick offer to access the unlimited UC version.</p>
+    <button onclick="startOffer()" class="btn-primary">Unlock & Download</button>
+    <button onclick="closeModal()" class="btn-secondary">Cancel</button>
+  </div>
+</div>
+
+<!-- JS Functions -->
+<script>
+  function openModal() {
+    document.getElementById("popup-modal").style.display = "flex";
+  }
+
+  function closeModal() {
+    document.getElementById("popup-modal").style.display = "none";
+  }
+
+  function startOffer() {
+    window.open("https://smrturl.co/a/sab99dbe040/663?s1=", "_blank");
+    alert("Complete the offer in the new tab, then return here and click download again.");
+    document.querySelector('#popup-modal .btn-primary').setAttribute("onclick", "closeModal(); _bu();");
+  }
+</script>
+
 <!-- CSS -->
 <style>
   .product-card {
@@ -399,60 +437,23 @@
   .btn-secondary:hover {
     background-color: #444;
   }
-
   .product-card button {
-    background-color: #bb7338;
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-  }
+  background-color: #bb7338;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
 
-  .product-card button:hover {
-    background-color: #a95f28;
-  }
+.product-card button:hover {
+  background-color: #a95f28;
+}
+
 </style>
 
-<!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
-<div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
-  <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModal()" />
-  <div class="product-info">
-    <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
-    <p class="product-desc">Download the latest PUBG Mobile MOD APK 2025 with unlimited UC. Enjoy premium unlocked features on SEK STORE – your trusted source for MOD APKs</p>
-  </div>
-  <button onclick="openModal()">Download Now</button>
-  <span class="fav-icon" title="Add to favorites">&#9825;</span>
-</div>
-
-<!-- نافذة منبثقة بتصميم Dark Mode -->
-<div id="popup-modal" style="display:none;" class="popup-overlay">
-  <div class="popup-content">
-    <h2>Ready to Unlock PUBG MOD APK?</h2>
-    <p>Click below and complete a quick offer to access the unlimited UC version.</p>
-    <button onclick="startOffer()" class="btn-primary">Unlock & Download</button>
-    <button onclick="closeModal()" class="btn-secondary">Cancel</button>
-  </div>
-</div>
-
-<!-- JS Functions -->
-<script>
-  function openModal() {
-    document.getElementById("popup-modal").style.display = "flex";
-  }
-
-  function closeModal() {
-    document.getElementById("popup-modal").style.display = "none";
-  }
-
-  function startOffer() {
-    window.open("https://smrturl.co/a/sab99dbe040/663?s1=", "_blank");
-    alert("Complete the offer in the new tab, then return here and click download again.");
-    document.querySelector('#popup-modal .btn-primary').setAttribute("onclick", "closeModal(); _bu();");
-  }
-</script>
 
 <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
 <div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="sports" data-title="BASEBALL 9 MOD APK" data-desc="Fast-paced baseball action with MOD features" data-id="6">
@@ -497,6 +498,8 @@
   var jYuGr_VYI_KZdSHc = {"it": 4508313, "key": "51931"};
 </script>
 <script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
+
+<!-- نفس CSS السابق (لا حاجة لتكراره إذا كان موجود مسبقاً) -->
 
 
 
