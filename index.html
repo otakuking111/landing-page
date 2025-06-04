@@ -410,26 +410,23 @@
 <style>
   /* ✅ أضف هذا الجزء الجديد أولاً */
   .products-grid {
-    display: flex;
-    flex-wrap: nowrap; /* لا نسمح بالتفاف العناصر */
-    overflow-x: auto;   /* تمرير أفقي */
-    gap: 20px;
-    padding: 10px;
-    scroll-snap-type: x mandatory;
-  }
-  .product-card {
-  flex: 0 0 auto; /* يمنع التمدد الكامل */
+  display: flex;
+  flex-wrap: nowrap;      /* لا نسمح بالتفاف العناصر */
+  overflow-x: auto;       /* تمرير أفقي */
+  gap: 20px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+  justify-content: flex-start; /* تبدأ من جهة اليسار */
+}
+
+.product-card {
+  flex: 0 0 auto;         /* يمنع التمدد الكامل */
   scroll-snap-align: start;
   width: 100%;
   max-width: 300px;
   margin-left: 0;
 }
-.products-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
+
 
 
     /* أزلت margin: auto وأضفت margin-left: 0 داخل style في div */
