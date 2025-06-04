@@ -7,6 +7,7 @@
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
 
   <style>
+ 
 .product-card img {
   width: 100%;
   max-height: 200px;
@@ -42,6 +43,14 @@
     }
 
     /* Navbar */
+       /* إضافة transition وارتفاع ثابت لnav */
+nav {
+  transition: top 0.3s ease;
+  position: fixed; /* ثابت في الأعلى */
+  width: 100%;
+  z-index: 1000;
+}
+
     nav {
       position: sticky;
       top: 0;
@@ -749,6 +758,24 @@
       searchProducts();
     });
   </script>
+<script>
+  let lastScrollTop = 0;
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // التمرير لأسفل - أخفي الـ nav
+      nav.style.top = "-70px"; // أو -nav.offsetHeight + "px" حسب ارتفاع شريط التنقل
+    } else {
+      // التمرير لأعلى - أظهر الـ nav
+      nav.style.top = "0";
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // لمنع القيم السالبة
+  });
+</script>
 
 </body>
 </html>
