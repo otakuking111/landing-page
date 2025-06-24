@@ -7,6 +7,12 @@
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
+    @media (min-width: 768px) {
+      body {
+        display: none;
+      }
+    }
+
     :root {
       --bg-color: #ffffff;
       --text-color: #000000;
@@ -35,7 +41,7 @@
       background-color: var(--card-bg);
       padding: 20px;
       text-align: center;
-      font-size: 28px;
+      font-size: 24px;
       font-weight: 900;
       letter-spacing: 1px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -55,11 +61,26 @@
       font-weight: bold;
     }
 
+    .lang-switcher {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .lang-switcher button {
+      margin: 0 5px;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
     .section-title {
       text-align: center;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      margin: 20px 0 10px;
+      margin: 18px 0 10px;
     }
 
     .featured-apps {
@@ -68,12 +89,6 @@
       padding: 10px;
       gap: 10px;
       scroll-snap-type: x mandatory;
-      animation: scrollApps 20s linear infinite;
-    }
-
-    @keyframes scrollApps {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
     }
 
     .featured-apps .app-card {
@@ -140,35 +155,41 @@
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-  <header>SEK STORE - Premium MOD APKs</header>
+  <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+  <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
-  <div class="section-title">FEATURED APPS</div>
+  <div class="lang-switcher">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ar')">AR</button>
+    <button onclick="setLang('fr')">FR</button>
+  </div>
+
+  <div class="section-title" id="featured-label">FEATURED APPS</div>
   <div class="featured-apps">
     <div class="app-card">
       <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
       <div class="info">
         <div class="title">PUBG Mobile MOD APK</div>
-        <div class="desc">Unlimited UC - 2025 Version</div>
+        <div class="desc" id="desc1">Unlimited UC - 2025 Version</div>
       </div>
     </div>
     <div class="app-card">
       <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
       <div class="info">
         <div class="title">BASEBALL 9 MOD APK</div>
-        <div class="desc">Enhanced MOD Version</div>
+        <div class="desc" id="desc2">Enhanced MOD Version</div>
       </div>
     </div>
     <div class="app-card">
       <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
       <div class="info">
         <div class="title">Geometry Dash MOD APK</div>
-        <div class="desc">Unlimited Money</div>
+        <div class="desc" id="desc3">Unlimited Money</div>
       </div>
     </div>
   </div>
 
-  <div class="section-title">ALL APPS</div>
+  <div class="section-title" id="all-apps-label">ALL APPS</div>
   <div class="app-list">
     <div class="app-card">
       <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
@@ -177,8 +198,8 @@
         <div class="desc">Unlimited UC - 2025 Version</div>
       </div>
       <div class="buttons">
-        <button class="install-btn" onclick="alert('Installing PUBG')">Install</button>
-        <button class="download-btn" onclick="alert('Downloading PUBG')">Download</button>
+        <button class="install-btn">Install</button>
+        <button class="download-btn">Download</button>
       </div>
     </div>
     <div class="app-card">
@@ -188,8 +209,8 @@
         <div class="desc">Enhanced MOD Version</div>
       </div>
       <div class="buttons">
-        <button class="install-btn" onclick="alert('Installing Baseball')">Install</button>
-        <button class="download-btn" onclick="alert('Downloading Baseball')">Download</button>
+        <button class="install-btn">Install</button>
+        <button class="download-btn">Download</button>
       </div>
     </div>
     <div class="app-card">
@@ -199,8 +220,8 @@
         <div class="desc">Unlimited Money</div>
       </div>
       <div class="buttons">
-        <button class="install-btn" onclick="alert('Installing Geometry Dash')">Install</button>
-        <button class="download-btn" onclick="alert('Downloading Geometry Dash')">Download</button>
+        <button class="install-btn">Install</button>
+        <button class="download-btn">Download</button>
       </div>
     </div>
   </div>
@@ -208,6 +229,43 @@
   <script>
     function toggleTheme() {
       document.body.classList.toggle('dark');
+    }
+
+    function setLang(lang) {
+      const translations = {
+        en: {
+          title: 'SEK STORE - Premium MOD APKs',
+          featured: 'FEATURED APPS',
+          all: 'ALL APPS',
+          desc1: 'Unlimited UC - 2025 Version',
+          desc2: 'Enhanced MOD Version',
+          desc3: 'Unlimited Money'
+        },
+        ar: {
+          title: 'متجر SEK - تطبيقات مهكرة ممتازة',
+          featured: 'التطبيقات المميزة',
+          all: 'جميع التطبيقات',
+          desc1: 'UC غير محدود - إصدار 2025',
+          desc2: 'نسخة محسنة مهكرة',
+          desc3: 'أموال غير محدودة'
+        },
+        fr: {
+          title: 'SEK STORE - APK MOD Premium',
+          featured: 'Applications en vedette',
+          all: 'Toutes les applications',
+          desc1: 'UC illimités - Version 2025',
+          desc2: 'Version MOD améliorée',
+          desc3: 'Argent illimité'
+        }
+      };
+
+      const t = translations[lang];
+      document.getElementById('main-title').innerText = t.title;
+      document.getElementById('featured-label').innerText = t.featured;
+      document.getElementById('all-apps-label').innerText = t.all;
+      document.getElementById('desc1').innerText = t.desc1;
+      document.getElementById('desc2').innerText = t.desc2;
+      document.getElementById('desc3').innerText = t.desc3;
     }
   </script>
 </body>
