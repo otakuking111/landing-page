@@ -182,10 +182,28 @@ nav {
 
     /* Products Grid */
     .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 25px;
-    }
+      .products-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-card {
+  flex: 0 0 auto;
+  width: 260px;
+  scroll-snap-align: start;
+}
+
+/* تقليل حجم البطاقة على الهواتف */
+@media (max-width: 600px) {
+  .product-card {
+    max-width: 200px;
+  }
+}
+
 
     /* Product Card */
     .product-card {
@@ -273,62 +291,7 @@ nav {
         gap: 10px;
       }
     }
-  </style>
-
-  <script type="text/javascript">
-    var kuVbl_IPN_HKFCZc = {"it":4495281,"key":"d7d57"};
-</script>
-<script src="https://dfmpe7igjx4jo.cloudfront.net/d3534ef.js"></script>
-
-<script type="text/javascript">
-  var jYuGr_VYI_KZdSHc={"it":4508313,"key":"51931"};
-</script>
-<script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
-
-<!-- Content Locker for Geometry Dash -->
-<script type="text/javascript">
-  var SyZDn_eIB_yzVqKc={"it":4516914,"key":"328d8"};
-</script>
-<script src="https://dfmpe7igjx4jo.cloudfront.net/f255378.js"></script>
-
-</head>
-<body>
-
-  <nav>
-    <div class="logo" onclick="window.location.reload()">
-      <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
-      <h1 id="storeTitle">SEK STORE</h1>
-    </div>
-
-    <div class="search-bar">
-      <input type="search" id="searchInput" placeholder="Search apps or games..." aria-label="Search apps or games" oninput="searchProducts()" />
-      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.2 5.49 12.71 3 9.5 3S3.8 5.49 3.8 8.39c0 2.9 2.49 5.39 5.7 5.39a5.97 5.97 0 004.1-1.7l.27.28v.79l4.25 4.25 1.5-1.5L15.5 14zm-6 0c-1.93 0-3.5-1.57-3.5-3.5S7.57 7 9.5 7 13 8.57 13 10.5 11.43 14 9.5 14z"/></svg>
-    </div>
-
-    <div class="actions">
-      <button class="btn-fav" id="btnFav" onclick="toggleShowFavorites()">❤️ Favorites</button>
-      <select class="language-select" id="languageSelect" aria-label="Select language" onchange="changeLanguage(this.value)">
-        <option value="en" selected>English</option>
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-      </select>
-    </div>
-  </nav>
-
-  <main class="container">
-
-    <h2 class="section-title" id="sectionFeatured">🔥 Featured Apps</h2>
-
-    <div class="filters" id="filters">
-      <button class="active" data-filter="all" onclick="filterCategory(event)">All</button>
-      <button data-filter="action" onclick="filterCategory(event)">Action</button>
-      <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
-      <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
-    </div>
-
-    <div class="products-grid" id="productsGrid">
-
-      <!-- Product example -->
+    <!-- Product example -->
    <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
    <!-- CSS جديد لجعل المنتجات في صف أفقي --><style>
  ..products-grid {
@@ -460,7 +423,61 @@ nav {
   }
 
   
-</style>
+
+  </style>
+
+  <script type="text/javascript">
+    var kuVbl_IPN_HKFCZc = {"it":4495281,"key":"d7d57"};
+</script>
+<script src="https://dfmpe7igjx4jo.cloudfront.net/d3534ef.js"></script>
+
+<script type="text/javascript">
+  var jYuGr_VYI_KZdSHc={"it":4508313,"key":"51931"};
+</script>
+<script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
+
+<!-- Content Locker for Geometry Dash -->
+<script type="text/javascript">
+  var SyZDn_eIB_yzVqKc={"it":4516914,"key":"328d8"};
+</script>
+<script src="https://dfmpe7igjx4jo.cloudfront.net/f255378.js"></script>
+
+</head>
+<body>
+
+  <nav>
+    <div class="logo" onclick="window.location.reload()">
+      <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
+      <h1 id="storeTitle">SEK STORE</h1>
+    </div>
+
+    <div class="search-bar">
+      <input type="search" id="searchInput" placeholder="Search apps or games..." aria-label="Search apps or games" oninput="searchProducts()" />
+      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.2 5.49 12.71 3 9.5 3S3.8 5.49 3.8 8.39c0 2.9 2.49 5.39 5.7 5.39a5.97 5.97 0 004.1-1.7l.27.28v.79l4.25 4.25 1.5-1.5L15.5 14zm-6 0c-1.93 0-3.5-1.57-3.5-3.5S7.57 7 9.5 7 13 8.57 13 10.5 11.43 14 9.5 14z"/></svg>
+    </div>
+
+    <div class="actions">
+      <button class="btn-fav" id="btnFav" onclick="toggleShowFavorites()">❤️ Favorites</button>
+      <select class="language-select" id="languageSelect" aria-label="Select language" onchange="changeLanguage(this.value)">
+        <option value="en" selected>English</option>
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <h2 class="section-title" id="sectionFeatured">🔥 Featured Apps</h2>
+
+    <div class="filters" id="filters">
+      <button class="active" data-filter="all" onclick="filterCategory(event)">All</button>
+      <button data-filter="action" onclick="filterCategory(event)">Action</button>
+      <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
+      <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
 
 <div class="products-grid">
   <div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
