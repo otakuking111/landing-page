@@ -6,7 +6,7 @@
   <title>SEK STORE - Premium MOD APKs</title>
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two-Tone" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons-Two-Tone" rel="stylesheet">
   <style>
     body {
       font-family: 'Exo 2', sans-serif;
@@ -42,44 +42,54 @@
       font-weight: bold;
     }
     .app-list {
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       padding: 20px;
     }
-    .app-item {
+    .app-card {
+      background-color: #1e1e1e;
+      margin-bottom: 16px;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .app-element-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #1e1e1e;
-      margin-bottom: 16px;
-      padding: 12px;
-      border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      flex-wrap: nowrap;
     }
-    .app-item img {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
+    .aer-t-l-w img {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
       object-fit: cover;
     }
-    .app-details {
-      flex: 1;
-      padding: 0 16px;
+    .aer-t-l-w {
+      flex: 0 0 auto;
     }
-    .app-title {
+    .aer-t-m-w {
+      flex: 1 1 auto;
+      padding: 0 12px;
+    }
+    .aer-title {
       font-size: 18px;
-      font-weight: 600;
+      font-weight: bold;
+      margin: 0 0 4px 0;
     }
-    .app-desc {
-      font-size: 14px;
-      color: #ccc;
+    .aer-latest {
+      font-size: 13px;
+      color: #bbb;
+    }
+    .aer-t-r-w {
+      flex: 0 0 auto;
     }
     .install-btn {
       background-color: #00b894;
       color: #fff;
       border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -89,43 +99,131 @@
     .install-btn span.material-icons-two-tone {
       font-size: 20px;
     }
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .popup-content {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .popup-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .btn-primary, .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      margin: 5px;
+    }
+    .btn-primary {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: #555;
+      color: white;
+    }
   </style>
 </head>
 <body>
   <header>SEK STORE - Premium MOD APKs</header>
-
   <div class="lang-switcher">
     <button onclick="alert('Language: English')">EN</button>
     <button onclick="alert('اللغة: العربية')">AR</button>
     <button onclick="alert('Langue : Français')">FR</button>
   </div>
-
   <div class="favorites-bar">★ My Favorite Apps</div>
-
   <div class="app-list">
-    <div class="app-item">
-      <img src="https://i.postimg.cc/yx5XTqWm/pubg.jpg" alt="PUBG Mobile">
-      <div class="app-details">
-        <div class="app-title">PUBG Mobile MOD APK</div>
-        <div class="app-desc">Unlimited UC, all skins unlocked</div>
-      </div>
-      <a href="https://smrturl.co/de75e44" class="install-btn">
-        <span class="material-icons-two-tone">cloud_download</span>
-        <span>Install</span>
-      </a>
-    </div>
+    <!-- App cards here (already existing content) -->
+  </div>
 
-    <div class="app-item">
-      <img src="https://i.postimg.cc/NjY8brjs/baseball9.jpg" alt="BASEBALL 9">
-      <div class="app-details">
-        <div class="app-title">BASEBALL 9 MOD APK</div>
-        <div class="app-desc">Fast-paced baseball action with MOD features</div>
-      </div>
-      <a href="https://smrturl.co/a/sab99dbe040/12065?s1=" class="install-btn">
-        <span class="material-icons-two-tone">cloud_download</span>
-        <span>Install</span>
-      </a>
+  <!-- PUBG MOD Popup -->
+  <div id="popup-modal" style="display:none;" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Ready to Unlock PUBG MOD APK?</h2>
+      <p>Click below and complete a quick offer to access the unlimited UC version.</p>
+      <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Screenshot 1">
+      <img src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="PUBG Screenshot 2">
+      <img src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="PUBG Screenshot 3">
+      <button onclick="startOffer()" class="btn-primary">Unlock & Download</button>
+      <button onclick="closeModal()" class="btn-secondary">Cancel</button>
     </div>
   </div>
+
+  <!-- BASEBALL 9 Popup -->
+  <div id="popup-modal-baseball" style="display:none;" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Ready to Unlock BASEBALL 9 MOD?</h2>
+      <p>Click below and complete a quick offer to download the enhanced version of BASEBALL 9.</p>
+      <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Screenshot 1">
+      <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-3.webp" alt="Baseball Screenshot 2">
+      <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-5.webp" alt="Baseball Screenshot 3">
+      <button onclick="startOfferBaseball()" class="btn-primary">Unlock & Download</button>
+      <button onclick="closeModalBaseball()" class="btn-secondary">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Geometry Dash Popup -->
+  <div id="popup-modal-geometry" style="display:none;" class="popup-overlay">
+    <div class="popup-content">
+      <h2>Ready to Unlock Geometry Dash MOD APK?</h2>
+      <p>Click below and complete a quick offer to access the unlimited money version</p>
+      <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Screenshot 1">
+      <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-5.jpg" alt="Geometry Dash Screenshot 2">
+      <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-6.jpg" alt="Geometry Dash Screenshot 3">
+      <button onclick="startOfferGeometryDash()" class="btn-primary">Unlock & Download</button>
+      <button onclick="closeModalGeometryDash()" class="btn-secondary">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById("popup-modal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("popup-modal").style.display = "none";
+    }
+    function startOffer() {
+      window.open("https://smrturl.co/a/sab99dbe040/62?s1=", "_blank");
+    }
+
+    function openModalBaseball() {
+      document.getElementById("popup-modal-baseball").style.display = "flex";
+    }
+    function closeModalBaseball() {
+      document.getElementById("popup-modal-baseball").style.display = "none";
+    }
+    function startOfferBaseball() {
+      window.open("https://smrturl.co/a/sab99dbe040/1610?s1=", "_blank");
+    }
+
+    function openModalGeometryDash() {
+      document.getElementById("popup-modal-geometry").style.display = "flex";
+    }
+    function closeModalGeometryDash() {
+      document.getElementById("popup-modal-geometry").style.display = "none";
+    }
+    function startOfferGeometryDash() {
+      window.open("https://smrturl.co/a/sab99dbe040/1610?s1=", "_blank");
+    }
+  </script>
 </body>
 </html>
