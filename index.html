@@ -68,6 +68,12 @@
       padding: 10px;
       gap: 10px;
       scroll-snap-type: x mandatory;
+      animation: scrollApps 20s linear infinite;
+    }
+
+    @keyframes scrollApps {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
     }
 
     .featured-apps .app-card {
@@ -114,7 +120,13 @@
       color: var(--text-color);
     }
 
-    .install-btn {
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .install-btn, .download-btn {
       background-color: var(--btn-bg);
       color: var(--btn-text);
       padding: 6px 12px;
@@ -123,6 +135,7 @@
       font-weight: bold;
       font-size: 13px;
       cursor: pointer;
+      text-align: center;
     }
   </style>
 </head>
@@ -157,14 +170,16 @@
 
   <div class="section-title">ALL APPS</div>
   <div class="app-list">
-    <!-- Repeating cards -->
     <div class="app-card">
       <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
       <div class="info">
         <div class="title">PUBG Mobile MOD APK</div>
         <div class="desc">Unlimited UC - 2025 Version</div>
       </div>
-      <button class="install-btn" onclick="alert('Installing PUBG')">Install</button>
+      <div class="buttons">
+        <button class="install-btn" onclick="alert('Installing PUBG')">Install</button>
+        <button class="download-btn" onclick="alert('Downloading PUBG')">Download</button>
+      </div>
     </div>
     <div class="app-card">
       <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
@@ -172,7 +187,10 @@
         <div class="title">BASEBALL 9 MOD APK</div>
         <div class="desc">Enhanced MOD Version</div>
       </div>
-      <button class="install-btn" onclick="alert('Installing Baseball')">Install</button>
+      <div class="buttons">
+        <button class="install-btn" onclick="alert('Installing Baseball')">Install</button>
+        <button class="download-btn" onclick="alert('Downloading Baseball')">Download</button>
+      </div>
     </div>
     <div class="app-card">
       <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
@@ -180,7 +198,10 @@
         <div class="title">Geometry Dash MOD APK</div>
         <div class="desc">Unlimited Money</div>
       </div>
-      <button class="install-btn" onclick="alert('Installing Geometry Dash')">Install</button>
+      <div class="buttons">
+        <button class="install-btn" onclick="alert('Installing Geometry Dash')">Install</button>
+        <button class="download-btn" onclick="alert('Downloading Geometry Dash')">Download</button>
+      </div>
     </div>
   </div>
 
