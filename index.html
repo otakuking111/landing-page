@@ -283,8 +283,42 @@ nav {
       }
     }
     <!-- Product example -->
-   
+   <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
+   <!-- CSS جديد لجعل المنتجات في صف أفقي --><style>
+ ..products-grid {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
 
+.product-card {
+  flex: 0 0 auto;
+  width: 260px;
+  scroll-snap-align: start;
+}
+
+}
+
+}
+
+  }
+
+  .product-card {
+    flex: 0 0 auto;         /* يمنع التمدد الكامل */
+    scroll-snap-align: start;
+    width: 100%;
+    max-width: 300px;
+    margin-left: 0;
+  }
+
+  /* تقليل العرض في الشاشات الصغيرة */
+  @media (max-width: 600px) {
+    .product-card {
+      max-width: 200px; /* قلل الحجم لتناسب شاشة الهاتف */
+    }
+  }
 
   .product-image {
     width: 100%;
