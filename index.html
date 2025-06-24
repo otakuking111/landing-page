@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SEK STORE - Premium MOD APKs</title>
+  <meta name="description" content="Download premium MOD APKs like PUBG Mobile, Baseball 9, and Geometry Dash. Get unlimited UC and exclusive features for free on SEK STORE." />
+  <meta name="keywords" content="MOD APK, PUBG Mobile MOD, Baseball 9 MOD, Geometry Dash MOD, Unlimited UC, Download Free APKs" />
+  <meta name="author" content="SEK STORE" />
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
@@ -81,21 +84,6 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-    }
-
-    .lang-switcher {
-      text-align: center;
-      margin: 10px 0;
-    }
-
-    .lang-switcher button {
-      margin: 0 5px;
-      padding: 6px 12px;
-      background: var(--card-bg);
-      color: var(--text-color);
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      cursor: pointer;
     }
 
     .section-title {
@@ -227,70 +215,21 @@
 </head>
 <body>
   <div class="desktop-warning">
-    🚫 This site is only for smartphones. Please open it on your phone to continue using it🚫
+    🚫 This site is only for smartphones. Please open it on your phone to continue using it 🚫
   </div>
 
   <div class="mobile-only">
-    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <button class="theme-toggle" onclick="toggleTheme()">🌃</button>
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
-    <div class="lang-switcher">
-      <button onclick="setLang('en')">EN</button>
-      <button onclick="setLang('ar')">AR</button>
-      <button onclick="setLang('fr')">FR</button>
-    </div>
-
-    <div class="section-title" id="featured-label">FEATURED APPS</div>
+    <div class="section-title">FEATURED APPS</div>
     <div class="featured-apps">
-      <div class="app-card">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
-        <div class="info">
-          <div class="title">PUBG Mobile MOD APK</div>
-          <div class="desc">Unlimited UC - 2025 Version</div>
-        </div>
-      </div>
-      <div class="app-card">
-        <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
-        <div class="info">
-          <div class="title">BASEBALL 9 MOD APK</div>
-          <div class="desc">Enhanced MOD Version</div>
-        </div>
-      </div>
-      <div class="app-card">
-        <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
-        <div class="info">
-          <div class="title">Geometry Dash Lite MOD APK</div>
-          <div class="desc">Unlimited Money</div>
-        </div>
-      </div>
+      <!-- Featured Apps Here -->
     </div>
 
-    <div class="section-title" id="all-apps-label">ALL APPS</div>
+    <div class="section-title">ALL APPS</div>
     <div class="app-list">
-      <div class="app-card">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
-        <div class="info">
-          <div class="title">PUBG Mobile MOD APK</div>
-          <div class="desc">Unlimited UC - 2025 Version</div>
-        </div>
-        <button class="download-btn" onclick="showModal()">Download</button>
-      </div>
-      <div class="app-card">
-        <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
-        <div class="info">
-          <div class="title">BASEBALL 9 MOD APK</div>
-          <div class="desc">Enhanced MOD Version</div>
-        </div>
-        <button class="download-btn" onclick="showModal()">Download</button>
-      </div>
-      <div class="app-card">
-        <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
-        <div class="info">
-          <div class="title">Geometry Dash Lite MOD APK</div>
-          <div class="desc">Unlimited Money</div>
-        </div>
-        <button class="download-btn" onclick="showModal()">Download</button>
-      </div>
+      <!-- App Cards Here -->
     </div>
 
     <div class="modal" id="downloadModal">
@@ -318,31 +257,6 @@
     function unlockApp() {
       hideModal();
       alert("Your download will start now.");
-    }
-
-    function setLang(lang) {
-      const translations = {
-        en: {
-          title: 'SEK STORE - Premium MOD APKs',
-          featured: 'FEATURED APPS',
-          all: 'ALL APPS'
-        },
-        ar: {
-          title: 'متجر SEK - تطبيقات مهكرة ممتازة',
-          featured: 'التطبيقات المميزة',
-          all: 'جميع التطبيقات'
-        },
-        fr: {
-          title: 'SEK STORE - APK MOD Premium',
-          featured: 'Applications en vedette',
-          all: 'Toutes les applications'
-        }
-      };
-
-      const t = translations[lang];
-      document.getElementById('main-title').innerText = t.title;
-      document.getElementById('featured-label').innerText = t.featured;
-      document.getElementById('all-apps-label').innerText = t.all;
     }
   </script>
 </body>
