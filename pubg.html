@@ -182,20 +182,18 @@ nav {
 
     /* Products Grid */
     
-      .products-grid {
+    .products-grid {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-  -webkit-overflow-scrolling: touch;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
 }
 
 .product-card {
-  flex: 0 0 auto;
-  width: 260px;
-  scroll-snap-align: start;
+  width: 100%;
+  max-width: 100%;
 }
+
 
 /* تقليل حجم البطاقة على الهواتف */
 @media (max-width: 600px) {
