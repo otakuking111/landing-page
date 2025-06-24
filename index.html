@@ -1,506 +1,195 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SEK STORE - Premium MOD APKs</title>
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons-Two-Tone" rel="stylesheet">
   <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     body {
-      background: #121212;
-      color: #eee;
-      min-height: 100vh;
-      line-height: 1.4;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Exo 2', sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
-
-    body.rtl {
-      direction: rtl;
+    header {
+      background-color: #222;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 50px;
+    .lang-switcher {
+      text-align: center;
+      margin: 20px 0;
     }
-
-    /* Navbar */
-    nav {
-      transition: top 0.3s ease;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      top: 0;
-      background: #1f1f1f;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.8);
-    }
-
-    nav .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      cursor: pointer;
-    }
-
-    nav .logo img {
-      height: 30px;
-      border-radius: 10px;
-    }
-
-    nav .logo h1 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #bb7338;
-      user-select: none;
-    }
-
-    /* Search Bar */
-    .search-bar {
-      flex: 1;
-      margin: 0 20px;
-      position: relative;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 10px 45px 10px 20px;
-      border-radius: 30px;
-      border: none;
-      background: #2c2c2c;
-      color: #eee;
-      font-size: 1rem;
-      outline: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .search-bar input::placeholder {
-      color: #aaa;
-    }
-
-    .search-bar svg {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      fill: #aaa;
-      width: 20px;
-      height: 20px;
-      pointer-events: none;
-    }
-
-    body.rtl .search-bar svg {
-      right: auto;
-      left: 15px;
-    }
-
-    /* Actions */
-    .actions {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .btn-fav, .language-select {
+    .lang-switcher button {
+      margin: 0 8px;
+      padding: 8px 16px;
       background: #333;
-      border: none;
-      color: #eee;
-      padding: 10px 16px;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-fav:hover, .language-select:hover {
-      background: #f4a261;
-      color: #121212;
-    }
-
-    /* Section Titles */
-    h2.section-title {
-      margin: 90px 0 20px; /* margin-top big to not hide behind navbar */
-      font-size: 1.6rem;
-      border-left: 6px solid #f4a261;
-      padding-left: 12px;
-      user-select: none;
-    }
-
-    /* Filters */
-    .filters {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-
-    .filters button {
-      background: #2c2c2c;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 20px;
-      color: #ddd;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-
-    .filters button.active, .filters button:hover {
-      background: #f4a261;
-      color: #121212;
-    }
-
-    /* Products Grid */
-    .products-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      padding: 10px;
-      align-items: center;
-    }
-
-    /* Product Card */
-    .product-card {
-      display: flex;
-      flex-direction: row;
-      gap: 20px;
-      background: #1e1e1e;
-      border-radius: 20px;
-      padding: 15px;
-      max-width: 700px;
-      width: 100%;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(244,162,97,0.8);
-    }
-
-    .product-image {
-      width: 180px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-
-    .product-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-    }
-
-    .product-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #f4a261;
-      user-select: none;
-    }
-
-    .product-desc {
-      color: #bbb;
-      font-size: 1rem;
-      margin-bottom: 12px;
-      line-height: 1.3;
-      user-select: none;
-    }
-
-    /* Favorite icon */
-    .fav-icon {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 24px;
-      color: #ddd;
-      transition: color 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      text-shadow: 0 0 6px rgba(0,0,0,0.7);
-    }
-
-    .fav-icon.active {
-      color: #f44336;
-      text-shadow: 0 0 8px #f44336;
-    }
-
-    /* Buttons */
-    .product-card button {
-      align-self: flex-start;
-      background-color: #bb7338;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
+      color: #fff;
+      border: 1px solid #555;
       border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+    .lang-switcher button:hover {
+      background-color: #444;
+    }
+    .favorites-bar {
+      text-align: center;
+      margin: 20px;
+      color: #00cec9;
+      font-size: 20px;
       font-weight: bold;
+    }
+    .app-list {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .app-card {
+      display: flex;
+      align-items: center;
+      background: #1c1c1c;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-3px);
+    }
+    .app-card img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 16px;
+    }
+    .app-card .info {
+      flex: 1;
+      padding: 0 16px;
+    }
+    .app-card .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    .app-card .desc {
+      color: #ccc;
+      font-size: 14px;
+    }
+    .install-btn {
+      background-color: #00b894;
+      color: #fff;
+      padding: 10px 18px;
+      margin-right: 16px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
-
-    .product-card button:hover {
-      background-color: #a95f28;
+    .install-btn:hover {
+      background-color: #00a383;
     }
-
-    /* No results */
-    .no-results {
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 15, 15, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .popup-content {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 25px;
+      border-radius: 12px;
       text-align: center;
-      font-size: 1.2rem;
-      color: #aaa;
-      margin: 30px 0;
-      user-select: none;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .product-card {
-        flex-direction: column;
-        max-width: 90%;
-      }
-      .product-image {
-        width: 100%;
-        height: auto;
-      }
-      .product-info {
-        margin-top: 15px;
-      }
+    .popup-content img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .btn-primary, .btn-secondary {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      margin: 5px;
+    }
+    .btn-primary {
+      background-color: #28a745;
+      color: white;
+    }
+    .btn-secondary {
+      background-color: #555;
+      color: white;
     }
   </style>
-
-  <!-- External JS content lockers and variables -->
-  <script type="text/javascript">
-    var kuVbl_IPN_HKFCZc = {"it":4495281,"key":"d7d57"};
-  </script>
-  <script src="https://dfmpe7igjx4jo.cloudfront.net/d3534ef.js"></script>
-
-  <script type="text/javascript">
-    var jYuGr_VYI_KZdSHc={"it":4508313,"key":"51931"};
-  </script>
-  <script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
-
-  <!-- Content Locker for Geometry Dash -->
-  <script type="text/javascript">
-    var SyZDn_eIB_yzVqKc={"it":4516914,"key":"328d8"};
-  </script>
-  <script src="https://dfmpe7igjx4jo.cloudfront.net/f255378.js"></script>
-
 </head>
 <body>
-
-  <nav>
-    <div class="logo" onclick="window.location.reload()">
-      <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
-      <h1 id="storeTitle">SEK STORE</h1>
-    </div>
-
-    <div class="search-bar">
-      <input type="search" id="searchInput" placeholder="Search apps or games..." aria-label="Search apps or games" oninput="searchProducts()" />
-      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.2 5.49 12.71 3 9.5 3S3.8 5.49 3.8 8.39c0 2.9 2.49 5.39 5.7 5.39a5.97 5.97 0 004.1-1.7l.27.28v.79l4.25 4.25 1.5-1.5L15.5 14zm-6 0c-1.93 0-3.5-1.57-3.5-3.5S7.57 7 9.5 7 13 8.57 13 10.5 11.43 14 9.5 14z"/></svg>
-    </div>
-
-    <div class="actions">
-      <button class="btn-fav" id="btnFav" onclick="toggleShowFavorites()">❤️ Favorites</button>
-      <select class="language-select" id="languageSelect" aria-label="Select language" onchange="changeLanguage(this.value)">
-        <option value="en" selected>English</option>
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-      </select>
-    </div>
-  </nav>
-
-  <main class="container">
-
-    <h2 class="section-title" id="sectionFeatured">🔥 Featured Apps</h2>
-
-    <div class="filters" id="filters">
-      <button class="active" data-filter="all" onclick="filterCategory(event)">All</button>
-      <button data-filter="action" onclick="filterCategory(event)">Action</button>
-      <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
-      <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
-    </div>
-
-    <div class="products-grid" id="productsGrid">
-
-      <!-- PUBG Mobile -->
-      <div class="product-card" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
-        <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModal()" />
-        <div class="product-info">
-          <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
-          <p class="product-desc">Download the latest PUBG Mobile MOD APK 2025 with unlimited UC. Enjoy premium unlocked features on SEK STORE – your trusted source for MOD APKs</p>
-          <button onclick="openModal()">Download Now</button>
-        </div>
-        <span class="fav-icon" title="Add to favorites">&#9825;</span>
+  <header>SEK STORE - Premium MOD APKs</header>
+  <div class="lang-switcher">
+    <button onclick="alert('Language: English')">EN</button>
+    <button onclick="alert('اللغة: العربية')">AR</button>
+    <button onclick="alert('Langue : Français')">FR</button>
+  </div>
+  <div class="favorites-bar">★ My Favorite Apps</div>
+  <div class="app-list">
+    <div class="app-card">
+      <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
+      <div class="info">
+        <div class="title">PUBG Mobile MOD APK</div>
+        <div class="desc">Unlimited UC - 2025 Version</div>
       </div>
-
-      <!-- BASEBALL 9 -->
-      <div class="product-card" data-category="sports" data-title="BASEBALL 9 MOD APK" data-desc="Fast-paced baseball action with MOD features" data-id="6">
-        <img class="product-image" src="https://img.utdstc.com/icon/7e9/b0c/7e9b0c4a6769f08221695e4842cb0f3569501b45e725f582138465a78c3f6bda:200" alt="BASEBALL 9 MOD APK" onclick="openModalBaseball()" />
-        <div class="product-info">
-          <h3 class="product-title">BASEBALL 9 MOD APK</h3>
-          <p class="product-desc">Download the exciting BASEBALL 9 MOD APK for fast, realistic baseball gameplay with enhanced features. Available now on SEK STORE!</p>
-          <button onclick="openModalBaseball()">Download Now</button>
-        </div>
-        <span class="fav-icon" title="Add to favorites">&#9825;</span>
-      </div>
-
-      <!-- Geometry Dash -->
-      <div class="product-card" data-category="action" data-title="Geometry Dash lite APK + MOD (Unlimited Money/Unlocked)" data-desc="Rhythm-based platformer game with challenging levels, addictive gameplay, and now fully unlocked with unlimited money. Download Geometry Dash MOD APK now!" data-id="7">
-        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash MOD APK" onclick="openModalGeometryDash()" />
-        <div class="product-info">
-          <h3 class="product-title">Geometry Dash lite APK + MOD (Unlimited Money/Unlocked)</h3>
-          <p class="product-desc">Rhythm-based platformer game with challenging levels, addictive gameplay, and now fully unlocked with unlimited money. Download Geometry Dash MOD APK now!</p>
-          <button onclick="openModalGeometryDash()">Download Now</button>
-        </div>
-        <span class="fav-icon" title="Add to favorites">&#9825;</span>
-      </div>
-
-      <!-- Add more products here -->
-
+      <button class="install-btn" onclick="openModal()">
+        <span class="material-icons-two-tone">download</span> Install
+      </button>
     </div>
 
-    <p class="no-results" id="noResults" style="display:none;">No apps found.</p>
+    <div class="app-card">
+      <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
+      <div class="info">
+        <div class="title">BASEBALL 9 MOD APK</div>
+        <div class="desc">Enhanced MOD Version</div>
+      </div>
+      <button class="install-btn" onclick="openModalBaseball()">
+        <span class="material-icons-two-tone">download</span> Install
+      </button>
+    </div>
 
-  </main>
-
-  <!-- Modals -->
-  <div id="popup-modal-geometry" class="popup-modal" style="display:none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.85); justify-content: center; align-items: center; z-index: 2000;">
-    <div style="background: #222; border-radius: 20px; width: 90%; max-width: 450px; padding: 20px; color: #f4a261; font-weight: 600; text-align: center; position: relative;">
-      <h2>Download Geometry Dash MOD</h2>
-      <p>Complete the offer to unlock the download link.</p>
-      <button class="btn-primary" style="background:#bb7338; color:#000; padding: 12px 25px; font-weight: 700; border-radius: 15px; border:none; cursor:pointer;" onclick="startOfferGeometryDash()">Start Offer</button>
-      <button onclick="closeModalGeometryDash()" style="background:#444; color:#eee; padding: 8px 20px; border:none; border-radius: 12px; margin-top: 15px; cursor:pointer;">Cancel</button>
+    <div class="app-card">
+      <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
+      <div class="info">
+        <div class="title">Geometry Dash MOD APK</div>
+        <div class="desc">Unlimited Money</div>
+      </div>
+      <button class="install-btn" onclick="openModalGeometryDash()">
+        <span class="material-icons-two-tone">download</span> Install
+      </button>
     </div>
   </div>
-
-  <!-- JS Scripts -->
-  <script>
-    // Toggle favorite icon state
-    document.querySelectorAll('.fav-icon').forEach(icon => {
-      icon.addEventListener('click', () => {
-        icon.classList.toggle('active');
-      });
-    });
-
-    // Search/filter products
-    function searchProducts() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const products = document.querySelectorAll('.product-card');
-      let found = false;
-
-      products.forEach(product => {
-        const title = product.getAttribute('data-title').toLowerCase();
-        const desc = product.getAttribute('data-desc').toLowerCase();
-        if (title.includes(input) || desc.includes(input)) {
-          product.style.display = 'flex';
-          found = true;
-        } else {
-          product.style.display = 'none';
-        }
-      });
-
-      document.getElementById('noResults').style.display = found ? 'none' : 'block';
-    }
-
-    // Filter by category buttons
-    function filterCategory(event) {
-      const filter = event.target.getAttribute('data-filter');
-      document.querySelectorAll('.filters button').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      const products = document.querySelectorAll('.product-card');
-      let found = false;
-
-      products.forEach(product => {
-        if (filter === 'all' || product.getAttribute('data-category') === filter) {
-          product.style.display = 'flex';
-          found = true;
-        } else {
-          product.style.display = 'none';
-        }
-      });
-
-      document.getElementById('noResults').style.display = found ? 'none' : 'block';
-    }
-
-    // Toggle showing only favorites
-    function toggleShowFavorites() {
-      const btn = document.getElementById('btnFav');
-      const showFav = btn.classList.toggle('active');
-      const products = document.querySelectorAll('.product-card');
-      let found = false;
-
-      products.forEach(product => {
-        const favIcon = product.querySelector('.fav-icon');
-        if (!showFav || favIcon.classList.contains('active')) {
-          product.style.display = 'flex';
-          found = true;
-        } else {
-          product.style.display = 'none';
-        }
-      });
-
-      btn.textContent = showFav ? 'Show All' : '❤️ Favorites';
-      document.getElementById('noResults').style.display = found ? 'none' : 'block';
-    }
-
-    // Language switching (simple text switch)
-    function changeLanguage(lang) {
-      const body = document.body;
-      if (lang === 'ar') {
-        body.classList.add('rtl');
-      } else {
-        body.classList.remove('rtl');
-      }
-      // For simplicity, only toggling RTL layout here.
-      // Full i18n requires more code.
-    }
-
-    // Geometry Dash modal functions
-    function openModalGeometryDash() {
-      document.getElementById("popup-modal-geometry").style.display = "flex";
-    }
-
-    function closeModalGeometryDash() {
-      document.getElementById("popup-modal-geometry").style.display = "none";
-    }
-
-    function startOfferGeometryDash() {
-      _ET(); // فتح الـ content locker (موجود من السكريبت الخارجي)
-      window.open("https://smrturl.co/a/sab99dbe040/1610?s1=", "_blank");
-      alert("Complete the offer in the new tab, then return here and click download again.");
-      document.querySelector('#popup-modal-geometry .btn-primary').setAttribute("onclick", "closeModalGeometryDash(); _ET();");
-    }
-
-    // PUBG modal (dummy example, implement similarly if needed)
-    function openModal() {
-      alert("This will open PUBG offer modal or content locker.");
-    }
-
-    // Baseball modal (dummy example)
-    function openModalBaseball() {
-      alert("This will open Baseball 9 offer modal or content locker.");
-    }
-
-  </script>
-
 </body>
 </html>
