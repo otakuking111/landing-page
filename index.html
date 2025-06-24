@@ -86,6 +86,20 @@
       50% { transform: translateY(-10px); }
     }
 
+    .search-container {
+      text-align: center;
+      padding: 10px 20px;
+    }
+
+    .search-container input {
+      width: 90%;
+      max-width: 300px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
     .section-title {
       text-align: center;
       font-size: 18px;
@@ -222,57 +236,61 @@
     <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search for apps..." onkeyup="filterApps()">
+    </div>
+
     <div class="section-title">FEATURED APPS</div>
-    <div class="featured-apps">
+    <div class="featured-apps" id="featuredApps">
       <div class="app-card">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
-        <div class="info">
-          <div class="title">PUBG Mobile MOD APK</div>
-          <div class="desc">Unlimited UC - 2025 Version</div>
-        </div>
-      </div>
-      <div class="app-card">
-        <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
-        <div class="info">
-          <div class="title">BASEBALL 9 MOD APK</div>
-          <div class="desc">Enhanced MOD Version</div>
-        </div>
-      </div>
-      <div class="app-card">
-        <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
-        <div class="info">
-          <div class="title">Geometry Dash Lite MOD APK</div>
-          <div class="desc">Unlimited Money</div>
-        </div>
-      </div>
+  <img src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon">
+  <div class="info">
+    <div class="title">PUBG Mobile MOD APK</div>
+    <div class="desc">Unlimited UC - 2025 Version</div>
+  </div>
+</div>
+<div class="app-card">
+  <img src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon">
+  <div class="info">
+    <div class="title">BASEBALL 9 MOD APK</div>
+    <div class="desc">Enhanced MOD Version</div>
+  </div>
+</div>
+<div class="app-card">
+  <img src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon">
+  <div class="info">
+    <div class="title">Geometry Dash Lite MOD APK</div>
+    <div class="desc">Unlimited Money</div>
+  </div>
+</div>
     </div>
 
     <div class="section-title">ALL APPS</div>
-    <div class="app-list">
+    <div class="app-list" id="allApps">
       <div class="app-card">
-        <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
-        <div class="info">
-          <div class="title">PUBG Mobile MOD APK</div>
-          <div class="desc">Unlimited UC - 2025 Version</div>
-        </div>
-        <button class="download-btn" onclick="showModal()">Download</button>
-      </div>
-      <div class="app-card">
-        <img src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="Baseball Icon">
-        <div class="info">
-          <div class="title">BASEBALL 9 MOD APK</div>
-          <div class="desc">Enhanced MOD Version</div>
-        </div>
-        <button class="download-btn" onclick="showModal()">Download</button>
-      </div>
-      <div class="app-card">
-        <img src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Icon">
-        <div class="info">
-          <div class="title">Geometry Dash Lite MOD APK</div>
-          <div class="desc">Unlimited Money</div>
-        </div>
-        <button class="download-btn" onclick="showModal()">Download</button>
-      </div>
+  <img src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon">
+  <div class="info">
+    <div class="title">PUBG Mobile MOD APK</div>
+    <div class="desc">Unlimited UC - 2025 Version</div>
+  </div>
+  <button class="download-btn" onclick="showModal()">Download</button>
+</div>
+<div class="app-card">
+  <img src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon">
+  <div class="info">
+    <div class="title">BASEBALL 9 MOD APK</div>
+    <div class="desc">Enhanced MOD Version</div>
+  </div>
+  <button class="download-btn" onclick="showModal()">Download</button>
+</div>
+<div class="app-card">
+  <img src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon">
+  <div class="info">
+    <div class="title">Geometry Dash Lite MOD APK</div>
+    <div class="desc">Unlimited Money</div>
+  </div>
+  <button class="download-btn" onclick="showModal()">Download</button>
+</div>
     </div>
 
     <div class="modal" id="downloadModal">
@@ -300,6 +318,20 @@
     function unlockApp() {
       hideModal();
       alert("Your download will start now.");
+    }
+
+    function filterApps() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.app-card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.title').innerText.toLowerCase();
+        if (title.includes(input)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     }
   </script>
 </body>
