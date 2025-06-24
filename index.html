@@ -1,856 +1,131 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SEK STORE - Premium MOD APKs</title>
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Two-Tone" rel="stylesheet">
   <style>
- 
-.product-card img {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-
-    /* Reset */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
     body {
-      background: #121212;
-      color: #eee;
-      min-height: 100vh;
-      line-height: 1.4;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: 'Exo 2', sans-serif;
+      background-color: #111;
+      color: #fff;
+      margin: 0;
+      padding: 0;
     }
-
-    body.rtl {
-      direction: rtl;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px 50px;
-    }
-
-    /* Navbar */
-       /* إضافة transition وارتفاع ثابت لnav */
-nav {
-  transition: top 0.3s ease;
-  position: fixed; /* ثابت في الأعلى */
-  width: 100%;
-  z-index: 1000;
-}
-
-    nav {
-      position: sticky;
-      top: 0;
-      background: #1f1f1f;
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.8);
-    }
-
-    nav .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      cursor: pointer;
-    }
-
-    nav .logo img {
-      height: 30px;
-      border-radius: 10px;
-    }
-
-    nav .logo h1 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #bb7338;
-      user-select: none;
-    }
-
-    /* Search Bar */
-    .search-bar {
-      flex: 1;
-      margin: 0 20px;
-      position: relative;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 10px 45px 10px 20px;
-      border-radius: 30px;
-      border: none;
-      background: #2c2c2c;
-      color: #eee;
-      font-size: 1rem;
-      outline: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .search-bar input::placeholder {
-      color: #aaa;
-    }
-
-    .search-bar svg {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      fill: #aaa;
-      width: 20px;
-      height: 20px;
-      pointer-events: none;
-    }
-
-    body.rtl .search-bar svg {
-      right: auto;
-      left: 15px;
-    }
-
-    /* Actions */
-    .actions {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .btn-fav, .language-select {
-      background: #333;
-      border: none;
-      color: #eee;
-      padding: 10px 16px;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-fav:hover, .language-select:hover {
-      background: #f4a261;
-      color: #121212;
-    }
-
-    /* Section Titles */
-    h2.section-title {
-      margin: 40px 0 20px;
-      font-size: 1.6rem;
-      border-left: 6px solid #f4a261;
-      padding-left: 12px;
-      user-select: none;
-    }
-
-    /* Filters */
-    .filters {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-
-    .filters button {
-      background: #2c2c2c;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 20px;
-      color: #ddd;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-
-    .filters button.active, .filters button:hover {
-      background: #f4a261;
-      color: #121212;
-    }
-
-    /* Products Grid */
-    
-    .products-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 10px;
-  }
-
-  .product-card {
-    width: 100%;
-    max-width: 100%;
-  }
-
-
-
-    /* Product Card */
-    .product-card {
-      background: #1e1e1e;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    .product-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(244,162,97,0.8);
-    }
-
-    .product-card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      border-bottom: 1px solid #333;
-    }
-
-    .product-info {
-      padding: 16px 20px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #f4a261;
-      user-select: none;
-    }
-
-    .product-desc {
-      font-size: 0.9rem;
-      color: #bbb;
-      flex-grow: 1;
-      user-select: none;
-    }
-
-    /* Favorite icon */
-    .fav-icon {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      font-size: 24px;
-      color: #ddd;
-      transition: color 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      text-shadow: 0 0 6px rgba(0,0,0,0.7);
-    }
-
-    .fav-icon.active {
-      color: #f44336;
-      text-shadow: 0 0 8px #f44336;
-    }
-
-    /* No results */
-    .no-results {
+    header {
+      background-color: #222;
+      padding: 16px;
       text-align: center;
-      font-size: 1.2rem;
-      color: #aaa;
-      margin: 30px 0;
-      user-select: none;
+      font-size: 24px;
+      font-weight: bold;
     }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .search-bar {
-        margin: 15px 0;
-        flex: 1 1 100%;
-      }
-      nav {
-        flex-wrap: wrap;
-        gap: 10px;
-      }
+    .lang-switcher {
+      text-align: center;
+      margin-top: 10px;
     }
-    <!-- Product example -->
-   <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
-   <!-- CSS جديد لجعل المنتجات في صف أفقي --><style>
- ..products-grid {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 10px;
-}
-
-.product-card {
-  flex: 0 0 auto;
-  width: 260px;
-  scroll-snap-align: start;
-}
-
-}
-
-}
-
-  }
-
-  .product-card {
-    flex: 0 0 auto;         /* يمنع التمدد الكامل */
-    scroll-snap-align: start;
-    width: 100%;
-    max-width: 300px;
-    margin-left: 0;
-  }
-
-  /* تقليل العرض في الشاشات الصغيرة */
-  @media (max-width: 600px) {
-    .product-card {
-      max-width: 200px; /* قلل الحجم لتناسب شاشة الهاتف */
+    .lang-switcher button {
+      margin: 0 5px;
+      padding: 6px 12px;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
-  }
-
-  .product-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  @media (max-width: 600px) {
-    .product-card {
-      max-width: 90%;
+    .favorites-bar {
+      text-align: center;
+      margin: 20px;
+      color: #00b894;
+      font-weight: bold;
     }
-  }
-
-  /* Dark Mode Popup */
-  .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 15, 15, 0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-  }
-
-  .popup-content {
-    background: #1e1e1e;
-    color: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  }
-
-  .popup-content h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
-  }
-
-  .popup-content p {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #ccc;
-  }
-
-  .btn-primary {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    margin: 5px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-
-  .btn-primary:hover {
-    background-color: #218838;
-  }
-
-  .btn-secondary {
-    background-color: #555;
-    color: white;
-    padding: 8px 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-
-  .btn-secondary:hover {
-    background-color: #444;
-  }
-
-  .product-card button {
-    background-color: #bb7338;
-    color: #000;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  .product-card button:hover {
-    background-color: #a95f28;
-  }
-
-  
-
+    .app-list {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+    .app-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #1e1e1e;
+      margin-bottom: 16px;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .app-item img {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .app-details {
+      flex: 1;
+      padding: 0 16px;
+    }
+    .app-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .app-desc {
+      font-size: 14px;
+      color: #ccc;
+    }
+    .install-btn {
+      background-color: #00b894;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .install-btn span.material-icons-two-tone {
+      font-size: 20px;
+    }
   </style>
-
-  <script type="text/javascript">
-    var kuVbl_IPN_HKFCZc = {"it":4495281,"key":"d7d57"};
-</script>
-<script src="https://dfmpe7igjx4jo.cloudfront.net/d3534ef.js"></script>
-
-<script type="text/javascript">
-  var jYuGr_VYI_KZdSHc={"it":4508313,"key":"51931"};
-</script>
-<script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
-
-<!-- Content Locker for Geometry Dash -->
-<script type="text/javascript">
-  var SyZDn_eIB_yzVqKc={"it":4516914,"key":"328d8"};
-</script>
-<script src="https://dfmpe7igjx4jo.cloudfront.net/f255378.js"></script>
-
 </head>
 <body>
+  <header>SEK STORE - Premium MOD APKs</header>
 
-  <nav>
-    <div class="logo" onclick="window.location.reload()">
-      <img src="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" alt="SEK STORE Logo" />
-      <h1 id="storeTitle">SEK STORE</h1>
-    </div>
-
-    <div class="search-bar">
-      <input type="search" id="searchInput" placeholder="Search apps or games..." aria-label="Search apps or games" oninput="searchProducts()" />
-      <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C15.2 5.49 12.71 3 9.5 3S3.8 5.49 3.8 8.39c0 2.9 2.49 5.39 5.7 5.39a5.97 5.97 0 004.1-1.7l.27.28v.79l4.25 4.25 1.5-1.5L15.5 14zm-6 0c-1.93 0-3.5-1.57-3.5-3.5S7.57 7 9.5 7 13 8.57 13 10.5 11.43 14 9.5 14z"/></svg>
-    </div>
-
-    <div class="actions">
-      <button class="btn-fav" id="btnFav" onclick="toggleShowFavorites()">❤️ Favorites</button>
-      <select class="language-select" id="languageSelect" aria-label="Select language" onchange="changeLanguage(this.value)">
-        <option value="en" selected>English</option>
-        <option value="ar">العربية</option>
-        <option value="fr">Français</option>
-      </select>
-    </div>
-  </nav>
-
-  <main class="container">
-
-    <h2 class="section-title" id="sectionFeatured">🔥 Featured Apps</h2>
-
-    <div class="filters" id="filters">
-      <button class="active" data-filter="all" onclick="filterCategory(event)">All</button>
-      <button data-filter="action" onclick="filterCategory(event)">Action</button>
-      <button data-filter="strategy" onclick="filterCategory(event)">Strategy</button>
-      <button data-filter="rpg" onclick="filterCategory(event)">RPG</button>
-    </div>
-
-    <div class="products-grid" id="productsGrid">
-
-<div class="products-grid">
-  <div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="PUBG Mobile MOD APK - Unlimited UC 2025" data-desc="MOD APK with unlimited UC" data-id="5">
-    <img class="product-image" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK" onclick="openModal()" />
-    <div class="product-info">
-      <h3 class="product-title">PUBG Mobile MOD APK - Unlimited UC 2025</h3>
-      <p class="product-desc">Download the latest PUBG Mobile MOD APK 2025 with unlimited UC. Enjoy premium unlocked features on SEK STORE – your trusted source for MOD APKs</p>
-    </div>
-    <button onclick="openModal()">Download Now</button>
-    <span class="fav-icon" title="Add to favorites">&#9825;</span>
+  <div class="lang-switcher">
+    <button onclick="alert('Language: English')">EN</button>
+    <button onclick="alert('اللغة: العربية')">AR</button>
+    <button onclick="alert('Langue : Français')">FR</button>
   </div>
 
-  <div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="sports" data-title="BASEBALL 9 MOD APK" data-desc="Fast-paced baseball action with MOD features" data-id="6">
-    <img class="product-image" src="https://img.utdstc.com/icon/7e9/b0c/7e9b0c4a6769f08221695e4842cb0f3569501b45e725f582138465a78c3f6bda:200" alt="BASEBALL 9 MOD APK" onclick="openModalBaseball()" />
-    <div class="product-info">
-      <h3 class="product-title">BASEBALL 9 MOD APK</h3>
-      <p class="product-desc">Download the exciting BASEBALL 9 MOD APK for fast, realistic baseball gameplay with enhanced features. Available now on SEK STORE!</p>
-    </div>
-    <button onclick="openModalBaseball()">Download Now</button>
-    <span class="fav-icon" title="Add to favorites">&#9825;</span>
-  </div>
-</div>
-<!-- Geometry Dash MOD Game Card -->
-<div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="Geometry Dash lite APK + MOD (Unlimited Money/Unlocked)" data-desc="Rhythm-based platformer game with challenging levels, addictive gameplay, and now fully unlocked with unlimited money. Download Geometry Dash MOD APK now!" data-id="7">
-  <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash MOD APK" onclick="openModalGeometryDash()" />
-  <div class="product-info">
-    <h3 class="product-title">Geometry Dash lite APK + MOD</h3>
-    <p class="product-desc">Experience Geometry Dash like never before with unlimited money and all features unlocked. Jump, fly, and flip through dangerous passages and spiky obstacles! File size: 75.39 MB</p>
-  </div>
-  <button onclick="openModalGeometryDash()">Download Now</button>
-  <span class="fav-icon" title="Add to favorites">&#9825;</span>
-</div>
+  <div class="favorites-bar">★ My Favorite Apps</div>
 
-<!-- نافذة منبثقة بتصميم Dark Mode للعبة PUBG -->
-<div id="popup-modal" style="display:none;" class="popup-overlay">
-  <div class="popup-content">
-    <h2>Ready to Unlock PUBG MOD APK?</h2>
-    <p>Click below and complete a quick offer to access the unlimited UC version.</p>
-
-    <!-- إضافة الصور الأفقية هنا -->
-    <div class="products-grid" style="margin-bottom:20px;">
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Image 1" />
+  <div class="app-list">
+    <div class="app-item">
+      <img src="https://i.postimg.cc/yx5XTqWm/pubg.jpg" alt="PUBG Mobile">
+      <div class="app-details">
+        <div class="app-title">PUBG Mobile MOD APK</div>
+        <div class="app-desc">Unlimited UC, all skins unlocked</div>
       </div>
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="PUBG Image 2" />
-      </div>
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="PUBG Image 3" />
-      </div>
+      <a href="https://smrturl.co/de75e44" class="install-btn">
+        <span class="material-icons-two-tone">cloud_download</span>
+        <span>Install</span>
+      </a>
     </div>
 
-    <button onclick="startOffer()" class="btn-primary">Unlock & Download</button>
-    <button onclick="closeModal()" class="btn-secondary">Cancel</button>
-  </div>
-</div>
-
-<!-- نافذة منبثقة للعبة BASEBALL 9 -->
-<div id="popup-modal-baseball" style="display:none;" class="popup-overlay">
-  <div class="popup-content">
-    <h2>Ready to Unlock BASEBALL 9 MOD?</h2>
-    <p>Click below and complete a quick offer to download the enhanced version of BASEBALL 9.</p>
-    <!-- إضافة الصور الأفقية هنا -->
-    <div class="products-grid" style="margin-bottom:20px;">
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-2.webp" alt="PUBG Image 1" />
+    <div class="app-item">
+      <img src="https://i.postimg.cc/NjY8brjs/baseball9.jpg" alt="BASEBALL 9">
+      <div class="app-details">
+        <div class="app-title">BASEBALL 9 MOD APK</div>
+        <div class="app-desc">Fast-paced baseball action with MOD features</div>
       </div>
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-3.webp" alt="PUBG Image 2" />
-      </div>
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://9mod.com/wp-content/uploads/2024/06/baseball-9-5.webp" alt="PUBG Image 3" />
-      </div>
+      <a href="https://smrturl.co/a/sab99dbe040/12065?s1=" class="install-btn">
+        <span class="material-icons-two-tone">cloud_download</span>
+        <span>Install</span>
+      </a>
     </div>
-
-    <button onclick="startOfferBaseball()" class="btn-primary">Unlock & Download</button>
-    <button onclick="closeModalBaseball()" class="btn-secondary">Cancel</button>
   </div>
-</div>
-
-<!-- Geometry Dash Popup Modal -->
-<div id="popup-modal-geometry" style="display:none;" class="popup-overlay">
-  <div class="popup-content">
-    <h2>Ready to Unlock Geometry Dash MOD APK?</h2>
-    <p>Click below and complete a quick offer to access the unlimited money version</p>
-
-    <!-- إضافة الصور الأفقية هنا -->
-    <div class="products-grid" style="margin-bottom:20px;">
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="PUBG Image 1" />
-      </div>
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-5.jpg" alt="PUBG Image 2" />
-      </div>
-      <div class="product-card" style="max-width: 150px;">
-        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-6.jpg" alt="PUBG Image 3" />
-      </div>
-    </div>
-
-    <<button onclick="startOfferGeometryDash()" class="btn-primary">Unlock & Download</button>
-    <button onclick="closeModalGeometryDash()" class="btn-secondary">Cancel</button>
-  </div>
-</div>
-<!-- JS Functions -->
-<script>
-  function openModal() {
-    document.getElementById("popup-modal").style.display = "flex";
-  }
-
-  function closeModal() {
-    document.getElementById("popup-modal").style.display = "none";
-  }
-
-  function startOffer() {
-    window.open("https://smrturl.co/a/sab99dbe040/62?s1=", "_blank");
-    alert("Complete the offer in the new tab, then return here and click download again.");
-    document.querySelector('#popup-modal .btn-primary').setAttribute("onclick", "closeModal(); _bu();");
-  }
-
-  function openModalBaseball() {
-    document.getElementById("popup-modal-baseball").style.display = "flex";
-  }
-
-  function closeModalBaseball() {
-    document.getElementById("popup-modal-baseball").style.display = "none";
-  }
-
-  function startOfferBaseball() {
-    _uj(); // فتح content locker مباشرة
-    window.open("https://smrturl.co/a/sab99dbe040/1610?s1=", "_blank");
-    alert("Complete the offer in the new tab, then return here and click download again.");
-    document.querySelector('#popup-modal-baseball .btn-primary').setAttribute("onclick", "closeModalBaseball(); _uj();");
-  }
-</script>
-
-<!-- Content Locker الخاص بـ BASEBALL 9 -->
-<script type="text/javascript">
-  var jYuGr_VYI_KZdSHc = {"it": 4508313, "key": "51931"};
-</script>
-<script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
-
-
-<!-- نفس CSS السابق (لا حاجة لتكراره إذا كان موجود مسبقاً) -->
-
-
-
-      
-     
-
-      
-
-    </div>
-
-    <p class="no-results" id="noResults" style="display:none;">No products found.</p>
-
-  </main>
-
-  <script>
-    // Data and state
-    const productsGrid = document.getElementById('productsGrid');
-    const searchInput = document.getElementById('searchInput');
-    const btnFav = document.getElementById('btnFav');
-    const languageSelect = document.getElementById('languageSelect');
-    const noResults = document.getElementById('noResults');
-    const filters = document.getElementById('filters');
-    let showFavoritesOnly = false;
-
-    // Load favorites from localStorage
-    function getFavorites() {
-      const fav = localStorage.getItem('favorites');
-      return fav ? JSON.parse(fav) : [];
-    }
-
-    function saveFavorites(favArray) {
-      localStorage.setItem('favorites', JSON.stringify(favArray));
-    }
-
-    // Toggle favorite for product by id
-    function toggleFavorite(productId) {
-      const favs = getFavorites();
-      const index = favs.indexOf(productId);
-      if(index === -1) {
-        favs.push(productId);
-      } else {
-        favs.splice(index, 1);
-      }
-      saveFavorites(favs);
-      updateFavIcons();
-    }
-
-    // Update favorite icons UI based on localStorage
-    function updateFavIcons() {
-      const favs = getFavorites();
-      document.querySelectorAll('.product-card').forEach(card => {
-        const id = card.dataset.id;
-        const icon = card.querySelector('.fav-icon');
-        if(favs.includes(id)) {
-          icon.classList.add('active');
-          icon.textContent = '❤️';
-          icon.title = 'Remove from favorites';
-        } else {
-          icon.classList.remove('active');
-          icon.textContent = '♡';
-          icon.title = 'Add to favorites';
-        }
-      });
-    }
-
-    // Filter products by category
-    function filterCategory(event) {
-      event.preventDefault();
-      // Remove active from all buttons
-      filters.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      searchProducts(); // Re-run search+filter
-    }
-
-    // Filter and search products, also handle favorites filter
-    function searchProducts() {
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      const activeCategoryBtn = filters.querySelector('button.active');
-      const categoryFilter = activeCategoryBtn ? activeCategoryBtn.dataset.filter : 'all';
-      const favs = getFavorites();
-
-      let visibleCount = 0;
-
-      document.querySelectorAll('.product-card').forEach(card => {
-        const title = card.dataset.title.toLowerCase();
-        const desc = card.dataset.desc.toLowerCase();
-        const category = card.dataset.category;
-        const id = card.dataset.id;
-
-        // Check search term match (title or desc)
-        const matchesSearch = !searchTerm || title.includes(searchTerm) || desc.includes(searchTerm);
-
-        // Check category filter
-        const matchesCategory = categoryFilter === 'all' || categoryFilter === category;
-
-        // Check favorites filter
-        const matchesFav = !showFavoritesOnly || favs.includes(id);
-
-        if(matchesSearch && matchesCategory && matchesFav) {
-          card.style.display = 'flex';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-    }
-
-    // Toggle favorites filter
-    function toggleShowFavorites() {
-      showFavoritesOnly = !showFavoritesOnly;
-      btnFav.textContent = showFavoritesOnly ? '💔 Show All' : '❤️ Favorites';
-      searchProducts();
-    }
-
-    // Change language
-    function changeLanguage(lang) {
-      document.documentElement.lang = lang;
-
-      // Handle RTL languages
-      if(lang === 'ar') {
-        document.body.classList.add('rtl');
-      } else {
-        document.body.classList.remove('rtl');
-      }
-
-      // Change static texts
-      const texts = {
-        en: {
-          storeTitle: 'SEK STORE',
-          searchPlaceholder: 'Search apps or games...',
-          btnFavShow: '❤️ Favorites',
-          btnFavHide: '💔 Show All',
-          sectionFeatured: '🔥 Featured Apps',
-          filterAll: 'All',
-          filterAction: 'Action',
-          filterStrategy: 'Strategy',
-          filterRPG: 'RPG',
-          noResults: 'No products found.'
-        },
-        ar: {
-          storeTitle: 'متجر SEK',
-          searchPlaceholder: 'ابحث عن التطبيقات أو الألعاب...',
-          btnFavShow: '❤️ المفضلة',
-          btnFavHide: '💔 عرض الكل',
-          sectionFeatured: '🔥 التطبيقات المميزة',
-          filterAll: 'الكل',
-          filterAction: 'أكشن',
-          filterStrategy: 'استراتيجية',
-          filterRPG: 'تقمصي',
-          noResults: 'لم يتم العثور على منتجات.'
-        },
-        fr: {
-          storeTitle: 'SEK STORE',
-          searchPlaceholder: 'Rechercher des applications ou jeux...',
-          btnFavShow: '❤️ Favoris',
-          btnFavHide: '💔 Tout afficher',
-          sectionFeatured: '🔥 Applications en vedette',
-          filterAll: 'Tous',
-          filterAction: 'Action',
-          filterStrategy: 'Stratégie',
-          filterRPG: 'RPG',
-          noResults: 'Aucun produit trouvé.'
-        }
-      };
-
-      const t = texts[lang] || texts.en;
-
-      document.getElementById('storeTitle').textContent = t.storeTitle;
-      searchInput.placeholder = t.searchPlaceholder;
-      btnFav.textContent = showFavoritesOnly ? t.btnFavHide : t.btnFavShow;
-      document.getElementById('sectionFeatured').textContent = t.sectionFeatured;
-
-      const filterButtons = filters.querySelectorAll('button');
-      if(filterButtons.length === 4) {
-        filterButtons[0].textContent = t.filterAll;
-        filterButtons[1].textContent = t.filterAction;
-        filterButtons[2].textContent = t.filterStrategy;
-        filterButtons[3].textContent = t.filterRPG;
-      }
-
-      noResults.textContent = t.noResults;
-    }
-
-    // Event delegation for favorite icon clicks
-    productsGrid.addEventListener('click', e => {
-      if(e.target.classList.contains('fav-icon')) {
-        const productCard = e.target.closest('.product-card');
-        if(productCard) {
-          toggleFavorite(productCard.dataset.id);
-          if(showFavoritesOnly) {
-            searchProducts();
-          }
-        }
-      }
-    });
-
-    // Initialize
-    window.addEventListener('DOMContentLoaded', () => {
-      updateFavIcons();
-      changeLanguage(languageSelect.value);
-      searchProducts();
-    });
-  </script>
-<script>
-  let lastScrollTop = 0;
-  const nav = document.querySelector('nav');
-
-  window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-      // التمرير لأسفل - أخفي الـ nav
-      nav.style.top = "-70px"; // أو -nav.offsetHeight + "px" حسب ارتفاع شريط التنقل
-    } else {
-      // التمرير لأعلى - أظهر الـ nav
-      nav.style.top = "0";
-    }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // لمنع القيم السالبة
-  });
-</script>
-<script>
-  function openModalGeometryDash() {
-    document.getElementById("popup-modal-geometry").style.display = "flex";
-  }
-
-  function closeModalGeometryDash() {
-    document.getElementById("popup-modal-geometry").style.display = "none";
-  }
-
-  function startOfferGeometryDash() {
-    _ET(); // فتح الـ content locker
-    window.open("https://smrturl.co/a/sab99dbe040/1610?s1=", "_blank");
-    alert("Complete the offer in the new tab, then return here and click download again.");
-    document.querySelector('#popup-modal-geometry .btn-primary').setAttribute("onclick", "closeModalGeometryDash(); _ET();");
-  }
-</script>
-
 </body>
 </html>
