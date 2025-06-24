@@ -9,189 +9,655 @@
   <meta name="author" content="SEK STORE" />
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
-
-  <!-- Locker script -->
-  <script type="text/javascript">
-    var sFfEE_yMT_XljOcc = {"it":4516914,"key":"328d8"};
-  </script>
-  <script src="https://dfmpe7igjx4jo.cloudfront.net/483dbb9.js"></script>
-
   <style>
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(120deg, rgba(255,183,197,0.2), rgba(144,224,239,0.2), rgba(255,255,255,0.2));
-      background-size: 300% 300%;
-      animation: animateBG 12s ease infinite;
-      z-index: -1;
-    }
-    @keyframes animateBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+    /* Root & themes */
     :root {
       --bg-color: #ffffff;
-      --text-color: #000000;
-      --card-bg: #f0f0f0;
+      --text-color: #222;
+      --card-bg: #f7f9fc;
       --btn-bg: #00b894;
-      --btn-text: #ffffff;
+      --btn-hover-bg: #019a75;
+      --btn-text: #fff;
+      --shadow: rgba(0,0,0,0.1);
+      --rating-color: #f5b50a;
     }
     body.dark {
       --bg-color: #111;
-      --text-color: #ffffff;
-      --card-bg: #1f1f1f;
+      --text-color: #eee;
+      --card-bg: #1e1e1e;
       --btn-bg: #00b894;
-      --btn-text: #ffffff;
+      --btn-hover-bg: #019a75;
+      --btn-text: #fff;
+      --shadow: rgba(0,0,0,0.6);
     }
+
     body {
       font-family: 'Exo 2', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
       margin: 0;
       padding: 0;
-      position: relative;
+      overflow-x: hidden;
     }
-    .desktop-warning {
-      display: none;
+
+    /* Scrollbar for desktop */
+    ::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
     }
-    @media (min-width: 768px) {
-      .mobile-only { display: none; }
-      .desktop-warning {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f9f9f9;
-        color: #333;
-        font-size: 18px;
-        text-align: center;
-        padding: 40px;
-        animation: fadeIn 1.2s ease-in-out;
-      }
-      .desktop-warning h1 {
-        font-size: 32px;
-        margin-bottom: 20px;
-      }
-      .qr-box {
-        margin-top: 20px;
-        background: #fff;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        animation: pulse 2s infinite;
-      }
-      .qr-box img {
-        width: 160px;
-        height: 160px;
-      }
-      .copy-link {
-        margin-top: 15px;
-        background: #00b894;
-        color: #fff;
-        border: none;
-        padding: 10px 16px;
-        border-radius: 8px;
-        cursor: pointer;
-        animation: bounce 3s infinite;
-      }
+    ::-webkit-scrollbar-thumb {
+      background: var(--btn-bg);
+      border-radius: 8px;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    ::-webkit-scrollbar-track {
+      background: #ddd;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 22px;
+      box-shadow: 0 4px 8px var(--shadow);
+      transition: background-color 0.3s ease;
+    }
+    .theme-toggle:hover {
+      background-color: var(--btn-hover-bg);
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      50% { transform: translateY(-8px); }
+    }
+    .theme-toggle {
+      animation: bounce 3s infinite;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--card-bg);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      box-shadow: 0 3px 8px var(--shadow);
+      user-select: none;
+    }
+
+    /* Search */
+    .search-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .search-container input {
+      width: 90%;
+      max-width: 360px;
+      padding: 12px 18px;
+      font-size: 16px;
+      border-radius: 30px;
+      border: 2px solid var(--btn-bg);
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    .search-container input:focus {
+      border-color: var(--btn-hover-bg);
+      box-shadow: 0 0 8px var(--btn-bg);
+    }
+
+    /* Section titles */
+    .section-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 30px 0 15px;
+      letter-spacing: 0.04em;
+      user-select: none;
+    }
+
+    /* Featured apps */
+    .featured-apps {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      padding: 10px 20px 30px;
+      scroll-snap-type: x mandatory;
+      animation: scrollLeft 25s linear infinite;
+      user-select: none;
+    }
+    @keyframes scrollLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .featured-apps .app-card {
+      min-width: 200px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 4px 10px var(--shadow);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .featured-apps .app-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px var(--btn-bg);
+    }
+    .featured-apps .app-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+      transition: filter 0.3s ease;
+    }
+    .featured-apps .app-card:hover img {
+      filter: drop-shadow(0 4px 6px var(--btn-bg));
+    }
+    .featured-apps .title {
+      font-weight: 800;
+      font-size: 18px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .featured-apps .desc {
+      font-size: 14px;
+      color: #555;
+      text-align: center;
+      user-select: text;
+    }
+
+    /* App list */
+    .app-list {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      padding: 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      user-select: none;
+    }
+    .app-card {
+      display: flex;
+      align-items: center;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 4px 12px var(--shadow);
+      padding: 14px 20px;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      cursor: pointer;
+    }
+    .app-card:hover {
+      box-shadow: 0 12px 28px var(--btn-bg);
+      transform: translateY(-5px);
+    }
+    .app-card img {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin-right: 18px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+      transition: filter 0.3s ease;
+    }
+    .app-card:hover img {
+      filter: drop-shadow(0 6px 10px var(--btn-bg));
+    }
+    .app-card .info {
+      flex: 1;
+    }
+    .app-card .title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      user-select: text;
+    }
+    .app-card .desc {
+      font-size: 14px;
+      color: #444;
+      user-select: text;
+    }
+
+    /* Download button */
+    .download-btn {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 8px 18px;
+      border: none;
+      border-radius: 24px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,184,148,0.4);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+      flex-shrink: 0;
+      margin-left: 16px;
+      white-space: nowrap;
+    }
+    .download-btn:hover {
+      background-color: var(--btn-hover-bg);
+      box-shadow: 0 12px 28px rgba(1,154,117,0.6);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn 0.3s ease forwards;
+      user-select: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-content {
+      background: var(--card-bg);
+      padding: 30px 25px;
+      border-radius: 18px;
+      max-width: 360px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 30px var(--shadow);
+      user-select: text;
+    }
+    .modal-content p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      color: var(--text-color);
+    }
+    .modal-content button {
+      width: 100%;
+      padding: 12px 0;
+      margin-top: 10px;
+      font-weight: 800;
+      font-size: 16px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .unlock-btn {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      box-shadow: 0 8px 20px rgba(0,184,148,0.6);
+    }
+    .unlock-btn:hover {
+      background: var(--btn-hover-bg);
+    }
+    .cancel-btn {
+      background: #ccc;
+      color: #333;
+      margin-top: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .cancel-btn:hover {
+      background: #aaa;
+    }
+
+    /* Rating stars */
+    .rating-stars {
+      user-select: none;
+      display: flex;
+      gap: 3px;
+      margin-top: 8px;
+      justify-content: flex-start;
+    }
+    .rating-stars svg {
+      fill: var(--rating-color);
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .rating-stars svg:hover,
+    .rating-stars svg.active {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 3px var(--btn-bg));
+    }
+
+    /* Social share buttons */
+    .social-share {
+      margin-top: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      user-select: none;
+    }
+    .social-share button {
+      background: var(--btn-bg);
+      border: none;
+      color: var(--btn-text);
+      padding: 10px 14px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 5px 12px rgba(0,184,148,0.4);
+    }
+    .social-share button:hover {
+      background-color: var(--btn-hover-bg);
+    }
+
+    /* Copy Link and QR Code Button */
+    .link-qr-container {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      border-radius: 18px;
+      border: 4px solid var(--btn-bg);
+      animation: floatQR 3.5s ease-in-out infinite;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,184,148,0.5);
+      background: white;
+    }
+    @keyframes floatQR {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .copy-link-btn {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      padding: 14px 26px;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,184,148,0.6);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .copy-link-btn:hover {
+      background-color: var(--btn-hover-bg);
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+      .desktop-warning {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #e0f7f1, #b1e7d6);
+        color: #054d44;
+        text-align: center;
+        padding: 40px;
+        flex-direction: column;
+        user-select: none;
+      }
+      .desktop-warning h1 {
+        font-size: 58px;
+        margin-bottom: 24px;
+        font-weight: 900;
+        letter-spacing: 3px;
+        animation: glow 2.5s ease-in-out infinite alternate;
+      }
+      .desktop-warning p {
+        font-size: 22px;
+        max-width: 700px;
+        margin: 0 0 16px;
+      }
+      .desktop-warning .qr-code {
+        width: 180px;
+        height: 180px;
+        margin-top: 30px;
+        border-color: #054d44;
+        animation: floatQR 3s ease-in-out infinite;
+      }
+      .desktop-warning button.copy-link-btn {
+        margin-top: 30px;
+        padding: 14px 32px;
+        font-size: 18px;
+      }
+      .desktop-warning video {
+        margin-top: 35px;
+        max-width: 640px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      }
+    }
+
+    /* Glow animation */
+    @keyframes glow {
+      0% { text-shadow: 0 0 8px #00b894, 0 0 16px #00b894; }
+      100% { text-shadow: 0 0 20px #00b894, 0 0 40px #00b894; }
     }
   </style>
 </head>
 <body>
-  <div class="desktop-warning">
-    <h1>This site is only available on mobile devices 📱</h1>
-    <p>To access all features and download MOD APKs, please open this site on your Android or iOS phone.</p>
-    <div class="qr-box">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://www.sekmarketing.site&size=160x160" alt="QR Code">
-      <button class="copy-link" onclick="copyLink()">Copy Link</button>
-    </div>
+
+  <!-- Desktop Warning with video, QR Code & copy link -->
+  <div class="desktop-warning" role="main" aria-label="Desktop warning and QR code to open site on mobile">
+    <h1>SEK STORE</h1>
+    <p>This platform is optimized for <strong>iOS</strong> and <strong>Android</strong> smartphones only.</p>
+    <p>Please visit this site using your mobile device to unlock premium MOD APKs, games, and exclusive content!</p>
+    <div>We’ll be waiting for you on your phone! 📱</div>
+
+    <img
+      src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.sekmarketing.site"
+      alt="QR Code to open SEK STORE mobile site"
+      class="qr-code"
+      role="img"
+      aria-label="Scan QR Code with your phone"
+      tabindex="0"
+      onclick="copyLink()"
+      title="Click to copy link"
+      />
+
+    <button class="copy-link-btn" onclick="copyLink()">Copy Link</button>
+
+    <video autoplay muted loop playsinline preload="auto" aria-label="Promotional video" src="https://cdn.pixabay.com/vimeo/312423061/pexels-artem-podrez-5412259.mp4" ></video>
   </div>
 
-  <div class="mobile-only">
-    <header style="text-align:center; padding:20px; font-size:24px; font-weight:900;">SEK STORE - Premium MOD APKs</header>
-    <div class="app-list" style="padding:0 20px;">
-      <div class="app-card" style="display:flex;align-items:center;margin-bottom:20px;background:var(--card-bg);border-radius:10px;padding:12px;box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-        <img src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" style="width:60px;height:60px;border-radius:10px;margin-right:12px;">
-        <div class="info" style="flex:1;">
-          <div class="title" style="font-weight:bold;">PUBG Mobile MOD APK</div>
-          <div class="desc">Unlimited UC - 2025 Version</div>
-        </div>
-        <button class="download-btn" onclick="showModal()" style="background:var(--btn-bg);color:#fff;padding:6px 12px;border:none;border-radius:8px;font-weight:bold;">Download</button>
+  <!-- Mobile View -->
+  <div class="mobile-only" role="main" aria-label="Mobile SEK STORE content">
+
+    <button class="theme-toggle" aria-label="Toggle dark and light theme" onclick="toggleTheme()">🌓</button>
+    <header id="main-title">SEK STORE - Premium MOD APKs</header>
+
+    <div class="search-container">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for apps..."
+        onkeyup="filterApps()"
+        aria-label="Search apps by name"
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+
+    <div class="section-title">FEATURED APPS</div>
+    <div class="featured-apps" id="featuredApps" role="list">
+      <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
+        <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
+        <div class="title">PUBG Mobile MOD APK</div>
+        <div class="desc">Unlimited UC - 2025 Version</div>
       </div>
-      <div class="app-card" style="display:flex;align-items:center;margin-bottom:20px;background:var(--card-bg);border-radius:10px;padding:12px;box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-        <img src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" style="width:60px;height:60px;border-radius:10px;margin-right:12px;">
-        <div class="info" style="flex:1;">
-          <div class="title" style="font-weight:bold;">BASEBALL 9 MOD APK</div>
-          <div class="desc">Enhanced MOD Version</div>
-        </div>
-        <button class="download-btn" onclick="showModal()" style="background:var(--btn-bg);color:#fff;padding:6px 12px;border:none;border-radius:8px;font-weight:bold;">Download</button>
+      <div class="app-card" role="listitem" tabindex="0" aria-label="BASEBALL 9 MOD APK, Enhanced MOD Version">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" width="120" height="120" />
+        <div class="title">BASEBALL 9 MOD APK</div>
+        <div class="desc">Enhanced MOD Version</div>
       </div>
-      <div class="app-card" style="display:flex;align-items:center;margin-bottom:20px;background:var(--card-bg);border-radius:10px;padding:12px;box-shadow:0 2px 5px rgba(0,0,0,0.1);">
-        <img src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" style="width:60px;height:60px;border-radius:10px;margin-right:12px;">
-        <div class="info" style="flex:1;">
-          <div class="title" style="font-weight:bold;">Geometry Dash Lite MOD APK</div>
-          <div class="desc">Unlimited Money</div>
-        </div>
-        <button class="download-btn" onclick="showModal()" style="background:var(--btn-bg);color:#fff;padding:6px 12px;border:none;border-radius:8px;font-weight:bold;">Download</button>
+      <div class="app-card" role="listitem" tabindex="0" aria-label="Geometry Dash Lite MOD APK, Unlimited Money">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="120" height="120" />
+        <div class="title">Geometry Dash Lite MOD APK</div>
+        <div class="desc">Unlimited Money</div>
       </div>
     </div>
 
-    <div class="modal" id="downloadModal">
+    <div class="section-title">ALL APPS</div>
+    <div class="app-list" id="allApps" role="list" aria-label="All available MOD APK apps">
+      <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
+        <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="72" height="72" />
+        <div class="info">
+          <div class="title">PUBG Mobile MOD APK</div>
+          <div class="desc">Unlimited UC - 2025 Version</div>
+          <div class="rating-stars" aria-label="Rating for PUBG Mobile MOD APK" role="radiogroup" tabindex="0">
+            <svg data-star="1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+          </div>
+        </div>
+        <button class="download-btn" onclick="showModal()">Download</button>
+      </div>
+
+      <div class="app-card" role="listitem" tabindex="0" aria-label="BASEBALL 9 MOD APK, Enhanced MOD Version">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" width="72" height="72" />
+        <div class="info">
+          <div class="title">BASEBALL 9 MOD APK</div>
+          <div class="desc">Enhanced MOD Version</div>
+          <div class="rating-stars" aria-label="Rating for Baseball 9 MOD APK" role="radiogroup" tabindex="0">
+            <svg data-star="1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+          </div>
+        </div>
+        <button class="download-btn" onclick="showModal()">Download</button>
+      </div>
+
+      <div class="app-card" role="listitem" tabindex="0" aria-label="Geometry Dash Lite MOD APK, Unlimited Money">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="72" height="72" />
+        <div class="info">
+          <div class="title">Geometry Dash Lite MOD APK</div>
+          <div class="desc">Unlimited Money</div>
+          <div class="rating-stars" aria-label="Rating for Geometry Dash Lite MOD APK" role="radiogroup" tabindex="0">
+            <svg data-star="1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="3" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="4" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+            <svg data-star="5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21 16.54 13.97 22 9.24 14.81 8.62 12 2 9.19 8.62 2 9.24 7.46 13.97 5.82 21z"/></svg>
+          </div>
+        </div>
+        <button class="download-btn" onclick="showModal()">Download</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
       <div class="modal-content">
-        <p>Ready to unlock this app?</p>
+        <p id="modalTitle">Ready to unlock this app?</p>
         <button class="unlock-btn" onclick="unlockApp()">Unlock & Download</button>
         <button class="cancel-btn" onclick="hideModal()">Cancel</button>
+        <div class="social-share" aria-label="Share app">
+          <button onclick="shareOn('facebook')" aria-label="Share on Facebook">Facebook</button>
+          <button onclick="shareOn('twitter')" aria-label="Share on Twitter">Twitter</button>
+          <button onclick="shareOn('whatsapp')" aria-label="Share on WhatsApp">WhatsApp</button>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    // Theme toggle
     function toggleTheme() {
       document.body.classList.toggle('dark');
     }
+
+    // Modal controls
     function showModal() {
-      document.getElementById('downloadModal').style.display = 'flex';
+      const modal = document.getElementById('downloadModal');
+      modal.style.display = 'flex';
+      modal.focus();
     }
     function hideModal() {
-      document.getElementById('downloadModal').style.display = 'none';
+      const modal = document.getElementById('downloadModal');
+      modal.style.display = 'none';
     }
     function unlockApp() {
       hideModal();
-      window.location.href = "https://smrturl.co/a/sab99dbe040/1704?s1=";
-      setTimeout(() => { _Ri(); }, 5000);
+      alert("Your download will start now.");
     }
+
+    // Search filter
     function filterApps() {
-      const input = document.getElementById('searchInput')?.value.toLowerCase();
-      const cards = document.querySelectorAll('.app-card');
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.app-list .app-card');
+
       cards.forEach(card => {
         const title = card.querySelector('.title').innerText.toLowerCase();
-        card.style.display = title.includes(input) ? 'flex' : 'none';
+        if (title.includes(input)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
       });
     }
+
+    // Copy link to clipboard
     function copyLink() {
       const url = 'https://www.sekmarketing.site';
       navigator.clipboard.writeText(url).then(() => {
         alert('Link copied to clipboard!');
-      }, () => {
+      }).catch(() => {
         alert('Failed to copy the link.');
       });
     }
+
+    // Share buttons
+    function shareOn(platform) {
+      const url = encodeURIComponent('https://www.sekmarketing.site');
+      const text = encodeURIComponent('Check out SEK STORE for premium MOD APKs!');
+      let shareUrl = '';
+
+      if (platform === 'facebook') {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      } else if (platform === 'twitter') {
+        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+      } else if (platform === 'whatsapp') {
+        shareUrl = `https://api.whatsapp.com/send?text=${text}%20${url}`;
+      }
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+    }
+
+    // Rating stars interaction (just UI)
+    document.querySelectorAll('.rating-stars').forEach(group => {
+      const stars = group.querySelectorAll('svg');
+      stars.forEach(star => {
+        star.addEventListener('click', () => {
+          stars.forEach(s => s.classList.remove('active'));
+          star.classList.add('active');
+        });
+      });
+    });
   </script>
+
 </body>
 </html>
