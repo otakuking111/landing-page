@@ -7,23 +7,6 @@
   <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
-    @media (min-width: 768px) {
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-size: 20px;
-        background-color: #111;
-        color: white;
-        text-align: center;
-      }
-
-      .mobile-only {
-        display: none;
-      }
-    }
-
     :root {
       --bg-color: #ffffff;
       --text-color: #000000;
@@ -46,11 +29,28 @@
       color: var(--text-color);
       margin: 0;
       padding: 0;
-      position: relative;
     }
 
-    .mobile-only {
-      display: block;
+    .desktop-warning {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-only {
+        display: none;
+      }
+
+      .desktop-warning {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #111;
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        padding: 20px;
+      }
     }
 
     header {
@@ -64,17 +64,23 @@
     }
 
     .theme-toggle {
-      position: absolute;
-      top: 16px;
-      left: 16px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
       z-index: 1000;
       background-color: var(--btn-bg);
       color: var(--btn-text);
       border: none;
-      padding: 6px 10px;
-      border-radius: 6px;
+      padding: 10px 14px;
+      border-radius: 50%;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     .lang-switcher {
@@ -220,6 +226,10 @@
   </style>
 </head>
 <body>
+  <div class="desktop-warning">
+    🚫 هذا الموقع مخصص فقط للهواتف الذكية. الرجاء فتحه من هاتفك لمتابعة الاستخدام.
+  </div>
+
   <div class="mobile-only">
     <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
@@ -232,7 +242,6 @@
 
     <div class="section-title" id="featured-label">FEATURED APPS</div>
     <div class="featured-apps">
-      <!-- Cards inside auto-scrolling slider -->
       <div class="app-card">
         <img src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Icon">
         <div class="info">
@@ -269,13 +278,11 @@
     }
 
     function showModal() {
-      const modal = document.getElementById('downloadModal');
-      modal.style.display = 'flex';
+      document.getElementById('downloadModal').style.display = 'flex';
     }
 
     function hideModal() {
-      const modal = document.getElementById('downloadModal');
-      modal.style.display = 'none';
+      document.getElementById('downloadModal').style.display = 'none';
     }
 
     function unlockApp() {
