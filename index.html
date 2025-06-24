@@ -331,14 +331,13 @@ nav {
       <!-- Product example -->
    <!-- منتج اللعبة مع نافذة منبثقة وتحكم في العرض -->
    <!-- CSS جديد لجعل المنتجات في صف أفقي --><style>
-  .products-grid {
-    display: flex;
-    flex-wrap: nowrap;      /* لا نسمح بالتفاف العناصر */
-    overflow-x: auto;       /* تمرير أفقي */
-    gap: 20px;
-    padding: 10px;
-    scroll-snap-type: x mandatory;
-    justify-content: flex-start; /* تبدأ من جهة اليسار */
+ .products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
   }
 
   .product-card {
