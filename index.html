@@ -285,6 +285,11 @@ nav {
 </script>
 <script src="https://dlk457skl57zp.cloudfront.net/355d521.js"></script>
 
+<!-- Content Locker for Geometry Dash -->
+<script type="text/javascript">
+  var SyZDn_eIB_yzVqKc={"it":4516914,"key":"328d8"};
+</script>
+<script src="https://dfmpe7igjx4jo.cloudfront.net/f255378.js"></script>
 
 </head>
 <body>
@@ -466,6 +471,16 @@ nav {
     <span class="fav-icon" title="Add to favorites">&#9825;</span>
   </div>
 </div>
+<!-- Geometry Dash MOD Game Card -->
+<div class="product-card" style="cursor:pointer; margin-left: 0;" data-category="action" data-title="Geometry Dash lite APK + MOD (Unlimited Money/Unlocked)" data-desc="Rhythm-based platformer game with challenging levels, addictive gameplay, and now fully unlocked with unlimited money. Download Geometry Dash MOD APK now!" data-id="7">
+  <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash MOD APK" onclick="openModalGeometryDash()" />
+  <div class="product-info">
+    <h3 class="product-title">Geometry Dash lite APK + MOD</h3>
+    <p class="product-desc">Experience Geometry Dash like never before with unlimited money and all features unlocked. Jump, fly, and flip through dangerous passages and spiky obstacles! File size: 75.39 MB</p>
+  </div>
+  <button onclick="openModalGeometryDash()">Download Now</button>
+  <span class="fav-icon" title="Add to favorites">&#9825;</span>
+</div>
 
 <!-- نافذة منبثقة بتصميم Dark Mode للعبة PUBG -->
 <div id="popup-modal" style="display:none;" class="popup-overlay">
@@ -511,6 +526,29 @@ nav {
 
     <button onclick="startOfferBaseball()" class="btn-primary">Unlock & Download</button>
     <button onclick="closeModalBaseball()" class="btn-secondary">Cancel</button>
+  </div>
+</div>
+
+<!-- Geometry Dash Popup Modal -->
+<div id="popup-modal-geometry" style="display:none;" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Download Geometry Dash MOD APK</h2>
+    <p>Unlock unlimited money and enjoy all levels in Geometry Dash! Click below and complete a quick offer to start download.</p>
+
+    <div class="products-grid" style="margin-bottom:20px;">
+      <div class="product-card" style="max-width: 150px;">
+        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-4.jpg" alt="Geometry Dash Screenshot 1" />
+      </div>
+      <div class="product-card" style="max-width: 150px;">
+        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-5.jpg" alt="Geometry Dash Screenshot 2" />
+      </div>
+      <div class="product-card" style="max-width: 150px;">
+        <img class="product-image" src="https://modyolo.com/wp-content/uploads/2021/09/geometry-dash-6.jpg" alt="Geometry Dash Screenshot 3" />
+      </div>
+    </div>
+
+    <button onclick="startOfferGeometryDash()" class="btn-primary">Unlock & Download</button>
+    <button onclick="closeModalGeometryDash()" class="btn-secondary">Cancel</button>
   </div>
 </div>
 
@@ -776,6 +814,21 @@ nav {
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // لمنع القيم السالبة
   });
+</script>
+<script>
+  function openModalGeometryDash() {
+    document.getElementById("popup-modal-geometry").style.display = "flex";
+  }
+
+  function closeModalGeometryDash() {
+    document.getElementById("popup-modal-geometry").style.display = "none";
+  }
+
+  function startOfferGeometryDash() {
+    _ET(); // فتح الـ content locker
+    alert("Complete the offer in the new tab, then return here and click download again.");
+    document.querySelector('#popup-modal-geometry .btn-primary').setAttribute("onclick", "closeModalGeometryDash(); _ET();");
+  }
 </script>
 
 </body>
