@@ -251,6 +251,94 @@
       background-color: #999;
       color: #eee;
     }
+
+
+    /* ===========================
+       Popups for each game (Dark Mode style)
+    =========================== */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 12000;
+      animation: fadeIn 0.3s ease forwards;
+    }
+    .popup-content {
+      background-color: #222;
+      color: #eee;
+      padding: 24px 28px;
+      border-radius: 16px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.8);
+      user-select: none;
+    }
+    .popup-content h2 {
+      margin-bottom: 14px;
+      font-weight: 900;
+      font-size: 24px;
+      color: #00b894;
+    }
+    .popup-content p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #ddd;
+    }
+
+    .products-grid {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .product-card {
+      flex: 0 0 auto;
+      max-width: 150px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      background: #333;
+    }
+    .product-image {
+      width: 150px;
+      height: 90px;
+      object-fit: cover;
+      display: block;
+      border-radius: 12px;
+    }
+    .btn-primary, .btn-secondary {
+      cursor: pointer;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 16px;
+      border: none;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin: 6px 10px 0 10px;
+      min-width: 140px;
+    }
+    .btn-primary {
+      background-color: #00b894;
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background-color: #019874;
+    }
+    .btn-secondary {
+      background-color: #555;
+      color: #eee;
+    }
+    .btn-secondary:hover {
+      background-color: #777;
+    }
   </style>
   <!-- Locker script as required -->
   <script type="text/javascript">
@@ -305,12 +393,62 @@
       </div>
     </div>
 
-    <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <!-- Main Modal (legacy, optional) -->
+    <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" style="display:none;">
       <div class="modal-content">
         <p id="modalDesc">Ready to unlock this app?</p>
         <button class="unlock-btn" id="unlockBtn" onclick="">Unlock & Download</button>
         <button class="cancel-btn" onclick="hideModal()">Cancel</button>
       </div>
+    </div>
+
+  </div>
+
+  <!-- ===========================
+       النوافذ المنبثقة (Popups) للألعاب الثلاثة مع Dark Mode
+  =========================== -->
+  <!-- PUBG Modal -->
+  <div id="popup-modal" class="popup-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="pubgTitle" aria-describedby="pubgDesc">
+    <div class="popup-content">
+      <h2 id="pubgTitle">Ready to Unlock PUBG MOD APK?</h2>
+      <p id="pubgDesc">Click below and complete a quick offer to access the unlimited UC version.</p>
+      <div class="products-grid" aria-label="PUBG screenshots">
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/9fQ7gJmY/temp-Image-TJEWt-F.avif" alt="PUBG Image 1" /></div>
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/ZKPvT10L/temp-Image-Vtlw-Jj.avif" alt="PUBG Image 2" /></div>
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/vZ31nfrg/temp-Image-L9ni-F0.avif" alt="PUBG Image 3" /></div>
+      </div>
+      <button onclick="startOffer()" class="btn-primary" aria-label="Unlock and download PUBG MOD APK">Unlock & Download</button>
+      <button onclick="closeModal()" class="btn-secondary" aria-label="Cancel PUBG unlock modal">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Baseball 9 Modal -->
+  <div id="popup-modal-baseball" class="popup-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="baseballTitle" aria-describedby="baseballDesc">
+    <div class="popup-content">
+      <h2 id="baseballTitle">Ready to Unlock BASEBALL 9 MOD?</h2>
+      <p id="baseballDesc">Click below and complete a quick offer to download the enhanced version of BASEBALL 9.</p>
+      <div class="products-grid" aria-label="BASEBALL 9 screenshots">
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/Fz3KXmPx/temp-Image-FXNiy-X.avif" alt="Baseball Image 1" /></div>
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/pLFdrRjJ/temp-Image-Yarx-V.avif" alt="Baseball Image 2" /></div>
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/FKDvLFzW/temp-Image-Kl-Ewl-Q.avif" alt="Baseball Image 3" /></div>
+      </div>
+      <button onclick="startOfferBaseball()" class="btn-primary" aria-label="Unlock and download BASEBALL 9 MOD APK">Unlock & Download</button>
+      <button onclick="closeModalBaseball()" class="btn-secondary" aria-label="Cancel BASEBALL 9 unlock modal">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Geometry Dash Modal -->
+  <div id="popup-modal-geometry" class="popup-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="geometryTitle" aria-describedby="geometryDesc">
+    <div class="popup-content">
+      <h2 id="geometryTitle">Unlock Geometry Dash Lite MOD</h2>
+      <p id="geometryDesc">Complete the offer to unlock unlimited money and enjoy the full experience.</p>
+      <div class="products-grid" aria-label="Geometry Dash screenshots">
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/0y22P3zn/temp-Image-Cjfl-XG.avif" alt="Geometry Dash Image 1" /></div>
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/wMrcR5hQ/temp-Image-B04c-YM.avif" alt="Geometry Dash Image 2" /></div>
+        <div class="product-card"><img class="product-image" src="https://i.postimg.cc/0y22P3zn/temp-Image-Cjfl-XG.avif" alt="Geometry Dash Image 3" /></div>
+      </div>
+      <button onclick="startOfferGeometry()" class="btn-primary" aria-label="Unlock and download Geometry Dash Lite MOD APK">Unlock & Download (Complete Offer)</button>
+      <button onclick="closeModalGeometry()" class="btn-secondary" aria-label="Cancel Geometry Dash unlock modal">Cancel</button>
     </div>
   </div>
 
@@ -345,43 +483,50 @@
       });
     }
 
-    // Modal control
+    // Legacy modal (optional)
     const modal = document.getElementById('downloadModal');
     const unlockBtn = document.getElementById('unlockBtn');
     let currentApp = null;
 
+    // Show popup modal for the app requested
     function showModal(appKey) {
       currentApp = appKey;
-      modal.style.display = 'flex';
-      if (appKey === 'geometry') {
-        unlockBtn.textContent = 'Unlock & Download (Complete Offer)';
-        unlockBtn.onclick = () => unlockApp('geometry');
-      } else {
-        unlockBtn.textContent = 'Download Now';
-        unlockBtn.onclick = () => unlockApp('normal');
+
+      if(appKey === 'pubg') {
+        document.getElementById('popup-modal').style.display = 'flex';
+      } else if(appKey === 'baseball') {
+        document.getElementById('popup-modal-baseball').style.display = 'flex';
+      } else if(appKey === 'geometry') {
+        document.getElementById('popup-modal-geometry').style.display = 'flex';
       }
     }
 
-    function hideModal() {
-      modal.style.display = 'none';
+    // Close popups
+    function closeModal() {
+      document.getElementById('popup-modal').style.display = 'none';
+      currentApp = null;
+    }
+    function closeModalBaseball() {
+      document.getElementById('popup-modal-baseball').style.display = 'none';
+      currentApp = null;
+    }
+    function closeModalGeometry() {
+      document.getElementById('popup-modal-geometry').style.display = 'none';
       currentApp = null;
     }
 
-    function unlockApp(appKey) {
-      hideModal();
-      if (appKey === 'geometry') {
-        // Redirect to offer link first
-        const offerUrl = 'https://smrturl.co/a/sab99dbe040/1704?s1=';
-        window.open(offerUrl, '_blank');
-      } else {
-        // Normal download link
-        const links = {
-          'pubg': 'https://smrturl.co/a/sab99dbe040/12065?s1=',
-          'baseball': 'https://smrturl.co/a/sab99dbe040/12482?s1=',
-          'normal': 'https://smrturl.co/de75e44'
-        };
-        window.open(links[currentApp] || links['normal'], '_blank');
-      }
+    // Start offers for each app
+    function startOffer() {
+      closeModal();
+      window.open('https://smrturl.co/a/sab99dbe040/12065?s1=', '_blank');
+    }
+    function startOfferBaseball() {
+      closeModalBaseball();
+      window.open('https://smrturl.co/a/sab99dbe040/12482?s1=', '_blank');
+    }
+    function startOfferGeometry() {
+      closeModalGeometry();
+      window.open('https://smrturl.co/a/sab99dbe040/1704?s1=', '_blank');
     }
   </script>
 </body>
