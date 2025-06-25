@@ -24,7 +24,6 @@
     }
     body {
       font-family: 'Exo 2', sans-serif;
-      /* خلفية متحركة كلاسيكية */
       background: linear-gradient(270deg, #ff5f6d, #ffc371, #24c6dc, #514a9d);
       background-size: 800% 800%;
       animation: gradientBG 30s ease infinite;
@@ -120,7 +119,6 @@
         text-align: center;
       }
     }
-    /* Mobile styles */
     .mobile-only {
       padding: 12px;
       max-width: 480px;
@@ -147,22 +145,26 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
-    /* ======= تعديل خاصية التحريك التلقائي للـ featured apps ======= */
+
+    /* featured-apps container */
     .featured-apps {
       display: flex;
-      overflow: hidden; /* إخفاء التمرير اليدوي */
+      overflow-x: auto; /* يسمح بالتمرير اليدوي */
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
       gap: 16px;
-      animation: scrollLeft 30s linear infinite;
-      width: 100%;
+      padding-bottom: 10px;
+      user-select: none;
+      cursor: grab;
+      position: relative;
+      /* مهم لإخفاء التمرير التلقائي */
+      scrollbar-width: none; /* Firefox */
     }
-    @keyframes scrollLeft {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+    .featured-apps::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
     }
+
+    /* بطاقات التطبيقات داخل featured-apps */
     .featured-apps .app-card {
       min-width: 180px;
       scroll-snap-align: start;
@@ -173,12 +175,13 @@
       padding: 12px;
       cursor: default;
       transition: transform 0.3s ease;
+      user-select: none;
     }
     .featured-apps .app-card:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      animation-play-state: paused; /* يوقف الأنيميشن عند hover */
     }
+
     .app-card img {
       width: 120px;
       height: 120px;
@@ -200,6 +203,8 @@
       text-align: center;
       user-select: none;
     }
+
+    /* app-list (all apps) */
     .app-list {
       display: flex;
       flex-direction: column;
@@ -334,7 +339,7 @@
 
     <div class="section-title" id="featured-label">FEATURED APPS</div>
 
-    <!-- تكرار محتوى featured apps مرتين للحركة الانسيابية -->
+    <!-- محتوى featured-apps -->
     <div class="featured-apps" role="list" aria-label="Featured MOD APK apps">
       <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
         <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
@@ -351,7 +356,7 @@
         <div class="title">Geometry Dash Lite MOD APK</div>
         <div class="desc">Unlimited Money</div>
       </div>
-      <!-- نسخة مكررة -->
+      <!-- نسخة مكررة لضمان استمرار الحركة -->
       <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
         <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
         <div class="title">PUBG Mobile MOD APK</div>
@@ -450,6 +455,90 @@
         alert('Link copied to clipboard!');
       });
     }
+
+    // ** حركة التمرير التلقائي + تحكم يدوي في featured-apps **
+    (() => {
+      const container = document.querySelector('.featured-apps');
+      let isUserInteracting = false;
+      let lastUserInteraction = 0;
+      let scrollSpeed = 0.6; // سرعة التمرير التلقائي (يمكنك التعديل)
+      let requestId;
+
+      // عند التمرير أو السحب أو اللمس نوقف التحريك التلقائي مؤقتا
+      function userInteraction() {
+        isUserInteracting = true;
+        lastUserInteraction = Date.now();
+        cancelAnimationFrame(requestId);
+      }
+
+      container.addEventListener('scroll', userInteraction);
+      container.addEventListener('mousedown', userInteraction);
+      container.addEventListener('touchstart', userInteraction);
+      container.addEventListener('wheel', userInteraction);
+
+      function autoScroll() {
+        if (isUserInteracting) {
+          // إذا مر وقت طويل بدون تفاعل، استأنف الحركة التلقائية
+          if (Date.now() - lastUserInteraction > 2000) {
+            isUserInteracting = false;
+          }
+        }
+
+        if (!isUserInteracting) {
+          container.scrollLeft += scrollSpeed;
+
+          // إذا وصلنا لنهاية المحتوى (نصف العرض لأن المحتوى مكرر مرتين)
+          if (container.scrollLeft >= container.scrollWidth / 2) {
+            container.scrollLeft = 0;
+          }
+        }
+        requestId = requestAnimationFrame(autoScroll);
+      }
+
+      autoScroll();
+
+      // تغيير المؤشر أثناء السحب (جميل للمستخدم)
+      let isDragging = false;
+      let startX, scrollLeftStart;
+
+      container.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        container.classList.add('dragging');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeftStart = container.scrollLeft;
+      });
+      container.addEventListener('mouseleave', () => {
+        isDragging = false;
+        container.classList.remove('dragging');
+      });
+      container.addEventListener('mouseup', () => {
+        isDragging = false;
+        container.classList.remove('dragging');
+      });
+      container.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (startX - x) * 2; // سرعة السحب
+        container.scrollLeft = scrollLeftStart + walk;
+      });
+
+      // دعم اللمس للسحب
+      container.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].pageX - container.offsetLeft;
+        scrollLeftStart = container.scrollLeft;
+      });
+      container.addEventListener('touchend', () => {
+        isDragging = false;
+      });
+      container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const x = e.touches[0].pageX - container.offsetLeft;
+        const walk = (startX - x) * 2;
+        container.scrollLeft = scrollLeftStart + walk;
+      });
+    })();
   </script>
 </body>
 </html>
