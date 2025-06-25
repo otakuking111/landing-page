@@ -24,9 +24,9 @@
     }
     body {
       font-family: 'Exo 2', sans-serif;
-      background: linear-gradient(270deg, #ff5f6d, #ffc371, #24c6dc, #514a9d);
-      background-size: 800% 800%;
-      animation: gradientBG 30s ease infinite;
+      background: linear-gradient(-45deg, #23a6d5, #23d5ab, #d53a23, #f7b733);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
       color: var(--text-color);
       margin: 0;
       padding: 0;
@@ -119,6 +119,7 @@
         text-align: center;
       }
     }
+    /* Mobile styles */
     .mobile-only {
       padding: 12px;
       max-width: 480px;
@@ -145,26 +146,16 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
-
-    /* featured-apps container */
     .featured-apps {
       display: flex;
-      overflow-x: auto; /* يسمح بالتمرير اليدوي */
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
+      overflow-x: auto;
+      padding: 10px 5px;
       gap: 16px;
-      padding-bottom: 10px;
-      user-select: none;
-      cursor: grab;
-      position: relative;
-      /* مهم لإخفاء التمرير التلقائي */
-      scrollbar-width: none; /* Firefox */
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--btn-bg) transparent;
+      /* أزلنا التحريك التلقائي السابق */
     }
-    .featured-apps::-webkit-scrollbar {
-      display: none; /* Chrome, Safari, Opera */
-    }
-
-    /* بطاقات التطبيقات داخل featured-apps */
     .featured-apps .app-card {
       min-width: 180px;
       scroll-snap-align: start;
@@ -175,13 +166,11 @@
       padding: 12px;
       cursor: default;
       transition: transform 0.3s ease;
-      user-select: none;
     }
     .featured-apps .app-card:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
-
     .app-card img {
       width: 120px;
       height: 120px;
@@ -203,8 +192,6 @@
       text-align: center;
       user-select: none;
     }
-
-    /* app-list (all apps) */
     .app-list {
       display: flex;
       flex-direction: column;
@@ -334,29 +321,10 @@
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌓</button>
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
-    <!-- بحث فوق FEATURED APPS -->
     <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 20px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
 
     <div class="section-title" id="featured-label">FEATURED APPS</div>
-
-    <!-- محتوى featured-apps -->
     <div class="featured-apps" role="list" aria-label="Featured MOD APK apps">
-      <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
-        <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
-        <div class="title">PUBG Mobile MOD APK</div>
-        <div class="desc">Unlimited UC - 2025 Version</div>
-      </div>
-      <div class="app-card" role="listitem" tabindex="0" aria-label="BASEBALL 9 MOD APK, Enhanced MOD Version">
-        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" width="120" height="120" />
-        <div class="title">BASEBALL 9 MOD APK</div>
-        <div class="desc">Enhanced MOD Version</div>
-      </div>
-      <div class="app-card" role="listitem" tabindex="0" aria-label="Geometry Dash Lite MOD APK, Unlimited Money">
-        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="120" height="120" />
-        <div class="title">Geometry Dash Lite MOD APK</div>
-        <div class="desc">Unlimited Money</div>
-      </div>
-      <!-- نسخة مكررة لضمان استمرار الحركة -->
       <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
         <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
         <div class="title">PUBG Mobile MOD APK</div>
@@ -404,9 +372,9 @@
 
     <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
       <div class="modal-content">
-        <p id="modalDesc">Unlock content to get your download link.</p>
-        <button class="unlock-btn" onclick="unlockContent()">Unlock</button>
-        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        <p id="modalDesc">Ready to unlock this app?</p>
+        <button class="unlock-btn" id="unlockBtn" onclick="">Unlock & Download</button>
+        <button class="cancel-btn" onclick="hideModal()">Cancel</button>
       </div>
     </div>
   </div>
@@ -417,58 +385,95 @@
       document.body.classList.toggle('dark');
     }
 
-    // Search filter
+    // Copy SEK STORE link on desktop
+    function copyLink() {
+      const link = 'https://www.sekmarketing.site';
+      navigator.clipboard.writeText(link).then(() => {
+        alert('Link copied to clipboard!');
+      }, () => {
+        alert('Failed to copy link.');
+      });
+    }
+
+    // Search/filter apps
     function filterApps() {
-      const filter = document.getElementById('searchBox').value.toLowerCase();
-      const appCards = document.querySelectorAll('#appList .app-card');
-      appCards.forEach(card => {
-        const title = card.getAttribute('data-title').toLowerCase();
-        const desc = card.getAttribute('data-desc').toLowerCase();
-        if (title.includes(filter) || desc.includes(filter)) {
-          card.style.display = '';
+      const query = document.getElementById('searchBox').value.toLowerCase();
+      const apps = document.querySelectorAll('#appList .app-card');
+      apps.forEach(app => {
+        const title = app.getAttribute('data-title').toLowerCase();
+        const desc = app.getAttribute('data-desc').toLowerCase();
+        if (title.includes(query) || desc.includes(query)) {
+          app.style.display = 'flex';
         } else {
-          card.style.display = 'none';
+          app.style.display = 'none';
         }
       });
     }
 
     // Modal control
     const modal = document.getElementById('downloadModal');
+    const unlockBtn = document.getElementById('unlockBtn');
+    let currentApp = null;
 
-    function showModal(app) {
+    function showModal(appKey) {
+      currentApp = appKey;
       modal.style.display = 'flex';
-      document.getElementById('modalDesc').textContent = `Unlock content to get your download link for ${app}.`;
+      if (appKey === 'geometry') {
+        unlockBtn.textContent = 'Unlock & Download (Complete Offer)';
+        unlockBtn.onclick = () => unlockApp('geometry');
+      } else {
+        unlockBtn.textContent = 'Download Now';
+        unlockBtn.onclick = () => unlockApp('normal');
+      }
     }
 
-    function closeModal() {
+    function hideModal() {
       modal.style.display = 'none';
+      currentApp = null;
     }
 
-    function unlockContent() {
-      alert('Content unlocked! (This is a placeholder)');
-      closeModal();
+    function unlockApp(appKey) {
+      hideModal();
+      if (appKey === 'geometry') {
+        // Redirect to offer link first
+        const offerUrl = 'https://smrturl.co/a/sab99dbe040/1704?s1=';
+        window.open(offerUrl, '_blank');
+      } else {
+        // Normal download link
+        const links = {
+          'pubg': 'https://smrturl.co/a/sab99dbe040/12065?s1=',
+          'baseball': 'https://smrturl.co/a/sab99dbe040/12482?s1=',
+          'normal': 'https://smrturl.co/de75e44'
+        };
+        window.open(links[currentApp] || links['normal'], '_blank');
+      }
     }
 
-    // Copy link button for desktop warning
-    function copyLink() {
-      navigator.clipboard.writeText('https://www.sekmarketing.site').then(() => {
-        alert('Link copied to clipboard!');
-      });
-    }
+    // Auto-scroll featured apps step by step
 
-    // ** حركة التمرير التلقائي + تحكم يدوي في featured-apps **
-    (() => {
+    (function() {
       const container = document.querySelector('.featured-apps');
       let isUserInteracting = false;
       let lastUserInteraction = 0;
-      let scrollSpeed = 0.6; // سرعة التمرير التلقائي (يمكنك التعديل)
-      let requestId;
+      let scrollStep = 0; // عرض بطاقة واحدة + الفجوة
+      let scrollInterval = 2000; // 2 ثانية لكل خطوة
+      let scrollTimer;
 
-      // عند التمرير أو السحب أو اللمس نوقف التحريك التلقائي مؤقتا
+      // حساب عرض بطاقة + الفجوة (نأخذ البطاقة الأولى + فجوة)
+      function calculateScrollStep() {
+        const firstCard = container.querySelector('.app-card');
+        if (!firstCard) return;
+        const style = getComputedStyle(firstCard);
+        const marginRight = parseInt(style.marginRight) || 0;
+        scrollStep = firstCard.offsetWidth + marginRight;
+      }
+
+      calculateScrollStep();
+
       function userInteraction() {
         isUserInteracting = true;
         lastUserInteraction = Date.now();
-        cancelAnimationFrame(requestId);
+        clearInterval(scrollTimer);
       }
 
       container.addEventListener('scroll', userInteraction);
@@ -476,28 +481,35 @@
       container.addEventListener('touchstart', userInteraction);
       container.addEventListener('wheel', userInteraction);
 
-      function autoScroll() {
-        if (isUserInteracting) {
-          // إذا مر وقت طويل بدون تفاعل، استأنف الحركة التلقائية
-          if (Date.now() - lastUserInteraction > 2000) {
-            isUserInteracting = false;
+      function startAutoScroll() {
+        scrollTimer = setInterval(() => {
+          if (isUserInteracting) {
+            if (Date.now() - lastUserInteraction > 3000) { // 3 ثواني بدون تفاعل
+              isUserInteracting = false;
+            } else {
+              return; // لا تتحرك أثناء التفاعل
+            }
           }
-        }
 
-        if (!isUserInteracting) {
-          container.scrollLeft += scrollSpeed;
+          // تحرك خطوة واحدة
+          let newScrollLeft = container.scrollLeft + scrollStep;
 
-          // إذا وصلنا لنهاية المحتوى (نصف العرض لأن المحتوى مكرر مرتين)
-          if (container.scrollLeft >= container.scrollWidth / 2) {
-            container.scrollLeft = 0;
+          // عند الوصول لنصف المحتوى نرجع للصفر (لأن المحتوى مكرر)
+          if (newScrollLeft >= container.scrollWidth / 2) {
+            newScrollLeft = 0;
           }
-        }
-        requestId = requestAnimationFrame(autoScroll);
+
+          // انزلاق سلس للموضع الجديد
+          container.scrollTo({
+            left: newScrollLeft,
+            behavior: 'smooth'
+          });
+        }, scrollInterval);
       }
 
-      autoScroll();
+      startAutoScroll();
 
-      // تغيير المؤشر أثناء السحب (جميل للمستخدم)
+      // دعم السحب اليدوي كما كان (إضافة تأثيرات السحب)
       let isDragging = false;
       let startX, scrollLeftStart;
 
@@ -519,11 +531,10 @@
         if (!isDragging) return;
         e.preventDefault();
         const x = e.pageX - container.offsetLeft;
-        const walk = (startX - x) * 2; // سرعة السحب
+        const walk = (startX - x) * 2;
         container.scrollLeft = scrollLeftStart + walk;
       });
 
-      // دعم اللمس للسحب
       container.addEventListener('touchstart', (e) => {
         isDragging = true;
         startX = e.touches[0].pageX - container.offsetLeft;
