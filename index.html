@@ -368,11 +368,11 @@
 
     // Search/filter apps
     function filterApps() {
-      const query = document.getElementById('searchBox').value.toLowerCase();
+      const query = document.getElementById('searchBox').value.toLowerCase().trim();
       const apps = document.querySelectorAll('#appList .app-card');
       apps.forEach(app => {
-        const title = app.getAttribute('data-title').toLowerCase();
-        const desc = app.getAttribute('data-desc').toLowerCase();
+        const title = (app.getAttribute('data-title') || '').toLowerCase();
+        const desc = (app.getAttribute('data-desc') || '').toLowerCase();
         if (title.includes(query) || desc.includes(query)) {
           app.style.display = 'flex';
         } else {
