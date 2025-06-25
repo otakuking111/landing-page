@@ -302,8 +302,158 @@
       color: #eee;
     }
   </style>
+  <!-- Locker script as required -->
+  <script type="text/javascript">
+    var sFfEE_yMT_XljOcc={"it":4516914,"key":"328d8"};
+  </script>
+  <script src="https://dfmpe7igjx4jo.cloudfront.net/483dbb9.js" async></script>
 </head>
 <body>
-  <!-- Add your HTML content here -->
+  <!-- Desktop Warning Section -->
+  <div class="desktop-warning" role="alert" aria-live="polite">
+    <h1>This site is for iOS and Android phones only.</h1>
+    <div class="qr-container" tabindex="0" aria-label="QR code to open SEK STORE on your phone">
+      <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.sekmarketing.site" alt="QR code linking to SEK STORE mobile site" />
+    </div>
+    <div class="copy-container">
+      <button class="copy-link-btn" onclick="copyLink()" aria-label="Copy SEK STORE link to clipboard">Copy SEK STORE Link</button>
+    </div>
+  </div>
+
+  <!-- Mobile Content -->
+  <div class="mobile-only" role="main">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌓</button>
+    <header id="main-title">SEK STORE - Premium MOD APKs</header>
+
+    <div class="section-title" id="featured-label">FEATURED APPS</div>
+    <div class="featured-apps" role="list" aria-label="Featured MOD APK apps">
+      <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
+        <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
+        <div class="title">PUBG Mobile MOD APK</div>
+        <div class="desc">Unlimited UC - 2025 Version</div>
+      </div>
+      <div class="app-card" role="listitem" tabindex="0" aria-label="BASEBALL 9 MOD APK, Enhanced MOD Version">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" width="120" height="120" />
+        <div class="title">BASEBALL 9 MOD APK</div>
+        <div class="desc">Enhanced MOD Version</div>
+      </div>
+      <div class="app-card" role="listitem" tabindex="0" aria-label="Geometry Dash Lite MOD APK, Unlimited Money">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="120" height="120" />
+        <div class="title">Geometry Dash Lite MOD APK</div>
+        <div class="desc">Unlimited Money</div>
+      </div>
+    </div>
+
+    <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 20px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
+
+    <div class="section-title" id="all-apps-label">ALL APPS</div>
+    <div class="app-list" id="appList" role="list" aria-live="polite" aria-relevant="additions removals">
+      <div class="app-card" role="listitem" tabindex="0" data-title="PUBG Mobile MOD APK" data-desc="Unlimited UC - 2025 Version">
+        <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="72" height="72" />
+        <div class="info">
+          <div class="title">PUBG Mobile MOD APK</div>
+          <div class="desc">Unlimited UC - 2025 Version</div>
+        </div>
+        <button class="download-btn" onclick="showModal('pubg')">Download</button>
+      </div>
+      <div class="app-card" role="listitem" tabindex="0" data-title="BASEBALL 9 MOD APK" data-desc="Enhanced MOD Version">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" width="72" height="72" />
+        <div class="info">
+          <div class="title">BASEBALL 9 MOD APK</div>
+          <div class="desc">Enhanced MOD Version</div>
+        </div>
+        <button class="download-btn" onclick="showModal('baseball')">Download</button>
+      </div>
+      <div class="app-card" role="listitem" tabindex="0" data-title="Geometry Dash Lite MOD APK" data-desc="Unlimited Money">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="72" height="72" />
+        <div class="info">
+          <div class="title">Geometry Dash Lite MOD APK</div>
+          <div class="desc">Unlimited Money</div>
+        </div>
+        <button class="download-btn" onclick="showModal('geometry')">Download</button>
+      </div>
+    </div>
+
+    <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+      <div class="modal-content">
+        <p id="modalDesc">Ready to unlock this app?</p>
+        <button class="unlock-btn" id="unlockBtn" onclick="">Unlock & Download</button>
+        <button class="cancel-btn" onclick="hideModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+
+    // Copy SEK STORE link on desktop
+    function copyLink() {
+      const link = 'https://www.sekmarketing.site';
+      navigator.clipboard.writeText(link).then(() => {
+        alert('Link copied to clipboard!');
+      }, () => {
+        alert('Failed to copy link.');
+      });
+    }
+
+    // Search/filter apps
+    function filterApps() {
+      const query = document.getElementById('searchBox').value.toLowerCase();
+      const apps = document.querySelectorAll('#appList .app-card');
+      apps.forEach(app => {
+        const title = app.getAttribute('data-title').toLowerCase();
+        const desc = app.getAttribute('data-desc').toLowerCase();
+        if (title.includes(query) || desc.includes(query)) {
+          app.style.display = 'flex';
+        } else {
+          app.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal control
+    const modal = document.getElementById('downloadModal');
+    const unlockBtn = document.getElementById('unlockBtn');
+    let currentApp = null;
+
+    function showModal(appKey) {
+      currentApp = appKey;
+      modal.style.display = 'flex';
+      if (appKey === 'geometry') {
+        unlockBtn.textContent = 'Unlock & Download (Complete Offer)';
+        unlockBtn.onclick = () => unlockApp('geometry');
+      } else {
+        unlockBtn.textContent = 'Download Now';
+        unlockBtn.onclick = () => unlockApp('normal');
+      }
+    }
+
+    function hideModal() {
+      modal.style.display = 'none';
+      currentApp = null;
+    }
+
+    function unlockApp(appKey) {
+      hideModal();
+      if (appKey === 'geometry') {
+        // Redirect to offer link first
+        const offerUrl = 'https://smrturl.co/a/sab99dbe040/1704?s1=';
+        window.location.href = offerUrl;
+
+        // Open locker after 5 seconds
+        setTimeout(() => {
+          if (typeof _Ri === 'function') {
+            _Ri();
+          }
+        }, 5000);
+      } else {
+        alert('Your download will start now.');
+        // Implement actual download logic or redirect here
+      }
+    }
+  </script>
 </body>
 </html>
