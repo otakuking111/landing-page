@@ -441,7 +441,19 @@
           <button class="download-btn ios-btn" onclick="showModal('geometry')">iOS</button>
         </div>
       </div>
-
+      <div class="app-card" data-title="Pokemon Go Spoofer" data-desc="Install Pokemon GO Spoofer — Teleport, Joystick, Auto Walk and More! Unlock powerful features instantly and play smarter on iOS and Android.">
+        <img loading="lazy" src="https://itweaked.net/assets/img/app_images/17tlkJR4d419016b529ae1fc2251d04eedb09d4.png" alt="Baseball Icon" width="72" height="72" />
+        
+        <div class="info" style="flex: 2;">
+          <div class="title">Pokemon Go Spoofer</div>
+          <div class="desc">Install Pokemon GO Spoofer — Teleport, Joystick, Auto Walk and More! Unlock powerful features instantly and play smarter on iOS and Android.</div>
+        </div>
+        
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showModal('Pokemon')">Android</button>
+          <button class="download-btn ios-btn" onclick="showModal('Pokemon')">iOS</button>
+        </div>
+        </div>
     <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
       <div class="modal-content">
         <!-- Screenshots container -->
@@ -529,6 +541,8 @@
         pubg: 'https://smrturl.co/a/sab99dbe040/1704?s1=',
         baseball: 'https://smrturl.co/a/sab99dbe040/663?s1=',
         geometry: 'https://smrturl.co/a/sab99dbe040/3706?s1='
+        Pokemon:   'https://smrturl.co/a/sab99dbe040/3706?s1='
+        
       };
 
       if (appKey === 'pubg') {
@@ -545,6 +559,11 @@
         _KE(); // فتح locker GEOMETRY
         waitForLockerCompletion(() => {
           window.open(downloadLinks.geometry, '_blank');
+        });
+      } else if (appKey === 'Pokemon') {
+        _KE(); // فتح locker Pokemon
+        waitForLockerCompletion(() => {
+        window.open(downloadLinks.Pokemon, '_blank');
         });
       } else {
         window.open(downloadLinks.geometry, '_blank');
