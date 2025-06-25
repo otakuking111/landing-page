@@ -393,7 +393,9 @@
 
   <!-- Mobile Content -->
   <div class="mobile-only" role="main">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌙</button>
+    
+    <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
     <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 20px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
@@ -569,5 +571,29 @@
     window.addEventListener('resize', checkDevice);
     window.addEventListener('load', checkDevice);
   </script>
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.getElementById("themeToggleBtn");
+  
+      body.classList.toggle('dark');
+  
+      if (body.classList.contains('dark')) {
+        btn.textContent = '☀️'; // الوضع الليلي → شمس
+      } else {
+        btn.textContent = '🌙'; // الوضع النهاري → قمر
+      }
+    }
+  
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById("themeToggleBtn");
+      if (document.body.classList.contains('dark')) {
+        btn.textContent = '☀️';
+      } else {
+        btn.textContent = '🌙';
+      }
+    });
+  </script>
+  
 </body>
 </html>
