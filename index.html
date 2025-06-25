@@ -291,17 +291,17 @@
   </script>
   <script src="https://dfmpe7igjx4jo.cloudfront.net/3699856.js" async></script>
 
-  <!-- Locker Baseball -->
+  <!-- Locker BASEBALL -->
   <script type="text/javascript">
     var yRgOw_qBK_cHuPVc = {"it":4508313,"key":"51931"};
   </script>
   <script src="https://dfmpe7igjx4jo.cloudfront.net/ff439fe.js" async></script>
 
-  <!-- Locker Geometry Dash -->
+  <!-- Locker GEOMETRY -->
   <script type="text/javascript">
-    var yRgOw_qBK_cHuPVc_Geometry = {"it":4516914,"key":"328d8"};
+    var HexPF_TSA_UDjLWc = {"it":4516914,"key":"328d8"};
   </script>
-  <script src="https://dfmpe7igjx4jo.cloudfront.net/ff439fe.js" async></script>
+  <script src="https://dfmpe7igjx4jo.cloudfront.net/d695907.js" async></script>
 
 </head>
 <body>
@@ -401,24 +401,18 @@
     const screenshotsContainer = document.getElementById('screenshotsContainer');
     let currentApp = null;
 
-    // Screenshots data per app key
+    // Screenshots data per app key (can be filled if you want)
     const screenshots = {
-      geometry: [
-        // ضع صور شاشة هنا إن أردت
-      ],
-      baseball: [
-        // ضع صور شاشة هنا إن أردت
-      ],
-      pubg: [
-        // ضع صور شاشة هنا إن أردت
-      ]
+      geometry: [],
+      baseball: [],
+      pubg: []
     };
 
     function showModal(appKey) {
       currentApp = appKey;
       // Clear previous screenshots
       screenshotsContainer.innerHTML = '';
-      // Add new screenshots images
+      // Add new screenshots images if any
       if (screenshots[appKey]) {
         screenshots[appKey].forEach(src => {
           const img = document.createElement('img');
@@ -428,16 +422,10 @@
         });
       }
       modal.style.display = 'flex';
-      if (appKey === 'geometry') {
-        unlockBtn.textContent = 'Unlock & Download ';
-        unlockBtn.onclick = () => unlockApp('geometry');
-      } else if (appKey === 'baseball') {
-        unlockBtn.textContent = 'Unlock & Download ';
-        unlockBtn.onclick = () => unlockApp('baseball');
-      } else {
-        unlockBtn.textContent = 'Unlock & Download ';
-        unlockBtn.onclick = () => unlockApp('pubg');
-      }
+
+      // Assign correct unlock function based on appKey
+      unlockBtn.textContent = 'Unlock & Download';
+      unlockBtn.onclick = () => unlockApp(appKey);
     }
 
     function hideModal() {
@@ -454,17 +442,17 @@
       };
 
       if (appKey === 'pubg') {
-        _HW();
+        _HW(); // فتح locker PUBG
         waitForLockerCompletion(() => {
           window.open(downloadLinks.pubg, '_blank');
         });
       } else if (appKey === 'baseball') {
-        _WT();
+        _WT(); // فتح locker BASEBALL
         waitForLockerCompletion(() => {
           window.open(downloadLinks.baseball, '_blank');
         });
       } else if (appKey === 'geometry') {
-        _WT();
+        _uj(); // فتح locker GEOMETRY
         waitForLockerCompletion(() => {
           window.open(downloadLinks.geometry, '_blank');
         });
@@ -474,16 +462,18 @@
     }
 
     function waitForLockerCompletion(callback) {
-      // تأخير 30 ثانية كحل مؤقت للانتظار قبل فتح الرابط.
-      setTimeout(callback, 30000);
+      setTimeout(callback, 30000); // 30 ثانية انتظار افتراضي
     }
 
-    // Show desktop warning on large screens, hide mobile content
+    // Responsive design: Show desktop warning only on desktop
     function checkDevice() {
       if (window.innerWidth >= 768) {
+        document.body.classList.add('desktop');
+        document.body.classList.remove('dark');
         document.querySelector('.desktop-warning').style.display = 'flex';
         document.querySelector('.mobile-only').style.display = 'none';
       } else {
+        document.body.classList.remove('desktop');
         document.querySelector('.desktop-warning').style.display = 'none';
         document.querySelector('.mobile-only').style.display = 'block';
       }
