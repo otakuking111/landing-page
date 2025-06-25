@@ -290,6 +290,36 @@
   background-color: #0056b3;
 }
 
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.download-btn {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+
+.android-btn {
+  background-color: #00b894;
+}
+
+.android-btn:hover {
+  background-color: #019874;
+}
+
+.ios-btn {
+  background-color: #007bff;
+}
+
+.ios-btn:hover {
+  background-color: #0056b3;
+}
+
   </style>
 
   <!-- Locker PUBG -->
@@ -328,10 +358,12 @@
           <div class="title">PUBG Mobile MOD APK</div>
           <div class="desc">Unlimited UC - 2025 Version</div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button class="download-btn" onclick="showModal('pubg')">Download for Android</button>
+        <div class="btn-group">
+          <button class="download-btn android-btn" onclick="showModal('pubg')">Download for Android</button>
           <button class="download-btn ios-btn" onclick="showModal('pubg')">Download for iOS</button>
         </div>
+        
+  
         
       </div>
       <div class="app-card" role="listitem" tabindex="0" data-title="BASEBALL 9 MOD APK" data-desc="Enhanced MOD Version">
@@ -340,8 +372,8 @@
           <div class="title">BASEBALL 9 MOD APK</div>
           <div class="desc">Enhanced MOD Version</div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button class="download-btn" onclick="showModal('baseball')">Download for Android</button>
+        <div class="btn-group">
+          <button class="download-btn android-btn" onclick="showModal('baseball')">Download for Android</button>
           <button class="download-btn ios-btn" onclick="showModal('baseball')">Download for iOS</button>
         </div>
         
@@ -352,10 +384,10 @@
           <div class="title">Geometry Dash Lite MOD APK</div>
           <div class="desc">Unlimited Money</div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <button class="download-btn" onclick="showModal('geometry')">Download for Android</button>
+        <div class="btn-group">
+          <button class="download-btn android-btn" onclick="showModal('geometry')">Download for Android</button>
           <button class="download-btn ios-btn" onclick="showModal('geometry')">Download for iOS</button>
-        </div>
+        </div>        
         
       </div>
     </div>
