@@ -146,52 +146,6 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
-    .featured-apps {
-      display: flex;
-      overflow-x: auto;
-      padding: 10px 5px;
-      gap: 16px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-      scrollbar-color: var(--btn-bg) transparent;
-      /* أزلنا التحريك التلقائي السابق */
-    }
-    .featured-apps .app-card {
-      min-width: 180px;
-      scroll-snap-align: start;
-      flex-shrink: 0;
-      background: var(--card-bg);
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 12px;
-      cursor: default;
-      transition: transform 0.3s ease;
-    }
-    .featured-apps .app-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
-    .app-card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 12px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 12px;
-    }
-    .app-card .title {
-      font-size: 17px;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 6px;
-      color: var(--text-color);
-    }
-    .app-card .desc {
-      font-size: 14px;
-      color: #555;
-      text-align: center;
-      user-select: none;
-    }
     .app-list {
       display: flex;
       flex-direction: column;
@@ -323,25 +277,6 @@
 
     <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 20px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
 
-    <div class="section-title" id="featured-label">FEATURED APPS</div>
-    <div class="featured-apps" role="list" aria-label="Featured MOD APK apps">
-      <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
-        <img loading="lazy" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Icon" width="120" height="120" />
-        <div class="title">PUBG Mobile MOD APK</div>
-        <div class="desc">Unlimited UC - 2025 Version</div>
-      </div>
-      <div class="app-card" role="listitem" tabindex="0" aria-label="BASEBALL 9 MOD APK, Enhanced MOD Version">
-        <img loading="lazy" src="https://img.utdstc.com/icon/7e9/b0c/7e9b0c4a6769f08221695e4842cb0f3569501b45e725f582138465a78c3f6bda:200" alt="Baseball Icon" width="120" height="120" />
-        <div class="title">BASEBALL 9 MOD APK</div>
-        <div class="desc">Enhanced MOD Version</div>
-      </div>
-      <div class="app-card" role="listitem" tabindex="0" aria-label="Geometry Dash Lite MOD APK, Unlimited Money">
-        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="120" height="120" />
-        <div class="title">Geometry Dash Lite MOD APK</div>
-        <div class="desc">Unlimited Money</div>
-      </div>
-    </div>
-
     <div class="section-title" id="all-apps-label">ALL APPS</div>
     <div class="app-list" id="appList" role="list" aria-live="polite" aria-relevant="additions removals">
       <div class="app-card" role="listitem" tabindex="0" data-title="PUBG Mobile MOD APK" data-desc="Unlimited UC - 2025 Version">
@@ -448,108 +383,6 @@
         window.open(links[currentApp] || links['normal'], '_blank');
       }
     }
-
-    // Auto-scroll featured apps step by step
-
-    (function() {
-      const container = document.querySelector('.featured-apps');
-      let isUserInteracting = false;
-      let lastUserInteraction = 0;
-      let scrollStep = 0; // عرض بطاقة واحدة + الفجوة
-      let scrollInterval = 2000; // 2 ثانية لكل خطوة
-      let scrollTimer;
-
-      // حساب عرض بطاقة + الفجوة (نأخذ البطاقة الأولى + فجوة)
-      function calculateScrollStep() {
-        const firstCard = container.querySelector('.app-card');
-        if (!firstCard) return;
-        const style = getComputedStyle(firstCard);
-        const marginRight = parseInt(style.marginRight) || 0;
-        scrollStep = firstCard.offsetWidth + marginRight;
-      }
-
-      calculateScrollStep();
-
-      function userInteraction() {
-        isUserInteracting = true;
-        lastUserInteraction = Date.now();
-        clearInterval(scrollTimer);
-      }
-
-      container.addEventListener('scroll', userInteraction);
-      container.addEventListener('mousedown', userInteraction);
-      container.addEventListener('touchstart', userInteraction);
-      container.addEventListener('wheel', userInteraction);
-
-      function startAutoScroll() {
-        scrollTimer = setInterval(() => {
-          if (isUserInteracting) {
-            if (Date.now() - lastUserInteraction > 3000) { // 3 ثواني بدون تفاعل
-              isUserInteracting = false;
-            } else {
-              return; // لا تتحرك أثناء التفاعل
-            }
-          }
-
-          // تحرك خطوة واحدة
-          let newScrollLeft = container.scrollLeft + scrollStep;
-
-          // عند الوصول لنصف المحتوى نرجع للصفر (لأن المحتوى مكرر)
-          if (newScrollLeft >= container.scrollWidth / 2) {
-            newScrollLeft = 0;
-          }
-
-          // انزلاق سلس للموضع الجديد
-          container.scrollTo({
-            left: newScrollLeft,
-            behavior: 'smooth'
-          });
-        }, scrollInterval);
-      }
-
-      startAutoScroll();
-
-      // دعم السحب اليدوي كما كان (إضافة تأثيرات السحب)
-      let isDragging = false;
-      let startX, scrollLeftStart;
-
-      container.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        container.classList.add('dragging');
-        startX = e.pageX - container.offsetLeft;
-        scrollLeftStart = container.scrollLeft;
-      });
-      container.addEventListener('mouseleave', () => {
-        isDragging = false;
-        container.classList.remove('dragging');
-      });
-      container.addEventListener('mouseup', () => {
-        isDragging = false;
-        container.classList.remove('dragging');
-      });
-      container.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX - container.offsetLeft;
-        const walk = (startX - x) * 2;
-        container.scrollLeft = scrollLeftStart + walk;
-      });
-
-      container.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - container.offsetLeft;
-        scrollLeftStart = container.scrollLeft;
-      });
-      container.addEventListener('touchend', () => {
-        isDragging = false;
-      });
-      container.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        const x = e.touches[0].pageX - container.offsetLeft;
-        const walk = (startX - x) * 2;
-        container.scrollLeft = scrollLeftStart + walk;
-      });
-    })();
   </script>
 </body>
 </html>
