@@ -23,23 +23,22 @@
       --btn-text: #ffffff;
     }
     body {
-  font-family: 'Exo 2', sans-serif;
-  background: linear-gradient(270deg, #5c6f91, #2a5298, #2f456e);
-  background-size: 600% 600%;
-  animation: gradientBG 30s ease infinite;
-  color: var(--text-color);
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-@keyframes gradientBG {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
-
+      font-family: 'Exo 2', sans-serif;
+      /* خلفية متحركة كلاسيكية */
+      background: linear-gradient(270deg, #ff5f6d, #ffc371, #24c6dc, #514a9d);
+      background-size: 800% 800%;
+      animation: gradientBG 30s ease infinite;
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    @keyframes gradientBG {
+      0% {background-position:0% 50%}
+      50% {background-position:100% 50%}
+      100% {background-position:0% 50%}
+    }
     .desktop-warning {
       display: none;
     }
@@ -148,19 +147,21 @@
       text-transform: uppercase;
       letter-spacing: 1.2px;
     }
+    /* ======= تعديل خاصية التحريك التلقائي للـ featured apps ======= */
     .featured-apps {
       display: flex;
-      overflow-x: auto;
-      padding: 10px 5px;
+      overflow: hidden; /* إخفاء التمرير اليدوي */
       gap: 16px;
-      scroll-snap-type: x mandatory;
-      scrollbar-width: thin;
-      scrollbar-color: var(--btn-bg) transparent;
       animation: scrollLeft 30s linear infinite;
+      width: 100%;
     }
     @keyframes scrollLeft {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
     .featured-apps .app-card {
       min-width: 180px;
@@ -176,6 +177,7 @@
     .featured-apps .app-card:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      animation-play-state: paused; /* يوقف الأنيميشن عند hover */
     }
     .app-card img {
       width: 120px;
@@ -327,11 +329,29 @@
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌓</button>
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
+    <!-- بحث فوق FEATURED APPS -->
+    <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 20px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
+
     <div class="section-title" id="featured-label">FEATURED APPS</div>
 
-    <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 10px 0 20px; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
-
+    <!-- تكرار محتوى featured apps مرتين للحركة الانسيابية -->
     <div class="featured-apps" role="list" aria-label="Featured MOD APK apps">
+      <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
+        <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
+        <div class="title">PUBG Mobile MOD APK</div>
+        <div class="desc">Unlimited UC - 2025 Version</div>
+      </div>
+      <div class="app-card" role="listitem" tabindex="0" aria-label="BASEBALL 9 MOD APK, Enhanced MOD Version">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Baseball Icon" width="120" height="120" />
+        <div class="title">BASEBALL 9 MOD APK</div>
+        <div class="desc">Enhanced MOD Version</div>
+      </div>
+      <div class="app-card" role="listitem" tabindex="0" aria-label="Geometry Dash Lite MOD APK, Unlimited Money">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Icon" width="120" height="120" />
+        <div class="title">Geometry Dash Lite MOD APK</div>
+        <div class="desc">Unlimited Money</div>
+      </div>
+      <!-- نسخة مكررة -->
       <div class="app-card" role="listitem" tabindex="0" aria-label="PUBG Mobile MOD APK, Unlimited UC 2025 Version">
         <img loading="lazy" src="https://postimg.cc/d7mFwGRP" alt="PUBG Icon" width="120" height="120" />
         <div class="title">PUBG Mobile MOD APK</div>
@@ -379,9 +399,9 @@
 
     <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
       <div class="modal-content">
-        <p id="modalDesc">Ready to unlock this app?</p>
-        <button class="unlock-btn" id="unlockBtn" onclick="">Unlock & Download</button>
-        <button class="cancel-btn" onclick="hideModal()">Cancel</button>
+        <p id="modalDesc">Unlock content to get your download link.</p>
+        <button class="unlock-btn" onclick="unlockContent()">Unlock</button>
+        <button class="cancel-btn" onclick="closeModal()">Cancel</button>
       </div>
     </div>
   </div>
@@ -392,70 +412,43 @@
       document.body.classList.toggle('dark');
     }
 
-    // Copy SEK STORE link on desktop
-    function copyLink() {
-      const link = 'https://www.sekmarketing.site';
-      navigator.clipboard.writeText(link).then(() => {
-        alert('Link copied to clipboard!');
-      }, () => {
-        alert('Failed to copy link.');
-      });
-    }
-
-    // Search/filter apps
+    // Search filter
     function filterApps() {
-      const query = document.getElementById('searchBox').value.toLowerCase();
-      const apps = document.querySelectorAll('#appList .app-card');
-      apps.forEach(app => {
-        const title = app.getAttribute('data-title').toLowerCase();
-        const desc = app.getAttribute('data-desc').toLowerCase();
-        if (title.includes(query) || desc.includes(query)) {
-          app.style.display = 'flex';
+      const filter = document.getElementById('searchBox').value.toLowerCase();
+      const appCards = document.querySelectorAll('#appList .app-card');
+      appCards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const desc = card.getAttribute('data-desc').toLowerCase();
+        if (title.includes(filter) || desc.includes(filter)) {
+          card.style.display = '';
         } else {
-          app.style.display = 'none';
+          card.style.display = 'none';
         }
       });
     }
 
     // Modal control
     const modal = document.getElementById('downloadModal');
-    const unlockBtn = document.getElementById('unlockBtn');
-    let currentApp = null;
 
-    function showModal(appKey) {
-      currentApp = appKey;
+    function showModal(app) {
       modal.style.display = 'flex';
-      if (appKey === 'geometry') {
-        unlockBtn.textContent = 'Unlock & Download (Complete Offer)';
-        unlockBtn.onclick = () => unlockApp('geometry');
-      } else {
-        unlockBtn.textContent = 'Download Now';
-        unlockBtn.onclick = () => unlockApp('normal');
-      }
+      document.getElementById('modalDesc').textContent = `Unlock content to get your download link for ${app}.`;
     }
 
-    function hideModal() {
+    function closeModal() {
       modal.style.display = 'none';
-      currentApp = null;
     }
 
-    function unlockApp(appKey) {
-      hideModal();
-      if (appKey === 'geometry') {
-        // Redirect to offer link first
-        const offerUrl = 'https://smrturl.co/a/sab99dbe040/1704?s1=';
-        window.location.href = offerUrl;
+    function unlockContent() {
+      alert('Content unlocked! (This is a placeholder)');
+      closeModal();
+    }
 
-        // Open locker after 5 seconds
-        setTimeout(() => {
-          if (typeof _Ri === 'function') {
-            _Ri();
-          }
-        }, 5000);
-      } else {
-        alert('Your download will start now.');
-        // Implement actual download logic or redirect here
-      }
+    // Copy link button for desktop warning
+    function copyLink() {
+      navigator.clipboard.writeText('https://www.sekmarketing.site').then(() => {
+        alert('Link copied to clipboard!');
+      });
     }
   </script>
 </body>
