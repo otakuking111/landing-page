@@ -368,10 +368,12 @@
   background-color: #0056b3;
 }
 .app-card.active {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: scale(1.07);
+  box-shadow: 0 0 14px #cc66ff, 0 0 28px #cc66ff, 0 0 42px #cc66ff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #cc66ff;
 }
+
 
   </style>
 
@@ -576,7 +578,7 @@
 
 
     function waitForLockerCompletion(callback) {
-      setTimeout(callback, 100); // 30 ثانية انتظار افتراضي
+      setTimeout(callback, 100); 
     }
 
     // Responsive design: Show desktop warning only on desktop
@@ -603,9 +605,9 @@
       body.classList.toggle('dark');
   
       if (body.classList.contains('dark')) {
-        btn.textContent = '☀️'; // الوضع الليلي → شمس
+        btn.textContent = '☀️'; 
       } else {
-        btn.textContent = 'Dark Mode🌙'; // الوضع النهاري → قمر
+        btn.textContent = 'Dark Mode🌙'; 
       }
     }
   
@@ -619,12 +621,12 @@
     });
   </script>
   <script>
-    // عندما يضغط المستخدم على بطاقة لعبة
+
     document.querySelectorAll('.app-card').forEach(card => {
       card.addEventListener('click', function() {
-        // إزالة الكلاس "active" من كل البطاقات
+     
         document.querySelectorAll('.app-card').forEach(c => c.classList.remove('active'));
-        // إضافة الكلاس "active" للبطاقة التي تم الضغط عليها
+        
         this.classList.add('active');
       });
     });
