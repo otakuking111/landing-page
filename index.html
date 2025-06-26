@@ -470,8 +470,8 @@
           </div>
           
           <div class="btn-group" style="flex: 2;">
-            <button class="download-btn android-btn" onclick="showModal('8ball')">Android</button>
-            <button class="download-btn ios-btn" onclick="showModal('8ball')">iOS</button>
+            <button class="download-btn android-btn" onclick="showModal('ball')">Android</button>
+            <button class="download-btn ios-btn" onclick="showModal('ball')">iOS</button>
           </div>
           </div>
     <div class="modal" id="downloadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc">
@@ -529,7 +529,7 @@
   baseball: [],
   pubg: [],
   pokemon: [],
-  8ball: []
+  ball: []
 };
 
 
@@ -565,7 +565,7 @@
     baseball: 'https://smrturl.co/a/sab99dbe040/663?s1=',
     geometry: 'https://smrturl.co/a/sab99dbe040/3706?s1=',
     pokemon: 'https://smrturl.co/a/sab99dbe040/3706?s1=',
-    8ball: 'https://smrturl.co/a/sab99dbe040/3706?s1='
+    ball: 'https://smrturl.co/a/sab99dbe040/3706?s1='
   };
 
   if (appKey === 'pubg') {
@@ -583,15 +583,15 @@
     waitForLockerCompletion(() => {
       window.open(downloadLinks.geometry, '_blank');
     });
-  } else if (appKey === '8ball') {
-    _KE();
-    waitForLockerCompletion(() => {
-      window.open(downloadLinks.8ball, '_blank');
-    });
-  } else if (appKey === '8ball') {
+  } else if (appKey === 'pokemon') {
     _KE();
     waitForLockerCompletion(() => {
       window.open(downloadLinks.pokemon, '_blank');
+    });
+  } else if (appKey === 'ball') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.ball, '_blank');
     });
   }
 }
