@@ -367,6 +367,11 @@
 .ios-btn:hover {
   background-color: #0056b3;
 }
+.app-card.active {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
   </style>
 
@@ -611,6 +616,17 @@
       } else {
         btn.textContent = 'Dark Mode🌙';
       }
+    });
+  </script>
+  <script>
+    // عندما يضغط المستخدم على بطاقة لعبة
+    document.querySelectorAll('.app-card').forEach(card => {
+      card.addEventListener('click', function() {
+        // إزالة الكلاس "active" من كل البطاقات
+        document.querySelectorAll('.app-card').forEach(c => c.classList.remove('active'));
+        // إضافة الكلاس "active" للبطاقة التي تم الضغط عليها
+        this.classList.add('active');
+      });
     });
   </script>
   
