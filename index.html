@@ -505,11 +505,12 @@
 
     // Screenshots data per app key (can be filled if you want)
     const screenshots = {
-      geometry: [],
-      baseball: [],
-      pubg: []
-      pokemon: []
-    };
+  geometry: [],
+  baseball: [],
+  pubg: [],
+  pokemon: []
+};
+
 
     function showModal(appKey) {
       currentApp = appKey;
@@ -538,36 +539,35 @@
     }
 
     function unlockApp(appKey) {
-      const downloadLinks = {
-        pubg: 'https://smrturl.co/a/sab99dbe040/1704?s1=',
-        baseball: 'https://smrturl.co/a/sab99dbe040/663?s1=',
-        geometry: 'https://smrturl.co/a/sab99dbe040/3706?s1='
-        pokemon:   'https://smrturl.co/a/sab99dbe040/3706?s1='
-        
-      };
+  const downloadLinks = {
+    pubg: 'https://smrturl.co/a/sab99dbe040/1704?s1=',
+    baseball: 'https://smrturl.co/a/sab99dbe040/663?s1=',
+    geometry: 'https://smrturl.co/a/sab99dbe040/3706?s1=',
+    pokemon: 'https://smrturl.co/a/sab99dbe040/3706?s1='
+  };
 
-      if (appKey === 'pubg') {
-        _KE(); // فتح locker PUBG
-        waitForLockerCompletion(() => {
-          window.open(downloadLinks.pubg, '_blank');
-        });
-      } else if (appKey === 'baseball') {
-        _KE(); // فتح locker BASEBALL
-        waitForLockerCompletion(() => {
-          window.open(downloadLinks.baseball, '_blank');
-        });
-      } else if (appKey === 'geometry') {
-        _KE(); // فتح locker GEOMETRY
-        waitForLockerCompletion(() => {
-          window.open(downloadLinks.geometry, '_blank');
-        });
-      } else if (appKey === 'pokemon') {
-        _KE(); // فتح locker pokemon
-        waitForLockerCompletion(() => {
-        window.open(downloadLinks.Pokemon, '_blank');
-        });
-     
-    }
+  if (appKey === 'pubg') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.pubg, '_blank');
+    });
+  } else if (appKey === 'baseball') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.baseball, '_blank');
+    });
+  } else if (appKey === 'geometry') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.geometry, '_blank');
+    });
+  } else if (appKey === 'pokemon') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.pokemon, '_blank');
+    });
+  }
+}
 
 
     function waitForLockerCompletion(callback) {
