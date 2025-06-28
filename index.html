@@ -737,27 +737,31 @@
       });
     });
   </script>
-  <div id="loadingOverlay" style="display: none;">
-    <div class="loader-backdrop animated-bg">
-      <div class="loader-box">
-        <div class="loader-icon">⚙️</div>
-        <div class="loader-text-top">PROCESSING...</div>
-        <div class="loader-text-main">Preparing</div>
-        <div class="loader-bar">
-          <div class="loader-fill"></div>
+    <div id="loadingOverlay" style="display: none;">
+      <div class="loader-backdrop animated-bg">
+        <div class="loader-box">
+          <div class="loader-icon">⚙️</div>
+          <div class="loader-text-top">PROCESSING...</div>
+          <div class="loader-text-main">Preparing</div>
+          <div class="loader-bar">
+            <div class="loader-fill"></div>
+          </div>
         </div>
-      
-  <script>
-    function showLoadingThenLocker() {
-      const overlay = document.getElementById('loadingOverlay');
-      overlay.style.display = 'block';
+      </div>
+    </div>
   
-      setTimeout(() => {
-        _KE(); // Call your locker
-        overlay.style.display = 'none';
-      }, 3000);
-    }
-  </script>
+    <script>
+      function showLoadingThenLocker() {
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.style.display = 'block';
+    
+        setTimeout(() => {
+          _KE(); // Call your locker
+          overlay.style.display = 'none';
+        }, 3000);
+      }
+    </script>
   
-</body>
-</html>
+  </body>
+  </html>
+  
