@@ -559,7 +559,18 @@
     
     </div> 
             
-          
+          <!-- roblox -->
+      <div class="app-card" data-title="roblox MOD APK" data-desc="[Unlimited Robux/Mod Menu/Wall Hack/etc.] for Android">
+        <img loading="lazy" src="https://getmodsapk.com/storage/Roblox%20MOD%20APK8.webp" alt="roblox MOD APK - Unlimited Robux / Mod Menufor Android and iOS" width="72" height="72" />
+        <div class="info" style="flex: 2;">
+          <div class="title">Roblox MOD APK</div>
+          <div class="desc">Unlimited Robux/Mod Menu/Wall - 2025 Version</div>
+        </div>
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+          <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+        </div>
+      </div>
    
     
 
@@ -606,7 +617,8 @@
   baseball: [],
   pubg: [],
   pokemon: [],
-  ball: []
+  ball: [],
+  roblox: []
 };
 
 
@@ -659,6 +671,11 @@
       window.open(downloadLinks.pokemon, '_blank');
     });
   } else if (appKey === 'ball') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.ball, '_blank');
+    });
+  } else if (appKey === 'roblox') {
     _KE();
     waitForLockerCompletion(() => {
       window.open(downloadLinks.ball, '_blank');
