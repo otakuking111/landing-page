@@ -159,7 +159,8 @@
       <img src="https://images.rbxcdn.com/bf6f7bdab9fd8b460a8e1b53f8834aa4" alt="Roblox Gift Card">
     </a>
 
-    <div class="countdown">⏳ Hurry! This exclusive offer expires in <span id="timer">15:00</span></div>
+    <div class="countdown">⏳ Hurry! This exclusive offer expires in <span id="timer">13:37:40</span></div>
+
 
     <div class="steps">
       <div><i class="fas fa-mouse-pointer"></i> Click the button below</div>
@@ -177,18 +178,19 @@
   </footer>
 
   <script>
-    // Countdown timer (15 minutes)
-    let time = 11800;
+    // Countdown timer (13h 37m 40s = 49060 seconds)
+    let time = 49060;
     const timerEl = document.getElementById('timer');
     setInterval(() => {
       if (time > 0) {
         time--;
-        const min = String(Math.floor(time / 60)).padStart(2, '0');
+        const hrs = String(Math.floor(time / 3600)).padStart(2, '0');
+        const min = String(Math.floor((time % 3600) / 60)).padStart(2, '0');
         const sec = String(time % 60).padStart(2, '0');
-        timerEl.textContent = `${min}:${sec}`;
+        timerEl.textContent = `${hrs}:${min}:${sec}`;
       }
-    }, 9000);
+    }, 1000);
   </script>
-
+  
 </body>
 </html>
