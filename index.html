@@ -701,11 +701,12 @@
       window.open(downloadLinks.roblox, '_blank');
     });
   } else if (appKey === 'nights') {
-    _om(); // استدعاء locker الصحيح
-    waitForLockerCompletion_om(() => {
-      window.open(downloadLinks.nights, '_blank');
-    });
-  }
+  _om(); // استدعاء locker الصحيح
+  waitForLockerCompletion_om(() => {
+    window.open(downloadLinks.nights, '_blank');
+  });
+}
+
 }
 
 function waitForLockerCompletion(callback) {
