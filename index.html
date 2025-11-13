@@ -697,9 +697,9 @@
     waitForLockerCompletion(() => {
       window.open(downloadLinks.ball, '_blank');
     });
-  } else if (appKey === 'nights') {
+  }  else if (appKey === 'nights') {
     _du();
-    waitForLockerCompletion(() => {
+    waitForLockerCompletion_du(() => {
       window.open(downloadLinks.nights, '_blank');
     });
   }
@@ -709,6 +709,14 @@
     function waitForLockerCompletion(callback) {
       setTimeout(callback, 100); 
     }
+    function waitForLockerCompletion_du(callback) {
+  const checkInterval = setInterval(() => {
+    if (typeof _du_completed !== 'undefined' && _du_completed === true) {
+      clearInterval(checkInterval);
+      callback();
+    }
+  }, 1000);
+}
 
     // Responsive design: Show desktop warning only on desktop
     function checkDevice() {
