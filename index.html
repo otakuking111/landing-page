@@ -571,15 +571,6 @@
       document.body.classList.toggle('dark');
     }
 
-    // Copy SEK STORE link on desktop
-    function copyLink() {
-      const link = 'https://www.sekmarketing.site';
-      navigator.clipboard.writeText(link).then(() => {
-        alert('Link copied to clipboard!');
-      }, () => {
-        alert('Failed to copy link.');
-      });
-    }
 
     // Search/filter apps
     function filterApps() {
@@ -679,19 +670,7 @@
       setTimeout(callback, 100); 
     }
 
-    // Responsive design: Show desktop warning only on desktop
-    function checkDevice() {
-      if (window.innerWidth >= 768) {
-        document.body.classList.add('desktop');
-        document.body.classList.remove('dark');
-        document.querySelector('.desktop-warning').style.display = 'flex';
-        document.querySelector('.mobile-only').style.display = 'none';
-      } else {
-        document.body.classList.remove('desktop');
-        document.querySelector('.desktop-warning').style.display = 'none';
-        document.querySelector('.mobile-only').style.display = 'block';
-      }
-    }
+  
     window.addEventListener('resize', checkDevice);
     window.addEventListener('load', checkDevice);
   </script>
