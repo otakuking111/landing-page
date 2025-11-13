@@ -796,24 +796,32 @@
     </div>
   
     <script>
-      function showLoadingThenLockerNights() {
-  const overlay = document.getElementById('loadingOverlay');
-  overlay.style.display = 'block';
+      function showLoadingThenLocker() {
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.style.display = 'block';
+    
+        setTimeout(() => {
+          _KE(); // Call your locker
+          overlay.style.display = 'none';
+        }, 3000);
+      }
+    </script>
 
-  // إعادة ضبط الحالة
-  _du_completed = false;
-
-  setTimeout(() => {
-    _du(); // فتح locker المخصص للعبة Nights
-
-    waitForLockerCompletion_du(() => {
-      overlay.style.display = 'none';
-      window.open(downloadLinks.nights, '_blank'); // رابط التحميل الخاص
-    });
-
-  }, 1000);
-}
-
+<script>
+  function showLoadingThenLockerNights() {
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.style.display = 'block';
+  
+    setTimeout(() => {
+      _du(); // فتح locker المخصص للعبة Nights
+  
+      waitForLockerCompletion_du(() => {
+        overlay.style.display = 'none';
+        window.open(downloadLinks.nights, '_blank'); // رابط التحميل الخاص
+      });
+  
+    }, 1000); // مدة عرض الـ loader قبل فتح locker
+  }
   </script>
   
 </body>
