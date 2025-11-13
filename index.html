@@ -669,8 +669,7 @@
       screenshotsContainer.innerHTML = '';
     }
 
-   
-
+    function unlockApp(appKey) {
   if (appKey === 'pubg') {
     _uj();
     waitForLockerCompletion(() => {
@@ -701,24 +700,19 @@
     waitForLockerCompletion(() => {
       window.open(downloadLinks.roblox, '_blank');
     });
-    
   } else if (appKey === 'nights') {
-  _om(); // استدعاء locker الصحيح
-  waitForLockerCompletion_om(() => {
-    window.open(downloadLinks.nights, '_blank');
-  });
+    _om(); // استدعاء locker الصحيح
+    waitForLockerCompletion_om(() => {
+      window.open(downloadLinks.nights, '_blank');
+    });
+  }
 }
 
-  
+function waitForLockerCompletion(callback) {
+  setTimeout(callback, 100); 
 }
 
-
-
-
-    function waitForLockerCompletion(callback) {
-      setTimeout(callback, 100); 
-    }
-    function waitForLockerCompletion_om(callback) {
+function waitForLockerCompletion_om(callback) {
   const checkInterval = setInterval(() => {
     if (typeof _om_completed !== 'undefined' && _om_completed === true) {
       clearInterval(checkInterval);
@@ -726,6 +720,8 @@
     }
   }, 1000);
 }
+
+
 
     // Responsive design: Show desktop warning only on desktop
     function checkDevice() {
@@ -803,16 +799,13 @@
     </script>
 
 <script>
-  function showLoadingThenLockerNights() {
+ function showLoadingThenLockerNights() {
   const overlay = document.getElementById('loadingOverlay');
   overlay.style.display = 'block';
 
   setTimeout(() => {
-    _om(); // فتح locker الصحيح للعبة Nights
-    waitForLockerCompletion_om(() => {
-      overlay.style.display = 'none';
-      window.open(downloadLinks.nights, '_blank');
-    });
+    unlockApp('nights'); // استدعاء الدالة الموحدة بدل تكرار الكود
+    overlay.style.display = 'none';
   }, 2000);
 }
   </script>
