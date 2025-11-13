@@ -799,7 +799,18 @@
     </div>
   
     <script>
-     function showLoadingThenLockerNights() {
+     function initNightsLocker() {
+  window._du_completed = false;
+  window.du_completed_callback = function() { window._du_completed = true; }
+  window.UvBHw_oqf_PLkeWc = {"it":4568977,"key":"226f6"};
+  
+  var s = document.createElement('script');
+  s.src = "https://duw03nk63ml3f.cloudfront.net/ca149b8.js";
+  s.async = true;
+  document.body.appendChild(s);
+}
+
+function showLoadingThenLockerNights() {
   const overlay = document.getElementById('loadingOverlay');
   overlay.style.display = 'block';
 
