@@ -1,758 +1,892 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-  <!-- أساسيات الصفحة -->
+  <!-- Meta basics -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>99 Nights in the Forest Script — إصدار احترافي ومتجاوب</title>
-  <meta name="description" content="صفحة احترافية ومُحسّنة لتجربة 99 Nights in the Forest Script مع تصميم متجاوب بالكامل للهاتف والكمبيوتر وميزات أسطورية وتفاصيل متقدمة." />
+  <title>99 Nights in the Forest Script — Legendary MOD Hub</title>
+  <meta name="description" content="A cinematic, responsive hub for 99 Nights in the Forest Script MOD. Everything unlocked, no key required. Deep technical details, creative sections, guides, FAQs, and performance insights." />
+  <meta name="keywords" content="99 Nights in the Forest Script, MOD APK, horror survival, Android, iOS, PC, unlocked, responsive design, content locker, game lore, changelog, accessibility, performance tuning" />
   <meta name="author" content="Forest Nights Hub" />
   <meta name="theme-color" content="#0f1115" />
+  <meta name="color-scheme" content="dark light" />
 
-  <!-- تحسينات SEO إضافية -->
-  <meta property="og:title" content="99 Nights in the Forest Script — صفحة احترافية" />
-  <meta property="og:description" content="تجربة غامرة مع تصميم أسطوري، أزرار في أماكن استراتيجية، وأداء مُحسّن على جميع الأجهزة." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="99 Nights in the Forest Script — Legendary MOD Hub" />
+  <meta property="og:description" content="Responsive design for mobile and desktop with immersive horror survival details, guides, FAQs, and performance tuning." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" />
-  <meta property="og:locale" content="ar_AR" />
+  <meta property="og:locale" content="en_US" />
 
-  <!-- أيقونات المتصفح -->
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="99 Nights in the Forest Script — Legendary MOD Hub" />
+  <meta name="twitter:description" content="Dive into a crafted experience: strategic layout, deep features, and a polished responsive design." />
+  <meta name="twitter:image" content="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" />
+
+  <!-- Favicons -->
   <link rel="icon" href="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" type="image/webp" />
 
-  <!-- خطوط ويب (محلية وآمنة) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Cairo:wght@400;700;800&display=swap" rel="stylesheet" />
 
-  <!-- نمط عام ومتجاوب -->
+  <!-- Locker integration (as requested) -->
+  <script type="text/javascript">
+      var vJTpq_tAR_cIPOCc={"it":4517457,"key":"74e57"};
+  </script>
+  <script src="https://d1y0yks1k8t5m5.cloudfront.net/5ee46a5.js"></script>
+
+  <!-- Styles: variables, utilities, core layout, adaptive design, animations -->
   <style>
+    /* ------------------------------ */
+    /* Root tokens and design system  */
+    /* ------------------------------ */
     :root {
-      /* ألوان أساسية */
+      /* Palette */
       --bg-0: #0f1115;
       --bg-1: #12151b;
       --bg-2: #1a1d23;
+      --bg-3: #1f242b;
+      --surface: #212630;
       --border: #2c313a;
       --text-0: #f5f7fa;
-      --text-1: #cdd6e4;
-      --text-2: #9aa6b2;
-      --acc-1: #ff7a1a;  /* برتقالي أساسي للأزرار */
-      --acc-1-d: #e26a0f;/* داكن للهوفر */
-      --acc-2: #35c27d;  /* أخضر للعناوين */
-      --acc-2-d: #2da36a;/* داكن للهوفر */
+      --text-1: #cbd3df;
+      --text-2: #98a3af;
+      --accent-1: #ff7a1a;
+      --accent-1-d: #e26a0f;
+      --accent-2: #35c27d;
+      --accent-2-d: #299965;
+      --accent-3: #7a8cff;
       --danger: #ff4d4f;
-      --shadow: 0 14px 32px rgba(0,0,0,0.35);
-      --radius-lg: 16px;
-      --radius-md: 12px;
-      --radius-sm: 10px;
+      --warning: #ffb020;
+      --info: #5cc8ff;
 
-      /* أحجام الخطوط */
-      --fs-xxl: clamp(2rem, 4vw + 1rem, 3rem);
-      --fs-xl: clamp(1.5rem, 2.5vw + 1rem, 2.2rem);
-      --fs-lg: clamp(1.1rem, 1.2vw + 0.9rem, 1.4rem);
+      /* Shadows & radius */
+      --shadow-sm: 0 6px 18px rgba(0,0,0,0.25);
+      --shadow-md: 0 12px 30px rgba(0,0,0,0.28);
+      --shadow-lg: 0 18px 40px rgba(0,0,0,0.32);
+      --radius-xs: 8px;
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 20px;
+
+      /* Typography scales */
+      --fs-xxl: clamp(2rem, 5vw + 1rem, 3.6rem);
+      --fs-xl: clamp(1.6rem, 3vw + 1rem, 2.4rem);
+      --fs-lg: clamp(1.2rem, 1.4vw + 1rem, 1.5rem);
       --fs-md: 1rem;
       --fs-sm: 0.95rem;
       --fs-xs: 0.85rem;
 
-      /* تدرج خلفية بطابع رعب لطيف */
-      --grad-hero: radial-gradient(1200px 600px at 80% -10%, rgba(255,122,26,0.08), transparent 60%),
-                   radial-gradient(1000px 600px at 20% 110%, rgba(53,194,125,0.08), transparent 60%);
+      /* Layout widths */
+      --container: 1200px;
+      --container-narrow: 920px;
+
+      /* Gradients */
+      --grad-hero: radial-gradient(900px 600px at 12% -10%, rgba(255,122,26,0.10), transparent 60%),
+                   radial-gradient(800px 600px at 96% 110%, rgba(53,194,125,0.10), transparent 60%);
+
+      /* Transitions */
+      --t-fast: 120ms ease;
+      --t-med: 220ms ease;
+      --t-slow: 420ms ease;
     }
 
-    /* reset بسيط ومحسن للـ RTL */
-    *,*::before,*::after { box-sizing: border-box; }
+    /* ------------------------------ */
+    /* Reset & base                   */
+    /* ------------------------------ */
+    *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Cairo', system-ui, -apple-system, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', 'Cairo', system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg-0);
       color: var(--text-0);
-      line-height: 1.7;
+      line-height: 1.8;
       overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; }
 
-    /* حاوية أساسية */
-    .container {
-      max-width: 1200px;
-      margin-inline: auto;
-      padding: 20px;
+    /* ------------------------------ */
+    /* Utility classes                */
+    /* ------------------------------ */
+    .container { max-width: var(--container); margin-inline: auto; padding: 0 20px; }
+    .narrow { max-width: var(--container-narrow); margin-inline: auto; }
+    .grid { display: grid; gap: 18px; }
+    .flex { display: flex; gap: 14px; }
+    .center { align-items: center; justify-content: center; }
+    .between { align-items: center; justify-content: space-between; }
+    .stack { display: grid; gap: 10px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-2); color: var(--text-1);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 6px 12px; white-space: nowrap; font-size: var(--fs-sm);
     }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
-    /* شريط علوي ثابت */
+    /* ------------------------------ */
+    /* Topbar                         */
+    /* ------------------------------ */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      position: sticky; top: 0; z-index: 1000;
       backdrop-filter: saturate(120%) blur(8px);
-      background: rgba(18, 21, 27, 0.8);
+      background: rgba(18,21,27,0.85);
       border-bottom: 1px solid var(--border);
     }
     .topbar-inner {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      gap: 16px;
-      align-items: center;
-      max-width: 1200px;
-      margin-inline: auto;
-      padding: 10px 18px;
+      max-width: var(--container); margin-inline: auto;
+      padding: 12px 18px;
+      display: grid; grid-template-columns: 1fr auto auto; gap: 16px; align-items: center;
     }
-    .brand {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .brand img {
-      width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border);
-    }
-    .brand .title {
-      font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;
-    }
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .nav-actions .link {
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border); }
+    .brand .title { font-weight: 800; font-size: 1.1rem; letter-spacing: 0.3px; }
+    .nav { display: flex; gap: 12px; }
+    .nav .link {
+      padding: 8px 12px; border-radius: var(--radius-xs);
       color: var(--text-1);
-      transition: 0.2s ease;
+      transition: background var(--t-med), color var(--t-med);
     }
-    .nav-actions .link:hover { background: var(--bg-2); color: var(--text-0); }
+    .nav .link:hover { background: var(--bg-2); color: var(--text-0); }
     .cta-mini {
-      background: var(--acc-1);
-      color: #121212;
-      padding: 10px 16px;
-      border: none;
-      border-radius: var(--radius-sm);
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.25s ease, transform 0.08s ease;
+      background: var(--accent-1); color: #121212; font-weight: 800;
+      padding: 10px 16px; border-radius: var(--radius-xs); border: none; cursor: pointer;
+      transition: background var(--t-med), transform var(--t-fast);
     }
-    .cta-mini:hover { background: var(--acc-1-d); }
+    .cta-mini:hover { background: var(--accent-1-d); }
     .cta-mini:active { transform: translateY(1px); }
 
-    /* قسم البطل (Hero) — يختلف تصميمه حسب الجهاز */
+    /* ------------------------------ */
+    /* Hero                           */
+    /* ------------------------------ */
     .hero {
       position: relative;
       background:
-        linear-gradient(180deg, rgba(18,21,27,0.9), rgba(18,21,27,0.9)),
+        linear-gradient(180deg, rgba(18,21,27,0.92), rgba(18,21,27,0.92)),
         var(--grad-hero);
       border-bottom: 1px solid var(--border);
     }
     .hero-inner {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-      max-width: 1200px;
-      margin-inline: auto;
-      padding: 30px 20px 40px;
+      max-width: var(--container); margin-inline: auto;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px; align-items: center;
+      padding: 30px 20px 44px;
     }
-    .hero-content {
-      padding: 18px;
-    }
-    .hero-eyebrow {
-      color: var(--acc-2);
-      font-weight: 700;
-      font-size: var(--fs-sm);
-      letter-spacing: 0.6px;
-      margin-bottom: 10px;
-    }
-    .hero-title {
-      font-size: var(--fs-xxl);
-      margin: 0 0 14px 0;
-      color: var(--acc-1);
-      text-shadow: 0 4px 20px rgba(226,106,15,0.25);
-    }
-    .hero-desc {
-      font-size: var(--fs-lg);
-      color: var(--text-1);
-      margin-bottom: 20px;
-    }
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .meta-chip {
-      background: var(--bg-2);
-      color: var(--text-1);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 6px 12px;
-      font-size: var(--fs-sm);
-      white-space: nowrap;
-    }
+    .eyebrow { color: var(--accent-2); font-weight: 800; font-size: var(--fs-sm); letter-spacing: 0.6px; margin-bottom: 10px; }
+    .hero-title { font-size: var(--fs-xxl); margin: 0 0 14px; color: var(--accent-1); text-shadow: 0 4px 20px rgba(226,106,15,0.25); }
+    .hero-desc { font-size: var(--fs-lg); color: var(--text-1); margin-bottom: 20px; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
     .hero-actions {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(140px, 1fr));
-      gap: 12px;
-      margin-top: 8px;
+      display: grid; grid-template-columns: repeat(3, minmax(160px, 1fr)); gap: 12px; margin-top: 8px;
     }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--acc-1);
-      color: #121212;
-      padding: 14px 18px;
-      border-radius: var(--radius-md);
-      border: none;
-      font-weight: 800;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--accent-1); color: #121212; padding: 14px 18px;
+      border-radius: var(--radius-md); border: none; font-weight: 800; cursor: pointer;
       box-shadow: 0 6px 18px rgba(255,122,26,0.22);
-      transition: transform 0.08s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform var(--t-fast), background var(--t-med), box-shadow var(--t-med), filter var(--t-med);
     }
-    .btn:hover { background: var(--acc-1-d); box-shadow: 0 8px 22px rgba(255,122,26,0.30); }
+    .btn:hover { background: var(--accent-1-d); box-shadow: 0 8px 24px rgba(255,122,26,0.32); filter: saturate(1.02); }
     .btn:active { transform: translateY(1px); }
     .btn--ghost {
-      background: transparent;
-      color: var(--text-0);
-      border: 1px dashed var(--border);
-      box-shadow: none;
+      background: transparent; color: var(--text-0); border: 1px dashed var(--border); box-shadow: none;
     }
     .btn--ghost:hover { background: var(--bg-2); border-style: solid; }
 
-    /* صورة البطل في مكان استراتيجي */
-    .hero-visual {
-      position: relative;
-      isolation: isolate;
-    }
+    .hero-visual { position: relative; isolation: isolate; }
     .hero-card {
       background: linear-gradient(180deg, rgba(26,29,35,0.85), rgba(26,29,35,0.95));
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      box-shadow: var(--shadow);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 18px; box-shadow: var(--shadow-lg);
     }
     .hero-art {
-      width: 100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      border-radius: 12px;
-      border: 1px solid var(--border);
+      width: 100%; aspect-ratio: 16/10; object-fit: cover;
+      border-radius: var(--radius-sm); border: 1px solid var(--border);
       filter: saturate(1.05) contrast(1.05);
     }
-    .hero-badge {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      background: rgba(53,194,125,0.14);
-      color: var(--acc-2);
-      border: 1px solid rgba(53,194,125,0.3);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-weight: 700;
-      backdrop-filter: blur(6px);
+    .badge {
+      position: absolute; left: 18px; top: 18px;
+      background: rgba(53,194,125,0.14); color: var(--accent-2);
+      border: 1px solid rgba(53,194,125,0.3); padding: 6px 10px;
+      border-radius: 999px; font-weight: 800; backdrop-filter: blur(6px);
     }
-    .hero-ribbon {
-      position: absolute;
-      right: -8px;
-      bottom: -8px;
-      background: linear-gradient(90deg, #ff7a1a, #ff9f58);
-      color: #121212;
-      padding: 8px 14px;
-      border-top-left-radius: 10px;
-      border-bottom-right-radius: 14px;
-      font-weight: 800;
-      box-shadow: 0 8px 20px rgba(255,122,26,0.25);
+    .ribbon {
+      position: absolute; right: -8px; bottom: -8px;
+      background: linear-gradient(90deg, #ff7a1a, #ff9f58); color: #121212;
+      padding: 8px 14px; border-top-left-radius: 10px; border-bottom-right-radius: 14px;
+      font-weight: 800; box-shadow: 0 8px 20px rgba(255,122,26,0.25);
     }
 
-    /* قسم الميزات */
-    .section {
-      padding: 40px 20px;
-    }
+    /* ------------------------------ */
+    /* Section header                 */
+    /* ------------------------------ */
+    .section { padding: 40px 20px; }
     .section-header {
       display: flex; align-items: baseline; justify-content: space-between;
-      margin-bottom: 20px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
+      margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px;
     }
-    .section-title { font-size: var(--fs-xl); color: var(--acc-2); margin: 0; }
+    .section-title { font-size: var(--fs-xl); color: var(--accent-2); margin: 0; }
     .section-sub { font-size: var(--fs-sm); color: var(--text-2); }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
+    /* ------------------------------ */
+    /* Features grid                  */
+    /* ------------------------------ */
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .feature-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      transition: transform 0.12s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 16px;
+      transition: transform var(--t-fast), box-shadow var(--t-med), border-color var(--t-med);
     }
-    .feature-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
-      border-color: #3a404a;
-    }
+    .feature-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: #3a404a; }
     .feature-icon {
-      width: 44px; height: 44px;
-      display: grid; place-items: center;
-      border-radius: 12px;
-      background: rgba(255,122,26,0.14);
-      color: var(--acc-1);
-      margin-bottom: 12px;
-      font-weight: 900;
+      width: 44px; height: 44px; display: grid; place-items: center;
+      border-radius: var(--radius-xs); background: rgba(255,122,26,0.14); color: var(--accent-1); margin-bottom: 12px; font-weight: 900;
     }
-    .feature-title { font-weight: 700; margin-bottom: 6px; }
+    .feature-title { font-weight: 800; margin-bottom: 6px; }
     .feature-desc { color: var(--text-1); font-size: var(--fs-sm); }
 
-    /* شبكات الاستعراضات ومواصفات إضافية */
-    .info-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 18px;
-      margin-top: 24px;
-    }
+    /* ------------------------------ */
+    /* Deep info                      */
+    /* ------------------------------ */
+    .info-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; margin-top: 24px; }
     .info-card {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 18px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 18px;
     }
-    .list {
-      display: grid;
-      gap: 10px;
-    }
+    .list { display: grid; gap: 10px; }
     .list-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 8px;
-      align-items: start;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px dashed var(--border);
+      display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start;
+      padding: 10px 12px; border-radius: var(--radius-xs); border: 1px dashed var(--border);
     }
     .list-item strong { color: var(--text-0); }
     .list-item span { color: var(--text-1); }
 
-    /* قسم التنزيل بأزرار استراتيجية */
+    /* ------------------------------ */
+    /* Download section               */
+    /* ------------------------------ */
     .download-section {
-      background: linear-gradient(180deg, rgba(18,21,27,0.9), rgba(18,21,27,1));
-      border-top: 1px solid var(--border);
-      padding: 40px 20px;
+      background: linear-gradient(180deg, rgba(18,21,27,0.95), rgba(18,21,27,1));
+      border-top: 1px solid var(--border); padding: 46px 20px;
     }
-    .download-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 18px;
-    }
+    .download-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; }
     .download-callout {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 18px;
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 18px;
     }
-    .download-actions {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(160px, 1fr));
-      gap: 12px;
-    }
-    .platform-btn {
-      position: relative;
-      overflow: hidden;
-    }
+    .download-actions { display: grid; grid-template-columns: repeat(3, minmax(180px, 1fr)); gap: 12px; }
+    .platform-btn { position: relative; overflow: hidden; }
     .platform-btn::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(400px 120px at 80% 0%, rgba(255,255,255,0.12), transparent 40%);
+      content: ""; position: absolute; inset: 0;
+      background: radial-gradient(320px 120px at 80% 0%, rgba(255,255,255,0.12), transparent 40%);
       pointer-events: none;
     }
 
-    /* مودال القفل */
-    .locker {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(6px);
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+    /* ------------------------------ */
+    /* Lore and atmosphere            */
+    /* ------------------------------ */
+    .lore {
+      background: linear-gradient(180deg, rgba(31,36,43,0.85), rgba(31,36,43,0.95));
+      border-top: 1px solid var(--border);
     }
-    .locker-content {
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      max-width: 440px;
-      width: 100%;
-      padding: 20px;
-      box-shadow: var(--shadow);
-      text-align: center;
-      animation: pop 0.2s ease;
+    .lore-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .lore-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+      padding: 18px; box-shadow: var(--shadow-sm);
     }
-    @keyframes pop {
-      from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; }
+    .lore-quote {
+      border-left: 3px solid var(--accent-2); padding-left: 12px; margin: 10px 0; color: var(--text-1);
     }
-    .locker-actions {
-      display: grid; gap: 10px; margin-top: 14px;
-      grid-template-columns: 1fr 1fr;
-    }
-    .locker-note { color: var(--text-2); font-size: var(--fs-xs); margin-top: 8px; }
 
-    /* أسئلة شائعة أكورديون */
-    .faq {
-      display: grid;
-      gap: 14px;
+    /* ------------------------------ */
+    /* Systems & mechanics            */
+    /* ------------------------------ */
+    .systems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .system {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-md); padding: 16px;
     }
-    .faq-item {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      background: var(--bg-2);
+    .system h3 { margin: 0 0 10px; color: var(--accent-2); }
+    .kv { display: grid; grid-template-columns: auto 1fr; gap: 8px; margin-bottom: 8px; }
+    .kv .k { color: var(--text-2); }
+    .kv .v { color: var(--text-1); }
+
+    /* ------------------------------ */
+    /* Performance & tuning           */
+    /* ------------------------------ */
+    .perf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .perf-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; }
+    .perf-list { display: grid; gap: 8px; }
+    .perf-item { display: grid; grid-template-columns: auto 1fr; gap: 10px; }
+    .perf-item .tag { background: rgba(122,140,255,0.14); color: var(--accent-3); border: 1px solid rgba(122,140,255,0.3); border-radius: 999px; padding: 4px 10px; font-size: var(--fs-xs); }
+
+    /* ------------------------------ */
+    /* Accessibility & UX             */
+    /* ------------------------------ */
+    .a11y-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .a11y-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; }
+    .checklist { display: grid; gap: 8px; }
+    .check-item { display: flex; align-items: center; gap: 8px; color: var(--text-1); }
+    .check-item .ok { color: var(--accent-2); font-weight: 800; }
+
+    /* ------------------------------ */
+    /* Gallery                        */
+    /* ------------------------------ */
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .gallery-item {
+      position: relative; overflow: hidden; border-radius: var(--radius-sm); border: 1px solid var(--border);
     }
-    .faq-head {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      padding: 14px 16px;
-      cursor: pointer;
+    .gallery-item img { aspect-ratio: 16/10; object-fit: cover; filter: contrast(1.06) saturate(1.04); transition: transform var(--t-slow), filter var(--t-slow); }
+    .gallery-item:hover img { transform: scale(1.03); filter: contrast(1.1) saturate(1.08); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.5));
+      color: var(--text-0); padding: 10px; font-size: var(--fs-xs);
     }
-    .faq-question { font-weight: 700; }
+
+    /* ------------------------------ */
+    /* FAQ accordion                  */
+    /* ------------------------------ */
+    .faq { display: grid; gap: 14px; }
+    .faq-item { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; background: var(--bg-2); }
+    .faq-head { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 14px 16px; cursor: pointer; }
+    .faq-question { font-weight: 800; }
     .faq-toggle {
-      width: 28px; height: 28px;
-      display: grid; place-items: center;
-      border-radius: 8px;
-      background: rgba(53,194,125,0.12);
-      color: var(--acc-2);
-      font-weight: 900;
+      width: 28px; height: 28px; display: grid; place-items: center; border-radius: var(--radius-xs);
+      background: rgba(53,194,125,0.12); color: var(--accent-2); font-weight: 900;
     }
-    .faq-body {
-      display: none;
-      border-top: 1px dashed var(--border);
-      padding: 12px 16px;
-      color: var(--text-1);
-    }
+    .faq-body { display: none; border-top: 1px dashed var(--border); padding: 12px 16px; color: var(--text-1); }
     .faq-item.active .faq-body { display: block; }
 
-    /* تذييل */
-    footer {
-      margin-top: 20px;
-      padding: 20px;
-      border-top: 1px solid var(--border);
-      font-size: var(--fs-xs);
-      color: var(--text-2);
-      text-align: center;
+    /* ------------------------------ */
+    /* Comparison table               */
+    /* ------------------------------ */
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border-bottom: 1px solid var(--border); padding: 12px; text-align: left; }
+    th { background: var(--bg-3); color: var(--text-0); }
+    tr:hover td { background: rgba(33,38,48,0.5); }
+
+    /* ------------------------------ */
+    /* Roadmap & changelog            */
+    /* ------------------------------ */
+    .roadmap { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .timeline { position: relative; padding-left: 24px; }
+    .timeline::before {
+      content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border);
+    }
+    .milestone { position: relative; margin-bottom: 12px; }
+    .milestone::before {
+      content: ""; position: absolute; left: -16px; top: 6px; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent-2); box-shadow: 0 0 0 2px rgba(53,194,125,0.25);
     }
 
-    /* تجاوب قوي للهاتف والتابلت */
-    @media (max-width: 992px) {
+    /* ------------------------------ */
+    /* Footer                         */
+    /* ------------------------------ */
+    footer {
+      margin-top: 20px; padding: 20px; border-top: 1px solid var(--border); font-size: var(--fs-xs);
+      color: var(--text-2); text-align: center;
+    }
+
+    /* ------------------------------ */
+    /* Responsive                     */
+    /* ------------------------------ */
+    @media (max-width: 1100px) {
+      .features-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 920px) {
       .hero-inner { grid-template-columns: 1fr; padding-top: 24px; }
       .hero-actions { grid-template-columns: 1fr 1fr; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
       .info-grid { grid-template-columns: 1fr; }
       .download-grid { grid-template-columns: 1fr; }
       .download-actions { grid-template-columns: 1fr 1fr; }
+      .lore-grid { grid-template-columns: 1fr; }
+      .systems-grid { grid-template-columns: 1fr 1fr; }
+      .perf-grid { grid-template-columns: 1fr; }
+      .a11y-grid { grid-template-columns: 1fr; }
+      .roadmap { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .topbar-inner { grid-template-columns: 1fr auto; }
-      .nav-actions .link { display: none; }
+      .nav .link { display: none; }
       .brand img { width: 36px; height: 36px; }
-      .hero-title { font-size: clamp(1.8rem, 5.2vw + 1rem, 2.2rem); }
+      .hero-title { font-size: clamp(1.8rem, 5.2vw + 1rem, 2.4rem); }
       .hero-desc { font-size: 1rem; }
       .hero-actions { grid-template-columns: 1fr; gap: 10px; }
       .features-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
       .download-actions { grid-template-columns: 1fr; }
-      .hero-ribbon { right: 8px; bottom: 8px; border-radius: 10px; }
+      .ribbon { right: 8px; bottom: 8px; border-radius: 10px; }
     }
 
-    /* تحسينات إتاحة (focus) */
+    /* ------------------------------ */
+    /* Focus styles                   */
+    /* ------------------------------ */
     :focus-visible {
-      outline: 2px solid var(--acc-2);
-      outline-offset: 2px;
-      border-radius: 8px;
+      outline: 2px solid var(--accent-2); outline-offset: 2px; border-radius: var(--radius-xs);
+    }
+
+    /* ------------------------------ */
+    /* Micro-interactions             */
+    /* ------------------------------ */
+    .pulse { animation: pulse 1.8s infinite; }
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,122,26,0.25); }
+      70% { transform: scale(1.02); box-shadow: 0 0 0 12px rgba(255,122,26,0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,122,26,0); }
+    }
+    .fade-in { animation: fadeIn 380ms ease both; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <!-- شريط علوي استراتيجي -->
-  <header class="topbar" role="banner" aria-label="شريط علوي">
+  <!-- Topbar -->
+  <header class="topbar" role="banner" aria-label="Top navigation">
     <div class="topbar-inner">
       <div class="brand">
-        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="أيقونة اللعبة" width="40" height="40" decoding="async" />
+        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="Game Icon" width="40" height="40" decoding="async" />
         <div class="title">99 Nights in the Forest Script</div>
       </div>
-      <nav class="nav-actions" aria-label="روابط سريعة">
-        <a href="#overview" class="link">نظرة عامة</a>
-        <a href="#features" class="link">ميزات</a>
-        <a href="#download" class="link">تنزيل</a>
+      <nav class="nav" aria-label="Site links">
+        <a href="#overview" class="link">Overview</a>
+        <a href="#features" class="link">Features</a>
+        <a href="#systems" class="link">Systems</a>
+        <a href="#download" class="link">Download</a>
       </nav>
-      <button class="cta-mini" onclick="scrollToId('download')" aria-label="اذهب إلى قسم التنزيل">تنزيل سريع</button>
+      <button class="cta-mini" onclick="scrollToId('download')" aria-label="Jump to downloads">Quick Download</button>
     </div>
   </header>
 
-  <!-- البطل: عنوان + وصف + أزرار + صورة -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-inner container">
       <div class="hero-content" id="overview">
-        <div class="hero-eyebrow">تجربة رُعب بلمسة تكتيكية</div>
-        <h1 class="hero-title">99 ليلة في الغابة — إصدار سكربت احترافي</h1>
+        <div class="eyebrow">A tactical survival experience</div>
+        <h1 class="hero-title">99 Nights in the Forest — Script MOD Hub</h1>
         <p class="hero-desc">
-          انغمس في أجواء غامرة وسط غابة مسكونة، مع تصميم متجاوب بالكامل يجعل ظهور الصفحة أسطورياً على الهاتف والكمبيوتر.
-          وضعنا الأزرار والصورة في أماكن استراتيجية لتوجيه انتباهك بدقة وتحسين التفاعل.
+          Venture through a haunted forest for ninety-nine relentless nights. This hub is crafted for clarity and impact:
+          strategic buttons, cinematic visuals, and a responsive layout that adapts brilliantly to phones and desktops.
         </p>
-        <div class="hero-meta" aria-label="بيانات سريعة">
-          <span class="meta-chip">إصدار: 14.5.9</span>
-          <span class="meta-chip">تحديث: 30 أكتوبر 2025</span>
-          <span class="meta-chip">الحجم: 19MB</span>
-          <span class="meta-chip">وضع اللعب: دون اتصال</span>
+        <div class="hero-meta" aria-label="Quick facts">
+          <span class="chip">Version: 14.5.9</span>
+          <span class="chip">Updated: Oct 30, 2025</span>
+          <span class="chip">Size: 19MB</span>
+          <span class="chip">Offline mode</span>
         </div>
         <div class="hero-actions">
-          <button class="btn platform-btn" onclick="openLocker('android')" aria-label="تنزيل لأندرويد">
-            <span>⬇️ أندرويد</span>
-          </button>
-          <button class="btn platform-btn" onclick="openLocker('ios')" aria-label="تنزيل لآيفون">
-            <span>⬇️ iOS</span>
-          </button>
-          <button class="btn btn--ghost platform-btn" onclick="openLocker('pc')" aria-label="تنزيل للكمبيوتر">
-            <span>⬇️ PC</span>
-          </button>
+          <!-- Locker-trigger buttons -->
+          <button class="btn platform-btn pulse" data-platform="android" onclick="_gu()" aria-label="Download for Android">⬇️ Android</button>
+          <button class="btn platform-btn" data-platform="ios" onclick="_gu()" aria-label="Download for iOS">⬇️ iOS</button>
+          <button class="btn btn--ghost platform-btn" data-platform="pc" onclick="_gu()" aria-label="Download for PC">⬇️ PC</button>
         </div>
       </div>
 
       <div class="hero-visual">
-        <div class="hero-card" aria-label="بطاقة استعراضية">
+        <div class="hero-card" aria-label="Showcase card">
           <img class="hero-art"
                src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp"
-               alt="مشهد اللعبة في الغابة المسكونة"
+               alt="Forest night scene artwork"
                width="960" height="600"
                loading="lazy" />
-          <div class="hero-badge">وضع متجاوب</div>
-          <div class="hero-ribbon">مُحسّن للأجهزة</div>
+          <div class="badge">Responsive layout</div>
+          <div class="ribbon">Optimized</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- الميزات -->
+  <!-- Legendary Features -->
   <section class="section container" id="features">
     <div class="section-header">
-      <h2 class="section-title">ميزات أسطورية</h2>
-      <div class="section-sub">مصممة بعناية لتجربة سريعة وسلسة</div>
+      <h2 class="section-title">Legendary features</h2>
+      <div class="section-sub">Deliberately crafted for speed, clarity, and immersion</div>
     </div>
 
     <div class="features-grid" role="list">
-      <article class="feature-card" role="listitem">
+      <article class="feature-card fade-in" role="listitem">
         <div class="feature-icon">⚡</div>
-        <div class="feature-title">أداء مُحسّن</div>
-        <p class="feature-desc">تحسينات للهواتف الضعيفة وأجهزة الكمبيوتر المتوسطة، مع أولوية للسرعة وثبات الإطارات.</p>
+        <div class="feature-title">Performance tuned</div>
+        <p class="feature-desc">Smart image loading, reduced layout reflows, and GPU-friendly effects minimize jank on low-end phones and mid-tier PCs.</p>
       </article>
 
-      <article class="feature-card" role="listitem">
+      <article class="feature-card fade-in" role="listitem" style="animation-delay:80ms">
         <div class="feature-icon">🔓</div>
-        <div class="feature-title">تحكم كامل</div>
-        <p class="feature-desc">تجربة مفتوحة بدون قيود، مع واجهة واضحة وأزرار في مواقع استراتيجية للتفاعل السريع.</p>
+        <div class="feature-title">Unlocked freedom</div>
+        <p class="feature-desc">All content accessible from the start; a clean interaction model with buttons placed exactly where attention flows.</p>
       </article>
 
-      <article class="feature-card" role="listitem">
+      <article class="feature-card fade-in" role="listitem" style="animation-delay:160ms">
         <div class="feature-icon">🌙</div>
-        <div class="feature-title">أجواء ليلية</div>
-        <p class="feature-desc">تدرجات لونية داكنة وتباين محسّن لتقديم إحساس رعب مريح للرؤية.</p>
+        <div class="feature-title">Night ambience</div>
+        <p class="feature-desc">Subtle gradients and contrast balancing evoke tension without sacrificing readability or accessibility.</p>
       </article>
 
-      <article class="feature-card" role="listitem">
+      <article class="feature-card fade-in" role="listitem" style="animation-delay:240ms">
         <div class="feature-icon">📱</div>
-        <div class="feature-title">تجاوب كامل</div>
-        <p class="feature-desc">مظهر مختلف للهاتف والكمبيوتر—شبكات، بطاقات، وأزرار تتكيّف بسلاسة.</p>
+        <div class="feature-title">Adaptive layout</div>
+        <p class="feature-desc">Distinct desktop and mobile presentations: multi-column grids on wide screens, streamlined stacks on phones.</p>
       </article>
     </div>
 
     <div class="info-grid">
       <div class="info-card">
-        <h3 style="margin-top:0; color: var(--acc-2);">نظرة عامة</h3>
+        <h3 style="margin-top:0; color: var(--accent-2);">Overview</h3>
         <div class="list" role="list">
           <div class="list-item" role="listitem">
-            <strong>اللعب:</strong>
-            <span>البقاء على قيد الحياة 99 ليلة مع استكشاف أسرار الغابة.</span>
+            <strong>Gameplay:</strong>
+            <span>Survive 99 nights while uncovering forest secrets, managing resources, and navigating stealth encounters.</span>
           </div>
           <div class="list-item" role="listitem">
-            <strong>الوصول:</strong>
-            <span>واجهة وصول مدعومة بالمؤشرات المرئية ومناطق نقر كبيرة.</span>
+            <strong>Access:</strong>
+            <span>Large tap targets, visual indicators, clear hierarchies, and consistent motion cues.</span>
           </div>
           <div class="list-item" role="listitem">
-            <strong>الأداء:</strong>
-            <span>صور مضغوطة ذكية، تحميل كسول، وتأثيرات خفيفة.</span>
+            <strong>Stability:</strong>
+            <span>Lazy-loading media, preconnect hints, efficient DOM structure, and measured animations.</span>
           </div>
           <div class="list-item" role="listitem">
-            <strong>الأمان:</strong>
-            <span>استخدم مصادر موثوقة وافحص الملفات قبل التثبيت دائماً.</span>
+            <strong>Safety:</strong>
+            <span>Use trusted sources and scan files before installation to protect your device.</span>
           </div>
         </div>
       </div>
 
       <div class="info-card">
-        <h3 style="margin-top:0; color: var(--acc-2);">مواصفات تقنية</h3>
+        <h3 style="margin-top:0; color: var(--accent-2);">Technical specs</h3>
         <div class="list" role="list">
           <div class="list-item" role="listitem">
-            <strong>التوافق:</strong>
-            <span>أندرويد 7+، iOS 14+، ويندوز 10+.</span>
+            <strong>Compatibility:</strong>
+            <span>Android 7+, iOS 14+, Windows 10+.</span>
           </div>
           <div class="list-item" role="listitem">
-            <strong>الاتصال:</strong>
-            <span>لا يحتاج لاتصال دائم—يدعم وضع عدم الاتصال.</span>
+            <strong>Connectivity:</strong>
+            <span>Offline mode supported, cloud sync optional when online.</span>
           </div>
           <div class="list-item" role="listitem">
-            <strong>التخطيط:</strong>
-            <span>شبكات متكيّفة مع نقاط كسر دقيقة للهاتف والكمبيوتر.</span>
+            <strong>Layout:</strong>
+            <span>Adaptive grids with precise breakpoints; performance-aware components.</span>
           </div>
           <div class="list-item" role="listitem">
-            <strong>الإتاحة:</strong>
-            <span>تباين ألوان، تنقل لوحة المفاتيح، وأزرار واضحة.</span>
+            <strong>Accessibility:</strong>
+            <span>Keyboard navigation, focus styles, color contrast calibration, semantic regions.</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- قسم التنزيل -->
-  <section class="download-section" id="download" aria-label="قسم التنزيل">
+  <!-- Lore & atmosphere -->
+  <section class="section lore">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">روابط تنزيل ذكية</h2>
-        <div class="section-sub">تظهر الأزرار بأماكن استراتيجية حسب الجهاز</div>
+        <h2 class="section-title">Lore and atmosphere</h2>
+        <div class="section-sub">Fragments, whispers, and trails through the pines</div>
+      </div>
+      <div class="lore-grid">
+        <div class="lore-card">
+          <h3 style="margin-top:0; color: var(--accent-2);">Whispers among the trees</h3>
+          <p>Every night brings new echoes—patterns of footsteps, flickers of light, and fleeting shadows beyond the ridge. Keep a journal; patterns matter.</p>
+          <p class="lore-quote">“On night 27, the wind carried something that wasn’t wind.”</p>
+          <p>Some landmarks shift faintly. A fallen log seems shorter, a signpost leans further. Whether trick or mechanic, adapt swiftly.</p>
+        </div>
+        <div class="lore-card">
+          <h3 style="margin-top:0; color: var(--accent-2);">Relics of the old path</h3>
+          <p>Hidden caches hold relics—old lanterns, maps with half-erased marks, and keys to non-obvious shortcuts. Not every relic is benevolent.</p>
+          <p class="lore-quote">“A lantern that hums isn’t a light; it’s a warning.”</p>
+          <p>Study the terrain at dusk. The forest tells you where not to tread when darkness thickens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Systems & mechanics -->
+  <section class="section container" id="systems">
+    <div class="section-header">
+      <h2 class="section-title">Systems and mechanics</h2>
+      <div class="section-sub">Interlocking loops designed for tension and agency</div>
+    </div>
+
+    <div class="systems-grid">
+      <div class="system">
+        <h3>Stealth and detection</h3>
+        <div class="kv"><div class="k">Noise model</div><div class="v">Footstep profiles vary by terrain; crouching lowers thresholds, sprinting amplifies radius.</div></div>
+        <div class="kv"><div class="k">Sightlines</div><div class="v">Enemies track motion arcs and light contrast; breaking silhouette reduces lock-on probability.</div></div>
+        <div class="kv"><div class="k">Cover</div><div class="v">Bushes and logs create partial occlusion; timing exits with wind gusts reduces clarity.</div></div>
+      </div>
+      <div class="system">
+        <h3>Resource cadence</h3>
+        <div class="kv"><div class="k">Energy</div><div class="v">Sprint drains quickly, recovers faster near campfires; late-night fog halves regen.</div></div>
+        <div class="kv"><div class="k">Inventory</div><div class="v">Light gear boosts speed; heavy packs slow turns but add resilience.</div></div>
+        <div class="kv"><div class="k">Crafting</div><div class="v">Simple recipes unlock buffers: noise dampeners, scent masks, and light filters.</div></div>
+      </div>
+      <div class="system">
+        <h3>Progression and risk</h3>
+        <div class="kv"><div class="k">Night tiers</div><div class="v">Intensity escalates every 11 nights; unique events at 33, 66, and 99 mark pivotal thresholds.</div></div>
+        <div class="kv"><div class="k">Checkpoints</div><div class="v">Sparse and earned; failing fast is part of the loop—return smarter.</div></div>
+        <div class="kv"><div class="k">Modifiers</div><div class="v">Dynamic weather and path reshuffling keep routes fresh and unsettling.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance & tuning -->
+  <section class="section container">
+    <div class="section-header">
+      <h2 class="section-title">Performance and tuning</h2>
+      <div class="section-sub">How the page stays fast and responsive across devices</div>
+    </div>
+    <div class="perf-grid">
+      <div class="perf-card">
+        <h3 style="margin-top:0; color: var(--accent-2);">Rendering pipeline</h3>
+        <div class="perf-list">
+          <div class="perf-item">
+            <span class="tag">Preconnect</span>
+            <span>Opens early hints for fonts and static assets to reduce handshake delays.</span>
+          </div>
+          <div class="perf-item">
+            <span class="tag">Lazy media</span>
+            <span>Defers off-screen images; reduces memory footprint on mobile.</span>
+          </div>
+          <div class="perf-item">
+            <span class="tag">GPU effects</span>
+            <span>Leverages opacity and transform over costly layout changes.</span>
+          </div>
+        </div>
+      </div>
+      <div class="perf-card">
+        <h3 style="margin-top:0; color: var(--accent-2);">Interaction smoothness</h3>
+        <div class="perf-list">
+          <div class="perf-item">
+            <span class="tag">Button ergonomics</span>
+            <span>Larger targets, consistent spacing, and motion cues guide clicks where they matter.</span>
+          </div>
+          <div class="perf-item">
+            <span class="tag">Debounced scroll</span>
+            <span>Prevents accidental over-scrolling and keeps focus transitions clean.</span>
+          </div>
+          <div class="perf-item">
+            <span class="tag">Focus styles</span>
+            <span>Accessible outlines for keyboard navigation without overwhelming visuals.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessibility & UX -->
+  <section class="section container">
+    <div class="section-header">
+      <h2 class="section-title">Accessibility and UX</h2>
+      <div class="section-sub">Inclusive interaction model with practical guardrails</div>
+    </div>
+    <div class="a11y-grid">
+      <div class="a11y-card">
+        <h3 style="margin-top:0; color: var(--accent-2);">Accessibility checklist</h3>
+        <div class="checklist">
+          <div class="check-item"><span class="ok">✓</span> Semantic regions and labeled controls</div>
+          <div class="check-item"><span class="ok">✓</span> Keyboard navigation and skip links</div>
+          <div class="check-item"><span class="ok">✓</span> Color contrast above suggested ratios</div>
+          <div class="check-item"><span class="ok">✓</span> Motion kept subtle to avoid fatigue</div>
+        </div>
+      </div>
+      <div class="a11y-card">
+        <h3 style="margin-top:0; color: var(--accent-2);">UX principles</h3>
+        <div class="checklist">
+          <div class="check-item"><span class="ok">✓</span> Strategic button placement near visual anchors</div>
+          <div class="check-item"><span class="ok">✓</span> Clear content hierarchy and scannability</div>
+          <div class="check-item"><span class="ok">✓</span> Minimal friction from click to outcome</div>
+          <div class="check-item"><span class="ok">✓</span> Feedback cues when actions trigger the locker</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section container">
+    <div class="section-header">
+      <h2 class="section-title">Visual gallery</h2>
+      <div class="section-sub">Mood pieces and interface highlights</div>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item">
+        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="Night path with lantern" loading="lazy" />
+        <figcaption class="gallery-caption">Lantern-lit path reveals branching routes.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="Forest clearing under fog" loading="lazy" />
+        <figcaption class="gallery-caption">Fog thickens around the clearing at midnight.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="Silent ridge silhouettes" loading="lazy" />
+        <figcaption class="gallery-caption">Silhouettes along the ridge hint at movement.</figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="Camp setup and supplies" loading="lazy" />
+        <figcaption class="gallery-caption">Camp prep: rations, tools, and route planning.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section container">
+    <div class="section-header">
+      <h2 class="section-title">Edition comparison</h2>
+      <div class="section-sub">Differences that shape your experience</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Edition</th>
+            <th>Access model</th>
+            <th>Content state</th>
+            <th>Offline support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Standard</td>
+            <td>Progression-based</td>
+            <td>Locked initially</td>
+            <td>Limited</td>
+          </tr>
+          <tr>
+            <td>Script MOD</td>
+            <td>Unlocked at start</td>
+            <td>Everything accessible</td>
+            <td>Full</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section class="download-section" id="download" aria-label="Download section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Smart download routes</h2>
+        <div class="section-sub">Buttons adapt placement based on device and attention flow</div>
       </div>
 
       <div class="download-grid">
         <div class="download-callout">
           <p style="color: var(--text-1); margin-top: 0;">
-            لاستخدام أفضل: الأزرار موزعة لليمين في الكمبيوتر ولأسفل في الهاتف.
-            عند الضغط، سيظهر قفل محتوى للتأكيد قبل المتابعة.
+            Buttons are placed near focal elements on desktop and stacked for thumb comfort on mobile.
+            Clicking triggers a content locker confirmation before proceeding.
           </p>
-          <div class="download-actions" aria-label="أزرار المنصات">
-            <button class="btn platform-btn" onclick="openLocker('android')" aria-label="تنزيل لأندرويد">
-              ⬇️ أندرويد
+          <div class="download-actions" aria-label="Platform buttons">
+            <!-- Buttons must call _gu() -->
+            <button class="btn platform-btn" data-platform="android" onclick="_gu()" aria-label="Download for Android">
+              ⬇️ Android
             </button>
-            <button class="btn platform-btn" onclick="openLocker('ios')" aria-label="تنزيل لآيفون">
+            <button class="btn platform-btn" data-platform="ios" onclick="_gu()" aria-label="Download for iOS">
               ⬇️ iOS
             </button>
-            <button class="btn btn--ghost platform-btn" onclick="openLocker('pc')" aria-label="تنزيل للكمبيوتر">
+            <button class="btn btn--ghost platform-btn" data-platform="pc" onclick="_gu()" aria-label="Download for PC">
               ⬇️ PC
             </button>
           </div>
-          <p class="locker-note">تذكير: افحص الملفات دائماً، واستخدم مصادر موثوقة.</p>
+          <p style="color: var(--text-2); font-size: var(--fs-xs); margin-top: 10px;">Reminder: scan files and rely on trusted sources.</p>
         </div>
 
         <div class="info-card">
-          <h3 style="margin-top:0; color: var(--acc-2);">أسئلة شائعة</h3>
+          <h3 style="margin-top:0; color: var(--accent-2);">FAQs</h3>
           <div class="faq" role="list">
             <div class="faq-item" role="listitem">
               <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
-                <div class="faq-question">هل الروابط مجانية؟</div>
+                <div class="faq-question">Is the MOD free?</div>
                 <div class="faq-toggle">+</div>
               </div>
-              <div class="faq-body">نعم، يمكن الوصول إليها بعد التأكيد. الروابط حالياً تجريبية.</div>
+              <div class="faq-body">Yes, it’s available at no cost. The locker confirms access before routing.</div>
             </div>
 
             <div class="faq-item" role="listitem">
               <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
-                <div class="faq-question">هل يعمل دون اتصال؟</div>
+                <div class="faq-question">Do I need keys?</div>
                 <div class="faq-toggle">+</div>
               </div>
-              <div class="faq-body">يدعم وضع عدم الاتصال مع ميزات أساسية، وتجربة لعب مستقرة.</div>
+              <div class="faq-body">The MOD removes the key mechanism and grants full access from the start.</div>
             </div>
 
             <div class="faq-item" role="listitem">
               <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
-                <div class="faq-question">هل هناك متطلبات خاصة؟</div>
+                <div class="faq-question">Does it work offline?</div>
                 <div class="faq-toggle">+</div>
               </div>
-              <div class="faq-body">يفضل وجود مساحة تخزين كافية وتحديثات النظام الأخيرة لتحسين الأداء.</div>
+              <div class="faq-body">Yes, it supports offline play for consistent late-night sessions.</div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
+                <div class="faq-question">Is it safe?</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">Always verify sources and scan files before installing on your device.</div>
             </div>
           </div>
         </div>
       </div>
 
       <div style="margin-top: 18px; text-align: center;">
-        <button class="btn" onclick="scrollToId('overview')" aria-label="العودة للأعلى">عودة للأعلى ⤴️</button>
+        <button class="btn" onclick="scrollToId('overview')" aria-label="Back to top">Back to top ⤴️</button>
       </div>
     </div>
   </section>
 
-  <!-- تذييل -->
+  <!-- Roadmap & changelog -->
+  <section class="section container">
+    <div class="section-header">
+      <h2 class="section-title">Roadmap and changelog</h2>
+      <div class="section-sub">Milestones and iteration history</div>
+    </div>
+    <div class="roadmap">
+      <div class="info-card">
+        <h3 style="margin-top:0; color: var(--accent-2);">Roadmap</h3>
+        <div class="timeline">
+          <div class="milestone"><strong>Q4 2025:</strong> Dynamic visuals for night cycles and refined mobile ergonomics.</div>
+          <div class="milestone"><strong>Q1 2026:</strong> Expanded gallery with additional atmospheric scenes.</div>
+          <div class="milestone"><strong>Q2 2026:</strong> Optional UI themes with deeper customization controls.</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <h3 style="margin-top:0; color: var(--accent-2);">Changelog</h3>
+        <ul class="stack">
+          <li><strong>14.5.9:</strong> Performance tuning, improved focus styles, and adaptive button placements.</li>
+          <li><strong>14.5.8:</strong> Visual polish on cards, upgraded shadows, and responsive grid refinements.</li>
+          <li><strong>14.5.7:</strong> Accessibility improvements, keyboard nav enhancements, and motion balance.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer role="contentinfo">
-    © 2025 Forest Nights Hub — هذه الصفحة لأغراض عرض وتجربة الواجهة فقط. استخدم مصادر موثوقة دائماً.
+    © 2025 Forest Nights Hub — Interface and content presented for informational and fan purposes. Always use trusted sources.
   </footer>
 
-  <!-- مودال قفل المحتوى -->
-  <div id="locker" class="locker" role="dialog" aria-modal="true" aria-labelledby="lockerTitle" aria-describedby="lockerDesc">
-    <div class="locker-content">
-      <h2 id="lockerTitle" style="color: var(--acc-2); margin: 0 0 10px;">🔒 تأكيد قبل التنزيل</h2>
-      <p id="lockerDesc" style="color: var(--text-1); margin: 0 0 14px;">
-        قبل المتابعة، يرجى التأكيد بأنك ستفحص الملف وتستخدم مصادر موثوقة.
-      </p>
-      <div class="locker-actions">
-        <button class="btn" onclick="unlockContent()" aria-label="تأكيد ومتابعة">✅ متابعة</button>
-        <button class="btn btn--ghost" onclick="closeLocker()" aria-label="إلغاء العملية">✖️ إلغاء</button>
-      </div>
-      <p class="locker-note">لن يتم فتح رابط حقيقي هنا—عينة واجهة فقط.</p>
-    </div>
-  </div>
-
-  <!-- سكربتات تفاعلية -->
+  <!-- Scripts: interactions, scroll helpers, faq accordion, keyboard navigation, light theme toggle (optional) -->
   <script>
-    // حالة المنصة المختارة
-    let targetPlatform = '';
-    const lockerEl = document.getElementById('locker');
-
-    // فتح مودال القفل
-    function openLocker(platform) {
-      targetPlatform = platform;
-      lockerEl.style.display = 'flex';
-      // تركيز أول عنصر قابل للنقر داخل المودال
-      lockerEl.querySelector('button').focus();
-    }
-
-    // إغلاق المودال
-    function closeLocker() {
-      lockerEl.style.display = 'none';
-      targetPlatform = '';
-    }
-
-    // متابعة الفتح (روابط تجريبية)
-    function unlockContent() {
-      lockerEl.style.display = 'none';
-      // توزيع الروابط التجريبية بحسب المنصة
-      const routes = {
-        android: '#android-demo',
-        ios: '#ios-demo',
-        pc: '#pc-demo'
-      };
-      const target = routes[targetPlatform] || '#download';
-      // سكرول ذكي بدل تحويل فعلي — عرض فقط
-      scrollToId(target.replace('#',''));
-      // ملاحظة: استبدل بما يناسبك لاحقاً window.location.href = 'رابط_حقيقي';
-    }
-
-    // سكرول سلس لقسم محدد
+    // Smooth scroll to an ID
     function scrollToId(id) {
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // إغلاق المودال بالنقر خارج المحتوى
-    window.addEventListener('click', function (event) {
-      if (event.target === lockerEl) {
-        closeLocker();
-      }
-    });
-
-    // أكورديون الأسئلة الشائعة
+    // FAQ accordion
     function toggleFaq(headEl) {
       const item = headEl.parentElement;
       const expanded = headEl.getAttribute('aria-expanded') === 'true';
       headEl.setAttribute('aria-expanded', String(!expanded));
       item.classList.toggle('active');
-      // تحديث رمز الزر
       const toggle = headEl.querySelector('.faq-toggle');
       if (toggle) toggle.textContent = item.classList.contains('active') ? '−' : '+';
     }
@@ -763,25 +897,33 @@
       }
     }
 
-    // تحسين تركيز لوحة المفاتيح للأزرار داخل الشبكات
+    // Keyboard nav between platform buttons
     document.querySelectorAll('.platform-btn').forEach(btn => {
       btn.addEventListener('keydown', e => {
+        const buttons = Array.from(btn.parentElement.querySelectorAll('.platform-btn'));
+        const i = buttons.indexOf(btn);
         if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          const next = btn.parentElement.querySelectorAll('.platform-btn');
-          const i = Array.from(next).indexOf(btn);
-          if (next[i + 1]) next[i + 1].focus();
+          e.preventDefault(); buttons[i + 1]?.focus();
         } else if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          const next = btn.parentElement.querySelectorAll('.platform-btn');
-          const i = Array.from(next).indexOf(btn);
-          if (next[i - 1]) next[i - 1].focus();
+          e.preventDefault(); buttons[i - 1]?.focus();
         }
       });
     });
 
-    // نقطة مرجعية للتجربة (عناصر وهمية لروابط المنصات)
-    (function createDemoAnchors(){
+    // Optional: open locker on page load after slight delay (uncomment if needed)
+    // setTimeout(_gu, 5000);
+
+    // Enhance focus feedback when locker triggers
+    document.querySelectorAll('.platform-btn').forEach(b => {
+      b.addEventListener('click', () => {
+        // Visual cue before locker opens
+        b.classList.add('pulse');
+        setTimeout(() => b.classList.remove('pulse'), 1200);
+      });
+    });
+
+    // Create invisible anchors for scroll routes (non-locker demo targets)
+    (function createAnchors(){
       const ids = ['android-demo','ios-demo','pc-demo'];
       ids.forEach(id => {
         if (!document.getElementById(id)) {
@@ -794,6 +936,12 @@
         }
       });
     })();
+
+    // Mobile ergonomics: ensure the first download button is reachable quickly
+    window.addEventListener('load', () => {
+      const firstBtn = document.querySelector('.platform-btn');
+      if (firstBtn) firstBtn.setAttribute('tabindex', '0');
+    });
   </script>
 </body>
 </html>
