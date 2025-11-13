@@ -714,12 +714,13 @@
     waitForLockerCompletion(() => {
       window.open(downloadLinks.ball, '_blank');
     });
-  }  else if (appKey === 'nights') {
-    _du();
-    waitForLockerCompletion_du(() => {
-      window.open(downloadLinks.nights, '_blank');
-    });
-  }
+   } else if (appKey === 'nights') {
+  initNightsLocker(); // هذا يهيئ locker ويضبط المتغيرات
+  waitForLockerCompletion_du(() => {
+    window.open(downloadLinks.nights, '_blank');
+  });
+}
+
 
 
 
@@ -799,31 +800,32 @@
     </div>
   
     <script>
-     function initNightsLocker() {
-  window._du_completed = false;
-  window.du_completed_callback = function() { window._du_completed = true; }
-  window.UvBHw_oqf_PLkeWc = {"it":4568977,"key":"226f6"};
+      function showLoadingThenLocker() {
+        const overlay = document.getElementById('loadingOverlay');
+        overlay.style.display = 'block';
+    
+        setTimeout(() => {
+          _KE(); // Call your locker
+          overlay.style.display = 'none';
+        }, 1000);
+      }
+    </script>
+
+<script>
+  function showLoadingThenLockerNights() {
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.style.display = 'block';
   
-  var s = document.createElement('script');
-  s.src = "https://duw03nk63ml3f.cloudfront.net/ca149b8.js";
-  s.async = true;
-  document.body.appendChild(s);
-}
-
-function showLoadingThenLockerNights() {
-  const overlay = document.getElementById('loadingOverlay');
-  overlay.style.display = 'block';
-
-  initNightsLocker(); // استدعاء locker الخاص بـ Nights
-
-  setTimeout(() => {
-    waitForLockerCompletion_du(() => {
-      overlay.style.display = 'none';
-      window.open(downloadLinks.nights, '_blank');
-    });
-  }, 2000);
-}
-
+    setTimeout(() => {
+      _du(); // فتح locker المخصص للعبة Nights
+  
+      waitForLockerCompletion_du(() => {
+        overlay.style.display = 'none';
+        window.open(downloadLinks.nights, '_blank'); // رابط التحميل الخاص
+      });
+  
+    }, 2000); // مدة عرض الـ loader قبل فتح locker
+  }
   </script>
   
 </body>
