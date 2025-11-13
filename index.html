@@ -469,7 +469,16 @@
 
 </head>
 <body>
-  
+  <!-- Desktop Warning Section -->
+  <div class="desktop-warning" role="alert" aria-live="polite">
+    <h1>This site is for iOS and Android phones only.</h1>
+    <div class="qr-container" tabindex="0" aria-label="QR code to open SEK STORE on your phone">
+      <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://www.sekmarketing.site" alt="QR code linking to SEK STORE mobile site" />
+    </div>
+    <div class="copy-container">
+      <button class="copy-link-btn" onclick="copyLink()" aria-label="Copy SEK STORE link to clipboard">Copy SEK STORE Link</button>
+    </div>
+  </div>
 
   <!-- Mobile Content -->
   <div class="mobile-only" role="main">
