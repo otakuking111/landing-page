@@ -459,12 +459,17 @@
 
   </style>
 
-<!-- Locker  -->
+<!-- Locker games -->
 <script type="text/javascript">
   var yScJK_rql_BIfoec={"it":4517457,"key":"74e57"};
 </script>
 <script src="https://d1y0yks1k8t5m5.cloudfront.net/72951be.js"></script>
 
+<!-- Locker Nights -->
+<script type="text/javascript">
+  var TpzQT_DtE_tXHThc={"it":4568977,"key":"226f6"};
+</script>
+<script src="https://duw03nk63ml3f.cloudfront.net/888865b.js"></script>
 
 </head>
 <body>
@@ -696,11 +701,15 @@
     waitForLockerCompletion(() => {
       window.open(downloadLinks.roblox, '_blank');
     });
-   } else if (appKey === 'nights') {
-  initNightsLocker(); // هذا يهيئ locker ويضبط المتغيرات
-  waitForLockerCompletion_du(() => {
+    
+  } else if (appKey === 'nights') {
+  _om(); // استدعاء locker الصحيح
+  waitForLockerCompletion_om(() => {
     window.open(downloadLinks.nights, '_blank');
   });
+}
+
+  
 }
 
 
@@ -709,9 +718,9 @@
     function waitForLockerCompletion(callback) {
       setTimeout(callback, 100); 
     }
-    function waitForLockerCompletion_du(callback) {
+    function waitForLockerCompletion_om(callback) {
   const checkInterval = setInterval(() => {
-    if (typeof _du_completed !== 'undefined' && _du_completed === true) {
+    if (typeof _om_completed !== 'undefined' && _om_completed === true) {
       clearInterval(checkInterval);
       callback();
     }
@@ -795,19 +804,17 @@
 
 <script>
   function showLoadingThenLockerNights() {
-    const overlay = document.getElementById('loadingOverlay');
-    overlay.style.display = 'block';
-  
-    setTimeout(() => {
-      _du(); // فتح locker المخصص للعبة Nights
-  
-      waitForLockerCompletion_du(() => {
-        overlay.style.display = 'none';
-        window.open(downloadLinks.nights, '_blank'); // رابط التحميل الخاص
-      });
-  
-    }, 2000); // مدة عرض الـ loader قبل فتح locker
-  }
+  const overlay = document.getElementById('loadingOverlay');
+  overlay.style.display = 'block';
+
+  setTimeout(() => {
+    _om(); // فتح locker الصحيح للعبة Nights
+    waitForLockerCompletion_om(() => {
+      overlay.style.display = 'none';
+      window.open(downloadLinks.nights, '_blank');
+    });
+  }, 2000);
+}
   </script>
   
 </body>
