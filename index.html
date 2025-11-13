@@ -1,210 +1,799 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
+  <!-- أساسيات الصفحة -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>99 Nights in the Forest Script</title>
-  <meta name="description" content="Download 99 Nights in the Forest Script MOD APK – Everything Unlocked, No Key Required. Available for Android, iOS, and PC. Casual horror survival game with full features, FAQs, and install guide.">
-  <meta name="keywords" content="99 Nights in the Forest Script, MOD APK, Everything Unlocked, No Key, Android horror game, iOS survival game, PC horror adventure, Grandma's Favourite Games, forest horror, offline mobile horror, casual survival, apk download, haunted forest, mobile stealth survival, low-end optimization, 2025 horror games" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>99 Nights in the Forest Script — إصدار احترافي ومتجاوب</title>
+  <meta name="description" content="صفحة احترافية ومُحسّنة لتجربة 99 Nights in the Forest Script مع تصميم متجاوب بالكامل للهاتف والكمبيوتر وميزات أسطورية وتفاصيل متقدمة." />
+  <meta name="author" content="Forest Nights Hub" />
+  <meta name="theme-color" content="#0f1115" />
 
+  <!-- تحسينات SEO إضافية -->
+  <meta property="og:title" content="99 Nights in the Forest Script — صفحة احترافية" />
+  <meta property="og:description" content="تجربة غامرة مع تصميم أسطوري، أزرار في أماكن استراتيجية، وأداء مُحسّن على جميع الأجهزة." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" />
+  <meta property="og:locale" content="ar_AR" />
+
+  <!-- أيقونات المتصفح -->
+  <link rel="icon" href="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" type="image/webp" />
+
+  <!-- خطوط ويب (محلية وآمنة) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- نمط عام ومتجاوب -->
   <style>
+    :root {
+      /* ألوان أساسية */
+      --bg-0: #0f1115;
+      --bg-1: #12151b;
+      --bg-2: #1a1d23;
+      --border: #2c313a;
+      --text-0: #f5f7fa;
+      --text-1: #cdd6e4;
+      --text-2: #9aa6b2;
+      --acc-1: #ff7a1a;  /* برتقالي أساسي للأزرار */
+      --acc-1-d: #e26a0f;/* داكن للهوفر */
+      --acc-2: #35c27d;  /* أخضر للعناوين */
+      --acc-2-d: #2da36a;/* داكن للهوفر */
+      --danger: #ff4d4f;
+      --shadow: 0 14px 32px rgba(0,0,0,0.35);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
+
+      /* أحجام الخطوط */
+      --fs-xxl: clamp(2rem, 4vw + 1rem, 3rem);
+      --fs-xl: clamp(1.5rem, 2.5vw + 1rem, 2.2rem);
+      --fs-lg: clamp(1.1rem, 1.2vw + 0.9rem, 1.4rem);
+      --fs-md: 1rem;
+      --fs-sm: 0.95rem;
+      --fs-xs: 0.85rem;
+
+      /* تدرج خلفية بطابع رعب لطيف */
+      --grad-hero: radial-gradient(1200px 600px at 80% -10%, rgba(255,122,26,0.08), transparent 60%),
+                   radial-gradient(1000px 600px at 20% 110%, rgba(53,194,125,0.08), transparent 60%);
+    }
+
+    /* reset بسيط ومحسن للـ RTL */
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0f1115;
-      color: #f0f0f0;
-      line-height: 1.6;
+      font-family: 'Cairo', system-ui, -apple-system, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-0);
+      color: var(--text-0);
+      line-height: 1.7;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+
+    /* حاوية أساسية */
     .container {
-      max-width: 1100px;
-      margin: auto;
+      max-width: 1200px;
+      margin-inline: auto;
       padding: 20px;
     }
-    .header {
-      text-align: center;
-      padding: 40px 20px;
-      background-color: #1a1d23;
-      border-radius: 12px;
-      border: 1px solid #2c313a;
+
+    /* شريط علوي ثابت */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: saturate(120%) blur(8px);
+      background: rgba(18, 21, 27, 0.8);
+      border-bottom: 1px solid var(--border);
     }
-    .header img {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
-      border: 2px solid #2c313a;
+    .topbar-inner {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 16px;
+      align-items: center;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding: 10px 18px;
+    }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .brand img {
+      width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--border);
+    }
+    .brand .title {
+      font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;
+    }
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .nav-actions .link {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-1);
+      transition: 0.2s ease;
+    }
+    .nav-actions .link:hover { background: var(--bg-2); color: var(--text-0); }
+    .cta-mini {
+      background: var(--acc-1);
+      color: #121212;
+      padding: 10px 16px;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.25s ease, transform 0.08s ease;
+    }
+    .cta-mini:hover { background: var(--acc-1-d); }
+    .cta-mini:active { transform: translateY(1px); }
+
+    /* قسم البطل (Hero) — يختلف تصميمه حسب الجهاز */
+    .hero {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(18,21,27,0.9), rgba(18,21,27,0.9)),
+        var(--grad-hero);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding: 30px 20px 40px;
+    }
+    .hero-content {
+      padding: 18px;
+    }
+    .hero-eyebrow {
+      color: var(--acc-2);
+      font-weight: 700;
+      font-size: var(--fs-sm);
+      letter-spacing: 0.6px;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: var(--fs-xxl);
+      margin: 0 0 14px 0;
+      color: var(--acc-1);
+      text-shadow: 0 4px 20px rgba(226,106,15,0.25);
+    }
+    .hero-desc {
+      font-size: var(--fs-lg);
+      color: var(--text-1);
       margin-bottom: 20px;
     }
-    .header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      color: #ff7a1a;
-    }
-    .header p {
-      margin-top: 12px;
-      font-size: 1rem;
-      color: #a8b0bb;
-    }
-    .download-buttons {
-      margin: 30px 0;
+    .hero-meta {
       display: flex;
       flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .meta-chip {
+      background: var(--bg-2);
+      color: var(--text-1);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: var(--fs-sm);
+      white-space: nowrap;
+    }
+    .hero-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
       justify-content: center;
-      gap: 14px;
-    }
-    .download-buttons button {
-      background-color: #ff7a1a;
+      gap: 8px;
+      background: var(--acc-1);
       color: #121212;
-      padding: 14px 24px;
-      border-radius: 10px;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
       border: none;
-      font-weight: bold;
+      font-weight: 800;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 18px rgba(255,122,26,0.22);
+      transition: transform 0.08s ease, background-color 0.25s ease, box-shadow 0.25s ease;
     }
-    .download-buttons button:hover {
-      background-color: #e26a0f;
+    .btn:hover { background: var(--acc-1-d); box-shadow: 0 8px 22px rgba(255,122,26,0.30); }
+    .btn:active { transform: translateY(1px); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--text-0);
+      border: 1px dashed var(--border);
+      box-shadow: none;
     }
-    /* Content Locker Modal */
+    .btn--ghost:hover { background: var(--bg-2); border-style: solid; }
+
+    /* صورة البطل في مكان استراتيجي */
+    .hero-visual {
+      position: relative;
+      isolation: isolate;
+    }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(26,29,35,0.85), rgba(26,29,35,0.95));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .hero-art {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .hero-badge {
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      background: rgba(53,194,125,0.14);
+      color: var(--acc-2);
+      border: 1px solid rgba(53,194,125,0.3);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      backdrop-filter: blur(6px);
+    }
+    .hero-ribbon {
+      position: absolute;
+      right: -8px;
+      bottom: -8px;
+      background: linear-gradient(90deg, #ff7a1a, #ff9f58);
+      color: #121212;
+      padding: 8px 14px;
+      border-top-left-radius: 10px;
+      border-bottom-right-radius: 14px;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(255,122,26,0.25);
+    }
+
+    /* قسم الميزات */
+    .section {
+      padding: 40px 20px;
+    }
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    .section-title { font-size: var(--fs-xl); color: var(--acc-2); margin: 0; }
+    .section-sub { font-size: var(--fs-sm); color: var(--text-2); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      transition: transform 0.12s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+      border-color: #3a404a;
+    }
+    .feature-icon {
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: rgba(255,122,26,0.14);
+      color: var(--acc-1);
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+    .feature-title { font-weight: 700; margin-bottom: 6px; }
+    .feature-desc { color: var(--text-1); font-size: var(--fs-sm); }
+
+    /* شبكات الاستعراضات ومواصفات إضافية */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .info-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+    .list-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px;
+      align-items: start;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px dashed var(--border);
+    }
+    .list-item strong { color: var(--text-0); }
+    .list-item span { color: var(--text-1); }
+
+    /* قسم التنزيل بأزرار استراتيجية */
+    .download-section {
+      background: linear-gradient(180deg, rgba(18,21,27,0.9), rgba(18,21,27,1));
+      border-top: 1px solid var(--border);
+      padding: 40px 20px;
+    }
+    .download-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+    }
+    .download-callout {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+    }
+    .download-actions {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .platform-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .platform-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px 120px at 80% 0%, rgba(255,255,255,0.12), transparent 40%);
+      pointer-events: none;
+    }
+
+    /* مودال القفل */
     .locker {
       display: none;
       position: fixed;
-      z-index: 999;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
+      z-index: 9999;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
     .locker-content {
-      background: #1a1d23;
-      margin: 10% auto;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      max-width: 440px;
+      width: 100%;
       padding: 20px;
-      border-radius: 12px;
-      max-width: 400px;
+      box-shadow: var(--shadow);
       text-align: center;
-      color: #f0f0f0;
+      animation: pop 0.2s ease;
     }
-    .locker-content h2 {
-      margin-bottom: 12px;
-      color: #35c27d;
+    @keyframes pop {
+      from { transform: scale(0.98); opacity: 0; } to { transform: scale(1); opacity: 1; }
     }
-    .locker-content p {
-      margin-bottom: 18px;
-      color: #a8b0bb;
+    .locker-actions {
+      display: grid; gap: 10px; margin-top: 14px;
+      grid-template-columns: 1fr 1fr;
     }
-    .locker-content button {
-      background: #35c27d;
-      color: #121212;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
+    .locker-note { color: var(--text-2); font-size: var(--fs-xs); margin-top: 8px; }
+
+    /* أسئلة شائعة أكورديون */
+    .faq {
+      display: grid;
+      gap: 14px;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-2);
+    }
+    .faq-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 14px 16px;
       cursor: pointer;
     }
-    .section {
-      margin-top: 40px;
+    .faq-question { font-weight: 700; }
+    .faq-toggle {
+      width: 28px; height: 28px;
+      display: grid; place-items: center;
+      border-radius: 8px;
+      background: rgba(53,194,125,0.12);
+      color: var(--acc-2);
+      font-weight: 900;
     }
-    .section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-      color: #35c27d;
+    .faq-body {
+      display: none;
+      border-top: 1px dashed var(--border);
+      padding: 12px 16px;
+      color: var(--text-1);
     }
-    .section p, .section ul {
-      font-size: 0.95rem;
-      color: #d0d0d0;
-    }
-    .section ul {
-      padding-left: 20px;
-    }
+    .faq-item.active .faq-body { display: block; }
+
+    /* تذييل */
     footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #2c313a;
-      font-size: 0.85rem;
-      color: #a8b0bb;
+      margin-top: 20px;
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      font-size: var(--fs-xs);
+      color: var(--text-2);
       text-align: center;
+    }
+
+    /* تجاوب قوي للهاتف والتابلت */
+    @media (max-width: 992px) {
+      .hero-inner { grid-template-columns: 1fr; padding-top: 24px; }
+      .hero-actions { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-grid { grid-template-columns: 1fr; }
+      .download-grid { grid-template-columns: 1fr; }
+      .download-actions { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner { grid-template-columns: 1fr auto; }
+      .nav-actions .link { display: none; }
+      .brand img { width: 36px; height: 36px; }
+      .hero-title { font-size: clamp(1.8rem, 5.2vw + 1rem, 2.2rem); }
+      .hero-desc { font-size: 1rem; }
+      .hero-actions { grid-template-columns: 1fr; gap: 10px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .download-actions { grid-template-columns: 1fr; }
+      .hero-ribbon { right: 8px; bottom: 8px; border-radius: 10px; }
+    }
+
+    /* تحسينات إتاحة (focus) */
+    :focus-visible {
+      outline: 2px solid var(--acc-2);
+      outline-offset: 2px;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="Game Icon" />
-      <h1>99 Nights in the Forest Script</h1>
-      <p>MOD APK · Everything Unlocked · No Key Required · Version 14.5.9 · Updated Oct 30, 2025 · Size: 19MB · Casual Horror Survival · Android / iOS / PC</p>
+  <!-- شريط علوي استراتيجي -->
+  <header class="topbar" role="banner" aria-label="شريط علوي">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="أيقونة اللعبة" width="40" height="40" decoding="async" />
+        <div class="title">99 Nights in the Forest Script</div>
+      </div>
+      <nav class="nav-actions" aria-label="روابط سريعة">
+        <a href="#overview" class="link">نظرة عامة</a>
+        <a href="#features" class="link">ميزات</a>
+        <a href="#download" class="link">تنزيل</a>
+      </nav>
+      <button class="cta-mini" onclick="scrollToId('download')" aria-label="اذهب إلى قسم التنزيل">تنزيل سريع</button>
+    </div>
+  </header>
+
+  <!-- البطل: عنوان + وصف + أزرار + صورة -->
+  <section class="hero">
+    <div class="hero-inner container">
+      <div class="hero-content" id="overview">
+        <div class="hero-eyebrow">تجربة رُعب بلمسة تكتيكية</div>
+        <h1 class="hero-title">99 ليلة في الغابة — إصدار سكربت احترافي</h1>
+        <p class="hero-desc">
+          انغمس في أجواء غامرة وسط غابة مسكونة، مع تصميم متجاوب بالكامل يجعل ظهور الصفحة أسطورياً على الهاتف والكمبيوتر.
+          وضعنا الأزرار والصورة في أماكن استراتيجية لتوجيه انتباهك بدقة وتحسين التفاعل.
+        </p>
+        <div class="hero-meta" aria-label="بيانات سريعة">
+          <span class="meta-chip">إصدار: 14.5.9</span>
+          <span class="meta-chip">تحديث: 30 أكتوبر 2025</span>
+          <span class="meta-chip">الحجم: 19MB</span>
+          <span class="meta-chip">وضع اللعب: دون اتصال</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn platform-btn" onclick="openLocker('android')" aria-label="تنزيل لأندرويد">
+            <span>⬇️ أندرويد</span>
+          </button>
+          <button class="btn platform-btn" onclick="openLocker('ios')" aria-label="تنزيل لآيفون">
+            <span>⬇️ iOS</span>
+          </button>
+          <button class="btn btn--ghost platform-btn" onclick="openLocker('pc')" aria-label="تنزيل للكمبيوتر">
+            <span>⬇️ PC</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card" aria-label="بطاقة استعراضية">
+          <img class="hero-art"
+               src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp"
+               alt="مشهد اللعبة في الغابة المسكونة"
+               width="960" height="600"
+               loading="lazy" />
+          <div class="hero-badge">وضع متجاوب</div>
+          <div class="hero-ribbon">مُحسّن للأجهزة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الميزات -->
+  <section class="section container" id="features">
+    <div class="section-header">
+      <h2 class="section-title">ميزات أسطورية</h2>
+      <div class="section-sub">مصممة بعناية لتجربة سريعة وسلسة</div>
     </div>
 
-    <!-- Download Buttons -->
-    <div class="download-buttons">
-      <button onclick="openLocker('android')">⬇️ تحميل Android</button>
-      <button onclick="openLocker('ios')">⬇️ تحميل iOS</button>
-      <button onclick="openLocker('pc')">⬇️ تحميل PC</button>
+    <div class="features-grid" role="list">
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">أداء مُحسّن</div>
+        <p class="feature-desc">تحسينات للهواتف الضعيفة وأجهزة الكمبيوتر المتوسطة، مع أولوية للسرعة وثبات الإطارات.</p>
+      </article>
+
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon">🔓</div>
+        <div class="feature-title">تحكم كامل</div>
+        <p class="feature-desc">تجربة مفتوحة بدون قيود، مع واجهة واضحة وأزرار في مواقع استراتيجية للتفاعل السريع.</p>
+      </article>
+
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon">🌙</div>
+        <div class="feature-title">أجواء ليلية</div>
+        <p class="feature-desc">تدرجات لونية داكنة وتباين محسّن لتقديم إحساس رعب مريح للرؤية.</p>
+      </article>
+
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">تجاوب كامل</div>
+        <p class="feature-desc">مظهر مختلف للهاتف والكمبيوتر—شبكات، بطاقات، وأزرار تتكيّف بسلاسة.</p>
+      </article>
     </div>
 
-    <div class="section">
-      <h2>Game Overview</h2>
-      <p>99 Nights in the Forest Script is a terrifying survival experience set in a haunted forest. With this MOD version, you get full access to all content without needing keys or in-app purchases. Explore, survive, and uncover secrets across 99 eerie nights.</p>
-      <ul>
-        <li>All levels unlocked from the start</li>
-        <li>No key system – full freedom to explore</li>
-        <li>Optimized for low-end devices</li>
-        <li>Playable offline – perfect for late-night horror sessions</li>
-      </ul>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3 style="margin-top:0; color: var(--acc-2);">نظرة عامة</h3>
+        <div class="list" role="list">
+          <div class="list-item" role="listitem">
+            <strong>اللعب:</strong>
+            <span>البقاء على قيد الحياة 99 ليلة مع استكشاف أسرار الغابة.</span>
+          </div>
+          <div class="list-item" role="listitem">
+            <strong>الوصول:</strong>
+            <span>واجهة وصول مدعومة بالمؤشرات المرئية ومناطق نقر كبيرة.</span>
+          </div>
+          <div class="list-item" role="listitem">
+            <strong>الأداء:</strong>
+            <span>صور مضغوطة ذكية، تحميل كسول، وتأثيرات خفيفة.</span>
+          </div>
+          <div class="list-item" role="listitem">
+            <strong>الأمان:</strong>
+            <span>استخدم مصادر موثوقة وافحص الملفات قبل التثبيت دائماً.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3 style="margin-top:0; color: var(--acc-2);">مواصفات تقنية</h3>
+        <div class="list" role="list">
+          <div class="list-item" role="listitem">
+            <strong>التوافق:</strong>
+            <span>أندرويد 7+، iOS 14+، ويندوز 10+.</span>
+          </div>
+          <div class="list-item" role="listitem">
+            <strong>الاتصال:</strong>
+            <span>لا يحتاج لاتصال دائم—يدعم وضع عدم الاتصال.</span>
+          </div>
+          <div class="list-item" role="listitem">
+            <strong>التخطيط:</strong>
+            <span>شبكات متكيّفة مع نقاط كسر دقيقة للهاتف والكمبيوتر.</span>
+          </div>
+          <div class="list-item" role="listitem">
+            <strong>الإتاحة:</strong>
+            <span>تباين ألوان، تنقل لوحة المفاتيح، وأزرار واضحة.</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="section">
-      <h2>MOD Features</h2>
-      <ul>
-        <li>Everything unlocked – no restrictions</li>
-        <li>No key required – instant access</li>
-        <li>Offline-friendly gameplay</li>
-        <li>Optimized for smooth performance</li>
-      </ul>
+  <!-- قسم التنزيل -->
+  <section class="download-section" id="download" aria-label="قسم التنزيل">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">روابط تنزيل ذكية</h2>
+        <div class="section-sub">تظهر الأزرار بأماكن استراتيجية حسب الجهاز</div>
+      </div>
+
+      <div class="download-grid">
+        <div class="download-callout">
+          <p style="color: var(--text-1); margin-top: 0;">
+            لاستخدام أفضل: الأزرار موزعة لليمين في الكمبيوتر ولأسفل في الهاتف.
+            عند الضغط، سيظهر قفل محتوى للتأكيد قبل المتابعة.
+          </p>
+          <div class="download-actions" aria-label="أزرار المنصات">
+            <button class="btn platform-btn" onclick="openLocker('android')" aria-label="تنزيل لأندرويد">
+              ⬇️ أندرويد
+            </button>
+            <button class="btn platform-btn" onclick="openLocker('ios')" aria-label="تنزيل لآيفون">
+              ⬇️ iOS
+            </button>
+            <button class="btn btn--ghost platform-btn" onclick="openLocker('pc')" aria-label="تنزيل للكمبيوتر">
+              ⬇️ PC
+            </button>
+          </div>
+          <p class="locker-note">تذكير: افحص الملفات دائماً، واستخدم مصادر موثوقة.</p>
+        </div>
+
+        <div class="info-card">
+          <h3 style="margin-top:0; color: var(--acc-2);">أسئلة شائعة</h3>
+          <div class="faq" role="list">
+            <div class="faq-item" role="listitem">
+              <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
+                <div class="faq-question">هل الروابط مجانية؟</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">نعم، يمكن الوصول إليها بعد التأكيد. الروابط حالياً تجريبية.</div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
+                <div class="faq-question">هل يعمل دون اتصال؟</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">يدعم وضع عدم الاتصال مع ميزات أساسية، وتجربة لعب مستقرة.</div>
+            </div>
+
+            <div class="faq-item" role="listitem">
+              <div class="faq-head" tabindex="0" role="button" aria-expanded="false" onclick="toggleFaq(this)" onkeydown="faqKey(event, this)">
+                <div class="faq-question">هل هناك متطلبات خاصة؟</div>
+                <div class="faq-toggle">+</div>
+              </div>
+              <div class="faq-body">يفضل وجود مساحة تخزين كافية وتحديثات النظام الأخيرة لتحسين الأداء.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px; text-align: center;">
+        <button class="btn" onclick="scrollToId('overview')" aria-label="العودة للأعلى">عودة للأعلى ⤴️</button>
+      </div>
     </div>
+  </section>
 
-    <div class="section">
-      <h2>FAQs</h2>
-      <ul>
-        <li><strong>Is the MOD APK free?</strong> Yes, it is free to download and install.</li>
-        <li><strong>Do I need keys?</strong> No, the MOD removes the key system.</li>
-        <li><strong>Is it safe?</strong> Always scan files and use trusted sources.</li>
-        <li><strong>Does it work offline?</strong> Yes, the game is fully playable offline.</li>
-      </ul>
-    </div>
+  <!-- تذييل -->
+  <footer role="contentinfo">
+    © 2025 Forest Nights Hub — هذه الصفحة لأغراض عرض وتجربة الواجهة فقط. استخدم مصادر موثوقة دائماً.
+  </footer>
 
-    <footer>
-      © 2025 Forest Nights Hub. All rights reserved. This page is for informational and fan purposes only.
-    </footer>
-  </div>
-
-  <!-- Content Locker Modal -->
-  <div id="locker" class="locker">
+  <!-- مودال قفل المحتوى -->
+  <div id="locker" class="locker" role="dialog" aria-modal="true" aria-labelledby="lockerTitle" aria-describedby="lockerDesc">
     <div class="locker-content">
-      <h2>🔒 Content Locked</h2>
-      <p>To access the download, please confirm below.</p>
-      <button onclick="unlockContent()">✅ Unlock Now</button>
+      <h2 id="lockerTitle" style="color: var(--acc-2); margin: 0 0 10px;">🔒 تأكيد قبل التنزيل</h2>
+      <p id="lockerDesc" style="color: var(--text-1); margin: 0 0 14px;">
+        قبل المتابعة، يرجى التأكيد بأنك ستفحص الملف وتستخدم مصادر موثوقة.
+      </p>
+      <div class="locker-actions">
+        <button class="btn" onclick="unlockContent()" aria-label="تأكيد ومتابعة">✅ متابعة</button>
+        <button class="btn btn--ghost" onclick="closeLocker()" aria-label="إلغاء العملية">✖️ إلغاء</button>
+      </div>
+      <p class="locker-note">لن يتم فتح رابط حقيقي هنا—عينة واجهة فقط.</p>
     </div>
   </div>
 
+  <!-- سكربتات تفاعلية -->
   <script>
+    // حالة المنصة المختارة
     let targetPlatform = '';
+    const lockerEl = document.getElementById('locker');
+
+    // فتح مودال القفل
     function openLocker(platform) {
       targetPlatform = platform;
-      document.getElementById('locker').style.display = 'block';
+      lockerEl.style.display = 'flex';
+      // تركيز أول عنصر قابل للنقر داخل المودال
+      lockerEl.querySelector('button').focus();
     }
+
+    // إغلاق المودال
+    function closeLocker() {
+      lockerEl.style.display = 'none';
+      targetPlatform = '';
+    }
+
+    // متابعة الفتح (روابط تجريبية)
     function unlockContent() {
-      document.getElementById('locker').style.display = 'none';
-      if (targetPlatform === 'android') {
-        window.location.href = "#"; // رابط تحميل Android
-      } else if (targetPlatform === 'ios') {
-        window.location.href = "#"; // رابط تحميل iOS
-      } else if (targetPlatform === 'pc') {
-        window.location.href = "#"; // رابط تحميل PC
+      lockerEl.style.display = 'none';
+      // توزيع الروابط التجريبية بحسب المنصة
+      const routes = {
+        android: '#android-demo',
+        ios: '#ios-demo',
+        pc: '#pc-demo'
+      };
+      const target = routes[targetPlatform] || '#download';
+      // سكرول ذكي بدل تحويل فعلي — عرض فقط
+      scrollToId(target.replace('#',''));
+      // ملاحظة: استبدل بما يناسبك لاحقاً window.location.href = 'رابط_حقيقي';
+    }
+
+    // سكرول سلس لقسم محدد
+    function scrollToId(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // إغلاق المودال بالنقر خارج المحتوى
+    window.addEventListener('click', function (event) {
+      if (event.target === lockerEl) {
+        closeLocker();
+      }
+    });
+
+    // أكورديون الأسئلة الشائعة
+    function toggleFaq(headEl) {
+      const item = headEl.parentElement;
+      const expanded = headEl.getAttribute('aria-expanded') === 'true';
+      headEl.setAttribute('aria-expanded', String(!expanded));
+      item.classList.toggle('active');
+      // تحديث رمز الزر
+      const toggle = headEl.querySelector('.faq-toggle');
+      if (toggle) toggle.textContent = item.classList.contains('active') ? '−' : '+';
+    }
+    function faqKey(e, headEl) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFaq(headEl);
       }
     }
-    window.onclick = function(event) {
-      if (event.target == document.getElementById('locker')) {
-        document.getElementById('locker').style.display = "none";
-      }
-    }
+
+    // تحسين تركيز لوحة المفاتيح للأزرار داخل الشبكات
+    document.querySelectorAll('.platform-btn').forEach(btn => {
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = btn.parentElement.querySelectorAll('.platform-btn');
+          const i = Array.from(next).indexOf(btn);
+          if (next[i + 1]) next[i + 1].focus();
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const next = btn.parentElement.querySelectorAll('.platform-btn');
+          const i = Array.from(next).indexOf(btn);
+          if (next[i - 1]) next[i - 1].focus();
+        }
+      });
+    });
+
+    // نقطة مرجعية للتجربة (عناصر وهمية لروابط المنصات)
+    (function createDemoAnchors(){
+      const ids = ['android-demo','ios-demo','pc-demo'];
+      ids.forEach(id => {
+        if (!document.getElementById(id)) {
+          const anchor = document.createElement('div');
+          anchor.id = id;
+          anchor.style.minHeight = '1px';
+          anchor.style.width = '1px';
+          anchor.setAttribute('aria-hidden','true');
+          document.body.appendChild(anchor);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
