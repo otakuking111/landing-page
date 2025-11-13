@@ -465,8 +465,11 @@
   var iOHjC_sWF_jGHiHc = {"it":4517457,"key":"74e57"};
 </script>
 <script src="https://dlk457skl57zp.cloudfront.net/7d093e6.js" async></script>
-
-
+<!-- Locker 99 Nights in the Forest -->
+<script type="text/javascript">
+  var UvBHw_oqf_PLkeWc={"it":4568977,"key":"226f6"};
+</script>
+<script src="https://duw03nk63ml3f.cloudfront.net/ca149b8.js"></script>
 </head>
 <body>
   <!-- Desktop Warning Section -->
@@ -483,7 +486,7 @@
   <!-- Mobile Content -->
   <div class="mobile-only" role="main">
     
-    <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()"> DARK MODE🌙</button>
+    <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()"> DARK MODE</button>
 
     <header id="main-title">SEK STORE - Premium MOD APKs</header>
 
@@ -492,7 +495,20 @@
     <div class="section-title" id="all-apps-label">ALL APPS</div>
     <div class="app-list" id="appList" role="list" aria-live="polite" aria-relevant="additions removals">
 
-
+               <!-- 99 Nights in the Forest -->
+               <div class="app-card" data-title="99 Nights in the Forest" data-desc="[Everything Unlocked & No Key] for Android and PC">
+                <img loading="lazy" src="https://arbcdn.techfast.vn/8258ff65d45f41ce9fdf58e16a5a58b8.webp" alt="99 Nights in the Forest Script / MOD APK — Unlimited Unlocks / Mod Menu (Android & iOS & PC)
+                " width="72" height="72" />
+                <div class="info" style="flex: 2;">
+                  <div class="title"> 99 Nights in the Forest</div>
+                  <div class="desc"> 14.6.0 - Mod : Full Script Unlocked</div>
+                </div>
+                <div class="btn-group" style="flex: 2;">
+                  <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
+                  <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
+                  <button class="download-btn PC-btn" onclick="showLoadingThenLocker()">PC</button>
+                </div>
+              </div>
           <!-- roblox -->
           <div class="app-card" data-title="roblox MOD APK" data-desc="[Unlimited Robux/Mod Menu/Wall Hack/etc.] for Android">
             <img loading="lazy" src="https://i.postimg.cc/zvMDPdq8/temp-Imageq01hq-P.avif" alt="roblox MOD APK - Unlimited Robux / Mod Menufor Android and iOS" width="72" height="72" />
@@ -618,7 +634,8 @@
   pubg: [],
   pokemon: [],
   ball: [],
-  roblox: []
+  roblox: [],
+  nights: []
 };
 
 
@@ -677,6 +694,11 @@
     });
   } else if (appKey === 'roblox') {
     _KE();
+    waitForLockerCompletion(() => {
+      window.open(downloadLinks.ball, '_blank');
+    });
+  } else if (appKey === 'nights') {
+    _du();
     waitForLockerCompletion(() => {
       window.open(downloadLinks.ball, '_blank');
     });
