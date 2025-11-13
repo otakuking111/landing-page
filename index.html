@@ -483,20 +483,7 @@
 
 </head>
 <body>
-  <!-- Locker 99 Nights in the Forest -->
-<script>
-  var _du_completed = false; // false يعني العرض لم يكتمل بعد
-
-  // هذا الجزء يُخبر الكود أن العرض انتهى
-  function du_completed_callback() {
-    _du_completed = true;
-  }
-</script>
-
-<script type="text/javascript">
-  var UvBHw_oqf_PLkeWc = {"it":4568977,"key":"226f6"};
-</script>
-<script src="https://duw03nk63ml3f.cloudfront.net/ca149b8.js"></script>
+  
 
   <!-- Desktop Warning Section -->
   <div class="desktop-warning" role="alert" aria-live="polite">
@@ -530,9 +517,10 @@
                   <div class="desc"> 14.6.0 - Mod : Full Script Unlocked</div>
                 </div>
                 <div class="btn-group" style="flex: 2;">
-                  <button class="download-btn android-btn" onclick="showLoadingThenLocker()">Android</button>
-                  <button class="download-btn ios-btn" onclick="showLoadingThenLocker()">iOS</button>
-                  <button class="download-btn PC-btn" onclick="showLoadingThenLocker()">PC</button>
+                  <button class="download-btn android-btn" onclick="showLoadingThenLockerNights()">Android</button>
+<button class="download-btn ios-btn" onclick="showLoadingThenLockerNights()">iOS</button>
+<button class="download-btn PC-btn" onclick="showLoadingThenLockerNights()">PC</button>
+
                 </div>
               </div>
           <!-- roblox -->
@@ -818,3 +806,23 @@
         }, 3000);
       }
     </script>
+
+<script>
+  function showLoadingThenLockerNights() {
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.style.display = 'block';
+  
+    setTimeout(() => {
+      _du(); // فتح locker المخصص للعبة Nights
+  
+      waitForLockerCompletion_du(() => {
+        overlay.style.display = 'none';
+        window.open(downloadLinks.nights, '_blank'); // رابط التحميل الخاص
+      });
+  
+    }, 2000); // مدة عرض الـ loader قبل فتح locker
+  }
+  </script>
+  
+</body>
+</html>
