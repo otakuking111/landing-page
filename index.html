@@ -460,26 +460,29 @@
   </style>
 <!-- Locker 99 Nights in the Forest -->
 <script>
-  var _du_completed = false; // false يعني العرض لم يكتمل بعد
-
-  // هذا الجزء يُخبر الكود أن العرض انتهى
-  function du_completed_callback() {
-    _du_completed = true;
+  function initNightsLocker() {
+    window._du_completed = false; // إعادة ضبط كل مرة
+    window.du_completed_callback = function() { window._du_completed = true; }
+    window.UvBHw_oqf_PLkeWc = {"it":4568977,"key":"226f6"};
+    
+    var s = document.createElement('script');
+    s.src = "https://duw03nk63ml3f.cloudfront.net/ca149b8.js";
+    s.async = true;
+    document.body.appendChild(s);
   }
 </script>
 
-<script type="text/javascript">
-  var UvBHw_oqf_PLkeWc = {"it":4568977,"key":"226f6"};
+<!-- Locker PUBG -->
+<script>
+  function initPUBGLocker() {
+    window.iOHjC_sWF_jGHiHc = {"it":4517457,"key":"74e57"};
+    
+    var s = document.createElement('script');
+    s.src = "https://dlk457skl57zp.cloudfront.net/7d093e6.js";
+    s.async = true;
+    document.body.appendChild(s);
+  }
 </script>
-<script src="https://duw03nk63ml3f.cloudfront.net/ca149b8.js"></script>
-
-  <!-- Locker PUBG -->
-
-<script type="text/javascript">
-  var iOHjC_sWF_jGHiHc = {"it":4517457,"key":"74e57"};
-</script>
-<script src="https://dlk457skl57zp.cloudfront.net/7d093e6.js" async></script>
-
 
 </head>
 <body>
@@ -796,32 +799,20 @@
     </div>
   
     <script>
-      function showLoadingThenLocker() {
-        const overlay = document.getElementById('loadingOverlay');
-        overlay.style.display = 'block';
-    
-        setTimeout(() => {
-          _KE(); // Call your locker
-          overlay.style.display = 'none';
-        }, 1000);
-      }
-    </script>
+     function showLoadingThenLockerNights() {
+  const overlay = document.getElementById('loadingOverlay');
+  overlay.style.display = 'block';
 
-<script>
-  function showLoadingThenLockerNights() {
-    const overlay = document.getElementById('loadingOverlay');
-    overlay.style.display = 'block';
-  
-    setTimeout(() => {
-      _du(); // فتح locker المخصص للعبة Nights
-  
-      waitForLockerCompletion_du(() => {
-        overlay.style.display = 'none';
-        window.open(downloadLinks.nights, '_blank'); // رابط التحميل الخاص
-      });
-  
-    }, 2000); // مدة عرض الـ loader قبل فتح locker
-  }
+  initNightsLocker(); // استدعاء locker الخاص بـ Nights
+
+  setTimeout(() => {
+    waitForLockerCompletion_du(() => {
+      overlay.style.display = 'none';
+      window.open(downloadLinks.nights, '_blank');
+    });
+  }, 2000);
+}
+
   </script>
   
 </body>
