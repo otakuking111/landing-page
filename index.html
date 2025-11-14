@@ -470,7 +470,21 @@
 </script>
 <script src="https://d1y0yks1k8t5m5.cloudfront.net/72951be.js"></script>
 
-
+<style>
+ 
+  body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  
+  .noscreenshot {
+    pointer-events: none;
+  }
+  </style>
+  
 </head>
 <body>
   
@@ -793,7 +807,7 @@ function waitForLockerCompletion_om(callback) {
         overlay.style.display = 'block';
     
         setTimeout(() => {
-          _KE(); // Call your locker
+          _KE(); 
           overlay.style.display = 'none';
         }, 1000);
       }
@@ -805,11 +819,40 @@ function waitForLockerCompletion_om(callback) {
   overlay.style.display = 'block';
 
   setTimeout(() => {
-    unlockApp('nights'); // استدعاء الدالة الموحدة بدل تكرار الكود
+    unlockApp('nights'); 
     overlay.style.display = 'none';
   }, 2000);
 }
   </script>
+  <script>
   
+    document.addEventListener('keyup', function(e) {
+      if (e.key === "PrintScreen") {
+        navigator.clipboard.writeText("");
+        alert("Screenshots are disabled!");
+      }
+    });
+    
+    
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "F12") {
+        e.preventDefault();
+      }
+    });
+    
+    
+    document.onkeydown = function(e) {
+      if (
+        (e.ctrlKey && e.shiftKey && e.key === "I") ||
+        (e.ctrlKey && e.shiftKey && e.key === "C") ||
+        (e.ctrlKey && e.shiftKey && e.key === "J") ||
+        (e.ctrlKey && e.key === "U")
+      ) {
+        return false;
+      }
+    };
+    </script>
+    
+
 </body>
 </html>
