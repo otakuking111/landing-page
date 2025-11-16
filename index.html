@@ -484,46 +484,7 @@
     pointer-events: none;
   }
   </style>
-  <style>
-    .progress-box {
-      width: 90%;
-      max-width: 400px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #111;
-      color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-      font-family: Arial;
-      font-size: 16px;
-    }
-    .progress-step {
-      margin: 10px 0;
-      opacity: 0.3;
-      transition: 0.4s;
-    }
-    .progress-step.active {
-      opacity: 1;
-      font-weight: bold;
-    }
-    #download-btn {
-      display: none;
-      margin-top: 20px;
-      padding: 12px;
-      width: 100%;
-      background: #00c853;
-      border: none;
-      color: #fff;
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    #download-btn:hover {
-      background: #00e676;
-    }
-    </style>
-    
+  
 </head>
 <body>
   
@@ -871,68 +832,6 @@ function waitForLockerCompletion_om(callback) {
   }, 2000);
 }
   </script>
-  <script>
-  
-    document.addEventListener('keyup', function(e) {
-      if (e.key === "PrintScreen") {
-        navigator.clipboard.writeText("");
-        alert("Screenshots are disabled!");
-      }
-    });
-    
-    
-    document.addEventListener('keydown', function(e) {
-      if (e.key === "F12") {
-        e.preventDefault();
-      }
-    });
-    
-    
-    document.onkeydown = function(e) {
-      if (
-        (e.ctrlKey && e.shiftKey && e.key === "I") ||
-        (e.ctrlKey && e.shiftKey && e.key === "C") ||
-        (e.ctrlKey && e.shiftKey && e.key === "J") ||
-        (e.ctrlKey && e.key === "U")
-      ) {
-        return false;
-      }
-    };
-    </script>
-    
-    <div class="progress-box">
-      <div class="progress-step" id="step1">1. Checking device...</div>
-      <div class="progress-step" id="step2">2. Connecting to server...</div>
-      <div class="progress-step" id="step3">3. Preparing secure files...</div>
-      <div class="progress-step" id="step4">4. Verifying your account...</div>
-      
-      <button id="download-btn" onclick="startCPA()">Download Now</button>
-    </div>
-    <script>
-     
-      let currentStep = 1;
-      
-      function runProgress() {
-        let interval = setInterval(() => {
-          document.getElementById("step" + currentStep).classList.add("active");
-          currentStep++;
-      
-          
-          if (currentStep === 5) {
-            clearInterval(interval);
-            document.getElementById("download-btn").style.display = "block";
-          }
-        }, 1200); // مدة كل خطوة (يمكنك تغيير الرقم)
-      }
-      
-     
-      window.onload = runProgress;
-      
-  
-      function startCPA() {
-        window.location.href = "https://smrturl.co/de75e44";  
-      }
-      </script>
-          
+ 
 </body>
 </html>
