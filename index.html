@@ -9,74 +9,90 @@
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #ffffff;
+        background-color: #fff0f5; /* خلفية أنثوية */
         color: #333;
         text-align: center;
     }
     header {
         padding: 30px 20px;
-        background-color: #f2f9f9;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7); /* تدرج أنثوي */
     }
     header img {
-        width: 200px;
+        width: 220px;
         max-width: 80%;
-        border-radius: 10px;
+        border-radius: 15px;
         margin-bottom: 20px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
     .form-container {
         max-width: 400px;
         margin: 0 auto 30px auto;
-        padding: 20px;
-        background-color: #f2f9f9;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
     .form-container h2 {
-        color: #007b7b;
-        margin-bottom: 15px;
+        color: #d6336c;
+        margin-bottom: 10px;
+    }
+    .price {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .old-price {
+        text-decoration: line-through;
+        color: #999;
+        margin-right: 10px;
+    }
+    .new-price {
+        color: #d6336c;
+        font-weight: bold;
     }
     .form-container p {
         font-size: 16px;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        color: #555;
     }
     .form-container input {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin-bottom: 15px;
-        border-radius: 6px;
+        border-radius: 8px;
         border: 1px solid #ccc;
         font-size: 16px;
     }
     .form-container button {
         width: 100%;
-        padding: 12px;
-        background-color: #007b7b;
+        padding: 14px;
+        background-color: #d6336c;
         color: white;
         border: none;
         font-size: 18px;
-        border-radius: 6px;
+        border-radius: 8px;
         cursor: pointer;
         transition: background-color 0.3s;
     }
     .form-container button:hover {
-        background-color: #005959;
+        background-color: #a3214f;
     }
     .gallery {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
         padding: 20px;
     }
     .gallery img {
-        width: 200px;
+        width: 180px;
         height: auto;
         cursor: pointer;
-        border-radius: 8px;
-        transition: transform 0.3s;
+        border-radius: 12px;
+        transition: transform 0.3s, box-shadow 0.3s;
     }
     .gallery img:hover {
         transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     }
     .whatsapp-float {
         position: fixed;
@@ -100,7 +116,7 @@
             width: 90%;
         }
         header img {
-            width: 150px;
+            width: 160px;
         }
     }
 </style>
@@ -113,11 +129,15 @@
 
 <section class="form-container" id="infoSection">
     <h2>اطلب حزام التدفئة الآن!</h2>
-    <p>السعر 220 دينار | التوصيل مجاني لأوّل 5 طلبات فقط لكل مدن ليبيا</p>
+    <div class="price">
+        <span class="old-price">249 دينار</span>
+        <span class="new-price">220 دينار</span>
+    </div>
+    <p>الدفع عند الاستلام | التوصيل مجاني لأوّل 5 طلبات فقط لكل مدن ليبيا</p>
     <input type="text" id="name" placeholder="الاسم الكامل" required>
     <input type="tel" id="phone" placeholder="رقم الهاتف" required>
     <input type="text" id="city" placeholder="المدينة" required>
-    <button onclick="sendWhatsApp()">اطلب الآن  </button>
+    <button onclick="sendWhatsApp()">اطلب الآن</button>
 </section>
 
 <section class="gallery">
