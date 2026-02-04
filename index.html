@@ -266,6 +266,38 @@
       window.open(whatsappUrl, '_blank');
   }
 </script>
+<style>
+  /* 1. نقوم بإخفاء محتوى الصفحة بالكامل في البداية */
+  #main-wrapper { display: none; }
+</style>
 
+<div id="main-wrapper">
+  </div>
+
+<script>
+  (async function protectPage() {
+      try {
+          const response = await fetch('https://ipapi.co/json/');
+          const data = await response.json();
+          
+          // 2. الشرط الصارم: إذا كان الرمز LY أظهر الصفحة، غير ذلك احجبها
+          if (data.country_code === 'LY') {
+              document.getElementById('main-wrapper').style.display = 'block';
+          } else {
+              // رسالة الحجب للزوار من خارج ليبيا
+              document.body.innerHTML = `
+                  <div style="height:100vh; display:flex; align-items:center; justify-content:center; font-family:Cairo,sans-serif; text-align:center; direction:rtl;">
+                      <div>
+                          <h1 style="color:#d6336c;">هذا العرض متاح داخل ليبيا فقط 🇱🇾</h1>
+                          <p>نعتذر منكِ، الشحن والتوصيل متوفر حالياً للمدن الليبية فقط.</p>
+                      </div>
+                  </div>`;
+          }
+      } catch (e) {
+          // في حالة حدوث خطأ في الاتصال بالخدمة، يمكنك اختيار إظهار الصفحة أو تركها مخفية
+          document.getElementById('main-wrapper').style.display = 'block';
+      }
+  })();
+</script>
 </body>
 </html>
