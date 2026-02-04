@@ -225,20 +225,46 @@
 </footer>
 
 <script>
-function sendWhatsApp() {
-    var name = document.getElementById('name').value;
-    var phone = document.getElementById('phone').value;
-    var city = document.getElementById('city').value;
-    
-    if(name === "" || phone === "" || city === "") {
-        alert("يرجى إدخال البيانات المطلوبة.");
-        return;
-    }
-    
-    var message = `طلب جديد:\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالمنتج: حزام التدفئة (220 د.ل)\nطريقة الدفع: عند الاستلام`;
-    var whatsappUrl = `https://wa.me/212612136754?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-}
+  // وظيفة فحص الدولة والحجب
+  async function checkLocation() {
+      try {
+          // استخدام خدمة IPAPI لفحص عنوان الزائر
+          const response = await fetch('https://ipapi.co/json/');
+          const data = await response.json();
+          
+          // التحقق إذا كانت الدولة ليست ليبيا (رمز ليبيا هو LY)
+          if (data.country_code !== 'LY') {
+              document.body.innerHTML = `
+                  <div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family: 'Cairo', sans-serif; direction:rtl; text-align:center; padding:20px; background-color:#fff5f7;">
+                      <div>
+                          <h1 style="color:#d6336c;">عذراً.. هذا العرض غير متاح في منطقتك</h1>
+                          <p style="color:#333; font-size:18px;">نعتذر منكِ، هذا المنتج متوفر حصرياً للطلبات داخل دولة ليبيا فقط 🇱🇾</p>
+                      </div>
+                  </div>`;
+          }
+      } catch (error) {
+          console.log("تعذر التحقق من الموقع، سيتم السماح بالدخول لضمان عدم فقدان الزبائن.");
+      }
+  }
+
+  // تشغيل الفحص فور تحميل الصفحة
+  checkLocation();
+
+  // وظيفة إرسال الطلب (تأكد من وجودها بجانب كود الفحص)
+  function sendWhatsApp() {
+      var name = document.getElementById('name').value;
+      var phone = document.getElementById('phone').value;
+      var city = document.getElementById('city').value;
+      
+      if(name === "" || phone === "" || city === "") {
+          alert("يرجى إدخال البيانات المطلوبة.");
+          return;
+      }
+      
+      var message = `طلب جديد:\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالمنتج: حزام التدفئة (220 د.ل)`;
+      var whatsappUrl = `https://wa.me/212612136754?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+  }
 </script>
 
 </body>
