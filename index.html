@@ -21,132 +21,127 @@
         text-align: center;
     }
 
-    /* الشريط الوردي العلوي */
     .top-bar {
         background-color: #ff85a2;
         color: white;
-        padding: 10px 0;
+        padding: 8px 0;
         font-weight: bold;
-        font-size: 18px;
+        font-size: 16px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     header {
-        padding: 20px 10px;
+        padding: 15px 10px;
         background: #fff;
     }
 
     .hero-img {
         width: 100%;
-        max-width: 500px;
+        max-width: 400px; /* تصغير الصورة قليلاً ليتناسب مع الحجم الجديد */
         border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        margin-top: 10px;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        margin-top: 5px;
     }
 
     h1 {
         color: var(--primary-color);
-        font-size: 24px;
-        margin: 15px 0 5px 0;
+        font-size: 20px;
+        margin: 10px 0;
     }
 
-    /* نموذج الطلب */
+    /* خانة المعلومات المصغرة */
     .form-container {
-        max-width: 450px;
-        margin: 20px auto;
-        padding: 25px;
+        max-width: 360px; /* تقليص العرض */
+        margin: 15px auto;
+        padding: 15px 20px; /* تقليص الحشوة الداخلية */
         background-color: #fff;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        border: 2px solid var(--secondary-color);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        border: 1.5px solid var(--secondary-color);
     }
 
     .urgency-note {
         background-color: #fff0f0;
         color: #d63031;
-        padding: 10px;
-        border-radius: 8px;
+        padding: 6px;
+        border-radius: 6px;
         font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 15px;
+        font-size: 12px;
+        margin-bottom: 12px;
         border: 1px dashed #d63031;
     }
 
     .price-tag {
-        margin: 15px 0;
+        margin: 8px 0;
     }
 
-    .old-price { text-decoration: line-through; color: #999; margin-left: 10px; font-size: 18px; }
-    .new-price { color: #e91e63; font-weight: bold; font-size: 32px; }
+    .old-price { text-decoration: line-through; color: #999; margin-left: 8px; font-size: 16px; }
+    .new-price { color: #e91e63; font-weight: bold; font-size: 26px; }
 
     input {
         width: 100%;
-        padding: 15px;
-        margin-bottom: 15px;
-        border-radius: 10px;
+        padding: 10px 12px; /* تصغير حجم الحقول */
+        margin-bottom: 10px;
+        border-radius: 8px;
         border: 1px solid #ddd;
-        font-size: 16px;
+        font-size: 14px;
         box-sizing: border-box;
         font-family: 'Cairo';
     }
 
     .cta-button {
         width: 100%;
-        padding: 18px;
+        padding: 12px;
         background: linear-gradient(90deg, #d6336c, #ff4d88);
         color: white;
         border: none;
-        font-size: 24px;
+        font-size: 18px;
         font-weight: bold;
-        border-radius: 10px;
+        border-radius: 8px;
         cursor: pointer;
         transition: 0.3s;
     }
 
-    .cta-button:hover {
-        transform: scale(1.02);
-    }
-
-    /* ملاحظة الخصوصية */
     .privacy-note {
-        font-size: 13px;
+        font-size: 11px; /* خط أصغر للملاحظة */
         color: #7f8c8d;
-        margin-top: 15px;
-        line-height: 1.4;
-        background: #f9f9f9;
-        padding: 10px;
-        border-radius: 8px;
+        margin-top: 10px;
+        line-height: 1.3;
+        background: #fdfdfd;
+        padding: 8px;
+        border-radius: 6px;
+        border-top: 1px solid #eee;
     }
 
     /* قسم الـ GIF */
     .gif-section {
-        max-width: 600px;
-        margin: 40px auto;
+        max-width: 500px;
+        margin: 30px auto;
         padding: 10px;
     }
 
     .gif-container {
-        margin-bottom: 25px;
+        margin-bottom: 20px;
     }
 
     .gif-container img {
         width: 100%;
-        border-radius: 15px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
 
     .gif-title {
         color: var(--primary-color);
         font-weight: bold;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         display: block;
-        font-size: 18px;
+        font-size: 16px;
     }
 
     footer {
-        padding: 30px;
+        padding: 20px;
         color: #888;
-        font-size: 12px;
+        font-size: 11px;
     }
 </style>
 </head>
@@ -159,12 +154,11 @@
 <header>
     <img src="حزام-التدفئة-لتخفيف-الام-الحيض-للبطن-والظهر-8.jpg" alt="حزام التدفئة" class="hero-img">
     <h1>حزام التدفئة والتدليك الذكي المطور</h1>
-    <p>راحة فورية تخلصكِ من التعب والإرهاق</p>
 </header>
 
 <section class="form-container">
     <div class="urgency-note">
-        ⚠️ عرض خاص: التوصيل مجاني لأوّل 5 طلبات فقط لهذا اليوم!
+        ⚠️ التوصيل مجاني لأوّل 5 طلبات فقط اليوم!
     </div>
 
     <div class="price-tag">
@@ -179,36 +173,34 @@
     <button class="cta-button" onclick="sendWhatsApp()">أطلب الآن</button>
 
     <div class="privacy-note">
-        🔒 <strong>خصوصيتكِ تهمنا:</strong> الطلبية تصلكِ مغلفة تماماً وبشكل كتم، المندوب لا يعلم محتوى الطرد أبداً.. اطلبي الآن وأنتِ مرتاحة البال.
+        🔒 <strong>خصوصية تامة:</strong> الطلبية تصلكِ مغلفة جيداً والمندوب لا يعلم المحتوى.. اطلبي وأنتِ مرتاحة.
     </div>
 </section>
 
 <section class="gif-section">
-    <h2 style="color: var(--primary-color);">شاهدِ مميزات الجهاز</h2>
-    
     <div class="gif-container">
-        <span class="gif-title">حرارة علاجية تتغلغل للأعماق 🌡️</span>
+        <span class="gif-title">تدفئة سريعة وعميقة 🌡️</span>
         <img src="https://cdn.youcan.shop/stores/a9ef88eb2778748a5581ec1a8339e4b2/others/dLyHdizytwc8OVNw8owVcGQhEy5jyZieclEg22Q6.gif" alt="تكنولوجيا التدفئة">
     </div>
 
     <div class="gif-container">
-        <span class="gif-title">تدليك اهتزازي لطيف للاسترخاء 💆‍♀️</span>
+        <span class="gif-title">مساج اهتزازي للاسترخاء 💆‍♀️</span>
         <img src="https://cdn.shopify.com/s/files/1/0728/2710/9591/files/SnapTik_App_7273325556286917889-HD_online-video-cutter.com_1.gif?v=1734976091" alt="مساج اهتزازي">
     </div>
 
     <div class="gif-container">
-        <span class="gif-title">نحيف جداً ومريح تحت الملابس ☁️</span>
+        <span class="gif-title">نحيف ومريح جداً ☁️</span>
         <img src="https://cdn.shopify.com/s/files/1/0785/8336/5916/files/ezgif.comgiftowebp480x480_480x480.gif?v=1690889969" alt="خفيف الوزن">
     </div>
 
     <div class="gif-container">
-        <span class="gif-title">سهل الاستخدام وآمن تماماً ✨</span>
+        <span class="gif-title">شحن USB وتحكم ذكي ✨</span>
         <img src="https://cdn.shopify.com/s/files/1/0120/0026/4254/files/ezgif-1-f5ce6e6828.gif?v=1691672538" alt="تحكم كامل">
     </div>
 </section>
 
 <footer>
-    جميع الحقوق محفوظة © 2026 - خصوصية تامة وضمان حقيقي
+    جميع الحقوق محفوظة © 2026
 </footer>
 
 <script>
@@ -218,11 +210,11 @@ function sendWhatsApp() {
     var city = document.getElementById('city').value;
     
     if(name === "" || phone === "" || city === "") {
-        alert("يرجى إدخال بياناتكِ لنتمكن من توصيل الطلب.");
+        alert("يرجى إدخال البيانات المطلوبة.");
         return;
     }
     
-    var message = `طلب جديد:\n----------------\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالمنتج: حزام التدفئة (220 د.ل)`;
+    var message = `طلب جديد:\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالمنتج: حزام التدفئة (220 د.ل)`;
     var whatsappUrl = `https://wa.me/212612136754?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
