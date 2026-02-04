@@ -23,16 +23,14 @@
 
     /* الشريط الوردي العلوي */
     .top-bar {
-        background-color: #ff85a2; /* لون وردي جذاب */
+        background-color: #ff85a2;
         color: white;
         padding: 10px 0;
         font-weight: bold;
         font-size: 18px;
-        letter-spacing: 1px;
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    /* الواجهة العلوية */
     header {
         padding: 20px 10px;
         background: #fff;
@@ -52,7 +50,7 @@
         margin: 15px 0 5px 0;
     }
 
-    /* نموذج الطلب في الأعلى */
+    /* نموذج الطلب */
     .form-container {
         max-width: 450px;
         margin: 20px auto;
@@ -61,6 +59,17 @@
         border-radius: 20px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border: 2px solid var(--secondary-color);
+    }
+
+    .urgency-note {
+        background-color: #fff0f0;
+        color: #d63031;
+        padding: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 15px;
+        border: 1px dashed #d63031;
     }
 
     .price-tag {
@@ -96,10 +105,20 @@
 
     .cta-button:hover {
         transform: scale(1.02);
-        filter: brightness(1.1);
     }
 
-    /* قسم الـ GIF في الأسفل */
+    /* ملاحظة الخصوصية */
+    .privacy-note {
+        font-size: 13px;
+        color: #7f8c8d;
+        margin-top: 15px;
+        line-height: 1.4;
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    /* قسم الـ GIF */
     .gif-section {
         max-width: 600px;
         margin: 40px auto;
@@ -127,7 +146,7 @@
     footer {
         padding: 30px;
         color: #888;
-        font-size: 14px;
+        font-size: 12px;
     }
 </style>
 </head>
@@ -140,49 +159,56 @@
 <header>
     <img src="حزام-التدفئة-لتخفيف-الام-الحيض-للبطن-والظهر-8.jpg" alt="حزام التدفئة" class="hero-img">
     <h1>حزام التدفئة والتدليك الذكي المطور</h1>
-    <p>وداعاً لآلام الدورة الشهرية والظهر بلمسة واحدة</p>
+    <p>راحة فورية تخلصكِ من التعب والإرهاق</p>
 </header>
 
 <section class="form-container">
+    <div class="urgency-note">
+        ⚠️ عرض خاص: التوصيل مجاني لأوّل 5 طلبات فقط لهذا اليوم!
+    </div>
+
     <div class="price-tag">
         <span class="old-price">249 د.ل</span>
         <span class="new-price">220 د.ل</span>
     </div>
-    <p style="color: #2ecc71; font-weight: bold; margin-bottom: 20px;">📦 التوصيل مجاني والدفع عند الاستلام</p>
     
     <input type="text" id="name" placeholder="الاسم الكامل">
     <input type="tel" id="phone" placeholder="رقم الهاتف">
-    <input type="text" id="city" placeholder="المدينة / المنطقة">
+    <input type="text" id="city" placeholder="المدينة والعنوان">
     
     <button class="cta-button" onclick="sendWhatsApp()">أطلب الآن</button>
+
+    <div class="privacy-note">
+        🔒 <strong>خصوصيتكِ تهمنا:</strong> الطلبية تصلكِ مغلفة تماماً وبشكل كتم، المندوب لا يعلم محتوى الطرد أبداً.. اطلبي الآن وأنتِ مرتاحة البال.
+    </div>
 </section>
 
 <section class="gif-section">
-    <h2 style="color: var(--primary-color);">شاهدِ مميزات المنتج</h2>
+    <h2 style="color: var(--primary-color);">شاهدِ مميزات الجهاز</h2>
     
     <div class="gif-container">
-        <span class="gif-title">تكنولوجيا التدفئة السريعة خلال ثوانٍ 🌡️</span>
+        <span class="gif-title">حرارة علاجية تتغلغل للأعماق 🌡️</span>
         <img src="https://cdn.youcan.shop/stores/a9ef88eb2778748a5581ec1a8339e4b2/others/dLyHdizytwc8OVNw8owVcGQhEy5jyZieclEg22Q6.gif" alt="تكنولوجيا التدفئة">
     </div>
 
     <div class="gif-container">
-        <span class="gif-title">مساج اهتزازي هادئ ومريح 💆‍♀️</span>
+        <span class="gif-title">تدليك اهتزازي لطيف للاسترخاء 💆‍♀️</span>
         <img src="https://cdn.shopify.com/s/files/1/0728/2710/9591/files/SnapTik_App_7273325556286917889-HD_online-video-cutter.com_1.gif?v=1734976091" alt="مساج اهتزازي">
     </div>
 
     <div class="gif-container">
-        <span class="gif-title">خفيف الوزن ويمكن ارتداؤه في أي مكان ☁️</span>
+        <span class="gif-title">نحيف جداً ومريح تحت الملابس ☁️</span>
         <img src="https://cdn.shopify.com/s/files/1/0785/8336/5916/files/ezgif.comgiftowebp480x480_480x480.gif?v=1690889969" alt="خفيف الوزن">
     </div>
 
     <div class="gif-container">
-        <span class="gif-title">تحكم كامل في درجات الحرارة ✨</span>
+        <span class="gif-title">سهل الاستخدام وآمن تماماً ✨</span>
         <img src="https://cdn.shopify.com/s/files/1/0120/0026/4254/files/ezgif-1-f5ce6e6828.gif?v=1691672538" alt="تحكم كامل">
     </div>
 </section>
 
 <footer>
-    جميع الحقوق محفوظة © 2026
+    جميع الحقوق محفوظة © 2026 - خصوصية تامة وضمان حقيقي
 </footer>
 
 <script>
@@ -192,11 +218,11 @@ function sendWhatsApp() {
     var city = document.getElementById('city').value;
     
     if(name === "" || phone === "" || city === "") {
-        alert("يرجى ملء كافة البيانات لتأكيد طلبك");
+        alert("يرجى إدخال بياناتكِ لنتمكن من توصيل الطلب.");
         return;
     }
     
-    var message = `طلب جديد:\n----------------\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالمنتج: حزام التدفئة (220 دينار)`;
+    var message = `طلب جديد:\n----------------\nالاسم: ${name}\nالهاتف: ${phone}\nالمدينة: ${city}\nالمنتج: حزام التدفئة (220 د.ل)`;
     var whatsappUrl = `https://wa.me/212612136754?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 }
