@@ -11,57 +11,35 @@
         padding: 0;
         background-color: #ffffff;
         color: #333;
+        text-align: center;
     }
     header {
-        text-align: center;
         padding: 30px 20px;
         background-color: #f2f9f9;
     }
-    header h1 {
-        color: #007b7b;
-        margin-bottom: 10px;
-    }
-    header p {
-        font-size: 18px;
-        margin-top: 0;
-    }
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        padding: 20px;
-    }
-    .gallery img {
+    header img {
         width: 200px;
-        height: auto;
-        cursor: pointer;
-        border-radius: 8px;
-        transition: transform 0.3s;
-    }
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
-    .info-section {
-        background-color: #f2f9f9;
-        padding: 30px 20px;
-        text-align: center;
-        position: relative;
-    }
-    .info-section h2 {
-        color: #007b7b;
-        margin-bottom: 15px;
-    }
-    .info-section p {
-        font-size: 16px;
+        max-width: 80%;
+        border-radius: 10px;
         margin-bottom: 20px;
     }
     .form-container {
         max-width: 400px;
-        margin: 0 auto;
-        text-align: right;
+        margin: 0 auto 30px auto;
+        padding: 20px;
+        background-color: #f2f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .form-container input, .form-container select {
+    .form-container h2 {
+        color: #007b7b;
+        margin-bottom: 15px;
+    }
+    .form-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    .form-container input {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -82,6 +60,23 @@
     }
     .form-container button:hover {
         background-color: #005959;
+    }
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px;
+    }
+    .gallery img {
+        width: 200px;
+        height: auto;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+    .gallery img:hover {
+        transform: scale(1.05);
     }
     .whatsapp-float {
         position: fixed;
@@ -104,33 +99,32 @@
         .form-container {
             width: 90%;
         }
+        header img {
+            width: 150px;
+        }
     }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>ودّعي آلام الدورة الشهرية!</h1>
-    <p>حزام التدفئة لتخفيف آلام الدورة – السعر 220 دينار | التوصيل مجاني لأوّل 5 طلبات فقط</p>
+    <img src="https://files.easy-orders.net/1760558155332363897.jpeg" alt="حزام التدفئة">
 </header>
 
+<section class="form-container" id="infoSection">
+    <h2>اطلب حزام التدفئة الآن!</h2>
+    <p>السعر 220 دينار | التوصيل مجاني لأوّل 5 طلبات فقط لكل مدن ليبيا</p>
+    <input type="text" id="name" placeholder="الاسم الكامل" required>
+    <input type="tel" id="phone" placeholder="رقم الهاتف" required>
+    <input type="text" id="city" placeholder="المدينة" required>
+    <button onclick="sendWhatsApp()">اطلب الآن  </button>
+</section>
+
 <section class="gallery">
-    <img src="https://files.easy-orders.net/1760558155332363897.jpeg" alt="حزام التدفئة" onclick="scrollToForm()">
     <img src="https://files.easy-orders.net/1760558166945754761.jpeg" alt="حزام التدفئة" onclick="scrollToForm()">
     <img src="حزام-التدفئة-لتخفيف-الام-الحيض-للبطن-والظهر-4.jpg" alt="حزام التدفئة" onclick="scrollToForm()">
     <img src="حزام-التدفئة-لتخفيف-الام-الحيض-للبطن-والظهر-2.jpg" alt="حزام التدفئة" onclick="scrollToForm()">
     <img src="حزام-التدفئة-لتخفيف-الام-الحيض-للبطن-والظهر-3.jpg" alt="حزام التدفئة" onclick="scrollToForm()">
-</section>
-
-<section class="info-section" id="infoSection">
-    <h2>املأ معلوماتك الآن واحصلي على حزامك!</h2>
-    <p>الطلبات محدودة لأوّل 5 أشخاص – التوصيل مجاني لكل مدن ليبيا</p>
-    <div class="form-container">
-        <input type="text" id="name" placeholder="الاسم الكامل" required>
-        <input type="tel" id="phone" placeholder="رقم الهاتف" required>
-        <input type="text" id="city" placeholder="المدينة" required>
-        <button onclick="sendWhatsApp()">اطلب الآن عبر WhatsApp</button>
-    </div>
 </section>
 
 <a href="https://wa.me/212612136754" target="_blank" class="whatsapp-float">
