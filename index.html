@@ -7,114 +7,143 @@
 
 <style>
 body {
-    margin: 0;
+    margin:0;
     font-family: Arial;
-    background: #fff;
     direction: rtl;
+    background:#fff;
 }
 
 .header {
-    text-align: center;
-    padding: 10px;
-    background: #0a7c4a;
+    text-align:center;
+    padding:10px;
+    background:#0a7c4a;
 }
 .header img {
-    width: 120px;
+    width:120px;
 }
 
+/* SLIDER */
 .slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
 }
 .slider img {
-    width: 100%;
-    flex-shrink: 0;
-    scroll-snap-align: center;
+    width:100%;
+    flex-shrink:0;
+    scroll-snap-align:center;
 }
 
+/* CONTENT */
 .container {
-    padding: 15px;
+    padding:15px;
 }
 
 .title {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
+    font-size:20px;
+    font-weight:bold;
+    margin:10px 0;
 }
 
 .price {
-    color: green;
-    font-size: 18px;
-    margin-bottom: 10px;
+    color:#0a7c4a;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.offer {
+    color:red;
+    margin-bottom:10px;
 }
 
 .form input, .form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+    font-size:14px;
 }
 
 .btn {
-    background: #0a7c4a;
-    color: white;
-    padding: 12px;
-    border: none;
-    width: 100%;
-    font-size: 16px;
-    border-radius: 5px;
+    width:100%;
+    padding:14px;
+    background:#0a7c4a;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    font-weight:bold;
 }
 
 .short-desc {
-    margin: 15px 0;
-    font-weight: bold;
-    text-align: center;
+    text-align:center;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.gif {
+    width:100%;
 }
 
 .long-img {
-    width: 100%;
-    cursor: pointer;
+    width:100%;
+    margin-top:10px;
+    cursor:pointer;
 }
 
+/* WHATSAPP */
 .whatsapp {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    background: #25D366;
-    color: white;
-    padding: 12px;
-    border-radius: 50%;
-    font-size: 20px;
+    position:fixed;
+    bottom:15px;
+    right:15px;
+    background:#25D366;
+    color:white;
+    font-size:22px;
+    padding:12px;
+    border-radius:50%;
+    text-decoration:none;
+}
+
+/* MOBILE OPT */
+@media(min-width:768px){
+    body{
+        max-width:400px;
+        margin:auto;
+        border:1px solid #eee;
+    }
 }
 </style>
+
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-<img src="https://postimg.cc/GTjHD4LZ">
+<img src="https://i.postimg.cc/kG08kSkX/Picsart-26-04-23-19-49-57-370.png">
 </div>
 
+<!-- SLIDER -->
 <div class="slider">
-<img src="https://postimg.cc/jCRqwdfS">
-<img src="https://postimg.cc/47d8q9MP">
-<img src="https://postimg.cc/njg1WwB6">
-<img src="https://postimg.cc/sMs4bWGd">
+<img src="https://i.postimg.cc/pX4rJ8jp/Chat-GPT-Image-Apr-23-2026-07-38-24-PM.png">
+<img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
+<img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg">
+<img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
 </div>
 
 <div class="container">
 
+<!-- TITLE -->
 <div class="title">
 🌿 صابونة سفن جرين المثلثة - علاج طبيعي لتساقط الشعر
 </div>
 
-<div class="price">
-💰 169 دينار للقطعة <br>
-🔥 عرض خاص: قطعتين بـ 249 دينار
-</div>
+<!-- PRICE -->
+<div class="price">169 دينار للقطعة</div>
+<div class="offer">🔥 عرض خاص: قطعتين بـ 249 دينار</div>
 
+<!-- FORM 1 -->
 <div class="form" id="orderForm">
 <input type="text" placeholder="الإسم">
 <input type="text" placeholder="رقم الهاتف">
@@ -122,28 +151,33 @@ body {
 <button class="btn">اطلب الآن</button>
 </div>
 
+<!-- SHORT DESC -->
 <div class="short-desc">
-💚 الحل الطبيعي لتقوية الشعر وإيقاف التساقط بسرعة!
+💚 الحل الطبيعي لتقوية الشعر وتقليل التساقط بسرعة!
 </div>
 
-<img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514" style="width:100%;">
+<!-- GIF -->
+<img class="gif" src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
 
-<img src="https://postimg.cc/G8tBZFCy" class="long-img" onclick="scrollToForm()">
+<!-- LONG IMAGE -->
+<img class="long-img" src="https://i.postimg.cc/26F4LG92/Gemini-Generated-Image-krmei7krmei7krme.png" onclick="scrollToForm()">
 
+<!-- FORM 2 -->
 <div class="form">
-<input type="text" placeholder="الإسم">
+<input type="text" placeholder="الإسم الكامل">
 <input type="text" placeholder="رقم الهاتف">
-<textarea placeholder="العنوان"></textarea>
-<button class="btn">تأكيد الطلب</button>
+<textarea placeholder="العنوان بالتفصيل"></textarea>
+<button class="btn">تأكيد الطلب الآن</button>
 </div>
 
 </div>
 
+<!-- WHATSAPP -->
 <a href="https://wa.me/212612136754" class="whatsapp">💬</a>
 
 <script>
 function scrollToForm() {
-    document.getElementById("orderForm").scrollIntoView({behavior: "smooth"});
+    document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
