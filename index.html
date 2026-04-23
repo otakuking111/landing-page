@@ -68,10 +68,20 @@
         .dot { width: 8px; height: 8px; background: #ddd; border-radius: 50%; transition: 0.3s; }
         .dot.active { background: var(--primary); width: 20px; border-radius: 10px; }
 
+        /* عنوان المنتج المضاف */
+        .product-main-title {
+            text-align: center;
+            padding: 10px 15px;
+            color: var(--primary);
+            font-size: 20px;
+            font-weight: 900;
+            line-height: 1.4;
+        }
+
         /* ستايل خانة المعلومات */
         .order-card {
             background: #fff;
-            margin: 20px 15px;
+            margin: 10px 15px 20px;
             padding: 25px;
             border-radius: 20px;
             box-shadow: var(--shadow);
@@ -161,6 +171,10 @@
         </div>
     </div>
 
+    <div class="product-main-title">
+        🌿 صـابونة سـفن جـرين المثلثة <br> الحل الطبيعي والنهائي لتساقط الشعر 🌿
+    </div>
+
     <div id="order-section" class="order-card">
         <div class="form-head">احجز طلبك الآن بتعبئة البيانات 👇</div>
         <span class="warning-text">⚠️ ملاحظة: إذا لم تكن ستستلم الطلبية لا تحجز</span>
@@ -169,8 +183,8 @@
             <input type="tel" placeholder="رقم الهاتف" required>
             <input type="text" placeholder="المدينة والحي" required>
             <select required>
-                <option value="2">قطعة ب 169د والتوصيل مجاني</option>
-                <option value="1">قطعتين  ب 249د والتوصيل مجاني</option>
+                <option value="1">قطعة بـ 169د والتوصيل مجاني</option>
+                <option value="2">قطعتين بـ 249د والتوصيل مجاني (عرض التوفير)</option>
             </select>
             <button type="submit" class="order-btn pulse"> أحجز الآن </button>
         </form>
@@ -192,8 +206,8 @@
             <input type="tel" placeholder="رقم الهاتف" required>
             <input type="text" placeholder="العنوان بالتفصيل" required>
             <select required>
-              <option value="2">قطعة ب 169د والتوصيل مجاني</option>
-              <option value="1">قطعتين  ب 249د والتوصيل مجاني</option>
+              <option value="1">قطعة بـ 169د والتوصيل مجاني</option>
+              <option value="2">قطعتين بـ 249د والتوصيل مجاني (عرض التوفير)</option>
             </select>
             <button type="submit" class="order-btn" style="background: var(--accent);">اطلب الآن 🚚</button>
         </form>
