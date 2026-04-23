@@ -68,14 +68,42 @@
         .dot { width: 8px; height: 8px; background: #ddd; border-radius: 50%; transition: 0.3s; }
         .dot.active { background: var(--primary); width: 20px; border-radius: 10px; }
 
-        /* عنوان المنتج المضاف */
+        /* تعديل عرض اسم المنتج والسعر */
+        .product-info-section {
+            padding: 10px 20px;
+            background: #fff;
+        }
+
         .product-main-title {
-            text-align: center;
-            padding: 10px 15px;
-            color: var(--primary);
-            font-size: 20px;
+            color: #333;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 8px;
+            text-align: right; /* مائل لليمين وليس في الوسط */
+        }
+
+        .price-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .current-price {
+            font-size: 24px;
+            color: var(--accent);
             font-weight: 900;
-            line-height: 1.4;
+        }
+
+        .offer-tag {
+            background: #fff0f0;
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px dashed var(--accent);
         }
 
         /* ستايل خانة المعلومات */
@@ -90,7 +118,6 @@
 
         .form-head { text-align: center; font-weight: bold; margin-bottom: 10px; color: var(--primary); font-size: 18px; }
         
-        /* تنبيه الاستلام */
         .warning-text {
             display: block;
             text-align: center;
@@ -171,8 +198,12 @@
         </div>
     </div>
 
-    <div class="product-main-title">
-        🌿 صـابونة سـفن جـرين المثلثة <br> الحل الطبيعي والنهائي لتساقط الشعر 🌿
+    <div class="product-info-section">
+        <div class="product-main-title">صـابونة سـفن جـرين المثلثة الأصلية لعلاج تساقط الشعر</div>
+        <div class="price-badge-container">
+            <div class="current-price">169 د.ل</div>
+            <div class="offer-tag">متوفر عرض التوفير (قطعتين بـ 249د)</div>
+        </div>
     </div>
 
     <div id="order-section" class="order-card">
