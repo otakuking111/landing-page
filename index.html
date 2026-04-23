@@ -260,5 +260,34 @@
             dots.forEach((dot, i) => dot.classList.toggle('active', i === Math.abs(index)));
         });
     </script>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwSRg7yLjrbPXMBMfOuwp4bQ3KovGGQ417Hvr8YIVFgM7eM501zUFK-NDhxLVq9toVB/exec'; // حط الرابط ديالك هنا
+      const forms = document.querySelectorAll('form');
+    
+      forms.forEach(form => {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          
+          // تغيير نص الزر باش يعرف الزبون أن الطلب كيتصيفط
+          const btn = form.querySelector('button');
+          const originalText = btn.innerText;
+          btn.innerText = "جاري الإرسال...";
+          btn.disabled = true;
+    
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+              btn.innerText = "تم بنجاح ✅";
+              alert('شكراً لك! تم استلام طلبك بنجاح.');
+              form.reset();
+            })
+            .catch(error => {
+              btn.innerText = originalText;
+              btn.disabled = false;
+              console.error('Error!', error.message);
+              alert('حدث خطأ، يرجى المحاولة مرة أخرى.');
+            });
+        });
+      });
+    </script>
 </body>
 </html>
