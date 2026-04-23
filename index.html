@@ -1,192 +1,284 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Libya Mall</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libya Mall - صابونة سفن جرين</title>
+    <style>
+        :root {
+            --primary-color: #2d5a27;
+            --accent-color: #d32f2f;
+            --bg-light: #f9f9f9;
+        }
 
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:#f7f7f7;
-direction:rtl;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+            overflow-x: hidden;
+        }
 
-/* HEADER */
-.header{
-background:white;
-padding:10px;
-text-align:center;
-box-shadow:0 2px 5px rgba(0,0,0,0.05);
-}
-.header img{
-height:40px;
-}
+        /* Header */
+        header {
+            text-align: center;
+            padding: 15px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-/* SLIDER */
-.slider{
-display:flex;
-overflow-x:auto;
-scroll-snap-type:x mandatory;
-gap:10px;
-padding:10px;
-}
-.slider img{
-width:90%;
-border-radius:10px;
-scroll-snap-align:center;
-flex-shrink:0;
-}
+        header img {
+            width: 120px;
+            height: auto;
+        }
 
-/* CONTAINER */
-.container{
-padding:15px;
-background:white;
-margin:10px;
-border-radius:10px;
-}
+        /* Image Slider */
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 10px;
+            padding: 15px;
+            background: var(--bg-light);
+            scrollbar-width: none; /* Firefox */
+        }
 
-/* TITLE */
-.title{
-font-size:18px;
-font-weight:bold;
-margin-bottom:10px;
-}
+        .slider-container::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
 
-/* PRICE */
-.price{
-font-size:18px;
-color:#0a7c4a;
-font-weight:bold;
-}
-.offer{
-color:red;
-margin-bottom:15px;
-}
+        .slider-container img {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
 
-/* FORM */
-.form input,.form textarea{
-width:100%;
-padding:12px;
-margin:6px 0;
-border:1px solid #ddd;
-border-radius:8px;
-font-size:14px;
-}
+        /* Product Info */
+        .product-details {
+            padding: 20px;
+            text-align: center;
+        }
 
-.btn{
-width:100%;
-background:#0a7c4a;
-color:white;
-padding:14px;
-border:none;
-border-radius:8px;
-font-size:16px;
-font-weight:bold;
-}
+        .product-title {
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: bold;
+            line-height: 1.5;
+        }
 
-/* DESC */
-.short-desc{
-text-align:center;
-font-weight:bold;
-margin:15px 0;
-}
+        .price-box {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
 
-/* IMAGE */
-.full{
-width:100%;
-border-radius:10px;
-}
+        .price-card {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: #fff;
+        }
 
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-font-size:20px;
-padding:12px;
-border-radius:50%;
-text-decoration:none;
-box-shadow:0 4px 10px rgba(0,0,0,0.2);
-}
+        .price-card.best-seller {
+            border: 2px solid #fbc02d;
+            background: #fffef2;
+            position: relative;
+        }
 
-/* MOBILE LIMIT */
-@media(min-width:768px){
-body{
-max-width:400px;
-margin:auto;
-}
-}
-</style>
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        .price-value {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Form Style */
+        .order-form {
+            margin: 15px;
+            padding: 20px;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        /* Marketing Section */
+        .marketing-text {
+            text-align: center;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .gif-container img, .long-image img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 2000;
+        }
+
+        .whatsapp-float img {
+            width: 30px;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse-btn {
+            animation: pulse 1.5s infinite;
+            background: var(--accent-color) !important;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-<img src="https://i.postimg.cc/kG08kSkX/Picsart-26-04-23-19-49-57-370.png">
-</div>
+    <header>
+        <img src="https://i.postimg.cc/kG08kSkX/Picsart-26-04-23-19-49-57-370.png" alt="Libya Mall Logo">
+    </header>
 
-<!-- SLIDER -->
-<div class="slider">
-<img src="https://i.postimg.cc/pX4rJ8jp/Chat-GPT-Image-Apr-23-2026-07-38-24-PM.png">
-<img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
-<img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg">
-<img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
-</div>
+    <div class="slider-container">
+        <img src="https://i.postimg.cc/pX4rJ8jp/Chat-GPT-Image-Apr-23-2026-07-38-24-PM.png" alt="Product 1">
+        <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Product 2">
+        <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg" alt="Product 3">
+        <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg" alt="Product 4">
+    </div>
 
-<!-- PRODUCT -->
-<div class="container">
+    <div class="product-details">
+        <div class="product-title">🌿 صـابونة سـفن جـرين المثلثة - علاج طبيعي لتساقط الشعر 🌿</div>
+        
+        <div class="price-box">
+            <div class="price-card">
+                <small>قطعة واحدة</small>
+                <span class="price-value">169 دينار</span>
+            </div>
+            <div class="price-card best-seller">
+                <div class="badge">العرض الأقوى 🔥</div>
+                <small>قطعتين (توفير)</small>
+                <span class="price-value" style="color: var(--accent-color);">249 دينار</span>
+            </div>
+        </div>
+    </div>
 
-<div class="title">
-🌿 صابونة سفن جرين المثلثة - علاج طبيعي لتساقط الشعر
-</div>
+    <div id="form-section" class="order-form">
+        <div class="form-title">أدخل بياناتك لإتمام الطلب</div>
+        <form action="#">
+            <input type="text" placeholder="الإسم الكامل" required>
+            <input type="tel" placeholder="رقم الهاتف" required>
+            <input type="text" placeholder="العنوان (المدينة / الحي)" required>
+            <button type="submit" class="submit-btn">اطلب الآن - دفع عند الاستلام</button>
+        </form>
+    </div>
 
-<div class="price">169 دينار</div>
-<div class="offer">🔥 عرض: قطعتين بـ 249 دينار</div>
+    <div class="marketing-text">
+        ✨ ودعي تساقط الشعر واستمتعي بكثافة ولمعان طبيعي من أول استعمال! ✨
+    </div>
+    <div class="gif-container">
+        <img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514" alt="Product Demo">
+    </div>
 
-<div class="form" id="formTop">
-<input placeholder="الإسم">
-<input placeholder="رقم الهاتف">
-<textarea placeholder="العنوان"></textarea>
-<button class="btn">اطلب الآن</button>
-</div>
+    <div class="long-image" onclick="location.href='#final-form';">
+        <img src="https://i.postimg.cc/26F4LG92/Gemini-Generated-Image-krmei7krmei7krme.png" alt="Full Details">
+    </div>
 
-<div class="short-desc">
-💚 الحل الطبيعي لتقوية الشعر وتقليل التساقط
-</div>
+    <div id="final-form" class="order-form" style="background: #fff; border: 2px solid var(--primary-color);">
+        <div class="form-title" style="font-weight: bold; color: var(--primary-color);">سارع بالحجز - الكمية محدودة جداً! 🛒</div>
+        <form action="#">
+            <input type="text" placeholder="الإسم الكامل" required>
+            <input type="tel" placeholder="رقم الهاتف" required>
+            <select required>
+                <option value="" disabled selected>اختر العرض</option>
+                <option value="1">قطعة واحدة بـ 169 د.ل</option>
+                <option value="2">قطعتين بـ 249 د.ل (عرض التوفير)</option>
+            </select>
+            <input type="text" placeholder="العنوان بالتفصيل" required>
+            <button type="submit" class="submit-btn pulse-btn">تأكيد طلبك الآن</button>
+        </form>
+    </div>
 
-<img class="full" src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
+    <div style="padding: 40px; text-align: center; font-size: 12px; color: #999;">
+        جميع الحقوق محفوظة © Libya Mall 2026
+    </div>
 
-<img class="full" src="https://i.postimg.cc/26F4LG92/Gemini-Generated-Image-krmei7krmei7krme.png" onclick="goForm()">
-
-</div>
-
-<!-- FORM 2 -->
-<div class="container">
-
-<div class="title">🛒 أكمل طلبك الآن</div>
-
-<div class="form">
-<input placeholder="الإسم الكامل">
-<input placeholder="رقم الهاتف">
-<textarea placeholder="العنوان بالتفصيل"></textarea>
-<button class="btn">تأكيد الطلب</button>
-</div>
-
-</div>
-
-<!-- WHATSAPP -->
-<a href="https://wa.me/212612136754" class="whatsapp">💬</a>
-
-<script>
-function goForm(){
-document.getElementById("formTop").scrollIntoView({behavior:"smooth"});
-}
-</script>
+    <a href="https://wa.me/212612136754" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
 
 </body>
 </html>
