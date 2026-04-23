@@ -8,22 +8,21 @@
         :root {
             --primary: #2d5a27;
             --accent: #d32f2f;
-            --bg-light: #f4f7f4;
-            --shadow: 0 4px 15px rgba(0,0,0,0.1);
-            --gray: #e0e0e0;
+            --bg-body: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-color: var(--bg-body);
             color: #333;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* شريط التوصيل المجاني */
+        /* شريط التوصيل */
         .free-shipping-bar {
             background-color: var(--primary);
             color: white;
@@ -34,10 +33,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* سلايدر الصور الاحترافي */
+        /* السلايدر الاحترافي */
         .slider-wrapper {
             width: 100%;
             position: relative;
@@ -50,48 +48,48 @@
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
-            direction: rtl; /* التمرير يبدأ من اليمين */
+            direction: rtl; 
         }
 
         .slider::-webkit-scrollbar { display: none; }
 
         .slider img {
             width: 100%;
-            aspect-ratio: 1 / 1; /* توحيد حجم الصور لتصبح مربعة احترافية */
+            /* لضمان ظهور الصورة كاملة دون نقص */
+            aspect-ratio: 1 / 1;
             flex-shrink: 0;
             scroll-snap-align: center;
-            object-fit: cover;
+            object-fit: contain; 
+            background: #fff;
         }
 
-        /* نقاط التمرير (الخانة أسفل السكرول) */
+        /* النقاط التفاعلية */
         .slider-dots {
             display: flex;
             justify-content: center;
-            align-items: center;
             gap: 8px;
-            padding: 12px 0;
-            background: #fff;
+            padding: 15px 0;
         }
 
         .dot {
             width: 8px;
             height: 8px;
-            background: var(--gray);
+            background: #ddd;
             border-radius: 50%;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .dot.active {
             background: var(--primary);
-            width: 22px;
+            width: 20px;
             border-radius: 10px;
         }
 
-        /* تفاصيل المنتج */
         .product-header {
-            padding: 10px 15px 20px;
+            padding: 15px;
             text-align: center;
         }
+
         .product-title {
             font-size: 22px;
             color: var(--primary);
@@ -103,26 +101,28 @@
         .pricing-grid {
             display: flex;
             gap: 10px;
-            padding: 0 10px;
+            padding: 0 15px;
         }
+
         .price-item {
             flex: 1;
             padding: 15px;
-            border-radius: 12px;
+            border-radius: 15px;
             border: 1px solid #eee;
             background: #fff;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
         }
+
         .price-item.best {
             border: 2px solid #fbc02d;
             background: #fffef2;
             transform: scale(1.05);
-            position: relative;
         }
+
         .price-item span { color: var(--accent); font-weight: bold; font-size: 20px; }
 
-        /* نماذج الطلب الموحدة */
+        /* نماذج الطلب */
         .order-card {
             background: #fff;
             margin: 25px 15px;
@@ -131,17 +131,12 @@
             box-shadow: var(--shadow);
             border: 1px solid #f0f0f0;
         }
-        .form-head { 
-            text-align: center; 
-            font-weight: bold; 
-            margin-bottom: 20px; 
-            font-size: 18px; 
-            color: var(--primary);
-        }
+
+        .form-head { text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 18px; color: var(--primary); }
         
         input, select {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             margin-bottom: 12px;
             border: 1px solid #ddd;
             border-radius: 12px;
@@ -163,19 +158,9 @@
             box-shadow: 0 5px 15px rgba(45,90,39,0.3);
         }
 
-        /* العناصر التسويقية */
-        .gif-container img, .landing-long-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .landing-long-img { cursor: pointer; width: 100%; }
+        .landing-long-img img, .gif-container img { width: 100%; display: block; height: auto; }
 
-        .landing-long-img {
-            cursor: pointer;
-            margin: 10px 0;
-        }
-
-        /* الواتساب */
         .whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -190,11 +175,10 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             z-index: 9999;
         }
-        .whatsapp-btn img { width: 35px; }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
         .pulse { animation: pulse 2s infinite; }
@@ -209,10 +193,9 @@
 
     <div class="slider-wrapper">
         <div class="slider" id="mainSlider">
-            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Product 1">
-            <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg" alt="Product 2">
-            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg" alt="Product 3">
-            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Product 4">
+            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
+            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg"> <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg">
+            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
         </div>
         <div class="slider-dots">
             <div class="dot active"></div>
@@ -236,7 +219,7 @@
         </div>
     </div>
 
-    <div id="order-form" class="order-card">
+    <div id="order-form-top" class="order-card">
         <div class="form-head">احجز طلبك الآن بتعبئة البيانات التالية 👇</div>
         <form>
             <input type="text" placeholder="الإسم الكامل" required>
@@ -246,7 +229,7 @@
                 <option value="2">قطعتين بـ 249 دينار (عرض التوفير)</option>
                 <option value="1">قطعة واحدة بـ 169 دينار</option>
             </select>
-            <button type="submit" class="order-btn pulse">تأكيد الطلب - دفع عند الاستلام</button>
+            <button type="submit" class="order-btn pulse">تأكيد الطلب الآن</button>
         </form>
     </div>
 
@@ -254,8 +237,8 @@
         <img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
     </div>
 
-    <div class="landing-long-img" onclick="document.getElementById('order-form').scrollIntoView();">
-        <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Landing Details">
+    <div class="landing-long-img" onclick="document.getElementById('order-form-top').scrollIntoView();">
+        <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
     </div>
 
     <div class="order-card">
@@ -272,24 +255,21 @@
         </form>
     </div>
 
-    <div style="text-align: center; padding: 30px; color: #888; font-size: 12px;">
-        كل الحقوق محفوظة لمتجر Libya Mall © 2026
+    <div style="text-align: center; padding: 25px; color: #999; font-size: 11px;">
+        Libya Mall © 2026 - جميع الحقوق محفوظة
     </div>
 
     <a href="https://wa.me/212612136754" class="whatsapp-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
     </a>
 
     <script>
-        // كود تحريك النقاط التفاعلية مع السكرول
         const slider = document.getElementById('mainSlider');
         const dots = document.querySelectorAll('.dot');
 
         slider.addEventListener('scroll', () => {
             const index = Math.round(slider.scrollLeft / slider.clientWidth);
-            // بما أن الاتجاه RTL، فإن السكرول يكون بالسالب في بعض المتصفحات، نستخدم Math.abs
             const activeIndex = Math.abs(index);
-            
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === activeIndex);
             });
