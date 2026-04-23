@@ -18,102 +18,111 @@
             padding: 0;
             background-color: #fff;
             color: #333;
+            overflow-x: hidden;
         }
 
-        /* شريط التوصيل المجاني (بديل اللوجو) */
+        /* شريط التوصيل المجاني */
         .free-shipping-bar {
             background-color: var(--primary);
             color: white;
             text-align: center;
             padding: 12px 5px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
-        /* سلايدر الصور */
+        /* سلايدر الصور الاحترافي */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            background: #f9f9f9;
+        }
+
         .slider {
             display: flex;
             overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            background: #f0f0f0;
+            scroll-snap-type: x mandatory; /* لجعل الصورة تقف في المنتصف */
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            /* عكس اتجاه التمرير */
+            direction: ltr; 
         }
+
         .slider::-webkit-scrollbar { display: none; }
+
         .slider img {
             width: 100vw;
+            height: auto;
             flex-shrink: 0;
             scroll-snap-align: start;
-            object-fit: cover;
+            object-fit: contain;
         }
+
+        /* نقاط التمرير السفلى */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 0;
+        }
+        .dot { width: 8px; height: 8px; background: #ddd; border-radius: 50%; }
+        .dot.active { background: var(--primary); width: 20px; border-radius: 10px; }
 
         /* تفاصيل المنتج */
         .product-header {
-            padding: 20px 15px;
+            padding: 15px;
             text-align: center;
         }
         .product-title {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--primary);
             font-weight: 900;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
 
-        /* مربعات الأسعار */
         .pricing-grid {
             display: flex;
             gap: 10px;
-            padding: 0 15px;
+            padding: 0 5px;
         }
         .price-item {
             flex: 1;
-            padding: 15px 10px;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            text-align: center;
+            padding: 15px 5px;
+            border-radius: 15px;
+            border: 1px solid #eee;
             background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .price-item.best {
             border: 2px solid #fbc02d;
             background: #fffef2;
-            position: relative;
             transform: scale(1.05);
         }
-        .price-item.best span { color: var(--accent); font-weight: bold; font-size: 20px; }
-        .best-tag {
-            position: absolute;
-            top: -12px;
-            right: 5px;
-            background: var(--accent);
-            color: white;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 10px;
-        }
+        .price-item span { color: var(--accent); font-weight: bold; font-size: 19px; }
 
-        /* نموذج الطلب */
+        /* نموذج الطلب المطور */
         .order-card {
             background: #fff;
-            margin: 25px 15px;
-            padding: 25px;
+            margin: 20px 15px;
+            padding: 20px;
             border-radius: 20px;
             box-shadow: var(--shadow);
-            border: 1px solid #f0f0f0;
         }
-        .form-head { text-align: center; font-weight: bold; margin-bottom: 20px; font-size: 18px; }
         
         input, select {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             margin-bottom: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #e0e0e0;
             border-radius: 12px;
             font-size: 16px;
             box-sizing: border-box;
-            background: #fafafa;
+            background: #fdfdfd;
         }
 
         .order-btn {
@@ -123,49 +132,36 @@
             color: white;
             border: none;
             border-radius: 12px;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            cursor: pointer;
             box-shadow: 0 5px 15px rgba(45,90,39,0.3);
-            transition: 0.3s;
         }
-        .order-btn:active { transform: scale(0.98); }
 
-        /* العناصر التسويقية */
-        .promo-text {
-            text-align: center;
-            padding: 20px;
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 17px;
-        }
         .gif-container img, .landing-long-img img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* الواتساب */
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
+            bottom: 25px;
             right: 20px;
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             background: #25d366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow);
-            z-index: 9999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 999;
         }
-        .whatsapp-btn img { width: 35px; }
+        .whatsapp-btn img { width: 30px; }
 
-        /* أنيميشن */
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
         .pulse { animation: pulse 2s infinite; }
@@ -175,25 +171,32 @@
 <body>
 
     <div class="free-shipping-bar">
-        🚚 توصيل مجاني لكل مدن ليبيا
+        🚚 توصيل مجاني لكل مدن ليبيا - الدفع عند الاستلام
     </div>
 
-    <div class="slider">
-        <img src="https://drive.google.com/file/d/1EyhR79hLJOJdlrRxNVAMzVrTbXn59oqn/view?usp=drivesdk" alt="Product 1">
-        <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
-        <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg">
-        <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
+    <div class="slider-container">
+        <div class="slider">
+            <img src="https://lh3.googleusercontent.com/d/1EyhR79hLJOJdlrRxNVAMzVrTbXn59oqn" alt="الصورة الرئيسية">
+            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
+            <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg">
+            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
+        </div>
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
     </div>
 
     <div class="product-header">
-        <div class="product-title">🌿 صـابونة سـفن جـرين المثلثة - علاج طبيعي لتساقط الشعر 🌿</div>
+        <div class="product-title">🌿 صـابونة سـفن جـرين المثلثة <br> الخيار الأول لعلاج تساقط الشعر 🌿</div>
         <div class="pricing-grid">
             <div class="price-item">
                 <small>قطعة واحدة</small><br>
                 <strong>169 د.ل</strong>
             </div>
             <div class="price-item best">
-                <div class="best-tag">الأكثر مبيعاً 🔥</div>
                 <small>قطعتين (توفير)</small><br>
                 <span>249 د.ل</span>
             </div>
@@ -201,52 +204,56 @@
     </div>
 
     <div id="order" class="order-card">
-        <div class="form-head">احجز طلبك الآن بتعبئة البيانات التالية 👇</div>
+        <div style="text-align: center; margin-bottom: 15px; font-weight: bold;">طلب سريع 👇</div>
         <form>
-            <input type="text" placeholder="الإسم الكامل" required>
+            <input type="text" placeholder="الإسم بالكامل" required>
             <input type="tel" placeholder="رقم الهاتف" required>
-            <input type="text" placeholder="عنوان التوصيل (المدينة والحي)" required>
+            <input type="text" placeholder="المدينة والمنطقة" required>
             <select required>
-                <option value="" disabled selected>اختر العرض المناسب</option>
-                <option value="1">قطعة واحدة بـ 169 دينار</option>
-                <option value="2">قطعتين بـ 249 دينار (عرض التوفير)</option>
+                <option value="2">عرض التوفير: قطعتين بـ 249 د.ل</option>
+                <option value="1">قطعة واحدة بـ 169 د.ل</option>
             </select>
-            <button type="submit" class="order-btn pulse">تأكيد الطلب - دفع عند الاستلام</button>
+            <button type="submit" class="order-btn pulse">تأكيد الطلب الآن</button>
         </form>
     </div>
-
-    <div class="promo-text">✨ تركيبة طبيعية 100% لنتائج مذهلة من أول استعمال!</div>
 
     <div class="gif-container">
         <img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
     </div>
 
-    <div class="landing-long-img" onclick="document.getElementById('order').scrollIntoView({behavior: 'smooth'})">
-        <img src="https://drive.google.com/file/d/1oT_WSgVmu6-JqYTP5D6_QTQriOCvgoiA/view?usp=drivesdk" alt="Landing Details">
+    <div class="landing-long-img">
+        <img src="https://lh3.googleusercontent.com/d/1oT_WSgVmu6-JqYTP5D6_QTQriOCvgoiA" alt="تفاصيل المنتج">
     </div>
 
-    <div class="order-card" style="border: 2px solid var(--primary); background: #fdfdfd;">
-        <div class="form-head" style="color: var(--primary);">أكمل الطلب الآن للحصول على التوصيل المجاني 🛒</div>
+    <div class="order-card" style="border: 2px solid var(--primary);">
+        <div style="text-align: center; color: var(--primary); font-weight: bold; margin-bottom: 15px;">أكمل بياناتك للحصول على الشحن المجاني 🛒</div>
         <form>
-            <input type="text" placeholder="الإسم الكامل" required>
+            <input type="text" placeholder="الإسم" required>
             <input type="tel" placeholder="رقم الهاتف" required>
-            <select required>
-                <option value="" disabled selected>اختر العرض</option>
-                <option value="1">قطعة واحدة بـ 169 دينار</option>
-                <option value="2">قطعتين بـ 249 دينار (عرض التوفير)</option>
-            </select>
-            <input type="text" placeholder="العنوان بالتفصيل" required>
-            <button type="submit" class="order-btn" style="background: var(--accent);">اطلب الآن مجاناً 🚚</button>
+            <input type="text" placeholder="العنوان" required>
+            <button type="submit" class="order-btn" style="background: var(--accent);">اطلب الآن 🚚</button>
         </form>
     </div>
 
-    <div style="text-align: center; padding: 30px; color: #888; font-size: 12px;">
-        كل الحقوق محفوظة لمتجر Libya Mall © 2026
+    <div style="text-align: center; padding: 20px; color: #bbb; font-size: 11px;">
+        Libya Mall © 2026 - جميع الحقوق محفوظة
     </div>
 
     <a href="https://wa.me/212612136754" class="whatsapp-btn" target="_blank">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     </a>
 
+    <script>
+        // كود بسيط لتحديث النقاط عند السكرول في السلايدر
+        const slider = document.querySelector('.slider');
+        const dots = document.querySelectorAll('.dot');
+        
+        slider.addEventListener('scroll', () => {
+            const index = Math.round(slider.scrollLeft / window.innerWidth);
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        });
+    </script>
 </body>
 </html>
