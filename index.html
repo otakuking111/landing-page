@@ -10,6 +10,7 @@
             --accent: #d32f2f;
             --bg-light: #f4f7f4;
             --shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --gray: #e0e0e0;
         }
 
         body {
@@ -22,6 +23,7 @@
             scroll-behavior: smooth;
         }
 
+        /* شريط التوصيل المجاني */
         .free-shipping-bar {
             background-color: var(--primary);
             color: white;
@@ -32,10 +34,11 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        /* سلايدر احترافي ناعم جداً */
-        .slider-container {
+        /* سلايدر الصور الاحترافي */
+        .slider-wrapper {
             width: 100%;
             position: relative;
             background: #fff;
@@ -45,23 +48,48 @@
             display: flex;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            /* للتمرير من اليمين لليسار بشكل طبيعي */
-            direction: rtl; 
+            -webkit-overflow-scrolling: touch;
+            direction: rtl; /* التمرير يبدأ من اليمين */
         }
 
         .slider::-webkit-scrollbar { display: none; }
 
         .slider img {
             width: 100%;
+            aspect-ratio: 1 / 1; /* توحيد حجم الصور لتصبح مربعة احترافية */
             flex-shrink: 0;
-            scroll-snap-align: start;
-            object-fit: contain;
+            scroll-snap-align: center;
+            object-fit: cover;
         }
 
+        /* نقاط التمرير (الخانة أسفل السكرول) */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 0;
+            background: #fff;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gray);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            width: 22px;
+            border-radius: 10px;
+        }
+
+        /* تفاصيل المنتج */
         .product-header {
-            padding: 20px 15px;
+            padding: 10px 15px 20px;
             text-align: center;
         }
         .product-title {
@@ -69,6 +97,7 @@
             color: var(--primary);
             font-weight: 900;
             margin-bottom: 15px;
+            line-height: 1.4;
         }
 
         .pricing-grid {
@@ -80,9 +109,10 @@
             flex: 1;
             padding: 15px;
             border-radius: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid #eee;
             background: #fff;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         .price-item.best {
             border: 2px solid #fbc02d;
@@ -92,24 +122,23 @@
         }
         .price-item span { color: var(--accent); font-weight: bold; font-size: 20px; }
 
-        /* توحيد تصميم خانة المعلومات */
+        /* نماذج الطلب الموحدة */
         .order-card {
             background: #fff;
             margin: 25px 15px;
             padding: 25px;
             border-radius: 20px;
             box-shadow: var(--shadow);
-            border: 1px solid #eee;
+            border: 1px solid #f0f0f0;
         }
-        
-        .form-title {
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 18px;
+        .form-head { 
+            text-align: center; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            font-size: 18px; 
             color: var(--primary);
         }
-
+        
         input, select {
             width: 100%;
             padding: 15px;
@@ -131,19 +160,22 @@
             font-size: 20px;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(45,90,39,0.3);
         }
 
-        /* الصورة الطويلة القابلة للنقر */
-        .landing-long-img {
+        /* العناصر التسويقية */
+        .gif-container img, .landing-long-img img {
             width: 100%;
-            cursor: pointer;
-            margin: 15px 0;
-        }
-        .landing-long-img img {
-            width: 100%;
+            height: auto;
             display: block;
         }
 
+        .landing-long-img {
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        /* الواتساب */
         .whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -155,13 +187,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             z-index: 9999;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
+        .whatsapp-btn img { width: 35px; }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
         .pulse { animation: pulse 2s infinite; }
@@ -171,15 +204,21 @@
 <body>
 
     <div class="free-shipping-bar">
-        🚚 توصيل مجاني لكل مدن ليبيا
+        🚚 توصيل مجاني لكل مدن ليبيا - الدفع عند الاستلام
     </div>
 
-    <div class="slider-container">
-        <div class="slider">
-            <img src="https://lh3.googleusercontent.com/d/1EyhR79hLJOJdlrRxNVAMzVrTbXn59oqn" alt="1">
-            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="2">
-            <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg" alt="3">
-            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg" alt="4">
+    <div class="slider-wrapper">
+        <div class="slider" id="mainSlider">
+            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Product 1">
+            <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg" alt="Product 2">
+            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg" alt="Product 3">
+            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Product 4">
+        </div>
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </div>
 
@@ -197,8 +236,8 @@
         </div>
     </div>
 
-    <div id="order-section" class="order-card">
-        <div class="form-title">احجز طلبك الآن بتعبئة البيانات التالية 👇</div>
+    <div id="order-form" class="order-card">
+        <div class="form-head">احجز طلبك الآن بتعبئة البيانات التالية 👇</div>
         <form>
             <input type="text" placeholder="الإسم الكامل" required>
             <input type="tel" placeholder="رقم الهاتف" required>
@@ -211,20 +250,20 @@
         </form>
     </div>
 
-    <div style="width: 100%;">
-        <img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514" style="width: 100%;">
+    <div class="gif-container">
+        <img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
     </div>
 
-    <div class="landing-long-img" onclick="document.getElementById('order-section').scrollIntoView({behavior: 'smooth'});">
-        <img src="https://lh3.googleusercontent.com/d/1oT_WSgVmu6-JqYTP5D6_QTQriOCvgoiA" alt="اضغط للطلب">
+    <div class="landing-long-img" onclick="document.getElementById('order-form').scrollIntoView();">
+        <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="Landing Details">
     </div>
 
     <div class="order-card">
-        <div class="form-title">أكمل الطلب الآن للحصول على التوصيل المجاني 🛒</div>
+        <div class="form-head">أكمل الطلب الآن للحصول على التوصيل المجاني 🛒</div>
         <form>
             <input type="text" placeholder="الإسم الكامل" required>
             <input type="tel" placeholder="رقم الهاتف" required>
-            <input type="text" placeholder="عنوان التوصيل بالتفصيل" required>
+            <input type="text" placeholder="العنوان بالتفصيل" required>
             <select required>
                 <option value="2">قطعتين بـ 249 دينار (عرض التوفير)</option>
                 <option value="1">قطعة واحدة بـ 169 دينار</option>
@@ -238,8 +277,24 @@
     </div>
 
     <a href="https://wa.me/212612136754" class="whatsapp-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     </a>
+
+    <script>
+        // كود تحريك النقاط التفاعلية مع السكرول
+        const slider = document.getElementById('mainSlider');
+        const dots = document.querySelectorAll('.dot');
+
+        slider.addEventListener('scroll', () => {
+            const index = Math.round(slider.scrollLeft / slider.clientWidth);
+            // بما أن الاتجاه RTL، فإن السكرول يكون بالسالب في بعض المتصفحات، نستخدم Math.abs
+            const activeIndex = Math.abs(index);
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === activeIndex);
+            });
+        });
+    </script>
 
 </body>
 </html>
