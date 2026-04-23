@@ -210,15 +210,15 @@
         <div class="form-head">احجز طلبك الآن بتعبئة البيانات 👇</div>
         <span class="warning-text">⚠️ ملاحظة: إذا لم تكن ستستلم الطلبية لا تحجز</span>
         <form>
-            <input type="text" placeholder="الإسم الكامل" required>
-            <input type="tel" placeholder="رقم الهاتف" required>
-            <input type="text" placeholder="المدينة والحي" required>
-            <select required>
-                <option value="1">قطعة بـ 169د والتوصيل مجاني</option>
-                <option value="2">قطعتين بـ 249د والتوصيل مجاني </option>
-            </select>
-            <button type="submit" class="order-btn pulse"> أحجز الآن </button>
-        </form>
+          <input type="text" name="name" placeholder="الإسم الكامل" required>
+          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+          <input type="text" name="city" placeholder="المدينة والحي" required>
+          <select name="offer" required>
+              <option value="قطعة بـ 169د">قطعة بـ 169د والتوصيل مجاني</option>
+              <option value="قطعتين بـ 249د">قطعتين بـ 249د والتوصيل مجاني </option>
+          </select>
+          <button type="submit" class="order-btn pulse"> أحجز الآن </button>
+      </form>
     </div>
 
     <div class="gif-container">
@@ -233,15 +233,15 @@
         <div class="form-head">أدخل معلوماتك للحصول على الشحن المجاني 🛒</div>
         <span class="warning-text">⚠️ ملاحظة: إذا لم تكن ستستلم الطلبية لا تحجز</span>
         <form>
-            <input type="text" placeholder="الإسم الكامل" required>
-            <input type="tel" placeholder="رقم الهاتف" required>
-            <input type="text" placeholder="العنوان " required>
-            <select required>
-              <option value="1">قطعة بـ 169د والتوصيل مجاني</option>
-              <option value="2">قطعتين بـ 249د والتوصيل مجاني </option>
-            </select>
-            <button type="submit" class="order-btn" style="background: var(--accent);">اطلب الآن 🚚</button>
-        </form>
+          <input type="text" name="name" placeholder="الإسم الكامل" required>
+          <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+          <input type="text" name="city" placeholder="العنوان " required>
+          <select name="offer" required>
+              <option value="قطعة بـ 169د">قطعة بـ 169د والتوصيل مجاني</option>
+              <option value="قطعتين بـ 249د">قطعتين بـ 249د والتوصيل مجاني </option>
+          </select>
+          <button type="submit" class="order-btn" style="background: var(--accent);">اطلب الآن 🚚</button>
+      </form>
     </div>
 
     <div style="text-align: center; padding: 25px; color: #999; font-size: 11px;">
@@ -261,7 +261,7 @@
         });
     </script>
     <script>
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbwSRg7yLjrbPXMBMfOuwp4bQ3KovGGQ417Hvr8YIVFgM7eM501zUFK-NDhxLVq9toVB/exec'; // حط الرابط ديالك هنا
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbwLybY__Rxy3-QFI9LMLO2jsGxTevluun9vZ13To5zh99rUhNyCq1Itlg92H1nrEBHn/exec'; // حط الرابط ديالك هنا
       const forms = document.querySelectorAll('form');
     
       forms.forEach(form => {
