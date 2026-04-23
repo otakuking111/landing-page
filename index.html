@@ -34,12 +34,11 @@
             z-index: 1000;
         }
 
-        /* إصلاح السلايدر ليكون احترافياً */
+        /* سلايدر احترافي ناعم جداً */
         .slider-container {
             width: 100%;
-            overflow: hidden;
-            background: #fff;
             position: relative;
+            background: #fff;
         }
 
         .slider {
@@ -48,7 +47,8 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            direction: rtl; /* اتجاه التمرير العربي */
+            /* للتمرير من اليمين لليسار بشكل طبيعي */
+            direction: rtl; 
         }
 
         .slider::-webkit-scrollbar { display: none; }
@@ -56,11 +56,10 @@
         .slider img {
             width: 100%;
             flex-shrink: 0;
-            scroll-snap-align: center; /* تثبيت الصورة في المنتصف */
-            object-fit: cover;
+            scroll-snap-align: start;
+            object-fit: contain;
         }
 
-        /* تفاصيل المنتج */
         .product-header {
             padding: 20px 15px;
             text-align: center;
@@ -83,11 +82,13 @@
             border-radius: 12px;
             border: 1px solid #ddd;
             background: #fff;
+            text-align: center;
         }
         .price-item.best {
             border: 2px solid #fbc02d;
             background: #fffef2;
             transform: scale(1.05);
+            position: relative;
         }
         .price-item span { color: var(--accent); font-weight: bold; font-size: 20px; }
 
@@ -130,13 +131,13 @@
             font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
         }
 
+        /* الصورة الطويلة القابلة للنقر */
         .landing-long-img {
-            cursor: pointer;
             width: 100%;
-            margin-top: 20px;
+            cursor: pointer;
+            margin: 15px 0;
         }
         .landing-long-img img {
             width: 100%;
@@ -155,11 +156,12 @@
             align-items: center;
             justify-content: center;
             z-index: 9999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
         .pulse { animation: pulse 2s infinite; }
@@ -174,9 +176,10 @@
 
     <div class="slider-container">
         <div class="slider">
-            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg">
-            <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg">
-            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
+            <img src="https://lh3.googleusercontent.com/d/1EyhR79hLJOJdlrRxNVAMzVrTbXn59oqn" alt="1">
+            <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="2">
+            <img src="https://i.postimg.cc/T1YHpzwY/FB-IMG-1776969017848.jpg" alt="3">
+            <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg" alt="4">
         </div>
     </div>
 
@@ -194,7 +197,7 @@
         </div>
     </div>
 
-    <div id="order-form-top" class="order-card">
+    <div id="order-section" class="order-card">
         <div class="form-title">احجز طلبك الآن بتعبئة البيانات التالية 👇</div>
         <form>
             <input type="text" placeholder="الإسم الكامل" required>
@@ -212,8 +215,8 @@
         <img src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514" style="width: 100%;">
     </div>
 
-    <div class="landing-long-img" onclick="document.getElementById('order-form-top').scrollIntoView();">
-        <img src="https://i.postimg.cc/Jn39y35f/FB-IMG-1776969011434.jpg" alt="اضغط للطلب">
+    <div class="landing-long-img" onclick="document.getElementById('order-section').scrollIntoView({behavior: 'smooth'});">
+        <img src="https://lh3.googleusercontent.com/d/1oT_WSgVmu6-JqYTP5D6_QTQriOCvgoiA" alt="اضغط للطلب">
     </div>
 
     <div class="order-card">
