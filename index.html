@@ -6,115 +6,121 @@
 <title>Libya Mall</title>
 
 <style>
-body {
-    margin:0;
-    font-family: Arial;
-    direction: rtl;
-    background:#fff;
+body{
+margin:0;
+font-family:Arial;
+background:#f7f7f7;
+direction:rtl;
 }
 
-.header {
-    text-align:center;
-    padding:10px;
-    background:#0a7c4a;
+/* HEADER */
+.header{
+background:white;
+padding:10px;
+text-align:center;
+box-shadow:0 2px 5px rgba(0,0,0,0.05);
 }
-.header img {
-    width:120px;
+.header img{
+height:40px;
 }
 
 /* SLIDER */
-.slider {
-    display:flex;
-    overflow-x:auto;
-    scroll-snap-type:x mandatory;
+.slider{
+display:flex;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+gap:10px;
+padding:10px;
 }
-.slider img {
-    width:100%;
-    flex-shrink:0;
-    scroll-snap-align:center;
-}
-
-/* CONTENT */
-.container {
-    padding:15px;
+.slider img{
+width:90%;
+border-radius:10px;
+scroll-snap-align:center;
+flex-shrink:0;
 }
 
-.title {
-    font-size:20px;
-    font-weight:bold;
-    margin:10px 0;
+/* CONTAINER */
+.container{
+padding:15px;
+background:white;
+margin:10px;
+border-radius:10px;
 }
 
-.price {
-    color:#0a7c4a;
-    font-size:18px;
-    font-weight:bold;
+/* TITLE */
+.title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:10px;
 }
 
-.offer {
-    color:red;
-    margin-bottom:10px;
+/* PRICE */
+.price{
+font-size:18px;
+color:#0a7c4a;
+font-weight:bold;
+}
+.offer{
+color:red;
+margin-bottom:15px;
 }
 
-.form input, .form textarea {
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:6px;
-    border:1px solid #ccc;
-    font-size:14px;
+/* FORM */
+.form input,.form textarea{
+width:100%;
+padding:12px;
+margin:6px 0;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:14px;
 }
 
-.btn {
-    width:100%;
-    padding:14px;
-    background:#0a7c4a;
-    color:#fff;
-    border:none;
-    border-radius:6px;
-    font-size:16px;
-    font-weight:bold;
+.btn{
+width:100%;
+background:#0a7c4a;
+color:white;
+padding:14px;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
 }
 
-.short-desc {
-    text-align:center;
-    font-weight:bold;
-    margin:15px 0;
+/* DESC */
+.short-desc{
+text-align:center;
+font-weight:bold;
+margin:15px 0;
 }
 
-.gif {
-    width:100%;
-}
-
-.long-img {
-    width:100%;
-    margin-top:10px;
-    cursor:pointer;
+/* IMAGE */
+.full{
+width:100%;
+border-radius:10px;
 }
 
 /* WHATSAPP */
-.whatsapp {
-    position:fixed;
-    bottom:15px;
-    right:15px;
-    background:#25D366;
-    color:white;
-    font-size:22px;
-    padding:12px;
-    border-radius:50%;
-    text-decoration:none;
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+font-size:20px;
+padding:12px;
+border-radius:50%;
+text-decoration:none;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* MOBILE OPT */
+/* MOBILE LIMIT */
 @media(min-width:768px){
-    body{
-        max-width:400px;
-        margin:auto;
-        border:1px solid #eee;
-    }
+body{
+max-width:400px;
+margin:auto;
+}
 }
 </style>
-
 </head>
 
 <body>
@@ -132,42 +138,43 @@ body {
 <img src="https://i.postimg.cc/7ZTtGMx6/FB-IMG-1776969024453.jpg">
 </div>
 
+<!-- PRODUCT -->
 <div class="container">
 
-<!-- TITLE -->
 <div class="title">
 🌿 صابونة سفن جرين المثلثة - علاج طبيعي لتساقط الشعر
 </div>
 
-<!-- PRICE -->
-<div class="price">169 دينار للقطعة</div>
-<div class="offer">🔥 عرض خاص: قطعتين بـ 249 دينار</div>
+<div class="price">169 دينار</div>
+<div class="offer">🔥 عرض: قطعتين بـ 249 دينار</div>
 
-<!-- FORM 1 -->
-<div class="form" id="orderForm">
-<input type="text" placeholder="الإسم">
-<input type="text" placeholder="رقم الهاتف">
+<div class="form" id="formTop">
+<input placeholder="الإسم">
+<input placeholder="رقم الهاتف">
 <textarea placeholder="العنوان"></textarea>
 <button class="btn">اطلب الآن</button>
 </div>
 
-<!-- SHORT DESC -->
 <div class="short-desc">
-💚 الحل الطبيعي لتقوية الشعر وتقليل التساقط بسرعة!
+💚 الحل الطبيعي لتقوية الشعر وتقليل التساقط
 </div>
 
-<!-- GIF -->
-<img class="gif" src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
+<img class="full" src="https://piko.ma/cdn/shop/files/6570c7ea-1072-476d-aaa8-8ca01f56cf13.ipnoef1u0byfm8mndjdgqmatfztusoxhyg2jsfrg-1758817833_1758817834._1.gif?v=1767440514">
 
-<!-- LONG IMAGE -->
-<img class="long-img" src="https://i.postimg.cc/26F4LG92/Gemini-Generated-Image-krmei7krmei7krme.png" onclick="scrollToForm()">
+<img class="full" src="https://i.postimg.cc/26F4LG92/Gemini-Generated-Image-krmei7krmei7krme.png" onclick="goForm()">
+
+</div>
 
 <!-- FORM 2 -->
+<div class="container">
+
+<div class="title">🛒 أكمل طلبك الآن</div>
+
 <div class="form">
-<input type="text" placeholder="الإسم الكامل">
-<input type="text" placeholder="رقم الهاتف">
+<input placeholder="الإسم الكامل">
+<input placeholder="رقم الهاتف">
 <textarea placeholder="العنوان بالتفصيل"></textarea>
-<button class="btn">تأكيد الطلب الآن</button>
+<button class="btn">تأكيد الطلب</button>
 </div>
 
 </div>
@@ -176,8 +183,8 @@ body {
 <a href="https://wa.me/212612136754" class="whatsapp">💬</a>
 
 <script>
-function scrollToForm() {
-    document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
+function goForm(){
+document.getElementById("formTop").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
