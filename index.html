@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Libya Mall - سفن جرين</title>
@@ -233,6 +234,18 @@
         }
         .pulse { animation: pulse 2s infinite; }
     </style>
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1450341493039098'); // رقم البيكسل الخاص بك
+      fbq('track', 'PageView');
+      </script>
 </head>
 <body>
 
@@ -335,11 +348,25 @@
                 e.preventDefault();
                 const btn = form.querySelector('button');
                 const originalText = btn.innerText;
+                
+                // جلب السعر المختار لتسجيله في فيسبوك بدقة
+                const offerSelect = form.querySelector('select[name="offer"]').value;
+                const price = offerSelect.includes('249') ? 249.00 : 169.00;
+
                 btn.innerText = "جاري الحجز...";
                 btn.disabled = true;
         
                 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
+                    // --- هنا إضافة كود فيسبوك (Purchase) ---
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Purchase', {
+                            value: price,
+                            currency: 'LYD'
+                        });
+                    }
+                    // ---------------------------------------
+
                     btn.innerText = "تم بنجاح ✅";
                     successOverlay.style.display = 'flex';
                     form.reset();
