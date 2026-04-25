@@ -280,8 +280,8 @@
     <div class="product-info-section">
         <div class="product-main-title">صـابونة سـفن جـرين المثلثة الأصلية لعلاج تساقط الشعر</div>
         <div class="price-badge-container">
-            <div class="current-price">169 دينار</div>
-            <div class="offer-tag">متوفر عرض التوفير (قطعتين بـ 249د)</div>
+            <div class="current-price">149 دينار</div>
+            <div class="offer-tag">متوفر عرض التوفير (قطعتين بـ 220د)</div>
         </div>
     </div>
 
@@ -293,8 +293,8 @@
           <input type="tel" name="phone" placeholder="رقم الهاتف" required>
           <input type="text" name="city" placeholder="المدينة والحي" required>
           <select name="offer" required>
-              <option value="قطعة بـ 169د">قطعة بـ 169د والتوصيل مجاني</option>
-              <option value="قطعتين بـ 249د">قطعتين بـ 249د والتوصيل مجاني </option>
+              <option value="قطعة بـ 169د">قطعة بـ 149د والتوصيل مجاني</option>
+              <option value="قطعتين بـ 249د">قطعتين بـ 220د والتوصيل مجاني </option>
           </select>
           <button type="submit" class="order-btn pulse"> أحجز الآن </button>
       </form>
@@ -316,8 +316,8 @@
           <input type="tel" name="phone" placeholder="رقم الهاتف" required>
           <input type="text" name="city" placeholder="العنوان " required>
           <select name="offer" required>
-              <option value="قطعة بـ 169د">قطعة بـ 169د والتوصيل مجاني</option>
-              <option value="قطعتين بـ 249د">قطعتين بـ 249د والتوصيل مجاني </option>
+              <option value="قطعة بـ 169د">قطعة بـ 149د والتوصيل مجاني</option>
+              <option value="قطعتين بـ 249د">قطعتين بـ 220د والتوصيل مجاني </option>
           </select>
           <button type="submit" class="order-btn" style="background: var(--accent);">اطلب الآن 🚚</button>
       </form>
@@ -351,7 +351,7 @@
                 
                 // جلب السعر المختار لتسجيله في فيسبوك بدقة
                 const offerSelect = form.querySelector('select[name="offer"]').value;
-                const price = offerSelect.includes('249') ? 249.00 : 169.00;
+                const price = offerSelect.includes('220') ? 220.00 : 149.00;
 
                 btn.innerText = "جاري الحجز...";
                 btn.disabled = true;
